@@ -1,6 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~ngx-popperjs/scss/theme-dark";
+@import "~ngx-popperjs/scss/theme-white";
+
+/* ngx-popper-js */
+.ngxp__container.ngxp__animation {
+  animation: ngxp-fadeIn 0.15s ease-out;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 15px;
+  color: #020202;
+}
 
 html,
 body {
@@ -9,4 +23,8 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.full-height {
+  min-height: calc(100vh - 98px);
 }

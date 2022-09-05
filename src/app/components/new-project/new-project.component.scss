@@ -70,7 +70,3 @@ input:focus {
   /* Microsoft Edge */
   @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
 }
-
-.full-height {
-  min-height: 100vh;
-}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'createproject',
     component: NewProjectComponent,
+  },
+  {
+    path: 'kpi',
+    component: KpiByProductComponent,
   },
 ];
 

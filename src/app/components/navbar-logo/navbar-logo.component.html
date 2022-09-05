@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item navbar-logo p-4 px-5">
+    <div class="grid-item-layout">
+        <img src="../../../assets/icons/logo-ac-insight.svg" />
+    </div>
+    <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="end center" fxFlex class="grid-item-layout">
+        <img src="../../../assets/icons/jessica-profile.svg" width="35" />
+        <span class="font-16px">{{ userName }}</span>
+        <img src="../../../assets/icons/navbar-arrow.svg" mat-button [matMenuTriggerFor]="menu">
+    </div>
+</div>
+
+<mat-menu #menu="matMenu" class="mat-menu-test">
+    <a mat-menu-item>Item 1</a>
+    <a mat-menu-item>Item 2</a>
+</mat-menu>

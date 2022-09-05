@@ -1,0 +1,33 @@
+@mixin font-format($weight, $size, $height, $hexcolor) {
+  font-family: Noto Sans, sans-serif !important;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $hexcolor;
+}
+
+// .grid-item {
+//   background-color: lightsalmon;
+// }
+
+// .grid-item-layout {
+//   background-color: cadetblue;
+//   border: 1px solid #ffffff;
+// }
+
+.navbar-logo {
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.8) 200%,
+    rgba(255, 255, 255, 0.1) 10%
+  );
+}
+
+.font-16px {
+  @include font-format(700, 16px, 20px, #020202);
+}

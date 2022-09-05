@@ -7,18 +7,18 @@
   color: $hexcolor;
 }
 
-.grid-item {
-  background-color: lightsalmon;
-}
+// .grid-item {
+//   background-color: lightsalmon;
+// }
 
-.grid-item-layout {
-  background-color: cadetblue;
-  border: 1px solid #ffffff;
-}
+// .grid-item-layout {
+//   background-color: cadetblue;
+//   border: 1px solid #ffffff;
+// }
 
 .grid-item-layout-collapse {
   background-color: #ffffff;
-  border: 0.8px solid #9a9a9a;
+  // border: 0.8px solid #9a9a9a;
   border-radius: 5px;
 }
 
@@ -28,6 +28,10 @@
 
 .font-14px {
   @include font-format(400, 14px, 18px, #9a9a9a);
+}
+
+.font-14px24 {
+  @include font-format(400, 14px, 24px, #020202);
 }
 
 .font-16px {
@@ -98,10 +102,6 @@ input:focus {
   color: rgba(53, 53, 53, 0.32) !important;
 }
 
-.full-height {
-  min-height: 100vh;
-}
-
 img.float-left {
   float: left !important;
 }
@@ -110,40 +110,90 @@ img.float-right {
   float: right !important;
 }
 
-/* Add application styles & imports to this file! */
-/* You can add global styles to this file, and also import other style files */
-
-.collapse:not(.show) {
-  display: none;
-}
-.collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  transition: height 0.35s ease;
-}
 .collapse-title {
   position: relative;
-  padding: 1rem 3.5rem 1rem 1rem;
+  padding: 2rem 3.5rem 2rem 2rem;
   cursor: pointer;
-  background-color: var(--color-strata-yellow-1);
-  //   background-color: #fcd869;
-  &.collapsed {
-    // background-color: #fef1c9;
-  }
   &-expand-indicator {
     position: absolute;
-    top: 20px;
-    right: 1rem;
+    top: 35px;
+    right: 1.5rem;
     transform: translateY(-50%);
-    .collapse-icon {
-      transition: transform 0.35s ease;
-    }
   }
-  //   &:not(.collapsed) {
   .collapse-icon {
     transition: transform 0.35s ease;
-    transform: rotateZ(90deg);
+    transform: rotateZ(0deg);
   }
-  //   }
+}
+.collapse-sub-title {
+  position: relative;
+  padding: 0 3.5rem 2rem 2rem;
+  margin-top: -1rem;
+  &-expand-indicator {
+    position: absolute;
+    top: 35px;
+    right: 1.5rem;
+    transform: translateY(-50%);
+  }
+  .collapse-icon {
+    transition: transform 0.35s ease;
+    transform: rotateZ(0deg);
+  }
+}
+
+.expand-selected {
+  float: right;
+  margin-top: -0.8rem;
+  margin-right: -0.8rem;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #b6a5e8 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+::ng-deep .mat-checkbox-frame {
+  background-color: #e6e6e6 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  border: 0 !important;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #b6a5e8 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+::ng-deep .mat-checkbox-background {
+  background-color: #e6e6e6 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+  margin-left: 1rem !important;
+}
+::ng-deep .mat-checkbox .mat-checkbox-ripple {
+  height: auto !important;
+  width: auto !important;
+}
+::ng-deep .mat-checkbox-inner-container {
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+::ng-deep .mat-checkbox-checkmark-path {
+  stroke: #491dc5 !important;
+}
+::ng-deep .mat-checkbox-checked .mat-checkbox-checkmark-path {
+  stroke-dashoffset: 3 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: bevel !important;
+  stroke-width: 2.5 !important;
+}
+
+.border-bottom-dashed {
+  border-bottom: 0.5px dashed rgba(103, 103, 103, 0.4);
 }
