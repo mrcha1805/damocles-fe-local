@@ -117,6 +117,7 @@ export class KpiByProductComponent implements OnInit {
     } else {
       this.style = {
         border: '0.8px solid #9A9A9A',
+        margin: '1.2px',
       };
     }
     return this.style;
