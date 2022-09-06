@@ -38,25 +38,25 @@ export class KpiByProductComponent implements OnInit {
   kpiList: any = [
     {
       name: 'Banking',
-      image: '../../../../assets/icons/banking.svg',
+      image: './assets/icons/banking.svg',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan lorem.',
-      info: 'xxx',
+      info: 'xxxxx',
       isSelected: false,
       data: [
-        { value: 'Deposit', info: 'xxx', isSelected: true },
-        { value: 'Credit', info: 'xxx', isSelected: false },
-        { value: 'Investment', info: 'xxx', isSelected: false },
+        { value: 'Deposit', info: 'xxxxx', isSelected: true },
+        { value: 'Credit', info: 'xxxxx', isSelected: false },
+        { value: 'Investment', info: 'xxxxx', isSelected: false },
       ],
     },
     {
       name: 'Insurance',
-      image: '../../../../assets/icons/insurance.svg',
+      image: './assets/icons/insurance.svg',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan lorem.',
-      info: 'xxx',
+      info: 'xxxxx',
       isSelected: false,
       data: [
-        { value: 'Life', info: 'xxx', isSelected: true },
-        { value: 'Non - Life', info: 'xxx', isSelected: false },
+        { value: 'Life', info: 'xxxxx', isSelected: true },
+        { value: 'Non - Life', info: 'xxxxx', isSelected: false },
       ],
     },
   ];

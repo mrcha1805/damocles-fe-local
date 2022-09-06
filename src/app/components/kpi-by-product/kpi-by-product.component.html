@@ -1,12 +1,12 @@
 <app-navbar-logo></app-navbar-logo>
 
-<div fxLayout="row" class="grid-item full-height">
+<div fxLayout="row" class="grid-item viewport">
     <div fxLayout="column" fxFlex>
         <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
             <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout p-5">
                 <div fxLayout="column" fxLayoutAlign="center center" class="text-center p-4">
                     <div>
-                        <img src="../../../../assets/icons/kpi-by-product.svg" width="180" />
+                        <img src="./assets/icons/kpi-by-product.svg" width="180" />
                     </div>
                     <span class="font-18px">You looking for</span>
                     <span class="font-42px">
@@ -20,7 +20,7 @@
                 <div fxLayout="column" class="grid-item-layout text-start p-4">
                     <article class="grid-item-layout-collapse my-3" *ngFor="let item of kpiList; let i = index"
                         [ngStyle]="setBorderCollapsed(i)">
-                        <img src="../../../assets/icons/expand-selected.svg" width="24" class="expand-selected"
+                        <img src="./assets/icons/expand-selected.svg" width="24" class="expand-selected"
                             [ngStyle]="{'display': isCollapsed == i ? '': 'none'}" [@openClose]="helpMenuOpen" />
                         <div class="collapse-title" (click)="collapsed(i)" (click)="toggleHelpMenu()">
                             <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse">
@@ -43,8 +43,7 @@
                                 </div>
                             </div>
                             <span class="collapse-title-expand-indicator">
-                                <img class="collapse-icon" src="../../../assets/icons/arrow_collapse.svg"
-                                    alt="plus-icon"
+                                <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
                                     [ngStyle]="{'transform': isCollapsed == i ? 'rotateZ(90deg)' : 'rotateZ(0deg)'}">
                             </span>
                         </div>
@@ -85,14 +84,14 @@
                 <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center stretch" fxLayoutGap="20" class="p-2">
                     <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" fxFill>
                         <button class="btn btn-light font-16px px-4" (click)="goCreateProject()">
-                            <img src=" ../../../../assets/icons/arrow-left.svg" class="float-left" />
+                            <img src=" ./assets/icons/arrow-left.svg" class="float-left" />
                             Back
                         </button>
                     </div>
                     <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center" fxFill>
                         <button class="btn btn-blue font-16px px-4">
                             Next
-                            <img src="../../../../assets/icons/arrow-right.svg" class="float-right" />
+                            <img src="./assets/icons/arrow-right.svg" class="float-right" />
                         </button>
                     </div>
                 </div>
