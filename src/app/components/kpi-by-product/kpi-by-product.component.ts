@@ -7,7 +7,6 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { auto } from '@popperjs/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -152,6 +151,10 @@ export class KpiByProductComponent implements OnInit {
 
   goCreateProject() {
     this.showSpinner('/createproject');
+  }
+
+  goCreateKpi() {
+    this.showSpinner('/create-kpi');
   }
 
   setStyleCollapsed(index: number) {

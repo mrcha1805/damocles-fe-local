@@ -1,0 +1,50 @@
+<div fxLayout="row" class="grid-item viewport-100" fxFlex>
+    <div fxLayout="column" fxFlex>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
+            <div fxFlex fxLayout="column" fxLayoutAlign="start center" class="grid-item-layout box-left" fxFlex>
+                <div class="w-100">
+                    <app-navbar-logo></app-navbar-logo>
+                </div>
+            </div>
+            <div fxFlex="60" fxLayout="column" class="grid-item-layout p-5">
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item-layout box-right-top">
+                    <div fxFlex="50" class="grid-item-layout">
+                        <span class="font-20px">Project Name : <font class="font-blue">BLA 10/5</font></span>
+                    </div>
+                    <div class="grid-item-layout" fxLayoutAlign="end center" fxFlex>
+                        <span class="font-20px">Product : <font class="font-blue">Insurance (Life)</font></span>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout" fxLayoutAlign="center stretch"
+                    class="my-5">
+                    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" class="grid-item-layout">
+                        <div fxLayout="column" class="grid-item-layout py-2 px-5 border-default text-center">
+                            <span class="font-44px py-1">40,053,155</span>
+                            <span class="font-16px py-1">Total - Customers</span>
+                        </div>
+                        <div fxLayout="column" class="grid-item-layout py-2 px-5 border-blue text-center">
+                            <span class="font-44px py-1 font-blue">70,543</span>
+                            <span class="font-16px py-1 font-blue">Complete - Unique</span>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" class="grid-item-layout">
+                    <div id="chart-funnel"></div>
+                </div>
+                <div fxLayout="row" class="grid-item-layout" fxLayoutAlign="end center"
+                    fxLayoutAlign.lt-md="center center">
+                    <div fxFlex="50" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" fxLayoutAlign="end end"
+                        class="grid-item-layout my-4">
+                        <button class="btn btn-light font-16px-b">
+                            Export
+                        </button>
+                        <button class="btn btn-blue font-16px-b">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>

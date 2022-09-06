@@ -61,6 +61,7 @@
                                                     (change)="changeSelected(i, j)">
                                                     <span class="font-14px24">{{ data.value }}</span>
                                                 </mat-checkbox>
+                                                &nbsp;
                                                 <div fxLayoutAlign="end center" fxFlex>
                                                     <span [popper]="popperContent_sub" [popperTrigger]="triggers.hover"
                                                         [popperModifiers]="offsetModifiers"
@@ -80,18 +81,15 @@
                             </div>
                         </div>
                     </article>
-                </div>
-                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center stretch" fxLayoutGap="20" class="p-2">
-                    <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" fxFill>
-                        <button class="btn btn-light font-16px px-4" (click)="goCreateProject()">
-                            <img src=" ./assets/icons/arrow-left.svg" class="float-left" />
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20" fxLayoutAlign="center center"
+                        class="my-4" style="padding: 0px 4rem;">
+                        <button class="btn btn-light font-16px" (click)="goCreateProject()">
+                            <img src=" ./assets/icons/arrow-left.svg" class="icon-left" />
                             Back
                         </button>
-                    </div>
-                    <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center" fxFill>
-                        <button class="btn btn-blue font-16px px-4">
+                        <button class="btn btn-blue font-16px" (click)="goCreateKpi()">
                             Next
-                            <img src="./assets/icons/arrow-right.svg" class="float-right" />
+                            <img src="./assets/icons/arrow-right.svg" class="icon-right" />
                         </button>
                     </div>
                 </div>

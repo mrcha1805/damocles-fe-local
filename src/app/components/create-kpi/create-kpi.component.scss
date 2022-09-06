@@ -7,51 +7,53 @@
   color: $hexcolor !important;
 }
 
-// .grid-item {
-//   background-color: lightsalmon;
-// }
+.grid-item {
+  background-color: lightsalmon;
+}
 
-// .grid-item-layout {
-//   background-color: cadetblue;
-//   border: 1px solid #ffffff;
-// }
+.grid-item-layout {
+  background-color: cadetblue;
+  border: 1px solid #ffffff;
+}
 
 .font-14px {
   @include font-format(400, 14px, 18px, #9a9a9a);
 }
-
-.font-16px {
+.font-16px-b {
   @include font-format(700, 16px, 18px, #ffffff);
 }
-
+.font-16px {
+  @include font-format(500, 16px, 22px, #020202);
+}
 .font-18px {
   @include font-format(500, 24px, 18px, #020202);
 }
-
+.font-20px {
+  @include font-format(700, 20px, 20px, #020202);
+}
 .font-42px {
   @include font-format(800, 42px, 57px, #020202);
 }
-
+.font-44px {
+  @include font-format(800, 32px, 44px, #020202);
+}
 .font-blue {
-  color: rgba(73, 29, 197, 1);
+  color: rgba(73, 29, 197, 1) !important;
 }
 
+.btn-light {
+  background: #ffffff;
+  color: #491dc5 !important;
+  border: 2px solid #491dc5;
+  border-radius: 5px;
+  height: 45px;
+  width: 100%;
+}
 .btn-blue {
   background: #491dc5;
   border-radius: 5px;
-  height: 50px;
-  padding: 0 5rem;
-}
-
-.project-name {
-  text-align: center;
-  background: #ffffff;
-  border: 1px solid #808080;
-  border-radius: 5px;
-}
-
-.m-rem-8 {
-  margin: 8rem;
+  height: 45px;
+  width: 100%;
 }
 
 input:focus {
@@ -72,9 +74,26 @@ input:focus {
 }
 
 ::ng-deep .navbar-logo {
-  background-image: repeating-linear-gradient(
-    rgb(255, 255, 255),
-    rgba(255, 255, 255, 0.8) 200%,
-    rgba(255, 255, 255, 0.1) 10%
-  ) !important;
+  background-image: none !important;
+  background-color: #f0f0f0 !important;
+}
+
+.box-left {
+  background-color: #f0f0f0;
+}
+.box-right-top {
+  margin-top: -0.8rem;
+}
+
+.border {
+  &-default {
+    border: 1.60315px solid #606060;
+    border-radius: 5px;
+    background: #ffffff;
+  }
+  &-blue {
+    border: 1.60315px solid #491dc5;
+    border-radius: 5px;
+    background: #ffffff;
+  }
 }
