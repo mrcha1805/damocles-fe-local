@@ -24,8 +24,12 @@
 .header2 {
   @include font-format(400, 10px, 14px, #1b1b1b);
 }
+.filter-lable {
+  text-align: end;
+  padding-right: 10px;
+}
 .selection-container {
-  width: 40%;
+  width: 100%;
   background-color: olivedrab;
 }
 .col-age {
@@ -37,4 +41,18 @@
   cursor: pointer;
 }
 .search-nav {
+}
+
+.tag-input {
+  width: 100%;
+}
+.row-between {
+  justify-content: end;
+}
+.col-bg {
+  background: greenyellow;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #491dc5 !important;
 }

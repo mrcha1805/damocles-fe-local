@@ -1,84 +1,106 @@
-<div fxLayout="column" fxLayoutGap="10px" class="container">
-  <div fxLayout="row" fxFlex="10%" class="block-1">
-
-    <div fxFlex fxLayoutAlign="start center" fxFlexFill class="grid-item header1">Age</div>
-    <div fxFlex fxLayoutAlign="end center" fxFlexFill class="grid-item header2">0 users</div>
-
+<div class="container">
+  <div class="row ">
+    <div class="col-6  ">
+      <p class="header1">Age</p>
+    </div>
+    <div class="col-6 ">
+      <p class=" header2 filter-lable ">0 users</p>
+    </div>
   </div>
-  <div fxLayout="row" fxFlex="50%" class="block-1" fxLayoutGap="10px">
-
-    <div fxFlex.gt-sm="10%" fxFlex.lt-md="50%" fxLayoutAlign="center center" fxFlexFill class="grid-item">
+  <div class="row">
+    <div class="col-3">
       <select class="form-select" aria-label="Default select example">
         <option value="1" selected>Is</option>
         <option value="2">Not</option>
       </select>
     </div>
-    <div fxFlex.gt-sm="80%" fxFlex.lt-md="50%" fxLayoutAlign="center center" fxFlexFill class="grid-item">
-
-      <div fxFlex fxLayout="column" class="selection-container">
-        <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-          <img class="" src="./assets/icons/search.svg" width="16" style="margin-right: 
-                -2.0rem !important;
-                z-index: 5;">
-          <input fxFlexFill type="text" placeholder="Search" class="px-5 my-2 mx-2 search-nav " />
+    <div class="col-7 ">
+      <div class="row">
+        <div class="col-10">
+          <input type="text" class="tag-input">
         </div>
-        <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-          <div class="col-6">
-            <p>Age</p>
+        <div class="col-2">
+          <img src="./assets/icons/delete.svg" (click)="deleteSelector()" class="del-icon">
+        </div>
+
+
+      </div>
+      <div class="row">
+        <div fxFlex fxLayout="column" class="selection-container">
+          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
+            <img class="" src="./assets/icons/search.svg" width="16" style="margin-right: 
+                  -2.0rem !important;
+                  z-index: 5;">
+            <input fxFlexFill type="text" placeholder="Search" class="px-5 my-2 mx-2 search-nav " />
           </div>
-          <div class="col-6 col-age">
-            <div *ngFor="let item of ageList" class="p-1">
-              <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectAgeList(item.name,item.value)">
-                {{ item.name }}
-              </mat-checkbox>
+          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
+            <div class="col-6">
+              <p>Age</p>
+            </div>
+            <div class="col-6 col-age">
+              <div *ngFor="let item of ageList" class="p-1">
+                <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectAgeList(item.name,item.value)">
+                  {{ item.name }}
+                </mat-checkbox>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div fxFlex.gt-sm="10%" fxFlex.lt-md="50%" fxLayoutAlign="start center" fxFlexFill class="grid-item">
-      <img src="./assets/icons/delete.svg" (click)="deleteSelector()" class="del-icon">
-    </div>
-  </div>
-  <div fxLayout="row" fxFlex="10%" class="block-1">
 
-    <div fxFlex fxLayoutAlign="start center" fxFlexFill class="grid-item header1">Gender</div>
-    <div fxFlex fxLayoutAlign="end center" fxFlexFill class="grid-item header2">20,000,000 users</div>
+    </div>
 
   </div>
-  <div fxLayout="row" fxFlex="50%" class="block-1" fxLayoutGap="10px">
 
-    <div fxFlex.gt-sm="10%" fxFlex.lt-md="50%" fxLayoutAlign="center center" fxFlexFill class="grid-item">
+  <div class="row pt-2">
+    <div class="col-6  ">
+      <p class="header1">Gender</p>
+    </div>
+    <div class="col-6 ">
+      <p class=" header2 filter-lable ">20,000,000 users</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
       <select class="form-select" aria-label="Default select example">
         <option value="1">Is</option>
         <option value="2" selected>Not</option>
       </select>
     </div>
-    <div fxFlex.gt-sm="80%" fxFlex.lt-md="50%" fxLayoutAlign="center center" fxFlexFill class="grid-item">
-
-      <div fxFlex fxLayout="column" class="selection-container">
-        <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-          <img class="" src="./assets/icons/search.svg" width="16" style="margin-right: 
-                -2.0rem !important;
-                z-index: 5;">
-          <input fxFlexFill type="text" placeholder="Search" class="px-5 my-2 mx-2 search-nav " />
+    <div class="col-7 ">
+      <div class="row">
+        <div class="col-10">
+          <input type="text" class="tag-input">
         </div>
-        <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-          <div class="col-6">
-            <p>Gender</p>
+        <div class="col-2">
+          <img src="./assets/icons/delete.svg" (click)="deleteSelector()" class="del-icon">
+        </div>
+
+
+      </div>
+      <div class="row">
+        <div fxFlex fxLayout="column" class="selection-container">
+          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
+            <img class="" src="./assets/icons/search.svg" width="16" style="margin-right: 
+                  -2.0rem !important;
+                  z-index: 5;">
+            <input fxFlexFill type="text" placeholder="Search" class="px-5 my-2 mx-2 search-nav " />
           </div>
-          <div class="col-6 col-age">
-            <div *ngFor="let item of genderList" class="p-1">
-              <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectGenderList(item.name,item.value)">
-                {{ item.name }}
-              </mat-checkbox>
+          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
+            <div class="col-6">
+              <p>Gender</p>
+            </div>
+            <div class="col-6 col-age">
+              <div *ngFor="let item of genderList" class="p-1">
+                <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectGenderList(item.name,item.value)">
+                  {{ item.name }}
+                </mat-checkbox>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div fxFlex.gt-sm="10%" fxFlex.lt-md="50%" fxLayoutAlign="start center" fxFlexFill class="grid-item">
-      <img src="./assets/icons/delete.svg" (click)="deleteSelector()" class="del-icon">
+
     </div>
   </div>
 </div>
