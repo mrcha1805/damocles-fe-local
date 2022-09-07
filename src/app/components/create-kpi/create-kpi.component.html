@@ -1,12 +1,12 @@
 <div fxLayout="row" class="grid-item viewport-100" fxFlex>
     <div fxLayout="column" fxFlex>
         <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
-            <div fxFlex fxLayout="column" fxLayoutAlign="start center" class="grid-item-layout box-left" fxFlex>
+            <div fxFlex fxLayout="column" fxLayoutAlign="start center" class="grid-item-layout box-left">
                 <div class="w-100">
                     <app-navbar-logo></app-navbar-logo>
                 </div>
             </div>
-            <div fxFlex="60" fxLayout="column" class="grid-item-layout p-5">
+            <div fxFlex="auto" fxLayout="column" class="grid-item-layout p-5">
                 <div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item-layout box-right-top">
                     <div fxFlex="50" class="grid-item-layout">
                         <span class="font-20px">Project Name : <font class="font-blue">BLA 10/5</font></span>
@@ -23,14 +23,20 @@
                             <span class="font-16px py-1">Total - Customers</span>
                         </div>
                         <div fxLayout="column" class="grid-item-layout py-2 px-5 border-blue text-center">
-                            <span class="font-44px py-1 font-blue">70,543</span>
+                            <span class="font-44px py-1 font-blue">0</span>
                             <span class="font-16px py-1 font-blue">Complete - Unique</span>
                         </div>
                     </div>
                 </div>
-                <div fxLayout="row" class="grid-item-layout">
-                    <div id="chart-funnel"></div>
+                <div fxLayout="column" class="grid-item-layout min-height box-right-bottom w-100"
+                    fxLayoutAlign="center center">
+                    <img src="./assets/icons/Choose-KPI-for-Data-Visualization.svg" width="200" />
+                    <span class="font-14px">Choose KPI for Data Visualization</span>
                 </div>
+                <!-- <div fxLayout="column" class="grid-item-layout min-height box-right-bottom w-100"
+                    fxLayoutAlign="center center">
+                    <div id="chart-funnel" fxFlex></div>
+                </div> -->
                 <div fxLayout="row" class="grid-item-layout" fxLayoutAlign="end center"
                     fxLayoutAlign.lt-md="center center">
                     <div fxFlex="50" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" fxLayoutAlign="end end"

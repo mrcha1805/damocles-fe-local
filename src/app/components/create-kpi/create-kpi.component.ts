@@ -37,13 +37,69 @@ export class CreateKpiComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.integrateData = [
-      { customer: 'Demographics', summary: 3000000 },
-      { customer: 'Afflucency', summary: 2040780 },
-      { customer: 'Digital score', summary: 1640780 },
-      { customer: 'Influencer score ​', summary: 1240780 },
-      { customer: 'Behavior', summary: 1040780 },
-      { customer: 'Interest', summary: 9407808 },
-      { customer: 'Support family', summary: 70543 },
+      {
+        customer: 'Demographics',
+        summary: 3000000,
+        component: [
+          { key: 'Age', value: 10000000 },
+          { key: 'Gender', value: 20000000 },
+          { key: 'AJobs Type', value: 5000000 },
+        ],
+      },
+      {
+        customer: 'Afflucency',
+        summary: 2040780,
+        component: [
+          { key: 'item 1', value: 10000000 },
+          { key: 'item 2', value: 20000000 },
+          { key: 'item 3', value: 5000000 },
+        ],
+      },
+      {
+        customer: 'Digital score',
+        summary: 1640780,
+        component: [
+          { key: 'item 1', value: 10000000 },
+          { key: 'item 2', value: 20000000 },
+          { key: 'item 3', value: 5000000 },
+        ],
+      },
+      {
+        customer: 'Influencer score ​',
+        summary: 1240780,
+        component: [
+          { key: 'item 1', value: 10000000 },
+          { key: 'item 2', value: 20000000 },
+          { key: 'item 3', value: 5000000 },
+        ],
+      },
+      {
+        customer: 'Behavior',
+        summary: 1040780,
+        component: [
+          { key: 'item 1', value: 10000000 },
+          { key: 'item 2', value: 20000000 },
+          { key: 'item 3', value: 5000000 },
+        ],
+      },
+      {
+        customer: 'Interest',
+        summary: 9407808,
+        component: [
+          { key: 'item 1', value: 10000000 },
+          { key: 'item 2', value: 20000000 },
+          { key: 'item 3', value: 5000000 },
+        ],
+      },
+      {
+        customer: 'Support family',
+        summary: 70543,
+        component: [
+          { key: 'item 1', value: 10000000 },
+          { key: 'item 2', value: 20000000 },
+          { key: 'item 3', value: 5000000 },
+        ],
+      },
     ];
     this.integrateData = _.orderBy(this.integrateData, ['summary'], ['desc']);
     this.integrateData.forEach((element: any) => {
@@ -90,8 +146,9 @@ export class CreateKpiComponent implements AfterViewInit, OnInit {
             enabled: false,
             format: '<b>{point.name}</b> ({point.y:,.0f})',
             color: Highcharts.theme || 'black',
-            softConnector: true,
           },
+          height: '100%',
+          minSize: 80,
           center: ['50%', '50%'],
           neckWidth: '33%',
           neckHeight: 0,

@@ -17,7 +17,7 @@
 }
 
 .font-14px {
-  @include font-format(400, 14px, 18px, #9a9a9a);
+  @include font-format(400, 14px, 19px, #adadad);
 }
 .font-16px-b {
   @include font-format(700, 16px, 18px, #ffffff);
@@ -43,14 +43,14 @@
 
 .btn-light {
   background: #ffffff;
-  color: #491dc5 !important;
-  border: 2px solid #491dc5;
+  color: #9a9a9a !important;
+  border: 2px solid #9a9a9a;
   border-radius: 5px;
   height: 45px;
   width: 100%;
 }
 .btn-blue {
-  background: #491dc5;
+  background: #9a9a9a;
   border-radius: 5px;
   height: 45px;
   width: 100%;
@@ -78,11 +78,18 @@ input:focus {
   background-color: #f0f0f0 !important;
 }
 
-.box-left {
-  background-color: #f0f0f0;
-}
-.box-right-top {
-  margin-top: -0.8rem;
+.box {
+  &-left {
+    background-color: #f0f0f0;
+  }
+  &-right-top {
+    margin-top: -0.8rem;
+  }
+  &-right-bottom {
+    background: #ffffff;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+    border-radius: 20px;
+  }
 }
 
 .border {
@@ -95,5 +102,11 @@ input:focus {
     border: 1.60315px solid #491dc5;
     border-radius: 5px;
     background: #ffffff;
+  }
+}
+
+.min {
+  &-height {
+    min-height: 452px;
   }
 }
