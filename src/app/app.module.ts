@@ -47,11 +47,11 @@ import {
 } from 'ngx-popperjs';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-import { LoginComponent } from './components/login/login.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
 import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { NavbarLogoComponent } from './components/navbar-logo/navbar-logo.component';
 import { CreateKpiComponent } from './components/create-kpi/create-kpi.component';
+import { AuthModule } from './auth/auth.module';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -61,7 +61,6 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NewProjectComponent,
     KpiByProductComponent,
     NavbarLogoComponent,
@@ -111,6 +110,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     CollapseModule.forRoot(),
     NgxPopperjsModule.forRoot(TOOLTIP_DEFAULT_OPTIONS),
     NgxSpinnerModule,
+    AuthModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
