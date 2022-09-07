@@ -1,0 +1,64 @@
+<div *ngFor="let item of menu">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="menuIndex === item.no" (opened)="setSelection(item.no)" hideToggle>
+      <mat-expansion-panel-header class="header-style">
+        <mat-panel-title>
+          <img src="./assets/icons/audience.svg" class="title-icon">
+        </mat-panel-title>
+        <mat-panel-description fxLayout="row" fxLayoutAlign="space-between center">
+          <p class="header1">{{item.headerMenu}}</p>
+
+        </mat-panel-description>
+        <mat-panel-description fxLayout="row" fxLayoutAlign="end center">
+
+          <img src="./assets/icons/filter.svg">
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let sub of item.subMenu">
+
+        <mat-expansion-panel [expanded]="false" hideToggle>
+          <mat-expansion-panel-header>
+            <!-- <mat-panel-title>
+                <p>sub title</p>
+              </mat-panel-title> -->
+            <mat-panel-description>
+              <p class="header2">{{sub.name}}</p>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Component of {{sub.name}}</p>
+        </mat-expansion-panel>
+
+      </ng-container>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!-- <mat-accordion>
+
+
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          This is the expansion title
+        </mat-panel-title>
+        <mat-panel-description>
+          This is a summary of the content
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel> 
+  </mat-accordion> -->
+
+</div>
