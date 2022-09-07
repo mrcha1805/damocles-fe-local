@@ -73,7 +73,7 @@ input:focus {
   @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
 }
 
-::ng-deep .navbar-logo {
+:host::ng-deep .navbar-logo {
   background-image: none !important;
   background-color: #f0f0f0 !important;
 }
