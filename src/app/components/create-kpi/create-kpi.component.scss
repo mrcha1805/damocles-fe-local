@@ -16,6 +16,12 @@
   border: 1px solid #ffffff;
 }
 
+.font-11px {
+  @include font-format(400, 8px, 11px, #000000);
+}
+.font-12px {
+  @include font-format(700, 12px, 9px, #020202);
+}
 .font-14px {
   @include font-format(400, 14px, 19px, #adadad);
 }
@@ -82,6 +88,11 @@ input:focus {
   &-left {
     background-color: #f0f0f0;
   }
+  &-left-bottom {
+    background: #ffffff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.32);
+    border-radius: 10px;
+  }
   &-right-top {
     margin-top: -0.8rem;
   }
@@ -107,6 +118,6 @@ input:focus {
 
 .min {
   &-height {
-    min-height: 452px;
+    min-height: 500px;
   }
 }
