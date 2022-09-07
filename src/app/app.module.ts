@@ -52,6 +52,7 @@ import { NewProjectComponent } from './components/new-project/new-project.compon
 import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { NavbarLogoComponent } from './components/navbar-logo/navbar-logo.component';
 import { CreateKpiComponent } from './components/create-kpi/create-kpi.component';
+import { DemographicComponent } from './components/demographic/demographic.component';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -66,6 +67,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     KpiByProductComponent,
     NavbarLogoComponent,
     CreateKpiComponent,
+    DemographicComponent,
   ],
   imports: [
     BrowserModule,
