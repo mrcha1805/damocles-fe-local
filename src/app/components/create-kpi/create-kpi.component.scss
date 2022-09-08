@@ -7,14 +7,14 @@
   color: $hexcolor !important;
 }
 
-.grid-item {
-  background-color: lightsalmon;
-}
+// .grid-item {
+//   background-color: lightsalmon;
+// }
 
-.grid-item-layout {
-  background-color: cadetblue;
-  border: 1px solid #ffffff;
-}
+// .grid-item-layout {
+//   background-color: cadetblue;
+//   border: 1px solid #ffffff;
+// }
 
 .font-11px {
   @include font-format(400, 8px, 11px, #000000);
@@ -81,7 +81,11 @@ input:focus {
 
 :host::ng-deep .navbar-logo {
   background-image: none !important;
-  background-color: #f0f0f0 !important;
+  background-image: repeating-linear-gradient(
+    rgb(240, 240, 240),
+    rgba(240, 240, 240, 0.8) 200%,
+    rgba(240, 240, 240, 0.1) 10%
+  ) !important;
 }
 
 .box {

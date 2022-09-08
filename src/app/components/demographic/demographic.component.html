@@ -1,106 +1,124 @@
-<div class="container">
-  <div class="row ">
-    <div class="col-6  ">
-      <p class="header1">Age</p>
-    </div>
-    <div class="col-6 ">
-      <p class=" header2 filter-lable ">0 users</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <select class="form-select" aria-label="Default select example">
-        <option value="1" selected>Is</option>
-        <option value="2">Not</option>
-      </select>
-    </div>
-    <div class="col-7 ">
-      <div class="row">
-        <div class="col-10">
-          <input type="text" class="tag-input">
-        </div>
-        <div class="col-2">
-          <img src="./assets/icons/delete.svg" (click)="deleteSelector()" class="del-icon">
-        </div>
-
-
+<section>
+  <div fxFill class="pb-3">
+    <div fxLayout="row" fxLayoutGap="10" fxFill>
+      <div fxFlex="20" class="header1 py-2">
+        <span>Age&nbsp;
+          <span [popper]="popperContent_age" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
+            [popperPlacement]="placements.RIGHT">
+            <img src="./assets/icons/info.svg" width="15" height="15" />
+          </span>
+        </span>
+        <popper-content #popperContent_age>
+          <span>xxxxx</span><br />
+        </popper-content>
       </div>
-      <div class="row">
-        <div fxFlex fxLayout="column" class="selection-container">
-          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-            <img class="" src="./assets/icons/search.svg" width="16" style="margin-right: 
-                  -2.0rem !important;
-                  z-index: 5;">
-            <input fxFlexFill type="text" placeholder="Search" class="px-5 my-2 mx-2 search-nav " />
+      <div fxFlex>
+        <div fxLayout="row">
+          <div fxFill class="text-end header2">
+            0 users
           </div>
-          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-            <div class="col-6">
-              <p>Age</p>
+          <div fxFlex></div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10" fxFill>
+      <div fxFlex="20">
+        <select class="form-select input-select-option font-10px" aria-label="Default select example">
+          <option value="1" selected>Is</option>
+          <option value="2">Not</option>
+        </select>
+      </div>
+      <div fxFlex>
+        <div fxLayout="row">
+          <div fxFill>
+            <label type="text" class="input-selected-tag"></label>
+          </div>
+          <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
+            <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFill fxLayout="column" class="selection-container p-2">
+            <div fxLayout="row" class="grid-item-layout">
+              <img src="./assets/icons/search.svg" width="16" class="search-icon">
+              <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
             </div>
-            <div class="col-6 col-age">
-              <div *ngFor="let item of ageList" class="p-1">
-                <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectAgeList(item.name,item.value)">
-                  {{ item.name }}
-                </mat-checkbox>
+            <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout p-2">
+              <div fxFlex="50">
+                <span class="font-12px">Age</span>
+              </div>
+              <div class="col-age" fxFlex>
+                <div *ngFor="let item of ageList" class="p-1">
+                  <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectAgeList(item.name,item.value)">
+                    <span class="font-12px">{{ item.name }}</span>
+                  </mat-checkbox>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-    </div>
-
-  </div>
-
-  <div class="row pt-2">
-    <div class="col-6  ">
-      <p class="header1">Gender</p>
-    </div>
-    <div class="col-6 ">
-      <p class=" header2 filter-lable ">20,000,000 users</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3">
-      <select class="form-select" aria-label="Default select example">
-        <option value="1">Is</option>
-        <option value="2" selected>Not</option>
-      </select>
-    </div>
-    <div class="col-7 ">
-      <div class="row">
-        <div class="col-10">
-          <input type="text" class="tag-input">
-        </div>
-        <div class="col-2">
-          <img src="./assets/icons/delete.svg" (click)="deleteSelector()" class="del-icon">
-        </div>
-
-
+  <div fxFill class="pb-3 border-close">
+    <div fxLayout="row" fxLayoutGap="10" fxFill>
+      <div fxFlex="20" class="header1 py-2">
+        <span>Gender&nbsp;
+          <span [popper]="popperContent_gender" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
+            [popperPlacement]="placements.RIGHT">
+            <img src="./assets/icons/info.svg" width="15" height="15" />
+          </span>
+        </span>
+        <popper-content #popperContent_gender>
+          <span>xxxxx</span><br />
+        </popper-content>
       </div>
-      <div class="row">
-        <div fxFlex fxLayout="column" class="selection-container">
-          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-            <img class="" src="./assets/icons/search.svg" width="16" style="margin-right: 
-                  -2.0rem !important;
-                  z-index: 5;">
-            <input fxFlexFill type="text" placeholder="Search" class="px-5 my-2 mx-2 search-nav " />
+      <div fxFlex>
+        <div fxLayout="row">
+          <div fxFill class="text-end header2">
+            20,000,000 users
           </div>
-          <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="grid-item-layout">
-            <div class="col-6">
-              <p>Gender</p>
+          <div fxFlex></div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10" fxFill>
+      <div fxFlex="20">
+        <select class="form-select input-select-option font-10px" aria-label="Default select example">
+          <option value="1">Is</option>
+          <option value="2" selected>Not</option>
+        </select>
+      </div>
+      <div fxFlex>
+        <div fxLayout="row">
+          <div fxFill>
+            <label type="text" class="input-selected-tag"></label>
+          </div>
+          <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
+            <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFill fxLayout="column" class="selection-container p-2">
+            <div fxLayout="row" class="grid-item-layout">
+              <img src="./assets/icons/search.svg" width="16" class="search-icon">
+              <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
             </div>
-            <div class="col-6 col-age">
-              <div *ngFor="let item of genderList" class="p-1">
-                <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectGenderList(item.name,item.value)">
-                  {{ item.name }}
-                </mat-checkbox>
+            <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout p-2">
+              <div fxFlex="50">
+                <span class="font-12px">Gender</span>
+              </div>
+              <div class="col-age" fxFlex>
+                <div *ngFor="let item of genderList" class="p-1">
+                  <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectGenderList(item.name,item.value)">
+                    <span class="font-12px">{{ item.name }}</span>
+                  </mat-checkbox>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-</div>
+</section>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 
 @Component({
   selector: 'app-demographic',
@@ -58,6 +59,24 @@ export class DemographicComponent implements OnInit {
       selected: false,
     },
   ];
+
+  triggers = NgxPopperjsTriggers;
+  placements = NgxPopperjsPlacements;
+  offsetModifiers = [
+    {
+      name: 'offset',
+      options: {
+        offset: [0, 2],
+      },
+    },
+    {
+      name: 'flip',
+      options: {
+        flipVariations: true,
+      },
+    },
+  ];
+
   ngOnInit(): void {}
   selectAgeList(name: string, value: string) {
     console.log(name);

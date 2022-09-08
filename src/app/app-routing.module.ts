@@ -9,7 +9,7 @@ import { NewProjectComponent } from './components/new-project/new-project.compon
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'demographic',
+    redirectTo: 'create-project',
     pathMatch: 'full',
   },
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
     component: DemographicComponent,
   },
   {
-    path: 'createproject',
+    path: 'create-project',
     component: NewProjectComponent,
   },
   {

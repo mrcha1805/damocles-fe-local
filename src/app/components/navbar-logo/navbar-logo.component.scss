@@ -18,7 +18,7 @@
 
 .navbar-logo {
   z-index: 1;
-  position: sticky;
+  position: sticky !important;
   top: 0;
   width: 100%;
   background-image: repeating-linear-gradient(

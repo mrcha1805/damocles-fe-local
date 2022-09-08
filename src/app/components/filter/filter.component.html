@@ -1,12 +1,16 @@
 <div *ngFor="let item of menu">
   <mat-accordion>
     <mat-expansion-panel [expanded]="menuIndex === item.no" (opened)="setSelection(item.no)" hideToggle>
-      <mat-expansion-panel-header class="header-style">
+      <mat-expansion-panel-header class="header-style px-4">
         <mat-panel-title>
           <img src="./assets/icons/audience.svg" class="title-icon">
         </mat-panel-title>
         <mat-panel-description fxLayout="row" fxLayoutAlign="space-between center">
-          <p class="header1">{{item.headerMenu}}</p>
+          <span class="header1">{{item.headerMenu}}&nbsp;
+            <span>
+              <img src="./assets/icons/header-dropdown.svg" width="6.45px" height="10.47px" />
+            </span>
+          </span>
 
         </mat-panel-description>
         <mat-panel-description fxLayout="row" fxLayoutAlign="end center">
@@ -19,10 +23,14 @@
         <mat-expansion-panel [expanded]="false" hideToggle>
           <mat-expansion-panel-header>
             <!-- <mat-panel-title>
-                <p>sub title</p>
+                <span>sub title</span>
               </mat-panel-title> -->
-            <mat-panel-description>
-              <p class="header2">{{sub.name}}</p>
+            <mat-panel-description fxFill>
+              <span class="header2" fxFill>{{sub.name}}&nbsp;
+                <span>
+                  <img src="./assets/icons/sub-dropdown.svg" width="6.45px" height="10.47px" />
+                </span>
+              </span>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <app-demographic></app-demographic>
@@ -46,7 +54,7 @@
           This is a summary of the content
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
+      <span>This is the primary content of the panel.</span>
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
@@ -57,7 +65,7 @@
           Currently I am {{panelOpenState ? 'open' : 'closed'}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+      <span>I'm visible because I am open</span>
     </mat-expansion-panel> 
   </mat-accordion> -->
 

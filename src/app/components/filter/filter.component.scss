@@ -39,3 +39,19 @@ mat-expansion-panel-header {
 mat-expansion-panel-body {
   padding: 0;
 }
+
+mat-panel {
+  &-title {
+    flex-grow: 0 !important;
+  }
+  &-description {
+    span.header2 {
+      padding-left: 3.5rem;
+    }
+  }
+}
+.mat-expansion-panel {
+  &:not([class*="mat-elevation-z"]) {
+    box-shadow: none !important;
+  }
+}

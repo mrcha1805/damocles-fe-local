@@ -150,7 +150,7 @@ export class KpiByProductComponent implements OnInit {
   }
 
   goCreateProject() {
-    this.showSpinner('/createproject');
+    this.showSpinner('/create-project');
   }
 
   goCreateKpi() {
