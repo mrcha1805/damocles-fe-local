@@ -6,11 +6,11 @@ export const environment = {
   production: false,
   env: 'dev',
   authen: {
-    domain: 'http://localhost:8000/auth/v3.1',
+    domain: 'https://stg-digital.ais.th/auth/v3.1',
     clientId: 'wO6kzH+uR2FMCbco8D4MACn6EJ1sRRFag7vkkVSBV+9CkFtdFVEZaA==',
     clientSecret: 'clientSecret',
-    redirectUri: 'http://localhost:4200/home',
-    beEndpoint: 'http://localhost:3000/api/v1'
+    redirectUri: 'https://stg-digital.ais.th/actionable-insight/home',
+    beEndpoint: "http://104.43.115.28:23000/api/v1"
   },
 };
 
