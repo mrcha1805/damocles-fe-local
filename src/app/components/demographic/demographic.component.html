@@ -31,27 +31,39 @@
       <div fxFlex>
         <div fxLayout="row">
           <div fxFill>
-            <label type="text" class="input-selected-tag"></label>
-          </div>
-          <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
-            <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
-          </div>
-        </div>
-        <div fxLayout="row">
-          <div fxFill fxLayout="column" class="selection-container p-2">
-            <div fxLayout="row" class="grid-item-layout">
-              <img src="./assets/icons/search.svg" width="16" class="search-icon">
-              <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
+            <mat-label>
+              <mat-chip-list aria-label="age tags">
+                <mat-chip *ngFor="let tag of ageSelected" (removed)="removeTagAge(tag)">
+                  {{tag}}
+                  <button matChipRemove>
+                    <img src="./assets/icons/close-tag.svg" class="tag-icon">
+                  </button>
+                </mat-chip>
+
+              </mat-chip-list>
+            </mat-label>
+            <div class="col-2">
+              <img src="./assets/icons/delete.svg" (click)="deleteSelector()" class="del-icon">
             </div>
-            <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout p-2">
-              <div fxFlex="50">
-                <span class="font-12px">Age</span>
+          </div>
+          <div fxLayout="row">
+            <div fxFill fxLayout="column" class="selection-container p-2">
+              <div fxLayout="row" class="grid-item-layout">
+                <img src="./assets/icons/search.svg" width="16" class="search-icon">
+                <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
               </div>
-              <div class="col-age" fxFlex>
-                <div *ngFor="let item of ageList" class="p-1">
-                  <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectAgeList(item.name,item.value)">
-                    <span class="font-12px">{{ item.name }}</span>
-                  </mat-checkbox>
+              <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout p-2">
+                <div fxFlex="50">
+                  <span class="font-12px">Age</span>
+
+
+                </div>
+                <div class="col-age" fxFlex>
+                  <div *ngFor="let item of ageList" class="p-1">
+                    <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectAgeList(item.name,item.value)">
+                      <span class="font-12px">{{ item.name }}</span>
+                    </mat-checkbox>
+                  </div>
                 </div>
               </div>
             </div>
@@ -59,60 +71,69 @@
         </div>
       </div>
     </div>
-  </div>
-  <div fxFill class="pb-3 border-close">
-    <div fxLayout="row" fxLayoutGap="10" fxFill>
-      <div fxFlex="20" class="header1 py-2">
-        <span>Gender&nbsp;
-          <span [popper]="popperContent_gender" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
-            [popperPlacement]="placements.RIGHT">
-            <img src="./assets/icons/info.svg" width="15" height="15" />
+    <div fxFill class="pb-3 border-close">
+      <div fxLayout="row" fxLayoutGap="10" fxFill>
+        <div fxFlex="20" class="header1 py-2">
+          <span>Gender&nbsp;
+            <span [popper]="popperContent_gender" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
+              [popperPlacement]="placements.RIGHT">
+              <img src="./assets/icons/info.svg" width="15" height="15" />
+            </span>
           </span>
-        </span>
-        <popper-content #popperContent_gender>
-          <span>xxxxx</span><br />
-        </popper-content>
-      </div>
-      <div fxFlex>
-        <div fxLayout="row">
-          <div fxFill class="text-end header2">
-            20,000,000 users
-          </div>
-          <div fxFlex></div>
+          <popper-content #popperContent_gender>
+            <span>xxxxx</span><br />
+          </popper-content>
         </div>
-      </div>
-    </div>
-    <div fxLayout="row" fxLayoutGap="10" fxFill>
-      <div fxFlex="20">
-        <select class="form-select input-select-option font-10px" aria-label="Default select example">
-          <option value="1">Is</option>
-          <option value="2" selected>Not</option>
-        </select>
-      </div>
-      <div fxFlex>
-        <div fxLayout="row">
-          <div fxFill>
-            <label type="text" class="input-selected-tag"></label>
-          </div>
-          <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
-            <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
-          </div>
-        </div>
-        <div fxLayout="row">
-          <div fxFill fxLayout="column" class="selection-container p-2">
-            <div fxLayout="row" class="grid-item-layout">
-              <img src="./assets/icons/search.svg" width="16" class="search-icon">
-              <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
+        <div fxFlex>
+          <div fxLayout="row">
+            <div fxFill class="text-end header2">
+              20,000,000 users
             </div>
-            <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout p-2">
-              <div fxFlex="50">
-                <span class="font-12px">Gender</span>
+            <div fxFlex></div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10" fxFill>
+        <div fxFlex="20">
+          <select class="form-select input-select-option font-10px" aria-label="Default select example">
+            <option value="1">Is</option>
+            <option value="2" selected>Not</option>
+          </select>
+        </div>
+        <div fxFlex>
+          <div fxLayout="row">
+            <div fxFill>
+              <mat-label>
+                <mat-chip-list aria-label="gender tags">
+                  <mat-chip *ngFor="let tag of genderSelected" (removed)="removeTagGender(tag)">
+                    {{tag}}
+                    <button matChipRemove>
+                      <img src="./assets/icons/close-tag.svg" class="tag-icon">
+                    </button>
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-label>
+            </div>
+            <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
+              <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div fxFill fxLayout="column" class="selection-container p-2">
+              <div fxLayout="row" class="grid-item-layout">
+                <img src="./assets/icons/search.svg" width="16" class="search-icon">
+                <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
               </div>
-              <div class="col-age" fxFlex>
-                <div *ngFor="let item of genderList" class="p-1">
-                  <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectGenderList(item.name,item.value)">
-                    <span class="font-12px">{{ item.name }}</span>
-                  </mat-checkbox>
+              <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout p-2">
+                <div fxFlex="50">
+                  <span class="font-12px">Gender</span>
+                </div>
+                <div class="col-age" fxFlex>
+                  <div *ngFor="let item of genderList" class="p-1">
+                    <mat-checkbox [(ngModel)]="item.selected" (ngModelChange)="selectGenderList(item.name,item.value)">
+                      <span class="font-12px">{{ item.name }}</span>
+                    </mat-checkbox>
+                  </div>
                 </div>
               </div>
             </div>
