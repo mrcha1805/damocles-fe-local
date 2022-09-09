@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Deploy docker
+
+Run `docker build -t {IMAGE_NAME} .` for build image damocles-insight-fe name. Ex. `docker build -t damocles-insight-fe .`
+
+Run `docker run -p {EXTERNAL_PORT}:80 --name {REPOSITORY_OF_DOCKER_IMAGE} {IMAGE_NAME}` EX. `docker run -p 23030:80 --name damocles-insight-fe damocles-insight-fe`
