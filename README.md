@@ -30,4 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Run `docker build -t {IMAGE_NAME} .` for build image damocles-insight-fe name. Ex. `docker build -t damocles-insight-fe .`
 
-Run `docker run -p {EXTERNAL_PORT}:80 --name {REPOSITORY_OF_DOCKER_IMAGE} {IMAGE_NAME}` Ex. `docker run -p 23030:80 --name damocles-insight-fe damocles-insight-fe`
+Run `docker run -d -p {EXTERNAL_PORT}:80 --name {REPOSITORY_OF_DOCKER_IMAGE} {IMAGE_NAME}` for run docker image. Ex. `docker run -d -p 23030:80 --name damocles-insight-fe damocles-insight-fe`
