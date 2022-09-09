@@ -46,6 +46,7 @@ import {
   NgxPopperjsTriggers,
 } from 'ngx-popperjs';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { LoginComponent } from './components/login/login.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
@@ -115,6 +116,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     CollapseModule.forRoot(),
     NgxPopperjsModule.forRoot(TOOLTIP_DEFAULT_OPTIONS),
     NgxSpinnerModule,
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

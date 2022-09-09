@@ -55,3 +55,8 @@ mat-panel {
     box-shadow: none !important;
   }
 }
+::ng-deep.mat-expansion-panel-header:not([aria-expanded="false"]) {
+  .expand-action {
+    transform: rotate(90deg);
+  }
+}
