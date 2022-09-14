@@ -1,44 +1,9 @@
 @font-face {
-    font-family: "DB Helvethaica X57";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Cond\ v3.2.ttf");
+    font-family: "DB Heavent Bd";
+    src: url("/assets/fonts/DB\ Heavent\ Bd\ v3.2.ttf")
 }
 
 @font-face {
-    font-family: "DB Helvethaica X65";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Med\ v3.2.ttf");
-}
-
-@font-face {
-    font-family: "DB Helvethaica X67";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Med\ Cond\ v3.2.ttf");
-}
-
-@font-face {
-    font-family: "DB Helvethaica X77";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Bd\ Cond\ v3.2.ttf");
-}
-
-@font-face {
-    font-family: "DB Helvethaica X55";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ v3.2.ttf")
-}
-
-@font-face {
-    font-family: "DB Helvethaica X46 Lilt";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Li\ It\ v3.2.ttf")
-}
-
-@font-face {
-    font-family: "DB Helvethaica X45 Li";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Li\ v3.2.ttf")
-}
-
-@font-face {
-    font-family: "DB Helvethaica 75Bd";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Bd\ v3.2.ttf")
-}
-
-@font-face {
-    font-family: "DB Helvethaica X75";
-    src: url("/assets/fonts/DB\ Helvethaica\ X\ Bd\ v3.2.ttf")
+    font-family: "DB Heavent Reg";
+    src: url("/assets/fonts/DB\ Heavent\ Li\ v3.2.ttf")
 }
