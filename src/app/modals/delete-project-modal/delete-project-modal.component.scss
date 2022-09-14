@@ -1,0 +1,48 @@
+@mixin font-format($weight, $size, $height, $hexcolor) {
+  font-family: Noto Sans, sans-serif !important;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $hexcolor !important;
+}
+
+.body {
+  background-color: #ffffff !important;
+  border: 1.01124px solid #491dc5;
+  box-shadow: 20px 20px 80px rgba(73, 29, 197, 0.2);
+  border-radius: 8px;
+}
+
+.header-text {
+  @include font-format(700, 24px, 25px, #491dc5);
+  padding-bottom: 20px;
+  padding-top: 30px;
+}
+
+.description-text {
+  @include font-format(400, 14px, 22px, #676767);
+  padding-bottom: 30px;
+  word-break: break-all;
+}
+
+.btn-cancel {
+  @include font-format(700, 24px, 100%, #491dc5);
+  background: #ffffff;
+  border: 2px solid #491dc5;
+  border-radius: 4px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-delete {
+  @include font-format(700, 24px, 100%, #ffffff);
+  background: #da5b49;
+  border-radius: 4px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
