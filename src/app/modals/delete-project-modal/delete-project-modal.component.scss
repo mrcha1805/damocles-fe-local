@@ -41,6 +41,9 @@
   padding-right: 43px;
   padding-top: 10px;
   padding-bottom: 10px;
+  &:hover {
+    background: #EDE8F9;
+  }
 }
 
 .btn-delete {
@@ -57,12 +60,15 @@
   padding-right: 45px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.btn-delete:hover {
+  &:hover {
     background: #AF493B;
+  }
 }
 
-.btn-cancel:hover{
-    background: #EDE8F9;
+.btn-close{
+    border-top-width: 10px;
+    margin-right: 15px;
+    margin-top: 10px;
+    width: 18px;
+    height: 18px;
 }
