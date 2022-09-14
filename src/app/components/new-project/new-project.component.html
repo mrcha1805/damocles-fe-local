@@ -21,59 +21,59 @@
     </div>
 </div> -->
 <div fxLayout="row" class="grid-item viewport">
-    <div fxLayout="column" fxLayoutGap="5px" fxFlex>
-        <div fxLayout="row" fxFlex="23%" class="block-1 grid-item-row">
+    <div fxLayout="column" fxLayoutGap="10px" fxFlex>
+        <div fxLayout="row" fxFlex="30%" class="block-1 grid-item-row">
             <div fxFlex fxLayout="column" fxLayoutAlign="center start" fxFlexFill class="grid-item-content pt-2">
                 <span class="header1">Choose your project or</span>
                 <span class="header2">Create <span class="header3">New Project!</span></span>
             </div>
         </div>
-        <div fxLayout="row" fxFlex="12%" class="block-1 grid-item-row">
+        <div fxLayout="row" fxFlex="10%" class="block-1 grid-item-row1">
             <div fxFlex fxLayoutAlign="space-between center" fxLayout.lt-sm="column" fxFlexFill class=" ">
-                <div fxLayout.gt-xs="row" fxFlex.gt-xs="40" fxFlex.lt-sm="80" fxFill class="grid-item-layout"
+                <div fxLayout.gt-xs="row" fxFlex.gt-xs="25" fxFlex.lt-sm="80" fxFill class="grid-item-layout"
                     fxLayoutAlign.lt-sm="center center" fxLayoutAlign="start center">
                     <img src="./assets/icons/search.svg" width="16" class="search-icon">
-                    <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
+                    <input fxFill type="text" placeholder="Search" class="search-input font-14px"
+                        [(ngModel)]="search" />
+                </div>
+                <div fxLayout.gt-xs="row" fxFlex.gt-xs="25" fxFlex.lt-sm="33" fxFill class="grid-item-layout p-1"
+                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="start center">
+                    <button class="filter-btn all" (click)="filter('all')">All</button>
+                    <button class="filter-btn insurance" (click)="filter('insurance')">Insurance</button>
+                    <button class="filter-btn banking" (click)="filter('banking')">Banking</button>
+                    <button (click)="filterProduct('Travel Insurance')">Travel Insurance</button>
+                    <button (click)="filterProduct('Health Insurance')">Health Insurance</button>
                 </div>
                 <div fxLayout.gt-xs="row" fxFlex.gt-xs="40" fxFlex.lt-sm="33" fxFill class="grid-item-layout"
-                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="start center">
-                    <p>tags</p>
-                </div>
-                <div fxLayout.gt-xs="row" fxFlex.gt-xs="20" fxFlex.lt-sm="33" fxFill class="grid-item-layout"
                     fxLayoutAlign.lt-sm="center center" fxLayoutAlign="end center">
                     <button class="new-project-btn">+ New Project</button>
                 </div>
             </div>
         </div>
-        <div fxLayout="row" fxFlex="65%" class="block-1 grid-item-row">
-            <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item-content">
+        <div fxLayout="row" fxFlex="60%" class="block-1 grid-item-row2">
+            <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item-content-tb">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Project Name</th>
-                            <th scope="col">Latest Updated</th>
-                            <th scope="col">Industry</th>
-                            <th scope="col">Product</th>
+                            <th scope="col" class="header-tb1">Project Name</th>
+                            <th scope="col" class="header-tb">Latest Updated</th>
+                            <th scope="col" class="header-tb1">Industry</th>
+                            <th scope="col" class="header-tb1">Product</th>
+                            <th scope="col" class="header-tb"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let p of projectList| searchFilter:search">
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+
+                            <td>{{p.name}}</td>
+                            <td>{{p.created}}</td>
+                            <td>{{p.industry}}</td>
+                            <td>
+                                {{p.product}} </td>
+                            <td><img class="del-icon" src="/assets/icons/del-project.svg" (click)="removeProject(p)" />
+                            </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>

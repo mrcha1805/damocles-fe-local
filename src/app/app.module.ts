@@ -55,6 +55,7 @@ import { NavbarLogoComponent } from './components/navbar-logo/navbar-logo.compon
 import { CreateKpiComponent } from './components/create-kpi/create-kpi.component';
 import { DemographicComponent } from './components/demographic/demographic.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { SearchFilterPipe } from './services/search-filter.pipe';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -71,6 +72,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     CreateKpiComponent,
     DemographicComponent,
     FilterComponent,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,

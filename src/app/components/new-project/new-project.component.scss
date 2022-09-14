@@ -8,7 +8,7 @@
 }
 
 .grid-item {
-  background-color: lightsalmon;
+  //background-color: lightsalmon;
   padding: 0 5% 0 5%;
 }
 
@@ -16,11 +16,14 @@
   background-color: cadetblue;
   border: 1px solid #ffffff;
 }
+.grid-item-row1 {
+  background-color: #9a9a9a;
+}
 .grid-item-content {
-  background-color: #808080;
+  //background-color: #808080;
 }
 .grid-item-layout {
-  background-color: antiquewhite;
+  //background-color: antiquewhite;
 }
 
 .header1 {
@@ -32,11 +35,60 @@
 .header3 {
   @include font-format(700, 64px, 104px, #020202);
 }
+.header-tb1 {
+  @include font-format(700, 16px, 19px, #808191);
+}
+.header-tb {
+  @include font-format(700, 16px, 19px, #808191);
+}
+.header-tb:hover {
+  @include font-format(700, 16px, 19px, #491dc5);
+}
+.filter-btn {
+  border-radius: 20px;
+  height: 24px;
+  margin: 0 5px 0 5px;
+  @include font-format(400, 16px, 19px, #020202);
+  &.all {
+    background: #fff2ea;
+    width: 15%;
+    border: none;
+    &:hover {
+      border: 2px solid #ff7b31;
+    }
+  }
+  &.insurance {
+    background: #c8bbed;
+    border: none;
+    width: 30%;
+    &:hover {
+      border: 2px solid #491dc5;
+    }
+  }
+  &.banking {
+    background: #f9fdea;
+    border: none;
+    width: 28%;
+    &:hover {
+      border: 2px solid #c3eb29;
+    }
+  }
+}
 .new-project-btn {
   background: #491dc5;
   border-radius: 4px;
   height: 44px;
   @include font-format(700, 24px, 100%, #ffffff);
+}
+.del-icon {
+  cursor: pointer;
+  width: 11px;
+  height: 11px;
+  // background: url("/assets/icons/del-project.svg") no-repeat;
+  // display: inline-block;
+}
+.del-icon:hover {
+  // background: url("/assets/icons/del-highlight.svg") no-repeat;
 }
 .font-14px {
   @include font-format(400, 14px, 18px, #9a9a9a);
