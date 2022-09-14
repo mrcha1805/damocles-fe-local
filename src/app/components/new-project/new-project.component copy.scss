@@ -7,37 +7,15 @@
   color: $hexcolor !important;
 }
 
-.grid-item {
-  background-color: lightsalmon;
-  padding: 0 5% 0 5%;
-}
+// .grid-item {
+//   background-color: lightsalmon;
+// }
 
-.grid-item-row {
-  background-color: cadetblue;
-  border: 1px solid #ffffff;
-}
-.grid-item-content {
-  background-color: #808080;
-}
-.grid-item-layout {
-  background-color: antiquewhite;
-}
+// .grid-item-layout {
+//   background-color: cadetblue;
+//   border: 1px solid #ffffff;
+// }
 
-.header1 {
-  @include font-format(700, 32px, 38px, #020202);
-}
-.header2 {
-  @include font-format(700, 64px, 104px, #491dc5);
-}
-.header3 {
-  @include font-format(700, 64px, 104px, #020202);
-}
-.new-project-btn {
-  background: #491dc5;
-  border-radius: 4px;
-  height: 44px;
-  @include font-format(700, 24px, 100%, #ffffff);
-}
 .font-14px {
   @include font-format(400, 14px, 18px, #9a9a9a);
 }

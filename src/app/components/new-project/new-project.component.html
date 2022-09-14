@@ -1,5 +1,5 @@
 <app-navbar-logo></app-navbar-logo>
-<div fxLayout="row" class="grid-item viewport">
+<!-- <div fxLayout="row" class="grid-item viewport">
     <div fxLayout="column" fxFlex>
         <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
             <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout p-5">
@@ -19,6 +19,67 @@
             </div>
         </div>
     </div>
+</div> -->
+<div fxLayout="row" class="grid-item viewport">
+    <div fxLayout="column" fxLayoutGap="5px" fxFlex>
+        <div fxLayout="row" fxFlex="23%" class="block-1 grid-item-row">
+            <div fxFlex fxLayout="column" fxLayoutAlign="center start" fxFlexFill class="grid-item-content pt-2">
+                <span class="header1">Choose your project or</span>
+                <span class="header2">Create <span class="header3">New Project!</span></span>
+            </div>
+        </div>
+        <div fxLayout="row" fxFlex="12%" class="block-1 grid-item-row">
+            <div fxFlex fxLayoutAlign="space-between center" fxLayout.lt-sm="column" fxFlexFill class=" ">
+                <div fxLayout.gt-xs="row" fxFlex.gt-xs="40" fxFlex.lt-sm="80" fxFill class="grid-item-layout"
+                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="start center">
+                    <img src="./assets/icons/search.svg" width="16" class="search-icon">
+                    <input fxFill type="text" placeholder="Search" class="search-input font-14px" />
+                </div>
+                <div fxLayout.gt-xs="row" fxFlex.gt-xs="40" fxFlex.lt-sm="33" fxFill class="grid-item-layout"
+                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="start center">
+                    <p>tags</p>
+                </div>
+                <div fxLayout.gt-xs="row" fxFlex.gt-xs="20" fxFlex.lt-sm="33" fxFill class="grid-item-layout"
+                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="end center">
+                    <button class="new-project-btn">+ New Project</button>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row" fxFlex="65%" class="block-1 grid-item-row">
+            <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Latest Updated</th>
+                            <th scope="col">Industry</th>
+                            <th scope="col">Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>
