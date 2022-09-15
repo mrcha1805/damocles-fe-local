@@ -90,6 +90,23 @@
 .del-icon:hover {
   // background: url("/assets/icons/del-highlight.svg") no-repeat;
 }
+
+.icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 11px;
+  height: 11px;
+  background-size: cover;
+}
+
+.icon-del {
+  background-image: url(/assets/icons/del-project.svg);
+}
+.icon-del:hover,
+.icon-del:focus {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(60%) saturate(5267%) hue-rotate(250deg) brightness(103%) contrast(122%);
+}
+
 .font-14px {
   @include font-format(400, 14px, 18px, #9a9a9a);
 }
