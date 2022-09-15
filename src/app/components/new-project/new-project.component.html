@@ -67,7 +67,12 @@
 
                             <td>{{p.name}}</td>
                             <td>{{p.created}}</td>
-                            <td>{{p.industry}}</td>
+                            <td>
+                                <p class="filter-btn "
+                                    [ngClass]="{'insurance': p.industry==='Insurance', 'banking': p.industry==='Banking'}">
+                                    {{p.industry}}
+                                </p>
+                            </td>
                             <td>
                                 {{p.product}} </td>
                             <td><img class="del-icon" src="/assets/icons/del-project.svg" (click)="removeProject(p)" />

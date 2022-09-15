@@ -51,7 +51,7 @@
   @include font-format(400, 16px, 19px, #020202);
   &.all {
     background: #fff2ea;
-    width: 15%;
+    width: 50px;
     border: none;
     &:hover {
       border: 2px solid #ff7b31;
@@ -60,7 +60,7 @@
   &.insurance {
     background: #c8bbed;
     border: none;
-    width: 30%;
+    width: 100px;
     &:hover {
       border: 2px solid #491dc5;
     }
@@ -68,7 +68,7 @@
   &.banking {
     background: #f9fdea;
     border: none;
-    width: 28%;
+    width: 100px;
     &:hover {
       border: 2px solid #c3eb29;
     }
