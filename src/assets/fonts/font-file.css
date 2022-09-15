@@ -1,9 +1,13 @@
 @font-face {
-    font-family: "DB Heavent Bd";
-    src: url("/assets/fonts/DB\ Heavent\ Bd\ v3.2.ttf")
+  font-family: "DB Heavent Bd";
+  src: url("/assets/fonts/DB\ Heavent\ Bd\ Ext\ v3.2.ttf");
 }
 
 @font-face {
-    font-family: "DB Heavent Reg";
-    src: url("/assets/fonts/DB\ Heavent\ Li\ v3.2.ttf")
+  font-family: "DB Heavent Reg";
+  src: url("/assets/fonts/DB\ Heavent\ Ext\ v3.2.ttf");
+}
+@font-face {
+  font-family: "DB Heavent Nor";
+  src: url("/assets/fonts/DB\ Heavent\ v3.2.ttf");
 }

@@ -1,5 +1,8 @@
-@mixin font-format($weight, $size, $height, $hexcolor) {
-  font-family: Noto Sans, sans-serif !important;
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+$heavent-normal: DB Heavent Nor;
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font !important;
   font-style: normal;
   font-weight: $weight;
   font-size: $size;
@@ -10,17 +13,23 @@
 .grid-item {
   //background-color: lightsalmon;
   padding: 0 5% 0 5%;
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
 }
 
 .grid-item-row {
-  background-color: cadetblue;
+  // background-color: cadetblue;
   border: 1px solid #ffffff;
 }
 .grid-item-row1 {
-  background-color: #9a9a9a;
+  //background-color: #aa9d8b;
 }
 .grid-item-row2 {
-  background-color: orange;
+  //background-color: #a55ea7;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
 }
 .grid-item-content {
   //background-color: #808080;
@@ -30,28 +39,76 @@
 }
 
 .header1 {
-  @include font-format(700, 32px, 38px, #020202);
+  @include font-format($heavent-bold, 700, 32px, 38px, #020202);
 }
 .header2 {
-  @include font-format(700, 64px, 104px, #491dc5);
+  @include font-format($heavent-bold, 700, 64px, 40px, #491dc5);
 }
 .header3 {
-  @include font-format(700, 64px, 104px, #020202);
+  @include font-format($heavent-bold, 700, 64px, 40px, #020202);
 }
 .header-tb1 {
-  @include font-format(700, 16px, 19px, #808191);
+  @include font-format($heavent-bold, 700, 16px, 19px, #808191);
 }
 .header-tb {
-  @include font-format(700, 16px, 19px, #808191);
+  @include font-format($heavent-bold, 700, 16px, 19px, #808191);
 }
 .header-tb:hover {
-  @include font-format(700, 16px, 19px, #491dc5);
+  @include font-format($heavent-bold, 700, 16px, 19px, #491dc5);
+}
+.row-header-tb {
+  background: #fff;
+
+  height: auto;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  .header-tb1 {
+    @include font-format($heavent-bold, 700, 16px, 19px, #808191);
+  }
+  .header-tb2 {
+    @include font-format($heavent-bold, 700, 16px, 19px, #808191);
+  }
+  .header-tb2:hover {
+    @include font-format($heavent-bold, 700, 16px, 19px, #491dc5);
+  }
+}
+.data-container {
+  height: 25%;
+  overflow: auto !important;
+  .header-body1 {
+    @include font-format($heavent-bold, 700, 20px, 24px, #020202);
+  }
+  .header-body2 {
+    @include font-format($heavent-reg, 400, 12px, 14px, #353535);
+  }
+  .header-body3 {
+    @include font-format($heavent-reg, 400, 18px, 22px, #000000);
+  }
+}
+.input-container {
+  background: #ffffff;
+
+  border: 0.698851px solid #adadad;
+  border-radius: 4px;
+}
+.search-input {
+  border: none;
+  @include font-format($heavent-reg, 400, 14px, 18px, #020202);
+
+  // width: 80%;
+}
+.new-project-btn {
+  background: #491dc5;
+  border-radius: 4px;
+  padding: 3px;
+  width: 60%;
+  @include font-format($heavent-bold, 700, 24px, 25px, #ffffff);
 }
 .filter-btn {
   border-radius: 20px;
   height: 24px;
   margin: 0 5px 0 5px;
-  @include font-format(400, 16px, 19px, #020202);
+  @include font-format($heavent-reg, 400, 16px, 19px, #020202);
 
   &.all {
     background: #fff2ea;
@@ -78,22 +135,57 @@
     }
   }
 }
-
-.new-project-btn {
-  background: #491dc5;
-  border-radius: 4px;
-  height: 44px;
-  @include font-format(700, 24px, 100%, #ffffff);
+.industry-body {
+  border-radius: 20px;
+  height: 24px;
+  margin: 5px 5px 0 5px;
+  &.all {
+    background: #fff2ea;
+    width: 50px;
+    border: none;
+    &:hover {
+      border: 2px solid #ff7b31;
+    }
+  }
+  &.insurance {
+    background: #c8bbed;
+    border: none;
+    width: 100px;
+    &:hover {
+      border: 2px solid #491dc5;
+    }
+  }
+  &.banking {
+    background: #f9fdea;
+    border: none;
+    width: 100px;
+    &:hover {
+      border: 2px solid #c3eb29;
+    }
+  }
 }
-.del-icon {
+
+.view-style {
+  text-decoration: underline;
+  @include font-format($heavent-reg, 700, 20px, 24px, #491dc5);
+  position: fixed;
+}
+
+.icon {
+  display: inline-block;
   cursor: pointer;
   width: 11px;
   height: 11px;
-  // background: url("/assets/icons/del-project.svg") no-repeat;
-  // display: inline-block;
+  background-size: cover;
 }
-.del-icon:hover {
-  // background: url("/assets/icons/del-highlight.svg") no-repeat;
+
+.icon-del {
+  background-image: url(/assets/icons/del-project.svg);
+}
+.icon-del:hover,
+.icon-del:focus {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(100%) saturate(4587%)
+    hue-rotate(257deg) brightness(77%) contrast(102%);
 }
 
 .icon {
@@ -114,23 +206,24 @@
 }
 .icon-del:hover,
 .icon-del:focus {
-  filter: brightness(0) saturate(100%) invert(12%) sepia(60%) saturate(5267%) hue-rotate(250deg) brightness(103%) contrast(122%);
+  filter: brightness(0) saturate(100%) invert(12%) sepia(60%) saturate(5267%)
+    hue-rotate(250deg) brightness(103%) contrast(122%);
 }
 
 .font-14px {
-  @include font-format(400, 14px, 18px, #9a9a9a);
+  @include font-format($heavent-reg, 400, 14px, 18px, #9a9a9a);
 }
 
 .font-16px {
-  @include font-format(700, 16px, 18px, #ffffff);
+  @include font-format($heavent-bold, 700, 16px, 18px, #ffffff);
 }
 
 .font-18px {
-  @include font-format(500, 24px, 18px, #020202);
+  @include font-format($heavent-bold, 500, 24px, 18px, #020202);
 }
 
 .font-42px {
-  @include font-format(800, 42px, 57px, #020202);
+  @include font-format($heavent-bold, 800, 42px, 57px, #020202);
 }
 
 .font-blue {
@@ -160,16 +253,16 @@ input:focus {
 }
 
 ::placeholder {
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
   opacity: 1 !important; /* Firefox */
 }
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
 }
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
 }
 
 ::ng-deep .navbar-logo {

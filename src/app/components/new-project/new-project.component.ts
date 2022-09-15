@@ -195,11 +195,11 @@ export class NewProjectComponent implements OnInit {
   }
   filterProduct(f: string) {
     console.log('filterProduct: ' + f);
-    // const result: IProject[] = this.projectFilter.filter(
-    //   (e) => e.product === f
-    // );
-    // this.projectList = result;
-    // this.sortData();
+    const result: IProject[] = this.projectFilter.filter(
+      (e) => e.product === f
+    );
+    this.projectList = result;
+    this.sortData();
   }
   removeProject(p: IProject) {
     console.log(p.name);
@@ -220,21 +220,21 @@ export class NewProjectComponent implements OnInit {
   goKpi() {
     this.showSpinner('/kpi');
   }
-    deleteProject() {
+  deleteProject(p: IProject) {
     console.log('deleteProject');
     const modalRef = this.ngModalService.open(DeleteProjectModalComponent, {
       size: 'md',
       centered: true,
     });
-    modalRef.componentInstance.projectName = 'My Project 101';
+    modalRef.componentInstance.projectName = p.name;
     modalRef.result.then((result: any) => {
       if (result.search('deleting') != -1) {
-        console.log(result);
+        this.removeProject(p);
         // TODO: update project lists
       }
     });
+  }
 
-  
   getDefaultUpdatedIcon() {
     let image: any;
     if (!this.sortUpdateIcon) {
