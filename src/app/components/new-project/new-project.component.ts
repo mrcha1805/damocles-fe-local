@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IProject } from 'src/app/model/project-interface';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { DeleteProjectModalComponent } from 'src/app/modals/delete-project-modal/delete-project-modal.component';
 
 @Component({
   selector: 'app-new-project',
@@ -16,7 +18,8 @@ export class NewProjectComponent implements OnInit {
   constructor(
     private router: Router,
     private datePipe: DatePipe,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    private ngModalService: NgbModal
   ) {
     this.typeSelected = 'ball-atom';
   }
@@ -217,6 +220,21 @@ export class NewProjectComponent implements OnInit {
   goKpi() {
     this.showSpinner('/kpi');
   }
+    deleteProject() {
+    console.log('deleteProject');
+    const modalRef = this.ngModalService.open(DeleteProjectModalComponent, {
+      size: 'md',
+      centered: true,
+    });
+    modalRef.componentInstance.projectName = 'My Project 101';
+    modalRef.result.then((result: any) => {
+      if (result.search('deleting') != -1) {
+        console.log(result);
+        // TODO: update project lists
+      }
+    });
+
+  
   getDefaultUpdatedIcon() {
     let image: any;
     if (!this.sortUpdateIcon) {

@@ -57,6 +57,8 @@ import { CreateKpiComponent } from './components/create-kpi/create-kpi.component
 import { DemographicComponent } from './components/demographic/demographic.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SearchFilterPipe } from './services/search-filter.pipe';
+import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -74,6 +76,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     DemographicComponent,
     FilterComponent,
     SearchFilterPipe,
+    DeleteProjectModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +123,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     NgxPopperjsModule.forRoot(TOOLTIP_DEFAULT_OPTIONS),
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
+    NgbModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

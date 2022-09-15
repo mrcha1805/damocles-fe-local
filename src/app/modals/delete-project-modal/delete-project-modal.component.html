@@ -1,0 +1,31 @@
+<div class="container body">
+    <div class="row" style="margin-top: 5px">
+        <div class="col d-flex justify-content-end" style="padding-right: 10px">
+            <button class="btn-close close" type="button" style="padding: 0px" (click)="cancel()">
+                <!-- <img src="assets/icons/close-tag.svg" /> -->
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <label class="header-text">Delete File?</label>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 15px">
+        <div class="col d-flex justify-content-center">
+            <label class="description-text" align="center">Are you sure you want to delete <b>"{{ projectName
+                    }}"</b><br />you
+                can't undo this action.</label>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 48px">
+        <div class="col d-flex justify-content-center">
+            <div class="btn btn-cancel" style="margin-right: 12px" (click)="cancel()">
+                Cancel
+            </div>
+            <div class="btn btn-delete" style="margin-left: 12px" (click)="delete()">
+                Delete
+            </div>
+        </div>
+    </div>
+</div>
