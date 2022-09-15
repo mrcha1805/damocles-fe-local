@@ -43,6 +43,7 @@
                     <button class="filter-btn banking" (click)="filter('banking')">Banking</button>
                     <button (click)="filterProduct('Travel Insurance')">Travel Insurance</button>
                     <button (click)="filterProduct('Health Insurance')">Health Insurance</button>
+                    <img [src]="getDefaultUpdatedIcon()" (click)="orderByUpdated($event.target)" />
                 </div>
                 <div fxLayout.gt-xs="row" fxFlex.gt-xs="40" fxFlex.lt-sm="33" fxFill class="grid-item-layout"
                     fxLayoutAlign.lt-sm="center center" fxLayoutAlign="end center">
@@ -51,7 +52,67 @@
             </div>
         </div>
         <div fxLayout="row" fxFlex="60%" class="block-1 grid-item-row2">
-            <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item-content-tb">
+            <div class="col">
+                <div class="row">
+                    <div class="col-5">
+                        <p>ProjectName</p>
+                    </div>
+                    <div class="col-2">
+                        <span>Latest Updated</span>
+                        <img src="./assets/icons/sortab.svg" class="img-update" />
+                    </div>
+                    <div class="col-2">
+                        <p>Industry</p>
+                    </div>
+                    <div class="col-2">
+
+                        <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center center" fxFlex>
+
+                            <span class="">Product</span>
+                            <img [src]="productIcon" mat-button [matMenuTriggerFor]="menu"
+                                (click)="productIconChange()">
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <p>DEL</p>
+                    </div>
+                </div>
+                <div class="row p-1" *ngFor="let p of projectList| searchFilter:search">
+                    <div class="col-5">
+                        <div class="row m-1">
+                            <div class="col-1 ">
+                                <img src="./assets/icons/project-icon.svg" width="32" height="32" />
+                            </div>
+                            <div class="col">
+                                <div>{{p.name}}</div>
+                                <div>{{p.description}}</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-2">
+                        <p>{{p.timeFormat}}</p>
+
+                    </div>
+                    <div class="col-2">
+                        <p class="filter-btn "
+                            [ngClass]="{'insurance': p.industry==='Insurance', 'banking ': p.industry==='Banking'}">
+                            <span class="mx-auto">{{p.industry}}</span>
+                        </p>
+                    </div>
+                    <div class="col-2">
+
+                        <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center center" fxFlex>
+
+                            {{p.product}}
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <p><img class="del-icon" src="/assets/icons/del-project.svg" (click)="removeProject(p)" /></p>
+                    </div>
+                </div>
+                <!-- <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item-content-tb">
                 <table class="table">
                     <thead>
                         <tr>
@@ -66,7 +127,7 @@
                         <tr>
 
                             <td>{{p.name}}</td>
-                            <td>{{p.created}}</td>
+                            <td>{{p.timeFormat}}</td>
                             <td>
                                 <p class="filter-btn "
                                     [ngClass]="{'insurance': p.industry==='Insurance', 'banking': p.industry==='Banking'}">
@@ -82,10 +143,14 @@
 
                     </tbody>
                 </table>
+            </div> -->
             </div>
         </div>
+
     </div>
-
-</div>
-
-<ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>
+    <mat-menu #menu="matMenu" class="mat-menu-test">
+        <a *ngFor="let i of productList" mat-menu-item (click)="filterProduct(i.name)">
+            {{i.name}}
+        </a>
+    </mat-menu>
+    <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>

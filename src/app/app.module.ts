@@ -40,6 +40,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { DatePipe } from '@angular/common';
 import {
   NgxPopperjsModule,
   NgxPopperjsOptions,
@@ -120,7 +121,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,7 +1,9 @@
 export interface IProject {
-  name: String;
-  description: String;
-  created: String;
-  industry: String;
-  product: String;
+  name: string;
+  description: string;
+  created: string;
+  industry: string;
+  product: string;
+  timeFormat: string | undefined;
+  timeLabel: string | undefined;
 }
