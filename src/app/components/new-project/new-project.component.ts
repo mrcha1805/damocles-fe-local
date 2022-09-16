@@ -28,7 +28,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'FlexiDrive 202201',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2022-09-16T07:56:36.000Z',
+      created: '2022-09-16T04:40:31.720Z',
       industry: 'Banking',
       product: 'Health Insurance',
       timeFormat: '',
@@ -179,8 +179,7 @@ export class NewProjectComponent implements OnInit {
       const createTime = new Date(i.created);
       const diffTime = currentTime.getTime() - createTime.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-      if (diffDays == 0) {
+      if (diffDays == 1) {
         i.timeLabel = `Today, ${this.datePipe
           .transform(i.created, 'hh:mm:ss')
           ?.toString()}`;
