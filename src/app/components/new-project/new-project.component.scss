@@ -143,25 +143,16 @@ $heavent-normal: DB Heavent Nor;
     background: #fff2ea;
     width: 50px;
     border: none;
-    &:hover {
-      border: 2px solid #ff7b31;
-    }
   }
   &.insurance {
     background: #c8bbed;
     border: none;
     width: 100px;
-    &:hover {
-      border: 2px solid #491dc5;
-    }
   }
   &.banking {
     background: #f9fdea;
     border: none;
     width: 100px;
-    &:hover {
-      border: 2px solid #c3eb29;
-    }
   }
 }
 
@@ -208,6 +199,14 @@ $heavent-normal: DB Heavent Nor;
 .icon-del:focus {
   filter: brightness(0) saturate(100%) invert(12%) sepia(60%) saturate(5267%)
     hue-rotate(250deg) brightness(103%) contrast(122%);
+}
+
+.row-table-striped {
+  background: #f5f5f5;
+}
+
+.row-table-non-striped {
+  background: #ffffff;
 }
 
 .font-14px {

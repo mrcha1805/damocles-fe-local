@@ -77,7 +77,7 @@
                             <img src="./assets/icons/sortab.svg" class="img-update mx-1" />
                         </div>
                         <div class="col-2">
-                            <span class="header-tb1">Industry</span>
+                            <span class="header-tb1 mx-2">Industry</span>
                         </div>
                         <div class="col-2">
 
@@ -93,7 +93,8 @@
                         </div>
                     </div>
                     <div class="data-container mt-2">
-                        <div class="row p-1" *ngFor="let p of projectList| searchFilter:search">
+                        <div class="row p-1" *ngFor="let p of projectList| searchFilter:search;let i = index"
+                            [ngClass]="{'row-table-non-striped': i % 2 == 0, 'row-table-striped': i % 2 != 0}">
                             <div class="col-5">
                                 <div class="row m-1">
                                     <div class="col-1 ">
