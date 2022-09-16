@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div class="data-container mt-2">
-                        <div class="row p-1" *ngFor="let p of projectList| searchFilter:search;let i = index"
+                        <div class="row row-margin" *ngFor="let p of projectList| searchFilter:search;let i = index"
                             [ngClass]="{'row-table-non-striped': i % 2 == 0, 'row-table-striped': i % 2 != 0}">
                             <div class="col-5">
                                 <div class="row m-1">

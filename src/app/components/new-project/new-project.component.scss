@@ -88,6 +88,9 @@ $heavent-normal: DB Heavent Nor;
     @include font-format($heavent-reg, 400, 18px, 22px, #000000);
   }
 }
+.row-margin{
+  margin-right: calc(-.0 * var(--bs-gutter-x));
+}
 .grid-item-row2::after {
   content: "";
   position: absolute;
