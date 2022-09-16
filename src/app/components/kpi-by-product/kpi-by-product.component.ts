@@ -54,11 +54,31 @@ export class KpiByProductComponent implements OnInit {
       info: 'xxxxx',
       isSelected: false,
       data: [
-        { value: 'Asset Protection', info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance', isSelected: true },
-        { value: 'Health insurance', info: 'Finding target for health insurance', isSelected: false },
-        { value: 'Personal accident insurance', info: 'Finding target for personal accident insurance', isSelected: false },
-        { value: 'Saving insurance', info: 'Finding target for saving insurance', isSelected: false },
-        { value: 'Travel insurance', info: 'Finding target for travel insurance', isSelected: false },
+        {
+          value: 'Asset Protection',
+          info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance',
+          isSelected: true,
+        },
+        {
+          value: 'Health Insurance',
+          info: 'Finding target for health insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Personal Accident Insurance',
+          info: 'Finding target for personal accident insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Saving Insurance',
+          info: 'Finding target for saving insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Travel Accident Insurance',
+          info: 'Finding target for travel insurance',
+          isSelected: false,
+        },
       ],
     },
   ];
