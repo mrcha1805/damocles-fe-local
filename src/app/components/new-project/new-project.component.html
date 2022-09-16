@@ -56,12 +56,12 @@
                 </div>
 
             </div>
-            <div class="col-5">
+            <div class="col-6">
                 <button class="filter-btn all" (click)="filter('all')">All</button>
                 <button class="filter-btn insurance" (click)="filter('insurance')">Insurance</button>
                 <button class="filter-btn banking" (click)="filter('banking')">Banking</button>
             </div>
-            <div class="col-4 d-flex justify-content-end">
+            <div class="col-3 d-flex justify-content-end">
                 <button class="new-project-btn" (click)="goKpi()">+ New Project</button>
             </div>
         </div>
@@ -73,19 +73,22 @@
                             <span class="header-tb1">ProjectName</span>
                         </div>
                         <div class="col-2">
-                            <span class="header-tb2">Latest Updated</span>
-                            <img src="./assets/icons/sortab.svg" class="img-update mx-1" />
+                            <div class="header-tb2">
+                                <span class="header-tb2">Latest Updated</span>
+                                <img src="./assets/icons/sortab.svg" class="img-update mx-1" />
+                            </div>
                         </div>
                         <div class="col-2">
                             <span class="header-tb1 mx-2">Industry</span>
                         </div>
                         <div class="col-2">
-
-                            <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex>
-
-                                <span class="header-tb2">Product</span>
-                                <img [src]="productIcon" mat-button [matMenuTriggerFor]="menu"
-                                    (click)="productIconChange()">
+                            <div class="header-tb2">
+                                <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex>
+                                    <span class="header-tb2">Product</span>
+                                    <img [src]="productIcon" mat-button [matMenuTriggerFor]="menu"
+                                        (click)="productIconChange()" 
+                                        [ngStyle]="{'transform': isCollapsed == 1 ? 'rotateZ(180deg)' : 'rotateZ(0deg)'}">
+                                </div>
                             </div>
                         </div>
                         <div class="col-1">
@@ -93,7 +96,7 @@
                         </div>
                     </div>
                     <div class="data-container mt-2">
-                        <div class="row row-margin" *ngFor="let p of projectList| searchFilter:search;let i = index"
+                        <div class="row p-1" *ngFor="let p of projectList| searchFilter:search;let i = index"
                             [ngClass]="{'row-table-non-striped': i % 2 == 0, 'row-table-striped': i % 2 != 0}">
                             <div class="col-5">
                                 <div class="row m-1">
@@ -107,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="col-2 d-flex align-items-center">
-                                <div class="header-body3 ">{{p.timeLabel}}</div>
+                                <div class="header-body3 ">{{p.timeFormat}}</div>
                             </div>
                             <div class="col-2 ">
                                 <p class="header-body3 d-flex align-items-center justify-content-center industry-body"
@@ -120,7 +123,7 @@
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <img src="/assets/icons/del-project.svg" class="icon icon-del"
-                                    (click)="deleteProject(p)" />
+                                    (click)="deleteProject(p)"/>
 
                             </div>
                         </div>
@@ -194,11 +197,12 @@
             </section>
 
         </div>
-        <div class="row row-view">
+        <div class="row">
             <div class="col d-flex justify-content-end mx-5">
                 <span class="view-style">View All</span>
             </div>
         </div>
+
     </div>
     <mat-menu #menu="matMenu" class="mat-menu-test">
         <a *ngFor="let i of productList" mat-menu-item (click)="filterProduct(i.name)">
