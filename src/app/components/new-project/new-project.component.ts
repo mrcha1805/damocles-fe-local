@@ -28,7 +28,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'FlexiDrive 202201',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2022-01-11T07:56:36.000Z',
+      created: '2022-09-16T07:56:36.000Z',
       industry: 'Banking',
       product: 'Health Insurance',
       timeFormat: '',
@@ -37,7 +37,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'Travel Freemium 2022004',
       description: 'Size of user who hav propensity to travel',
-      created: '2022-04-05T19:32:36.000Z',
+      created: '2022-09-09T04:21:11.496Z',
       industry: 'Banking',
       product: 'Health Insurance',
       timeFormat: '',
@@ -55,7 +55,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'Easy Easy 2+ 3+ 202209',
       description: 'For 2+ 3+ Car owner',
-      created: '2022-09-09T01:50:36.000Z',
+      created: '2022-09-16T04:21:11.496Z',
       industry: 'Insurance',
       product: 'Travel Insurance',
       timeFormat: '',
@@ -64,7 +64,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'Travel Insurance 202207',
       description: 'Genral Travel Insurance Propensity to Travel',
-      created: '2022-09-03T03:13:36.000Z',
+      created: '2022-09-09T04:25:11.496Z',
       industry: 'Insurance',
       product: 'Health Insurance',
       timeFormat: '',
@@ -174,6 +174,23 @@ export class NewProjectComponent implements OnInit {
       i.timeFormat = this.datePipe
         .transform(i.created, 'd MMM, hh:mm:ss')
         ?.toString();
+
+      const currentTime = new Date();
+      const createTime = new Date(i.created);
+      const diffTime = currentTime.getTime() - createTime.getTime();
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      if (diffDays == 0) {
+        i.timeLabel = `Today, ${this.datePipe
+          .transform(i.created, 'hh:mm:ss')
+          ?.toString()}`;
+      } else if (diffDays <= 7) {
+        i.timeLabel = `${diffDays} days ago, ${this.datePipe
+          .transform(i.created, 'hh:mm:ss')
+          ?.toString()}`;
+      } else {
+        i.timeLabel = i.timeFormat;
+      }
     }
     console.log(this.projectData);
     this.projectList = this.projectFilter = this.projectData;
