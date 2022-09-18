@@ -5,6 +5,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { IProject } from 'src/app/model/project-interface';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteProjectModalComponent } from 'src/app/modals/delete-project-modal/delete-project-modal.component';
+enum DaysNum {
+  Today = 1,
+  Week = 7,
+  Month = 30,
+  Year = 365,
+}
 
 @Component({
   selector: 'app-new-project',
@@ -37,7 +43,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'Travel Freemium 2022004',
       description: 'Size of user who hav propensity to travel',
-      created: '2022-09-09T04:21:11.496Z',
+      created: '2022-09-13T20:21:11.496Z',
       industry: 'Banking',
       product: 'Health Insurance',
       timeFormat: '',
@@ -46,7 +52,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'FlexiDrive 202206',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2022-09-13T07:56:36.000Z',
+      created: '2022-09-10T07:56:36.000Z',
       industry: 'Insurance',
       product: 'Travel Accident Insurance',
       timeFormat: '',
@@ -55,7 +61,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'Easy Easy 2+ 3+ 202209',
       description: 'For 2+ 3+ Car owner',
-      created: '2022-09-16T04:21:11.496Z',
+      created: '2022-08-20T04:21:11.496Z',
       industry: 'Insurance',
       product: 'Travel Accident Insurance',
       timeFormat: '',
@@ -64,7 +70,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'Travel Accident Insurance 202207',
       description: 'Genral Travel Accident Insurance Propensity to Travel',
-      created: '2022-09-09T04:25:11.496Z',
+      created: '2022-08-09T04:25:11.496Z',
       industry: 'Insurance',
       product: 'Health Insurance',
       timeFormat: '',
@@ -73,7 +79,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'Travel Freemium 202208',
       description: 'Size of user who hav propensity to travel',
-      created: '2022-08-09T08:13:36.000Z',
+      created: '2021-08-09T08:13:36.000Z',
       industry: 'Insurance',
       product: 'Saving Insurance',
       timeFormat: '',
@@ -179,16 +185,27 @@ export class NewProjectComponent implements OnInit {
       const createTime = new Date(i.created);
       const diffTime = currentTime.getTime() - createTime.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      if (diffDays == 1) {
+
+      if (diffDays == DaysNum.Today) {
         i.timeLabel = `Today, ${this.datePipe
           .transform(i.created, 'hh:mm:ss')
           ?.toString()}`;
-      } else if (diffDays <= 7) {
+      } else if (diffDays <= DaysNum.Week) {
         i.timeLabel = `${diffDays} days ago, ${this.datePipe
           .transform(i.created, 'hh:mm:ss')
           ?.toString()}`;
+      } else if (diffDays > DaysNum.Week && diffDays <= DaysNum.Month) {
+        i.timeLabel = this.datePipe
+          .transform(i.created, 'dd EEE, hh:mm:ss')
+          ?.toString();
+      } else if (diffDays > DaysNum.Month && diffDays <= DaysNum.Year) {
+        i.timeLabel = this.datePipe
+          .transform(i.created, 'dd MMM, hh:mm:ss')
+          ?.toString();
       } else {
-        i.timeLabel = i.timeFormat;
+        i.timeLabel = this.datePipe
+          .transform(i.created, 'dd MMM YYYY, hh:mm:ss')
+          ?.toString();
       }
     }
     console.log(this.projectData);
