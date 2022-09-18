@@ -7,7 +7,6 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { end } from '@popperjs/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -39,7 +38,7 @@ export class KpiByProductComponent implements OnInit {
     {
       name: 'Banking',
       image: './assets/icons/banking.svg',
-      desc: 'Banking Industrial Domain Insight',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan lorem.',
       info: 'xxxxx',
       isSelected: false,
       data: [
@@ -51,15 +50,35 @@ export class KpiByProductComponent implements OnInit {
     {
       name: 'Insurance',
       image: './assets/icons/insurance.svg',
-      desc: 'Insurance Industrial Domain Insight',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan lorem.',
       info: 'xxxxx',
       isSelected: false,
       data: [
-        { value: 'Asset Protection', info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance', isSelected: true },
-        { value: 'Health insurance', info: 'Finding target for health insurance', isSelected: false },
-        { value: 'Personal accident insurance', info: 'Finding target for personal accident insurance', isSelected: false },
-        { value: 'Saving insurance', info: 'Finding target for saving insurance', isSelected: false },
-        { value: 'Travel insurance', info: 'Finding target for travel insurance', isSelected: false },
+        {
+          value: 'Asset Protection',
+          info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance',
+          isSelected: true,
+        },
+        {
+          value: 'Health Insurance',
+          info: 'Finding target for health insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Personal Accident Insurance',
+          info: 'Finding target for personal accident insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Saving Insurance',
+          info: 'Finding target for saving insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Travel Accident Insurance',
+          info: 'Finding target for travel insurance',
+          isSelected: false,
+        },
       ],
     },
   ];
@@ -98,20 +117,16 @@ export class KpiByProductComponent implements OnInit {
   ngOnInit() {}
 
   collapsed(index: number) {
-    if (index === 0) {
-      return;
+    if (this.isCollapsed === index) {
+      this.isCollapsed = -1;
+      this.kpiList.forEach((e: any) => {
+        e.isSelected = false;
+      });
     } else {
-      if (this.isCollapsed === index) {
-        this.isCollapsed = -1;
-        this.kpiList.forEach((e: any) => {
-          e.isSelected = false;
-        });
-      } else {
-        this.isCollapsed = index;
-        this.kpiList.forEach((e: any) => {
-          e.isSelected = true;
-        });
-      }
+      this.isCollapsed = index;
+      this.kpiList.forEach((e: any) => {
+        e.isSelected = true;
+      });
     }
   }
 
