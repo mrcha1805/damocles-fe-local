@@ -22,7 +22,7 @@
                         [ngStyle]="setBorderCollapsed(i)">
                         <img src="./assets/icons/expand-selected.svg" width="24" class="expand-selected"
                             [ngStyle]="{'display': isCollapsed == i ? '': 'none'}" [@openClose]="helpMenuOpen" />
-                        <div class="collapse-title" (click)="collapsed(i)" (click)="toggleHelpMenu()">
+                        <div class="collapse-title" (click)="collapsed(i)" (click)="toggleHelpMenu()" fxLayoutGap="250">
                             <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse">
                                 <div class="grid-item-layout-collapse">
                                     <img src="{{ item.image }}" width="50" />
@@ -31,10 +31,10 @@
                                     <span class="font-20px p-1">
                                         {{ item.name }}
                                         &nbsp;
-                                        <span [popper]="popperContent" [popperTrigger]="triggers.hover"
+                                        <!-- <span [popper]="popperContent" [popperTrigger]="triggers.hover"
                                             [popperModifiers]="offsetModifiers" [popperPlacement]="placements.RIGHT">
                                             <img src="./assets/icons/info.svg" width="20" height="20" />
-                                        </span>
+                                        </span> -->
                                     </span>
                                     <popper-content #popperContent>
                                         <span>{{ item.info }}</span><br />
@@ -43,8 +43,10 @@
                                 </div>
                             </div>
                             <span class="collapse-title-expand-indicator">
-                                <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
+                                <div fxLayoutGap="20">
+                                    <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
                                     [ngStyle]="{'transform': isCollapsed == i ? 'rotateZ(90deg)' : 'rotateZ(0deg)'}">
+                                </div>
                             </span>
                         </div>
                         <div [ngStyle]="setStyleCollapsed(i)" [@openClose]="helpMenuOpen">
