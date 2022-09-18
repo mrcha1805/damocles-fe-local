@@ -131,16 +131,9 @@ export class AuthService {
             imgUrl: response?.resultData.imageUrl,
           };
 
-          if (userProfile.bank == null) {
-            console.log('bank is null');
-            localStorage.removeItem('userProfile');
-            this.globalDataService.setShowModal('302');
-            this.logout();
-          } else {
-            console.log(JSON.stringify(userProfile));
-            localStorage.setItem('userProfile', JSON.stringify(userProfile));
-            this.router.navigateByUrl('/createproject');
-          }
+          console.log(JSON.stringify(userProfile));
+          localStorage.setItem('userProfile', JSON.stringify(userProfile));
+          this.router.navigateByUrl('/createproject');
         }
       },
       (error) => {
