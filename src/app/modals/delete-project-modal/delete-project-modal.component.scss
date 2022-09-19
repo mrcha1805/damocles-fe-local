@@ -1,5 +1,7 @@
-@mixin font-format($weight, $size, $height, $hexcolor) {
-  font-family: Noto Sans, sans-serif !important;
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font !important;
   font-style: normal;
   font-weight: $weight;
   font-size: $size;
@@ -15,24 +17,22 @@
 }
 
 .header-text {
-  @include font-format(700, 24px, 25px, #491dc5);
+  @include font-format($heavent-bold, 700, 48px, 58px, #491dc5);
   padding-bottom: 20px;
   padding-top: 30px;
 }
 
 .description-text {
-  @include font-format(400, 14px, 22px, #676767);
+  @include font-format($heavent-reg, 400, 20px, 24px, #676767);
   padding-bottom: 30px;
   word-break: break-all;
+  .hightlight-text {
+    @include font-format($heavent-bold, 400, 20px, 24px, #676767);
+  }
 }
 
 .btn-cancel {
-  font-family: DB Heavent Bd !important;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 100%;
-  color: #491dc5;
+  @include font-format($heavent-bold, 700, 24px, 100%, #491dc5);
 
   background: #ffffff;
   border: 2px solid #491dc5;
@@ -42,18 +42,12 @@
   padding-top: 10px;
   padding-bottom: 10px;
   &:hover {
-    background: #EDE8F9;
+    background: #ede8f9;
   }
 }
 
 .btn-delete {
-  font-family: DB Heavent Bd !important;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 100%;
-  color: #ffffff;
-
+  @include font-format($heavent-bold, 700, 24px, 100%, #ffffff);
   background: #da5b49;
   border-radius: 4px;
   padding-left: 45px;
@@ -61,14 +55,14 @@
   padding-top: 10px;
   padding-bottom: 10px;
   &:hover {
-    background: #AF493B;
+    background: #af493b;
   }
 }
 
-.btn-close{
-    border-top-width: 10px;
-    margin-right: 15px;
-    margin-top: 10px;
-    width: 18px;
-    height: 18px;
+.btn-close {
+  border-top-width: 10px;
+  margin-right: 15px;
+  margin-top: 10px;
+  width: 18px;
+  height: 18px;
 }
