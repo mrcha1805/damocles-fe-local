@@ -8,7 +8,7 @@ export const environment = {
     clientId: 'wO6kzH+uR2FMCbco8D4MACn6EJ1sRRFag7vkkVSBV+9CkFtdFVEZaA==',
     clientSecret: 'clientSecret',
     redirectUri: 'https://stg-digital.ais.th/actionable-insight/home',
-    beEndpoint: 'https://stg-digital.ais.th/actionable-insight/userprofile/api/v1'
+    beEndpoint: 'https://stg-digital.ais.th/actionable-insight/actionable-insight-be/api/v1'
   },
   DigitalCo: {
     endpointApi: 'https://stg-digital.ais.th',
@@ -17,7 +17,7 @@ export const environment = {
     Parameters: {
       identityHeader: 'X-Digitalco-Id'
     },
-    endpointApiCube: 'https://stg-digital.ais.th/actionable-insight/api/analytic/v1'
+    endpointApiCube: 'https://stg-digital.ais.th/actionable-insight/actionable-insight-cube/analytic/v1'
   },
   Logger: {
     logLevel: NgxLoggerLevel.TRACE,
