@@ -164,15 +164,23 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "actionable-insight-fe:build:local"
+          },
           "configurations": {
             "production": {
               "browserTarget": "actionable-insight-fe:build:production"
             },
-            "development": {
-              "browserTarget": "actionable-insight-fe:build:development"
+            "dev": {
+              "browserTarget": "actionable-insight-fe:build:dev"
+            },
+            "iot": {
+              "browserTarget": "actionable-insight-fe:build:stg"
+            },
+            "sqa": {
+              "browserTarget": "actionable-insight-fe:build:sqa"
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
