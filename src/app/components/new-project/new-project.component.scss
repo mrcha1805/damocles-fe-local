@@ -70,8 +70,12 @@ $heavent-normal: DB Heavent Nor;
   .header-tb2:hover {
     @include font-format($heavent-bold, 700, 16px, 19px, #491dc5);
     filter: brightness(0) saturate(100%) invert(13%) sepia(100%) saturate(4587%)
-    hue-rotate(257deg) brightness(77%) contrast(102%);
+      hue-rotate(257deg) brightness(77%) contrast(102%);
   }
+}
+.project-row:hover {
+  background: #ede8f9;
+  border: 2px solid #491dc5;
 }
 .data-container {
   height: 280px;
@@ -90,8 +94,9 @@ $heavent-normal: DB Heavent Nor;
     @include font-format($heavent-reg, 400, 18px, 22px, #000000);
   }
 }
-.row-margin{
-  margin-right: calc(-.0 * var(--bs-gutter-x));
+.row-margin {
+  margin-left: 0;
+  margin-right: calc(-0 * var(--bs-gutter-x));
 }
 .grid-item-row2::after {
   content: "";
@@ -128,6 +133,9 @@ $heavent-normal: DB Heavent Nor;
   width: 60%;
   @include font-format($heavent-bold, 700, 24px, 25px, #ffffff);
 }
+.new-project-btn:hover {
+  background: #3b189e;
+}
 .filter-btn {
   border-radius: 20px;
   height: 24px;
@@ -163,6 +171,7 @@ $heavent-normal: DB Heavent Nor;
   border-radius: 20px;
   height: 24px;
   margin: 5px 5px 0 5px;
+  text-align: center;
   &.all {
     background: #fff2ea;
     width: 50px;
