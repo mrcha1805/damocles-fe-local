@@ -98,7 +98,7 @@ export class KpiByProductComponent implements OnInit {
   ngOnInit() {}
 
   collapsed(index: number) {
-    if (index === 0) {
+    if (index === -1) {
       return;
     } else {
       if (this.isCollapsed === index) {
