@@ -69,6 +69,8 @@ $heavent-normal: DB Heavent Nor;
   }
   .header-tb2:hover {
     @include font-format($heavent-bold, 700, 16px, 19px, #491dc5);
+    filter: brightness(0) saturate(100%) invert(13%) sepia(100%) saturate(4587%)
+    hue-rotate(257deg) brightness(77%) contrast(102%);
   }
 }
 .data-container {

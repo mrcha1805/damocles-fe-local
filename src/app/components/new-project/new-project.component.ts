@@ -211,7 +211,11 @@ export class NewProjectComponent implements OnInit {
     console.log(this.projectData);
     this.projectList = this.projectFilter = this.projectData;
   }
+
+  isCollapsed = -1;
+
   filter(mode: string) {
+    this.isCollapsed = -1;
     this.projectList = this.projectData;
     this.mode = mode;
     if (mode !== 'all') {
@@ -300,7 +304,8 @@ export class NewProjectComponent implements OnInit {
   }
 
   productIconChange() {
-    this.pIcon = !this.pIcon;
+    this.isCollapsed = 1;
+    //this.pIcon = !this.pIcon;
     // if (!this.pIcon) {
     //   this.productIcon = './assets/icons/sortba.svg';
     // } else {

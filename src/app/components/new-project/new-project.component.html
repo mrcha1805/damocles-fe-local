@@ -73,19 +73,22 @@
                             <span class="header-tb1">ProjectName</span>
                         </div>
                         <div class="col-2">
-                            <span class="header-tb2">Latest Updated</span>
-                            <img src="./assets/icons/sortab.svg" class="img-update mx-1" />
+                            <div class="header-tb2">
+                                <span class="header-tb2">Latest Updated</span>
+                                <img src="./assets/icons/sortab.svg" class="img-update mx-1" />
+                            </div>
                         </div>
                         <div class="col-2">
                             <span class="header-tb1 mx-2">Industry</span>
                         </div>
                         <div class="col-2">
-
-                            <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex>
-
-                                <span class="header-tb2">Product</span>
-                                <img [src]="productIcon" mat-button [matMenuTriggerFor]="menu"
-                                    (click)="productIconChange()">
+                            <div class="header-tb2">
+                                <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex>
+                                    <span class="header-tb2">Product</span>
+                                    <img [src]="productIcon" mat-button [matMenuTriggerFor]="menu"
+                                        (click)="productIconChange()" 
+                                        [ngStyle]="{'transform': isCollapsed == 1 ? 'rotateZ(180deg)' : 'rotateZ(0deg)'}">
+                                </div>
                             </div>
                         </div>
                         <div class="col-1">
