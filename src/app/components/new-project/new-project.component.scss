@@ -134,8 +134,7 @@ $heavent-normal: DB Heavent Nor;
 .search-input {
   border: none;
   @include font-format($heavent-reg, 400, 14px, 18px, #020202);
-
-  // width: 80%;
+  width: 70%;
 }
 .new-project-btn {
   background: #491dc5;
