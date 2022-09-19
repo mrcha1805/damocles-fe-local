@@ -160,6 +160,26 @@ export class NewProjectComponent implements OnInit {
       name: 'Travel Accident Insurance',
       value: 14,
     },
+    {
+      name: 'Asset Protection',
+      value: 10,
+    },
+    {
+      name: 'Health Insurance',
+      value: 11,
+    },
+    {
+      name: 'Personal Accident Insurance',
+      value: 12,
+    },
+    {
+      name: 'Saving Insurance',
+      value: 13,
+    },
+    {
+      name: 'Travel Accident Insurance',
+      value: 14,
+    },
   ];
   async ngOnInit(): Promise<void> {
     this.projectList = [];

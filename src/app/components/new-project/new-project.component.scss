@@ -178,6 +178,19 @@ $heavent-normal: DB Heavent Nor;
     }
   }
 }
+.mat-container {
+  padding-top: 10px;
+  height: 100px;
+}
+.mat-menu-style {
+  @include font-format($heavent-reg, 700, 14px, 10px, #000000);
+  height: 20px;
+  display: block;
+}
+.mat-menu-style:hover {
+  @include font-format($heavent-reg, 700, 14px, 10px, #491dc5);
+  background: #ffffff;
+}
 .industry-body {
   border-radius: 20px;
   height: 24px;

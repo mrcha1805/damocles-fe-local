@@ -107,9 +107,12 @@
             </div>
         </div>
     </div>
-    <mat-menu #menu="matMenu" class="mat-menu-test">
-        <a *ngFor="let i of productList" mat-menu-item (click)="filterProduct(i.name)">
-            {{i.name}}
-        </a>
+    <mat-menu #menu="matMenu" class="mat-menu">
+        <div class="mat-container">
+            <a *ngFor="let i of productList" mat-menu-item (click)="filterProduct(i.name)" class="mat-menu-style">
+                {{i.name}}
+            </a>
+        </div>
+
     </mat-menu>
     <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>
