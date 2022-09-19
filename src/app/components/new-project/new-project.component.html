@@ -1,25 +1,5 @@
 <app-navbar-logo></app-navbar-logo>
-<!-- <div fxLayout="row" class="grid-item viewport">
-    <div fxLayout="column" fxFlex>
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
-            <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout p-5">
-                <div fxLayout="column" class="text-center p-4">
-                    <img src="./assets/icons/welcome.svg" width="250" />
-                </div>
-            </div>
-            <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center" class="grid-item-layout p-5">
-                <div fxLayout="column" class="text-center p-4">
-                    <span class="font-42px">Actionable <font class="font-blue">Insight</font></span>
-                    <span class="font-14px mt-3">Ready to Work on the Biggest Data Project of all Time?</span>
-                    <input type="text" class="p-3 my-4 project-name" placeholder="Enter Your Project Name" />
-                    <div fxLayoutAlign="center center">
-                        <button class="btn btn-blue font-16px" (click)="goKpi()">Create New Project</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+
 <div fxLayout="row" class="grid-item viewport">
     <div fxLayout="column" fxLayoutGap="10px" fxFlex>
         <div class="block-1 grid-item-row row">
@@ -29,26 +9,6 @@
             </div>
         </div>
         <div class="row grid-item-row1 d-flex align-items-center mx-5 ">
-            <!-- <div fxFlex fxLayoutAlign="space-between center" fxLayout.lt-sm="column" fxFlexFill class=" ">
-                <div fxLayout.gt-xs="row" fxFlex.gt-xs="25" fxFlex.lt-sm="80" fxFill class="grid-item-layout"
-                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="start center">
-                    <img src="./assets/icons/search.svg" width="16" class="search-icon m-2">
-                    <input type="text" placeholder="Search" class="search-input font-14px" [(ngModel)]="search" />
-                </div>
-                <div fxLayout.gt-xs="row" fxFlex.gt-xs="25" fxFlex.lt-sm="33" fxFill class="grid-item-layout p-1"
-                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="start center">
-                    <button class="filter-btn all" (click)="filter('all')">All</button>
-                    <button class="filter-btn insurance" (click)="filter('insurance')">Insurance</button>
-                    <button class="filter-btn banking" (click)="filter('banking')">Banking</button>
-                    <button (click)="filterProduct('Travel Insurance')">Travel Insurance</button>
-                    <button (click)="filterProduct('Health Insurance')">Health Insurance</button>
-                    <img [src]="getDefaultUpdatedIcon()" (click)="orderByUpdated($event.target)" />
-                </div>
-                <div fxLayout.gt-xs="row" fxFlex.gt-xs="40" fxFlex.lt-sm="33" fxFill class="grid-item-layout"
-                    fxLayoutAlign.lt-sm="center center" fxLayoutAlign="end center">
-                    <button class="new-project-btn" (click)="goKpi()">+ New Project</button>
-                </div>
-            </div> -->
             <div class="col-3 mt-1 p-0">
                 <div class="input-container mx-1 px-2">
                     <img src="./assets/icons/search.svg" width="16" class="search-icon m-2">
@@ -65,12 +25,12 @@
                 <button class="new-project-btn" (click)="goKpi()">+ New Project</button>
             </div>
         </div>
-        <div class="row block-1 grid-item-row2 mx-5 mt-2">
+        <div class="row block-1 grid-item-table mx-5 mt-2">
             <section>
                 <div class="col">
                     <div class="row row-header-tb">
                         <div class="col-5">
-                            <span class="header-tb1">ProjectName</span>
+                            <span class="header-tb1">Project Name</span>
                         </div>
                         <div class="col-2">
                             <div class="header-tb2">
@@ -86,22 +46,23 @@
                                 <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex>
                                     <span class="header-tb2">Product</span>
                                     <img [src]="productIcon" mat-button [matMenuTriggerFor]="menu"
-                                        (click)="productIconChange()" 
+                                        style="cursor: pointer" (click)="productIconChange()"
                                         [ngStyle]="{'transform': isCollapsed == 1 ? 'rotateZ(180deg)' : 'rotateZ(0deg)'}">
                                 </div>
                             </div>
                         </div>
                         <div class="col-1">
-
                         </div>
                     </div>
                     <div class="data-container mt-2">
-                        <div class="row row-margin" *ngFor="let p of projectList| searchFilter:search;let i = index"
+                        <div class="row row-margin project-row"
+                            *ngFor="let p of projectList| searchFilter:search;let i = index"
                             [ngClass]="{'row-table-non-striped': i % 2 == 0, 'row-table-striped': i % 2 != 0}">
                             <div class="col-5">
                                 <div class="row m-1">
                                     <div class="col-1 ">
-                                        <img src="./assets/icons/project-icon.svg" width="32px" height="32px" />
+                                        <img [src]="p.industry==='Insurance'?'./assets/icons/insurance-icon.svg':'./assets/icons/bank-icon.svg'"
+                                            width="32px" height="32px" />
                                     </div>
                                     <div class="col mx-3">
                                         <div class="header-body1">{{p.name}}</div>
@@ -124,78 +85,11 @@
                             <div class="col-1 d-flex align-items-center">
                                 <img src="/assets/icons/del-project.svg" class="icon icon-del"
                                     (click)="deleteProject(p)" />
-
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <!-- <div class="col">
-                    <div class="row">
-                        <div class="col-5">
-                            <p>ProjectName</p>
-                        </div>
-                        <div class="col-2">
-                            <span>Latest Updated</span>
-                            <img src="./assets/icons/sortab.svg" class="img-update" />
-                        </div>
-                        <div class="col-2">
-                            <p>Industry</p>
-                        </div>
-                        <div class="col-2">
-
-                            <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center center" fxFlex>
-
-                                <span class="">Product</span>
-                                <img [src]="productIcon" mat-button [matMenuTriggerFor]="menu"
-                                    (click)="productIconChange()">
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <p>DEL</p>
-                        </div>
-                    </div>
-                    <div class="row p-1" *ngFor="let p of projectList| searchFilter:search">
-                        <div class="col-5">
-                            <div class="row m-1">
-                                <div class="col-1 ">
-                                    <img src="./assets/icons/project-icon.svg" width="32" height="32" />
-                                </div>
-                                <div class="col">
-                                    <div>{{p.name}}</div>
-                                    <div>{{p.description}}</div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-2">
-                            <p>{{p.timeFormat}}</p>
-
-                        </div>
-                        <div class="col-2">
-                            <p class="filter-btn "
-                                [ngClass]="{'insurance': p.industry==='Insurance', 'banking ': p.industry==='Banking'}">
-                                <span class="mx-auto">{{p.industry}}</span>
-                            </p>
-                        </div>
-                        <div class="col-2">
-
-                            <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center center" fxFlex>
-
-                                {{p.product}}
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <img src="/assets/icons/del-project.svg" class="icon icon-del" (click)="removeProject(p)" />
-
-                        </div>
-                    </div>
-
-                </div> -->
             </section>
-
         </div>
         <div class="row row-view">
             <div class="col d-flex justify-content-end mx-5">
