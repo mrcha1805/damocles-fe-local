@@ -1,5 +1,5 @@
 {
-  "name": "damocles-insight-fe",
+  "name": "actionable-insight-fe",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build --prod --configuration=local --output-hashing=none",
     "build-dev": "ng build --prod --configuration=dev --output-hashing=none --base-href /actionable-insight/",
     "build-prod": "ng build --prod --configuration=production --output-hashing=none --base-href /actionable-insight/",
-    "build-iot": "ng build --prod --configuration=iot --output-hashing=none --base-href /actionable-insight/",
+    "build-stg": "ng build --prod --configuration=stg --output-hashing=none --base-href /actionable-insight/",
     "build-sqa": "ng build --prod --configuration=sqa --output-hashing=none --base-href /actionable-insight/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

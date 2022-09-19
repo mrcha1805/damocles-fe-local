@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "damocles-insight-fe": {
+    "actionable-insight-fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,11 +65,11 @@
                 }
               ]
             },
-            "iot": {
+            "stg": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.iot.ts"
+                  "with": "src/environments/environment.stg.ts"
                 }
               ],
               "optimization": true,
@@ -166,10 +166,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "damocles-insight-fe:build:production"
+              "browserTarget": "actionable-insight-fe:build:production"
             },
             "development": {
-              "browserTarget": "damocles-insight-fe:build:development"
+              "browserTarget": "actionable-insight-fe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -177,7 +177,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "damocles-insight-fe:build"
+            "browserTarget": "actionable-insight-fe:build"
           }
         },
         "test": {
@@ -203,5 +203,5 @@
       }
     }
   },
-  "defaultProject": "damocles-insight-fe"
+  "defaultProject": "actionable-insight-fe"
 }

@@ -2,7 +2,7 @@ import { NgxLoggerLevel } from 'ngx-logger';
 
 export const environment = {
   production: false,
-  env: 'iot',
+  env: 'stg',
   authen: {
     domain: 'https://stg-digital.ais.th/auth/v3.1',
     clientId: 'wO6kzH+uR2FMCbco8D4MACn6EJ1sRRFag7vkkVSBV+9CkFtdFVEZaA==',
