@@ -107,7 +107,7 @@ $heavent-normal: DB Heavent Nor;
 .row-margin {
   margin-left: 0;
   margin-right: calc(-0 * var(--bs-gutter-x));
-  height: 60px;
+  //height: 60px;
 }
 .grid-item-row2::after {
   content: "";
