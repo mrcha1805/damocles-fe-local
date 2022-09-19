@@ -1,0 +1,101 @@
+<app-navbar-logo></app-navbar-logo>
+
+<div fxLayout="row" class="grid-item viewport">
+    <div fxLayout="column" fxFlex>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
+            <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout p-5">
+                <div fxLayout="column" fxLayoutAlign="center center" class="text-center p-4">
+                    <div>
+                        <img src="./assets/icons/kpi-by-product.svg" width="180" />
+                    </div>
+                    <span class="font-18px">You looking for</span>
+                    <span class="font-42px">
+                        <font class="font-blue">KPI</font> by Product?
+                    </span>
+                    <span class="font-14px mt-3">Can you tell me a little more about your industry.</span>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center center"
+                class="grid-item-layout p-5">
+                <div fxLayout="column" class="grid-item-layout text-start p-4">
+                    <article class="grid-item-layout-collapse my-3" *ngFor="let item of kpiList; let i = index"
+                        [ngStyle]="setBorderCollapsed(i)">
+                        <img src="./assets/icons/expand-selected.svg" width="24" class="expand-selected"
+                            [ngStyle]="{'display': isCollapsed == i ? '': 'none'}" [@openClose]="helpMenuOpen" />
+                        <div class="collapse-title" (click)="collapsed(i)" (click)="toggleHelpMenu()">
+                            <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse">
+                                <div class="grid-item-layout-collapse">
+                                    <img src="{{ item.image }}" width="50" />
+                                </div>
+                                <div fxLayout="column" class="grid-item-layout-collapse">
+                                    <span class="font-20px p-1">
+                                        {{ item.name }}
+                                        &nbsp;
+                                        <span [popper]="popperContent" [popperTrigger]="triggers.hover"
+                                            [popperModifiers]="offsetModifiers" [popperPlacement]="placements.RIGHT">
+                                            <img src="./assets/icons/info.svg" width="20" height="20" />
+                                        </span>
+                                    </span>
+                                    <popper-content #popperContent>
+                                        <span>{{ item.info }}</span><br />
+                                    </popper-content>
+                                    <span class="font-12px p-1">{{ item.desc }}</span>
+                                </div>
+                            </div>
+                            <span class="collapse-title-expand-indicator">
+                                <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
+                                    [ngStyle]="{'transform': isCollapsed == i ? 'rotateZ(90deg)' : 'rotateZ(0deg)'}">
+                            </span>
+                        </div>
+                        <div [ngStyle]="setStyleCollapsed(i)" [@openClose]="helpMenuOpen">
+                            <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse collapse-sub-title">
+                                <div class="grid-item-layout-collapse">
+                                    <img width="50" />
+                                </div>
+                                <div fxLayout="column" class="collapse-effect" fxFlex>
+                                    <div class="grid-item-layout-collapse" [id]="'collapseViewMore-' + i"
+                                        [collapse]="i !== isCollapsed">
+                                        <div class="py-1" *ngFor="let data of item.data; let j = index">
+                                            <div fxLayout="row" class="grid-item-layout">
+                                                <mat-checkbox fxFlex="85" [(ngModel)]="data.isSelected"
+                                                    (change)="changeSelected(i, j)">
+                                                    <span class="font-14px24">{{ data.value }}</span>
+                                                </mat-checkbox>
+                                                &nbsp;
+                                                <div fxLayoutAlign="end center" fxFlex>
+                                                    <span [popper]="popperContent_sub" [popperTrigger]="triggers.hover"
+                                                        [popperModifiers]="offsetModifiers"
+                                                        [popperPlacement]="placements.TOP">
+                                                        <img src="./assets/icons/info.svg" width="18" height="18" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="j !== item.data.length - 1" class="border-bottom-dashed py-1">
+                                            </div>
+                                            <popper-content #popperContent_sub>
+                                                <span>{{ data.info }}</span><br />
+                                            </popper-content>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20" fxLayoutAlign="center center"
+                        class="my-4" style="padding: 0px 4rem;">
+                        <button class="btn btn-light font-16px" (click)="goCreateProject()">
+                            <img src=" ./assets/icons/arrow-left.svg" class="icon-left" />
+                            Back
+                        </button>
+                        <button class="btn btn-blue font-16px" (click)="goCreateKpi()">
+                            Next
+                            <img src="./assets/icons/arrow-right.svg" class="icon-right" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>

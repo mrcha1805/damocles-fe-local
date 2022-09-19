@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~ngx-popperjs/scss/theme-dark";
+@import "~ngx-popperjs/scss/theme-white";
+
+/* ngx-popper-js */
+.ngxp__container.ngxp__animation {
+  animation: ngxp-fadeIn 0.15s ease-out;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 15px;
+  color: #020202;
+}
+
+* {
+  font-family: Noto Sans, sans-serif !important;
+}
+
+/* viewport */
+.viewport {
+  min-height: calc(100vh - 98px);
+  &-100 {
+    min-height: 100vh;
+  }
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-thumb {
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #e5e5e5;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e5e5e5;
+}

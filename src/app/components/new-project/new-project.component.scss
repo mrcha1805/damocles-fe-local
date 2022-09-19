@@ -1,0 +1,80 @@
+@mixin font-format($weight, $size, $height, $hexcolor) {
+  font-family: Noto Sans, sans-serif !important;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $hexcolor !important;
+}
+
+// .grid-item {
+//   background-color: lightsalmon;
+// }
+
+// .grid-item-layout {
+//   background-color: cadetblue;
+//   border: 1px solid #ffffff;
+// }
+
+.font-14px {
+  @include font-format(400, 14px, 18px, #9a9a9a);
+}
+
+.font-16px {
+  @include font-format(700, 16px, 18px, #ffffff);
+}
+
+.font-18px {
+  @include font-format(500, 24px, 18px, #020202);
+}
+
+.font-42px {
+  @include font-format(800, 42px, 57px, #020202);
+}
+
+.font-blue {
+  color: rgba(73, 29, 197, 1);
+}
+
+.btn-blue {
+  background: #491dc5;
+  border-radius: 5px;
+  height: 50px;
+  padding: 0 5rem;
+}
+
+.project-name {
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #808080;
+  border-radius: 5px;
+}
+
+.m-rem-8 {
+  margin: 8rem;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+::placeholder {
+  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  opacity: 1 !important; /* Firefox */
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+}
+
+::ng-deep .navbar-logo {
+  background-image: repeating-linear-gradient(
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.8) 200%,
+    rgba(255, 255, 255, 0.1) 10%
+  ) !important;
+}
