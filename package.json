@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --configuration=local --output-hashing=none",
+    "build-dev": "ng build --prod --configuration=dev --output-hashing=none --base-href /actionable-insight/",
+    "build-prod": "ng build --prod --configuration=production --output-hashing=none --base-href /actionable-insight/",
+    "build-iot": "ng build --prod --configuration=iot --output-hashing=none --base-href /actionable-insight/",
+    "build-sqa": "ng build --prod --configuration=sqa --output-hashing=none --base-href /actionable-insight/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -30,6 +34,7 @@
     "jquery": "^3.6.1",
     "jwt-decode": "^3.1.2",
     "ngx-bootstrap": "^4.3.0",
+    "ngx-logger": "^5.0.11",
     "ngx-popperjs": "^12.2.1",
     "ngx-spinner": "^12.0.0",
     "rxjs": "^6.6.7",
