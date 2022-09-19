@@ -55,6 +55,16 @@ $heavent-normal: DB Heavent Nor;
 .header-tb:hover {
   @include font-format($heavent-bold, 700, 16px, 19px, #491dc5);
 }
+.non-project {
+  width: 203px;
+  height: 198px;
+}
+.non1 {
+  @include font-format($heavent-bold, 700, 24px, 24px, #676767);
+}
+.non2 {
+  @include font-format($heavent-reg, 400, 20px, 24px, #676767);
+}
 .row-header-tb {
   background: #fff;
 
@@ -97,6 +107,7 @@ $heavent-normal: DB Heavent Nor;
 .row-margin {
   margin-left: 0;
   margin-right: calc(-0 * var(--bs-gutter-x));
+  height: 60px;
 }
 .grid-item-row2::after {
   content: "";
