@@ -69,6 +69,10 @@ $heavent-normal: DB Heavent Nor;
   padding-right: 1rem;
   margin-top: 2rem;
 }
+.btn-light:hover {
+  background: #EDE8F9;
+  border: 2px solid #491dc5;
+}
 .btn-blue {
   background: #491dc5;
   border-radius: 5px;
@@ -76,6 +80,9 @@ $heavent-normal: DB Heavent Nor;
   width: 152px;
   padding-left: 1rem;
   margin-top: 2rem;
+}
+.btn-blue:hover {
+  background: #3B189E;
 }
 
 .icon-back {
