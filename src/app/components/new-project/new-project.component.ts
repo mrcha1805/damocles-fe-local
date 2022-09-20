@@ -35,7 +35,7 @@ export class NewProjectComponent implements OnInit {
       name: 'FlexiDrive 202201',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
       created: '2022-09-16T04:40:31.720Z',
-      industry: 'Banking',
+      industry: 'Standard',
       product: 'Health Insurance',
       timeFormat: '',
       timeLabel: '',
@@ -44,7 +44,7 @@ export class NewProjectComponent implements OnInit {
       name: 'Travel Freemium 2022004',
       description: 'Size of user who hav propensity to travel',
       created: '2022-09-13T20:21:11.496Z',
-      industry: 'Banking',
+      industry: 'Standard',
       product: 'Health Insurance',
       timeFormat: '',
       timeLabel: '',
@@ -89,7 +89,7 @@ export class NewProjectComponent implements OnInit {
       name: 'FlexiDrive 202201',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
       created: '2022-01-11T07:56:36.000Z',
-      industry: 'Banking',
+      industry: 'Standard',
       product: 'Health Insurance',
       timeFormat: '',
       timeLabel: '',
@@ -98,7 +98,7 @@ export class NewProjectComponent implements OnInit {
       name: 'Travel Freemium 2022004',
       description: 'Size of user who hav propensity to travel',
       created: '2022-04-05T19:32:36.000Z',
-      industry: 'Banking',
+      industry: 'Standard',
       product: 'Health Insurance',
       timeFormat: '',
       timeLabel: '',
@@ -107,7 +107,7 @@ export class NewProjectComponent implements OnInit {
       name: 'FlexiDrive 202202',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
       created: '2022-02-24T10:34:36.000Z',
-      industry: 'Banking',
+      industry: 'Standard',
       product: 'Health Insurance',
       timeFormat: '',
       timeLabel: '',
@@ -125,7 +125,7 @@ export class NewProjectComponent implements OnInit {
       name: 'FlexiDrive ACS',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
       created: '2022-01-11T07:56:36.000Z',
-      industry: 'Banking',
+      industry: 'Standard',
       product: 'Asset Protection',
       timeFormat: '',
       timeLabel: '',
@@ -137,8 +137,7 @@ export class NewProjectComponent implements OnInit {
   mode: string | undefined;
   search: string = '';
   sortUpdateIcon: boolean = false;
-  productIcon: string | undefined;
-  pIcon: boolean | undefined;
+
   productList = [
     {
       name: 'Asset Protection',
@@ -189,8 +188,7 @@ export class NewProjectComponent implements OnInit {
     this.sortUpdateIcon = true;
 
     //product menu
-    this.productIcon = './assets/icons/navbar-arrow.svg';
-    this.pIcon = false;
+
     this.projectData = this.projectMasterData;
     await this.setData();
   }
@@ -232,10 +230,10 @@ export class NewProjectComponent implements OnInit {
     this.projectList = this.projectFilter = this.projectData;
   }
 
-  isCollapsed = -1;
+  productIsCollapsed: boolean = true;
 
   filter(mode: string) {
-    this.isCollapsed = -1;
+    this.productIsCollapsed = true;
     this.projectList = this.projectData;
     this.mode = mode;
     if (mode !== 'all') {
@@ -324,12 +322,9 @@ export class NewProjectComponent implements OnInit {
   }
 
   productIconChange() {
-    this.isCollapsed = 1;
-    //this.pIcon = !this.pIcon;
-    // if (!this.pIcon) {
-    //   this.productIcon = './assets/icons/sortba.svg';
-    // } else {
-    //   this.productIcon = './assets/icons/sortab.svg';
-    // }
+    this.productIsCollapsed = false;
+  }
+  productMenuClose() {
+    this.productIsCollapsed = !this.productIsCollapsed;
   }
 }

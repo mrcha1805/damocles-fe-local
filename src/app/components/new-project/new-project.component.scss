@@ -65,6 +65,10 @@ $heavent-normal: DB Heavent Nor;
 .non2 {
   @include font-format($heavent-reg, 400, 20px, 24px, #676767);
 }
+.arrow-icon {
+  width: 6.45px;
+  height: 10.74px;
+}
 .row-header-tb {
   background: #fff;
 
@@ -169,13 +173,13 @@ $heavent-normal: DB Heavent Nor;
       border: 2px solid #491dc5;
     }
   }
-  &.banking {
-    background: #f9fdea;
+  &.standard {
+    background: #d5f169;
     border: none;
     width: 100px;
-    &:hover {
-      border: 2px solid #c3eb29;
-    }
+    // &:hover {
+    //   border: 2px solid #c3eb29;
+    // }
   }
 }
 .mat-container {
@@ -199,15 +203,14 @@ $heavent-normal: DB Heavent Nor;
   &.all {
     background: #fff2ea;
     width: 50px;
-    border: none;
   }
   &.insurance {
     background: #c8bbed;
     border: none;
     width: 100px;
   }
-  &.banking {
-    background: #f9fdea;
+  &.standard {
+    background: #d5f169;
     border: none;
     width: 100px;
   }
