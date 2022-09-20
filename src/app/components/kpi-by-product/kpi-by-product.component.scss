@@ -48,7 +48,7 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .font-32px {
-  @include font-format($heavent-bold, 700, 32px, 30px, #020202);
+  @include font-format($heavent-bold, 700, 32px, 38px, #020202);
 }
 
 .font-64px {
@@ -120,7 +120,7 @@ input:focus {
   cursor: pointer;
   &-expand-indicator {
     position: absolute;
-    top: 35px;
+    top: 50%;
     right: 1.5rem;
     transform: translateY(-50%);
   }
