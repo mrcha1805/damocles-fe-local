@@ -88,6 +88,12 @@ $heavent-normal: DB Heavent Nor;
     @include font-format($heavent-reg, 400, 18px, 22px, #000000);
   }
 }
+
+.project-row {
+  background: #ede8f9;
+  border: 2px solid #ffffff00;
+}
+
 .row-margin{
   margin-right: calc(-.0 * var(--bs-gutter-x));
 }
