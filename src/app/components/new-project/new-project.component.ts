@@ -1,10 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { IProject } from 'src/app/model/project-interface';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteProjectModalComponent } from 'src/app/modals/delete-project-modal/delete-project-modal.component';
+
 enum DaysNum {
   Today = 1,
   Week = 7,
@@ -34,7 +37,7 @@ export class NewProjectComponent implements OnInit {
     {
       name: 'FlexiDrive 202201',
       description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2022-09-16T04:40:31.720Z',
+      created: '2021-09-16T04:40:31.720Z',
       industry: 'Standard',
       product: 'Health Insurance',
       timeFormat: '',
@@ -136,8 +139,9 @@ export class NewProjectComponent implements OnInit {
   projectFilter: IProject[] = [];
   mode: string | undefined;
   search: string = '';
-  sortUpdateIcon: boolean = false;
 
+  productIsCollapsed: boolean = true;
+  sortUpdated: boolean = false;
   productList = [
     {
       name: 'Asset Protection',
@@ -185,9 +189,8 @@ export class NewProjectComponent implements OnInit {
     this.projectData = [];
     this.projectFilter = [];
     this.mode = 'all';
-    this.sortUpdateIcon = true;
 
-    //product menu
+    this.sortUpdated = false;
 
     this.projectData = this.projectMasterData;
     await this.setData();
@@ -230,8 +233,6 @@ export class NewProjectComponent implements OnInit {
     this.projectList = this.projectFilter = this.projectData;
   }
 
-  productIsCollapsed: boolean = true;
-
   filter(mode: string) {
     this.productIsCollapsed = true;
     this.projectList = this.projectData;
@@ -245,7 +246,6 @@ export class NewProjectComponent implements OnInit {
       this.projectList = filterData;
     }
 
-    this.sortData();
     this.projectFilter = this.projectList;
   }
   filterProduct(f: string) {
@@ -254,7 +254,6 @@ export class NewProjectComponent implements OnInit {
       (e) => e.product === f
     );
     this.projectList = result;
-    this.sortData();
   }
   removeProject(p: IProject) {
     console.log(p.name);
@@ -290,35 +289,18 @@ export class NewProjectComponent implements OnInit {
     });
   }
 
-  getDefaultUpdatedIcon() {
-    let image: any;
-    if (!this.sortUpdateIcon) {
-      image = './assets/icons/sortba.svg';
-    } else {
-      image = './assets/icons/sortab.svg';
-    }
-    return image;
-  }
-  orderByUpdated(e: any) {
-    console.log('order by update' + e.src);
-    this.sortUpdateIcon = !this.sortUpdateIcon;
-    if (e.src.includes('sortab')) {
-      e.src = './assets/icons/sortba.svg';
-      this.sortData();
-    } else {
-      e.src = './assets/icons/sortab.svg';
-      this.sortData();
-    }
-  }
+  sortUpdatedIconChange() {
+    this.sortUpdated = !this.sortUpdated;
 
-  _sortUpdated(a: IProject, b: IProject) {
-    // if (a.timeFormat < b.timeFormat) {
-    //   return -1;
-    // }
-    // return -1;
-  }
-  sortData() {
-    //this.projectList = this.projectList.sort(this._sortUpdated);
+    if (this.sortUpdated) {
+      this.projectList.sort((a, b) => {
+        return a.created < b.created ? -1 : a.created > b.created ? 1 : 0;
+      });
+    } else {
+      this.projectList.sort((a, b) => {
+        return a.created > b.created ? -1 : a.created > b.created ? 1 : 0;
+      });
+    }
   }
 
   productIconChange() {

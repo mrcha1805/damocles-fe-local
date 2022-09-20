@@ -35,7 +35,9 @@
                         <div class="col-2">
                             <div class="header-tb2">
                                 <span class="header-tb2">Latest Updated</span>
-                                <img src="./assets/icons/sortab.svg" class="img-update mx-1" />
+                                <img src="./assets/icons/sortab.svg" class="img-update mx-1" style="cursor: pointer"
+                                    (click)="sortUpdatedIconChange()"
+                                    [ngStyle]="{'transform': sortUpdated ? 'rotateZ(180deg)' : 'rotateZ(0deg)'}" />
                             </div>
                         </div>
                         <div class="col-2 d-flex justify-content-start">
