@@ -2,9 +2,9 @@
 
 <div fxLayout="row" class="grid-item viewport">
     <div fxLayout="column" fxFlex>
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxFlex>
             <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout p-5">
-                <div fxLayout="column" fxLayoutAlign="center center" class="text-center p-4">
+                <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
                     <div>
                         <img src="./assets/icons/kpi-by-product.svg" width="180" />
                     </div>
@@ -17,7 +17,7 @@
             </div>
             <div fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center center"
                 class="grid-item-layout p-5">
-                <div fxLayout="column" class="grid-item-layout overflow-auto kpi-layout text-start p-4">
+                <div fxLayout="column" class="grid-item-layout kpi-layout text-start px-3">
                     <article class="grid-item-layout-collapse my-3" *ngFor="let item of kpiList; let i = index"
                         [ngStyle]="setBorderCollapsed(i)">
                         <img src="./assets/icons/expand-selected.svg" width="24" class="expand-selected"

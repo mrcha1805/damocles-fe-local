@@ -27,6 +27,8 @@ $heavent-normal: DB Heavent Nor;
 
 .kpi-layout {
   max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .font-16px {
