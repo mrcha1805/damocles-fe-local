@@ -38,7 +38,7 @@ export class KpiByProductComponent implements OnInit {
   kpiList: any = [
     {
       name: 'Standard',
-      image: './assets/icons/banking.svg',
+      image: './assets/icons/standard-icon.svg',
       desc: 'Standard Industrial Domain Insight',
       info: 'xxxxx',
       isSelected: false,
@@ -50,16 +50,36 @@ export class KpiByProductComponent implements OnInit {
     },
     {
       name: 'Insurance',
-      image: './assets/icons/insurance.svg',
+      image: './assets/icons/insurance-icon.svg',
       desc: 'Insurance Industrial Domain Insight',
       info: 'xxxxx',
       isSelected: false,
       data: [
-        { value: 'Asset Protection', info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance', isSelected: true },
-        { value: 'Health insurance', info: 'Finding target for health insurance', isSelected: false },
-        { value: 'Personal accident insurance', info: 'Finding target for personal accident insurance', isSelected: false },
-        { value: 'Saving insurance', info: 'Finding target for saving insurance', isSelected: false },
-        { value: 'Travel insurance', info: 'Finding target for travel insurance', isSelected: false },
+        {
+          value: 'Asset Protection',
+          info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance',
+          isSelected: true,
+        },
+        {
+          value: 'Health insurance',
+          info: 'Finding target for health insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Personal accident insurance',
+          info: 'Finding target for personal accident insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Saving insurance',
+          info: 'Finding target for saving insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Travel insurance',
+          info: 'Finding target for travel insurance',
+          isSelected: false,
+        },
       ],
     },
   ];
