@@ -16,10 +16,6 @@
   color: #020202;
 }
 
-* {
-  font-family: Noto Sans, sans-serif !important;
-}
-
 /* viewport */
 .viewport {
   min-height: calc(100vh - 98px);
@@ -48,7 +44,7 @@
 
 @font-face {
   font-family: "DB Heavent Bd";
-  src: url(./assets/fonts/Heavent/DB_Heavent_Bd_v3.2.ttf);
+  src: url(./assets/fonts/Heavent/DB_Heavent_Med_v3.2.ttf);
 }
 
 @font-face {
