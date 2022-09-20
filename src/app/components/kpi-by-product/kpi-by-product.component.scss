@@ -30,7 +30,7 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .font-16px {
-  @include font-format($heavent-normal, 400, 16px, 15px, #000000);
+  @include font-format($heavent-reg, 400, 16px, 15px, #000000);
 }
 
 .font-18px {
