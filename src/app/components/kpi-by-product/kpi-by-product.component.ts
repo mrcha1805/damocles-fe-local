@@ -37,9 +37,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class KpiByProductComponent implements OnInit {
   kpiList: any = [
     {
-      name: 'Banking',
+      name: 'Standard',
       image: './assets/icons/banking.svg',
-      desc: 'Banking Industrial Domain Insight',
+      desc: 'Standard Industrial Domain Insight',
       info: 'xxxxx',
       isSelected: false,
       data: [
@@ -98,7 +98,7 @@ export class KpiByProductComponent implements OnInit {
   ngOnInit() {}
 
   collapsed(index: number) {
-    if (index === -1) {
+    if (index === 0) {
       return;
     } else {
       if (this.isCollapsed === index) {
