@@ -146,6 +146,7 @@ $heavent-normal: DB Heavent Nor;
   border-radius: 4px;
   padding: 3px;
   width: 60%;
+  border: none;
   @include font-format($heavent-bold, 700, 24px, 25px, #ffffff);
 }
 .new-project-btn:hover {
