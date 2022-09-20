@@ -8,11 +8,11 @@
                     <div>
                         <img src="./assets/icons/kpi-by-product.svg" width="180" />
                     </div>
-                    <span class="font-18px">You looking for</span>
-                    <span class="font-42px">
+                    <span class="font-32px">You looking for</span>
+                    <span class="font-64px">
                         <font class="font-blue">KPI</font> by Product?
                     </span>
-                    <span class="font-14px mt-3">Can you tell me a little more about your industry.</span>
+                    <span class="font-18px">Can you tell me a little more about your industry.</span>
                 </div>
             </div>
             <div fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center center"
@@ -28,7 +28,7 @@
                                     <img src="{{ item.image }}" width="50" />
                                 </div>
                                 <div fxLayout="column" class="grid-item-layout-collapse">
-                                    <span class="font-20px p-1">
+                                    <span class="font-32px p-1">
                                         {{ item.name }}
                                         &nbsp;
                                         <!-- <span [popper]="popperContent" [popperTrigger]="triggers.hover"
@@ -39,7 +39,7 @@
                                     <popper-content #popperContent>
                                         <span>{{ item.info }}</span><br />
                                     </popper-content>
-                                    <span class="font-12px p-1">{{ item.desc }}</span>
+                                    <span class="font-16px p-1">{{ item.desc }}</span>
                                 </div>
                             </div>
                             <span class="collapse-title-expand-indicator">
@@ -61,7 +61,7 @@
                                             <div fxLayout="row" class="grid-item-layout">
                                                 <mat-checkbox fxFlex="85" [(ngModel)]="data.isSelected"
                                                     (change)="changeSelected(i, j)">
-                                                    <span class="font-14px24">{{ data.value }}</span>
+                                                    <span class="font-16px">{{ data.value }}</span>
                                                 </mat-checkbox>
                                                 &nbsp;
                                                 <div fxLayoutAlign="end center" fxFlex>
@@ -86,11 +86,11 @@
                 </div>
                 <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20" fxLayoutAlign="center center"
                     class="my-4" style="padding: 0px 4rem;">
-                    <button class="btn btn-light font-16px" (click)="goCreateProject()">
+                    <button class="btn btn-light font-24back" (click)="goCreateProject()">
                         <img src=" ./assets/icons/arrow-left.svg" class="icon-back" />
                         Back
                     </button>
-                    <button class="btn btn-blue font-16px" (click)="goCreateKpi()">
+                    <button class="btn btn-blue font-24next" (click)="goCreateKpi()">
                         Next
                         <img src="./assets/icons/arrow-right.svg" class="icon-next" />
                     </button>
