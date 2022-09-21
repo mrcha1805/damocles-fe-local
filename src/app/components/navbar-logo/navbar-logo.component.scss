@@ -1,7 +1,7 @@
 @mixin font-format($weight, $size, $height, $hexcolor) {
   font-family: Noto Sans, sans-serif !important;
   font-style: normal;
-  font-weight: $weight;
+  //font-weight: $weight;
   font-size: $size;
   line-height: $height;
   color: $hexcolor;

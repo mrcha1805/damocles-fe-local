@@ -4,7 +4,7 @@ $heavent-normal: DB Heavent Nor;
 @mixin font-format($font, $weight, $size, $height, $hexcolor) {
   font-family: $font !important;
   font-style: normal;
-  font-weight: $weight;
+  //font-weight: $weight;
   font-size: $size;
   line-height: $height;
   color: $hexcolor !important;
@@ -36,15 +36,15 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .font-18px {
-  @include font-format($heavent-normal, 400, 18px, 18px, #9A9A9A);
+  @include font-format($heavent-normal, 400, 18px, 18px, #9a9a9a);
 }
 
 .font-24back {
-  @include font-format($heavent-normal, 700, 24px, 20px, #491DC5);
+  @include font-format($heavent-normal, 700, 24px, 20px, #491dc5);
 }
 
 .font-24next {
-  @include font-format($heavent-normal, 700, 24px, 20px, #FFFFFF);
+  @include font-format($heavent-normal, 700, 24px, 20px, #ffffff);
 }
 
 .font-32px {
@@ -56,7 +56,7 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .font-blue {
-  @include font-format($heavent-bold, 700, 64px, 60px, #491DC5);
+  @include font-format($heavent-bold, 700, 64px, 60px, #491dc5);
 }
 
 .btn-light {
@@ -70,7 +70,7 @@ $heavent-normal: DB Heavent Nor;
   margin-top: 2rem;
 }
 .btn-light:hover {
-  background: #EDE8F9;
+  background: #ede8f9;
   border: 2px solid #491dc5;
 }
 .btn-blue {
@@ -82,7 +82,7 @@ $heavent-normal: DB Heavent Nor;
   margin-top: 2rem;
 }
 .btn-blue:hover {
-  background: #3B189E;
+  background: #3b189e;
 }
 
 .icon-back {

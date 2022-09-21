@@ -3,7 +3,7 @@ $heavent-reg: DB Heavent Reg;
 @mixin font-format($font, $weight, $size, $height, $hexcolor) {
   font-family: $font !important;
   font-style: normal;
-  font-weight: $weight;
+  //font-weight: $weight;
   font-size: $size;
   line-height: $height;
   color: $hexcolor !important;
