@@ -165,7 +165,7 @@ input:focus {
   border: 0 !important;
 }
 :host::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #b6a5e8 !important;
+  background-color: #676767 !important;
   border-radius: 50% !important;
   width: 24px !important;
   height: 24px !important;
@@ -189,7 +189,7 @@ input:focus {
   height: 24px !important;
 }
 :host::ng-deep .mat-checkbox-checkmark-path {
-  stroke: #491dc5 !important;
+  stroke: #ffffff !important;
 }
 :host::ng-deep .mat-checkbox-checked .mat-checkbox-checkmark-path {
   stroke-dashoffset: 3 !important;

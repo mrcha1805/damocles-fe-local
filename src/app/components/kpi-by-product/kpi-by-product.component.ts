@@ -36,18 +36,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class KpiByProductComponent implements OnInit {
   kpiList: any = [
-    {
-      name: 'Standard',
-      image: './assets/icons/standard-icon.svg',
-      desc: 'Standard Industrial Domain Insight',
-      info: 'xxxxx',
-      isSelected: false,
-      data: [
-        { value: 'Deposit', info: 'xxxxx', isSelected: true },
-        { value: 'Credit', info: 'xxxxx', isSelected: false },
-        { value: 'Investment', info: 'xxxxx', isSelected: false },
-      ],
-    },
+    // {
+    //   name: 'Standard',
+    //   image: './assets/icons/standard-icon.svg',
+    //   desc: 'Standard Industrial Domain Insight',
+    //   info: 'xxxxx',
+    //   isSelected: false,
+    //   data: [
+    //     { value: 'Deposit', info: 'xxxxx', isSelected: false },
+    //     { value: 'Credit', info: 'xxxxx', isSelected: false },
+    //     { value: 'Investment', info: 'xxxxx', isSelected: false },
+    //   ],
+    // },
     {
       name: 'Insurance',
       image: './assets/icons/insurance-icon.svg',
@@ -58,7 +58,7 @@ export class KpiByProductComponent implements OnInit {
         {
           value: 'Asset Protection',
           info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance',
-          isSelected: true,
+          isSelected: false,
         },
         {
           value: 'Health insurance',
@@ -118,20 +118,31 @@ export class KpiByProductComponent implements OnInit {
   ngOnInit() {}
 
   collapsed(index: number) {
-    if (index === 0) {
-      return;
+    // if (index === 0) {
+    //   return;
+    // } else {
+    //   if (this.isCollapsed === index) {
+    //     this.isCollapsed = -1;
+    //     this.kpiList.forEach((e: any) => {
+    //       e.isSelected = false;
+    //     });
+    //   } else {
+    //     this.isCollapsed = index;
+    //     this.kpiList.forEach((e: any) => {
+    //       e.isSelected = true;
+    //     });
+    //   }
+    // }
+    if (this.isCollapsed === index) {
+      this.isCollapsed = -1;
+      this.kpiList.forEach((e: any) => {
+        e.isSelected = false;
+      });
     } else {
-      if (this.isCollapsed === index) {
-        this.isCollapsed = -1;
-        this.kpiList.forEach((e: any) => {
-          e.isSelected = false;
-        });
-      } else {
-        this.isCollapsed = index;
-        this.kpiList.forEach((e: any) => {
-          e.isSelected = true;
-        });
-      }
+      this.isCollapsed = index;
+      this.kpiList.forEach((e: any) => {
+        e.isSelected = true;
+      });
     }
   }
 

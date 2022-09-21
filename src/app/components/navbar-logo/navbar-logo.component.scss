@@ -1,10 +1,12 @@
-@mixin font-format($weight, $size, $height, $hexcolor) {
-  font-family: Noto Sans, sans-serif !important;
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font !important;
   font-style: normal;
   //font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor;
+  color: $hexcolor !important;
 }
 
 // .grid-item {
@@ -28,6 +30,27 @@
   );
 }
 
-.font-16px {
-  @include font-format(700, 16px, 20px, #020202);
+.username {
+  @include font-format($heavent-bold, 700, 24px, 100%, #020202);
+}
+::ng-deep .mat-menu-panel {
+  min-width: 112px;
+  max-width: 280px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 48px);
+  border-radius: 4px;
+  outline: 0;
+  min-height: 34px !important;
+  overflow: hidden !important;
+}
+::ng-deep .mat-menu-content {
+  height: 20px;
+}
+
+.logout {
+  @include font-format($heavent-bold, 700, 14px, 10px, #491dc5);
+  &:hover {
+    background: #ffffff;
+  }
 }

@@ -171,12 +171,18 @@ $heavent-normal: DB Heavent Nor;
     &:hover {
       border: 2px solid #ff7b31;
     }
+    &.sel-filter {
+      border: 2px solid #ff7b31;
+    }
   }
   &.insurance {
     background: #c8bbed;
     border: none;
     width: 100px;
     &:hover {
+      border: 2px solid #491dc5;
+    }
+    &.sel-filter {
       border: 2px solid #491dc5;
     }
   }

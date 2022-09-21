@@ -4,12 +4,15 @@
     </div>
     <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="end center" fxFlex class="grid-item-layout">
         <img src="./assets/icons/jessica-profile.svg" width="35" />
-        <span class="font-16px">{{ userName }}</span>
-        <img src="./assets/icons/navbar-arrow.svg" mat-button [matMenuTriggerFor]="menu">
+        <span class="username">{{ userName }}</span>
+        <img src="./assets/icons/navbar-arrow.svg" mat-button [matMenuTriggerFor]="menu" style="cursor: pointer">
     </div>
 </div>
 
-<mat-menu #menu="matMenu" class="mat-menu-test">
-    <!-- <a mat-menu-item>Item 1</a> -->
-    <a mat-menu-item>Logout</a>
+<mat-menu #menu="matMenu" class="mat-container">
+
+    <a mat-menu-item class="logout mx-2" (click)="logout()"><img src="./assets/icons/logout.svg" width="8px"
+            height="6.86px"><span class="px-2">Logout </span> </a>
+
+
 </mat-menu>

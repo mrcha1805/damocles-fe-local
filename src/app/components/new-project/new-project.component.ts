@@ -142,6 +142,21 @@ export class NewProjectComponent implements OnInit {
 
   productIsCollapsed: boolean = true;
   sortUpdated: boolean = false;
+  industryFilterMode: any = 0;
+  industryMode = [
+    {
+      name: 'All',
+      value: 0,
+    },
+    {
+      name: 'Insurance',
+      value: 1,
+    },
+    {
+      name: 'Standard',
+      value: 2,
+    },
+  ];
   productList = [
     {
       name: 'Asset Protection',
@@ -191,6 +206,7 @@ export class NewProjectComponent implements OnInit {
     this.mode = 'all';
 
     this.sortUpdated = false;
+    this.industryFilterMode = 0;
 
     this.projectData = this.projectMasterData;
     await this.setData();
@@ -241,11 +257,14 @@ export class NewProjectComponent implements OnInit {
       let filterData = this.projectList.filter(
         (e) => e.industry.toLowerCase() === mode
       );
+
       console.log('mode: ' + mode);
       console.log('filter: ' + JSON.stringify(filterData));
       this.projectList = filterData;
     }
-
+    this.industryFilterMode = this.industryMode.find(
+      (e) => e.name.toLowerCase() === mode
+    )?.value;
     this.projectFilter = this.projectList;
   }
   filterProduct(f: string) {
