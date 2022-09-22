@@ -99,6 +99,9 @@ $heavent-normal: DB Heavent Nor;
   max-width: 100%;
   overflow-x: hidden;
 }
+.disable-scroll {
+  overflow: hidden;
+}
 .data-container {
   height: 250px;
   overflow: auto !important;
@@ -118,8 +121,8 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .project-row {
-  background: #ede8f9;
-  border: 2px solid #ffffff00;
+  // background: #ede8f9;
+  // border: 2px solid #ffffff00;
 }
 
 .row-margin {
