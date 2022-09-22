@@ -60,6 +60,7 @@ import { SearchFilterPipe } from './services/search-filter.pipe';
 import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FunnelChartComponent } from './components/funnel-chart/funnel-chart.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -126,6 +127,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
     NgbModule,
+    DragDropModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
