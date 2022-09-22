@@ -47,6 +47,14 @@ $heavent-reg: DB Heavent Reg;
 // ::ng-deep .mat-menu-content {
 //   height: 20px;
 // }
+.mat-menu-content {
+  width: 88px;
+  // height: 40px;
+  padding: 0px;
+}
+// ::ng-deep .mat-menu-content{
+//   padding:0px !important;
+// }
 
 .logout {
   padding-top: 5px;
