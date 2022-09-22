@@ -207,12 +207,12 @@ $heavent-normal: DB Heavent Nor;
   height: 100px;
 }
 .mat-menu-style {
-  @include font-format($heavent-reg, 700, 14px, 10px, #000000);
+  @include font-format($heavent-reg, 700, 14px, 17px, #000000);
   height: 20px;
   display: block;
 }
 .mat-menu-style:hover {
-  @include font-format($heavent-reg, 700, 14px, 10px, #491dc5);
+  @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
   background: #ffffff;
 }
 .industry-body {
