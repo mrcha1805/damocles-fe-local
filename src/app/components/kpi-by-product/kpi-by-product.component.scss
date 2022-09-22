@@ -40,11 +40,11 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .font-24back {
-  @include font-format($heavent-normal, 700, 24px, 20px, #491dc5);
+  @include font-format($heavent-bold, 700, 24px, 20px, #491dc5);
 }
 
 .font-24next {
-  @include font-format($heavent-normal, 700, 24px, 20px, #ffffff);
+  @include font-format($heavent-bold, 700, 24px, 20px, #ffffff);
 }
 
 .font-32px {
