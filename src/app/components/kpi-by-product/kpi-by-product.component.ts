@@ -61,23 +61,23 @@ export class KpiByProductComponent implements OnInit {
           isSelected: false,
         },
         {
-          value: 'Health insurance',
+          value: 'Health Insurance',
           info: 'Finding target for health insurance',
           isSelected: false,
         },
         {
-          value: 'Personal accident insurance',
+          value: 'Personal Accident Insurance',
           info: 'Finding target for personal accident insurance',
           isSelected: false,
         },
         {
-          value: 'Saving insurance',
+          value: 'Saving Insurance',
           info: 'Finding target for saving insurance',
           isSelected: false,
         },
         {
-          value: 'Travel insurance',
-          info: 'Finding target for travel insurance',
+          value: 'Travel Accident Insurance',
+          info: 'Finding target for travel accident insurance',
           isSelected: false,
         },
       ],
@@ -115,7 +115,7 @@ export class KpiByProductComponent implements OnInit {
     this.typeSelected = 'ball-atom';
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   collapsed(index: number) {
     // if (index === 0) {
@@ -149,15 +149,41 @@ export class KpiByProductComponent implements OnInit {
   setBorderCollapsed(index: number) {
     if (this.isCollapsed === index) {
       this.style = {
-        border: '2px solid #491DC5',
-        boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
-      };
-    } else {
-      this.style = {
         border: '0.8px solid #9A9A9A',
         margin: '1.2px',
       };
+      this.kpiList.forEach((e: any) => {
+        var value = e.data.every((element:any)=>{
+          return element.isSelected === false;
+        })
+        console.log(value);
+        if (value === false) {
+          this.style = {
+            border: '2px solid #491DC5',
+            boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+          };
+          console.log('isSelected === true');
+        } else {
+          this.style = {
+            border: '0.8px solid #9A9A9A',
+            margin: '1.2px',
+          };
+          console.log('isSelected === false');
+        }
+      });
     }
+
+    // if (this.isCollapsed === index) {
+    //   this.style = {
+    //     border: '2px solid #491DC5',
+    //     boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+    //   };
+    // } else {
+    //   this.style = {
+    //     border: '0.8px solid #9A9A9A',
+    //     margin: '1.2px',
+    //   };
+    // }
     return this.style;
   }
 
@@ -173,6 +199,14 @@ export class KpiByProductComponent implements OnInit {
       this.kpiList.forEach((e: any, i: number) => {
         if (i === index) {
           e.data.forEach((item: any, j: number) => {
+            // if (j === target) {
+            //   item.isSelected = true;
+            //   console.log('true');
+            // } else {
+            //   item.isSelected = false;
+            //   console.log('false');
+            // } 
+            // return item.isSelected;
             item.isSelected = j === target ? true : false;
           });
         }
