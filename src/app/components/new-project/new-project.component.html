@@ -58,8 +58,8 @@
                         <div class="col-1">
                         </div>
                     </div>
-                    <div class="data-container mt-2">
-                        <div *ngIf="projectList.length === 0" class="d-flex justify-content-center mt-2">
+                    <div *ngIf="userProjectCount === 0" class="empty-project-container">
+                        <div class="d-flex justify-content-center mt-2">
                             <div>
                                 <img src="./assets/icons/non-project-bg.svg" alt="" class="non-project">
                                 <p class="non1">No Projects created yet! </p>
@@ -67,45 +67,48 @@
                             </div>
 
                         </div>
-                        <div *ngIf="projectList.length > 0">
-                            <div class="row row-margin project-row"
-                                *ngFor="let p of projectList| searchFilter:search;let i = index"
-                                [ngClass]="{'row-table-non-striped': i % 2 == 0, 'row-table-striped': i % 2 != 0}">
-                                <div class="col-5">
-                                    <div class="row m-1">
-                                        <div class="col-1 ">
-                                            <img [src]="p.industry==='Insurance'?'./assets/icons/insurance-icon.svg':'./assets/icons/standard-icon.svg'"
-                                                width="32px" height="32px" />
-                                        </div>
-                                        <div class="col mx-3">
-                                            <div class="header-body1">{{p.name}}</div>
-                                            <div class="header-body2">{{p.description}}</div>
-                                        </div>
+                    </div>
+                    <div *ngIf="userProjectCount > 0" class="data-container mt-2">
+
+
+                        <div class="row row-margin project-row"
+                            *ngFor="let p of projectList| searchFilter:search;let i = index"
+                            [ngClass]="{'row-table-non-striped': i % 2 == 0, 'row-table-striped': i % 2 != 0}">
+                            <div class="col-5">
+                                <div class="row m-1">
+                                    <div class="col-1 ">
+                                        <img [src]="p.industry==='Insurance'?'./assets/icons/insurance-icon.svg':'./assets/icons/standard-icon.svg'"
+                                            width="32px" height="32px" />
+                                    </div>
+                                    <div class="col mx-3">
+                                        <div class="header-body1">{{p.name}}</div>
+                                        <div class="header-body2">{{p.description}}</div>
                                     </div>
                                 </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <div class="header-body3 ">{{p.timeLabel}}</div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center ">
-                                    <p class="header-body3 industry-body "
-                                        [ngClass]="{'insurance': p.industry==='Insurance', 'standard ': p.industry==='Standard'}">
-                                        {{p.industry}}
-                                    </p>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <p class="header-body3">{{p.product}}</p>
-                                </div>
-                                <div class="col-1 d-flex align-items-center">
-                                    <img src="/assets/icons/del-project.svg" class="icon icon-del"
-                                        (click)="deleteProject(p)" />
-                                </div>
+                            </div>
+                            <div class="col-2 d-flex align-items-center">
+                                <div class="header-body3 ">{{p.timeLabel}}</div>
+                            </div>
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="header-body3 industry-body "
+                                    [ngClass]="{'insurance': p.industry==='Insurance', 'standard ': p.industry==='Standard'}">
+                                    {{p.industry}}
+                                </p>
+                            </div>
+                            <div class="col-2 d-flex align-items-center">
+                                <p class="header-body3">{{p.product}}</p>
+                            </div>
+                            <div class="col-1 d-flex align-items-center">
+                                <img src="/assets/icons/del-project.svg" class="icon icon-del"
+                                    (click)="deleteProject(p)" />
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
         </div>
-        <div class="row row-view" *ngIf="projectList.length > 0">
+        <div class="row row-view" *ngIf="userProjectCount > 0">
             <div class="col d-flex justify-content-end mx-5">
                 <span class="view-style">View All</span>
             </div>

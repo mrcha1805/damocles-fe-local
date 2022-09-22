@@ -92,6 +92,13 @@ $heavent-normal: DB Heavent Nor;
   background: #ede8f9;
   border: 2px solid #491dc5;
 }
+.empty-project-container {
+  margin-top: 50px;
+  height: 300px;
+
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .data-container {
   height: 250px;
   overflow: auto !important;
