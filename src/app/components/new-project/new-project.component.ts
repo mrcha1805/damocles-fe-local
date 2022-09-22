@@ -234,7 +234,7 @@ export class NewProjectComponent implements OnInit {
   search: string = '';
 
   productIsCollapsed: boolean = true;
-  sortUpdated: boolean = false;
+  sortUpdated: boolean = true;
   industryFilterMode: any = 0;
   industryMode = [
     {
@@ -290,7 +290,7 @@ export class NewProjectComponent implements OnInit {
     this.projectFilter = [];
     this.mode = 'all';
 
-    this.sortUpdated = false;
+    this.sortUpdated = true;
     this.industryFilterMode = 0;
 
     this.projectData = this.projectMasterData;
@@ -332,6 +332,7 @@ export class NewProjectComponent implements OnInit {
     }
     console.log(this.projectData);
     this.projectList = this.projectFilter = this.projectData;
+    this.sortUpdatedIconChange();
   }
 
   filter(mode: string) {
