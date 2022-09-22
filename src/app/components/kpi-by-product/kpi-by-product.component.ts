@@ -181,43 +181,42 @@ export class KpiByProductComponent implements OnInit {
   }
 
   setBorderCollapsed(index: number) {
-    if (this.isCollapsed === index) {
-      this.style = {
-        border: '0.8px solid #9A9A9A',
-        margin: '1.2px',
-      };
-      this.kpiList.forEach((e: any) => {
-        var value = e.data.every((element: any) => {
-          return element.isSelected === false;
-        });
-        console.log(value);
-        if (value === false) {
-          this.style = {
-            border: '2px solid #491DC5',
-            boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
-          };
-          console.log('isSelected === true');
-        } else {
-          this.style = {
-            border: '0.8px solid #9A9A9A',
-            margin: '1.2px',
-          };
-          console.log('isSelected === false');
-        }
+    this.kpiList.forEach((e: any) => {
+      var value = e.data.every((element: any) => {
+        return element.isSelected === false;
       });
-    }
+      console.log(value);
+      if (value === false) {
+        this.style = {
+          border: '2px solid #491DC5',
+          boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+        };
+      } else {
+        this.style = {
+          border: '0.8px solid #9A9A9A',
+          margin: '1.2px',
+        };
+      }
+    });
+    return this.style;
+  }
 
-    // if (this.isCollapsed === index) {
-    //   this.style = {
-    //     border: '2px solid #491DC5',
-    //     boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
-    //   };
-    // } else {
-    //   this.style = {
-    //     border: '0.8px solid #9A9A9A',
-    //     margin: '1.2px',
-    //   };
-    // }
+  setIconSelected() {
+    this.kpiList.forEach((e: any) => {
+      var value = e.data.every((element: any) => {
+        return element.isSelected === false;
+      });
+      console.log(value);
+      if (value === false) {
+        this.style = {
+          display: '',
+        };
+      } else {
+        this.style = {
+          display: 'none',
+        };
+      }
+    });
     return this.style;
   }
 
@@ -233,14 +232,6 @@ export class KpiByProductComponent implements OnInit {
       this.kpiList.forEach((e: any, i: number) => {
         if (i === index) {
           e.data.forEach((item: any, j: number) => {
-            // if (j === target) {
-            //   item.isSelected = true;
-            //   console.log('true');
-            // } else {
-            //   item.isSelected = false;
-            //   console.log('false');
-            // }
-            // return item.isSelected;
             item.isSelected = j === target ? true : false;
           });
         }
