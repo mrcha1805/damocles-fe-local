@@ -168,7 +168,7 @@ export class NewProjectComponent implements OnInit {
       description: 'For 2+ 3+ Car owner',
       created: '2022-08-21T02:30:41.000Z',
       industry: 'Insurance',
-      product: 'Personal accident insurance',
+      product: 'Personal Accident Insurance',
       timeFormat: '',
       timeLabel: '',
     },
