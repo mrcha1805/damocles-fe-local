@@ -57,9 +57,5 @@ $heavent-reg: DB Heavent Reg;
 // }
 
 .logout {
-  padding-top: 5px;
-  @include font-format($heavent-bold, 700, 14px, 10px, #491dc5);
-  &:hover {
-    background: #ffffff;
-  }
+  @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
 }

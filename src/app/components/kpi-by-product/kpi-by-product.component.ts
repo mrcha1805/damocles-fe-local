@@ -49,6 +49,40 @@ export class KpiByProductComponent implements OnInit {
     //   ],
     // },
     {
+      name: 'Standard',
+      image: './assets/icons/insurance-icon.svg',
+      desc: 'Standard Industrial Domain Insight',
+      info: 'xxxxx',
+      isSelected: false,
+      data: [
+        {
+          value: 'Asset Protection',
+          info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Health Insurance',
+          info: 'Finding target for health insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Personal Accident Insurance',
+          info: 'Finding target for personal accident insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Saving Insurance',
+          info: 'Finding target for saving insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Travel Accident Insurance',
+          info: 'Finding target for travel accident insurance',
+          isSelected: false,
+        },
+      ],
+    },
+    {
       name: 'Insurance',
       image: './assets/icons/insurance-icon.svg',
       desc: 'Insurance Industrial Domain Insight',
@@ -115,7 +149,7 @@ export class KpiByProductComponent implements OnInit {
     this.typeSelected = 'ball-atom';
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   collapsed(index: number) {
     // if (index === 0) {
@@ -153,9 +187,9 @@ export class KpiByProductComponent implements OnInit {
         margin: '1.2px',
       };
       this.kpiList.forEach((e: any) => {
-        var value = e.data.every((element:any)=>{
+        var value = e.data.every((element: any) => {
           return element.isSelected === false;
-        })
+        });
         console.log(value);
         if (value === false) {
           this.style = {
@@ -205,7 +239,7 @@ export class KpiByProductComponent implements OnInit {
             // } else {
             //   item.isSelected = false;
             //   console.log('false');
-            // } 
+            // }
             // return item.isSelected;
             item.isSelected = j === target ? true : false;
           });
