@@ -293,6 +293,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
     const modalRef = this.ngModalService.open(DeleteProjectModalComponent, {
       size: 'md',
       centered: true,
+      backdrop: 'static',
     });
     modalRef.componentInstance.projectName = p.name;
     modalRef.result.then((result: any) => {
