@@ -51,7 +51,7 @@ export class KpiByProductComponent implements OnInit {
     {
       name: 'Standard',
       image: './assets/icons/insurance-icon.svg',
-      desc: 'Standard Industrial Domain Insight',
+      desc: 'You can customize KPIs for your project',
       info: 'xxxxx',
       isSelected: false,
       data: [
@@ -189,12 +189,12 @@ export class KpiByProductComponent implements OnInit {
         if (value === false) {
           this.style = {
             border: '2px solid #491DC5',
-            boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+            // boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
           };
         } else if (this.isCollapsed === index) {
           this.style = {
             border: '2px solid #491DC5',
-            boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+            // boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
           };
         } else {
           this.style = {
