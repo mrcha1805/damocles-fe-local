@@ -106,11 +106,12 @@ $heavent-normal: DB Heavent Nor;
   overflow: hidden;
 }
 .data-container {
-  height: 30vh;
+  height: 40vh;
   overflow: auto !important;
   //overflow-y: hidden !important;
   max-width: 100%;
   overflow-x: hidden;
+  margin-bottom: 5vh;
 
   .header-body1 {
     @include font-format($heavent-bold, 700, 20px, 24px, #020202);
@@ -209,7 +210,7 @@ $heavent-normal: DB Heavent Nor;
 }
 .mat-container {
   padding-top: 10px;
-  height: 100px;
+  height: 110px;
 }
 
 .mat-menu-style {
