@@ -33,7 +33,7 @@ $heavent-reg: DB Heavent Reg;
   @include font-format($heavent-bold, 700, 24px, 100%, #020202);
 }
 
-::ng-deep .mat-menu-panel {
+::ng-deep .logout {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   height: 40px;
@@ -53,6 +53,6 @@ $heavent-reg: DB Heavent Reg;
   height:40px;
 }
 
-.logout {
+.text-logout {
   @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
 }

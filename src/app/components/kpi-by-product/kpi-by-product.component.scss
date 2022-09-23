@@ -31,6 +31,9 @@ $heavent-normal: DB Heavent Nor;
   overflow-x: hidden;
 }
 
+.card-selected {
+  width: 600px;
+}
 .font-16px {
   @include font-format($heavent-reg, 400, 16px, 15px, #000000);
 }

@@ -2,7 +2,7 @@
 
 <div fxLayout="row" class="grid-item viewport">
     <div fxLayout="column" fxFlex>
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxFlex>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutAlign.sm="center center" fxLayoutAlign.xs="center center" fxLayout fxFlex>
             <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout py-3">
                 <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
                     <div class="my-2">
@@ -22,7 +22,7 @@
                         [ngStyle]="setBorderCollapsed(i)">
                         <img src="./assets/icons/expand-selected.svg" width="24" class="expand-selected"
                             [ngStyle]="setIconSelected(i)" [@openClose]="helpMenuOpen" />
-                        <div class="collapse-title" (click)="collapsed(i)" (click)="toggleHelpMenu()" fxLayoutGap="250">
+                        <div class="collapse-title card-selected" (click)="collapsed(i)" (click)="toggleHelpMenu()" fxLayoutGap="250">
                             <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse">
                                 <div class="grid-item-layout-collapse" fxLayoutAlign="center center">
                                     <img src="{{ item.image }}" width="50" />
