@@ -213,7 +213,7 @@ export class KpiByProductComponent implements OnInit {
         var value = e.data.every((element: any) => {
           return element.isSelected === false;
         });
-        console.log(value);
+
         if (value === false) {
           this.style = {
             display: '',
@@ -248,7 +248,6 @@ export class KpiByProductComponent implements OnInit {
           if (i === index) {
             if (value === false) {
               item.isSelected = j === target ? true : false;
-              console.log('check:', item.value, item.isSelected)
             } else {
               item.isSelected = false;
             }
@@ -261,6 +260,7 @@ export class KpiByProductComponent implements OnInit {
           }
         });
       });
+      console.log(this.kpiList);
     }, 100);
   }
 
