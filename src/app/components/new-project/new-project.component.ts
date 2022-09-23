@@ -135,6 +135,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
   sortUpdated: boolean = true;
   industryFilterMode: any = 0;
   userProjectCount: number = 0;
+  userRecentProjectCount: number = 0;
   filterMetadata = { data: [] };
   industryMode = [
     {
@@ -204,6 +205,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.industryFilterMode = 0;
 
     this.userProjectCount = 0;
+    this.userRecentProjectCount = 3;
     this.userProjectCount = this.projectMasterData.length;
 
     this.projectData = this.projectMasterData;

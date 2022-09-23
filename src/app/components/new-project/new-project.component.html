@@ -110,8 +110,7 @@
                 </div>
             </section>
         </div>
-        <div class="row row-view"
-            *ngIf="userProjectCount > 0 && projectList.length > 0 && filterMetadata.data.length > 0 ">
+        <div class="row row-view" *ngIf="userProjectCount > 0 && userRecentProjectCount < projectMasterData.length ">
             <div class="col d-flex justify-content-end mx-5">
                 <span class="view-style">View All</span>
             </div>
