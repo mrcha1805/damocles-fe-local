@@ -1,10 +1,13 @@
-@mixin font-format($weight, $size, $height, $hexcolor) {
-  font-family: Noto Sans, sans-serif !important;
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+$heavent-normal: DB Heavent Nor;
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font !important;
   font-style: normal;
-  font-weight: $weight;
+  //font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor;
+  color: $hexcolor !important;
 }
 
 // .grid-item {
@@ -22,36 +25,38 @@
   border-radius: 5px;
 }
 
-.font-12px {
-  @include font-format(400, 12px, 16px, #020202);
-}
-
-.font-14px {
-  @include font-format(400, 14px, 18px, #9a9a9a);
-}
-
-.font-14px24 {
-  @include font-format(400, 14px, 24px, #020202);
+.kpi-layout {
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .font-16px {
-  @include font-format(700, 16px, 18px, #ffffff);
+  @include font-format($heavent-reg, 400, 16px, 15px, #000000);
 }
 
 .font-18px {
-  @include font-format(500, 24px, 18px, #020202);
+  @include font-format($heavent-normal, 400, 18px, 18px, #9a9a9a);
 }
 
-.font-20px {
-  @include font-format(700, 20px, 20px, #020202);
+.font-24back {
+  @include font-format($heavent-bold, 700, 24px, 20px, #491dc5);
 }
 
-.font-42px {
-  @include font-format(800, 42px, 57px, #020202);
+.font-24next {
+  @include font-format($heavent-bold, 700, 24px, 20px, #ffffff);
+}
+
+.font-32px {
+  @include font-format($heavent-bold, 700, 32px, 38px, #020202);
+}
+
+.font-64px {
+  @include font-format($heavent-bold, 700, 64px, 60px, #020202);
 }
 
 .font-blue {
-  color: rgba(73, 29, 197, 1);
+  @include font-format($heavent-bold, 700, 64px, 60px, #491dc5);
 }
 
 .btn-light {
@@ -59,16 +64,34 @@
   color: #491dc5 !important;
   border: 2px solid #491dc5;
   border-radius: 5px;
-  height: 45px;
-  width: 100%;
-  padding-right: 1.5rem;
+  height: 44px;
+  width: 152px;
+  padding-right: 1rem;
+  margin-top: 2rem;
+}
+.btn-light:hover {
+  background: #ede8f9;
+  border: 2px solid #491dc5;
 }
 .btn-blue {
   background: #491dc5;
   border-radius: 5px;
-  height: 45px;
-  width: 100%;
-  padding-left: 1.5rem;
+  height: 44px;
+  width: 152px;
+  padding-left: 1rem;
+  margin-top: 2rem;
+}
+.btn-blue:hover {
+  background: #3b189e;
+}
+
+.icon-back {
+  width: 6.45px;
+  margin-right: 6.15px;
+}
+.icon-next {
+  width: 6.45px;
+  margin-left: 6.15px;
 }
 
 input:focus {
@@ -76,26 +99,19 @@ input:focus {
 }
 
 ::placeholder {
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
   color: rgba(53, 53, 53, 0.32) !important;
   opacity: 1 !important; /* Firefox */
 }
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
   color: rgba(53, 53, 53, 0.32) !important;
 }
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
   color: rgba(53, 53, 53, 0.32) !important;
-}
-
-.icon-left {
-  float: left;
-}
-.icon-right {
-  float: right;
 }
 
 .collapse-title {
@@ -104,7 +120,7 @@ input:focus {
   cursor: pointer;
   &-expand-indicator {
     position: absolute;
-    top: 35px;
+    top: 50%;
     right: 1.5rem;
     transform: translateY(-50%);
   }
@@ -135,47 +151,47 @@ input:focus {
   margin-right: -0.8rem;
 }
 
-::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+:host::ng-deep .mat-checkbox-ripple .mat-ripple-element {
   background-color: #b6a5e8 !important;
   border-radius: 50% !important;
   width: 24px !important;
   height: 24px !important;
 }
-::ng-deep .mat-checkbox-frame {
+:host::ng-deep .mat-checkbox-frame {
   background-color: #e6e6e6 !important;
   border-radius: 50% !important;
   width: 24px !important;
   height: 24px !important;
   border: 0 !important;
 }
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #b6a5e8 !important;
+:host::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #676767 !important;
   border-radius: 50% !important;
   width: 24px !important;
   height: 24px !important;
 }
-::ng-deep .mat-checkbox-background {
+:host::ng-deep .mat-checkbox-background {
   background-color: #e6e6e6 !important;
   border-radius: 50% !important;
   width: 24px !important;
   height: 24px !important;
 }
-::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+:host::ng-deep .mat-checkbox-layout .mat-checkbox-label {
   margin-left: 1rem !important;
 }
-::ng-deep .mat-checkbox .mat-checkbox-ripple {
+:host::ng-deep .mat-checkbox .mat-checkbox-ripple {
   height: auto !important;
   width: auto !important;
 }
-::ng-deep .mat-checkbox-inner-container {
+:host::ng-deep .mat-checkbox-inner-container {
   border-radius: 50% !important;
   width: 24px !important;
   height: 24px !important;
 }
-::ng-deep .mat-checkbox-checkmark-path {
-  stroke: #491dc5 !important;
+:host::ng-deep .mat-checkbox-checkmark-path {
+  stroke: #ffffff !important;
 }
-::ng-deep .mat-checkbox-checked .mat-checkbox-checkmark-path {
+:host::ng-deep .mat-checkbox-checked .mat-checkbox-checkmark-path {
   stroke-dashoffset: 3 !important;
   stroke-linecap: round !important;
   stroke-linejoin: bevel !important;

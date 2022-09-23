@@ -1,35 +1,321 @@
-@mixin font-format($weight, $size, $height, $hexcolor) {
-  font-family: Noto Sans, sans-serif !important;
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+$heavent-normal: DB Heavent Nor;
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font !important;
   font-style: normal;
-  font-weight: $weight;
+  // font-weight: $weight;
   font-size: $size;
   line-height: $height;
   color: $hexcolor !important;
 }
 
-// .grid-item {
-//   background-color: lightsalmon;
-// }
+.grid-item {
+  //background-color: lightsalmon;
+  padding: 0 5% 0 5%;
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+}
 
-// .grid-item-layout {
-//   background-color: cadetblue;
-//   border: 1px solid #ffffff;
-// }
+.grid-item-row {
+  // background-color: cadetblue;
+  border: 1px solid #ffffff;
+}
+.grid-item-row1 {
+  //background-color: #aa9d8b;
+}
+.grid-item-row2 {
+  //background-color: #a55ea7;
+  height: 300px;
+  // overflow: hidden;
+}
+.grid-item-content {
+  //background-color: #808080;
+}
+.grid-item-layout {
+  //background-color: antiquewhite;
+}
+
+.header1 {
+  @include font-format($heavent-bold, 700, 32px, 38px, #020202);
+}
+.header2 {
+  @include font-format($heavent-bold, 700, 64px, 40px, #491dc5);
+}
+.header3 {
+  @include font-format($heavent-bold, 700, 64px, 40px, #020202);
+}
+.header-tb1 {
+  @include font-format($heavent-bold, 700, 16px, 19px, #808191);
+}
+.header-tb {
+  @include font-format($heavent-bold, 700, 16px, 19px, #808191);
+}
+.header-tb:hover {
+  @include font-format($heavent-bold, 700, 16px, 19px, #491dc5);
+}
+.non-project {
+  width: 203px;
+  height: 198px;
+}
+.non1 {
+  @include font-format($heavent-bold, 700, 24px, 24px, #676767);
+}
+.non2 {
+  @include font-format($heavent-reg, 400, 20px, 24px, #676767);
+}
+.arrow-icon {
+  width: 6.45px;
+  height: 10.74px;
+}
+.row-header-tb {
+  background: #fff;
+
+  height: auto;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  .header-tb1 {
+    @include font-format($heavent-bold, 700, 16px, 19px, #808191);
+  }
+  .header-tb2 {
+    @include font-format($heavent-bold, 700, 16px, 19px, #808191);
+  }
+  .header-tb2:hover {
+    @include font-format($heavent-bold, 700, 16px, 19px, #491dc5);
+    filter: brightness(0) saturate(100%) invert(13%) sepia(100%) saturate(4587%)
+      hue-rotate(257deg) brightness(77%) contrast(102%);
+  }
+}
+
+.project-row:hover {
+  background: #ede8f9;
+  border: 2px solid #491dc5;
+}
+.empty-project-container {
+  margin-top: 50px;
+  height: 300px;
+
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.disable-scroll {
+  overflow: hidden;
+}
+.data-container {
+  height: 250px;
+  overflow: auto !important;
+  //overflow-y: hidden !important;
+  max-width: 100%;
+  overflow-x: hidden;
+
+  .header-body1 {
+    @include font-format($heavent-bold, 700, 20px, 24px, #020202);
+  }
+  .header-body2 {
+    @include font-format($heavent-reg, 400, 12px, 14px, #353535);
+  }
+  .header-body3 {
+    @include font-format($heavent-reg, 400, 18px, 22px, #000000);
+  }
+}
+
+.project-row {
+  // background: #ede8f9;
+  // border: 2px solid #ffffff00;
+}
+
+.row-margin {
+  margin-left: 0;
+  margin-right: calc(-0 * var(--bs-gutter-x));
+  //height: 60px;
+}
+.grid-item-row2::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    0deg,
+    #ffffff 44.72%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  width: 100%;
+  height: 15%;
+}
+.input-container {
+  background: #ffffff;
+
+  border: 0.698851px solid #adadad;
+  border-radius: 4px;
+}
+.search-input {
+  border: none;
+  @include font-format($heavent-reg, 400, 14px, 18px, #020202);
+  width: 70%;
+}
+.new-project-btn {
+  background: #491dc5;
+  border-radius: 4px;
+  padding: 3px;
+  width: 60%;
+  border: none;
+  @include font-format($heavent-bold, 700, 24px, 25px, #ffffff);
+}
+.new-project-btn:hover {
+  background: #3b189e;
+}
+.filter-btn {
+  border-radius: 20px;
+  height: 24px;
+  margin: 0 5px 0 5px;
+  @include font-format($heavent-reg, 400, 16px, 19px, #020202);
+
+  &.all {
+    background: #fff2ea;
+    width: 50px;
+    border: none;
+    &:hover {
+      border: 1px solid #ff7b31;
+    }
+    &.sel-filter {
+      border: 1px solid #ff7b31;
+    }
+  }
+  &.insurance {
+    background: #c8bbed;
+    border: none;
+    width: 100px;
+    &:hover {
+      border: 1px solid #491dc5;
+    }
+    &.sel-filter {
+      border: 1px solid #491dc5;
+    }
+  }
+  &.standard {
+    background: #d5f169;
+    border: none;
+    width: 100px;
+    &:hover {
+      background: #e1f594;
+      border: 1px solid #9ddf3e;
+    }
+    &.sel-filter {
+      border: 1px solid #9ddf3e;
+    }
+  }
+}
+.mat-container {
+  padding-top: 10px;
+  height: 100px;
+}
+.mat-menu-style {
+  @include font-format($heavent-reg, 700, 14px, 17px, #000000);
+  height: 20px;
+  display: block;
+}
+.mat-menu-style:hover {
+  @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
+  background: #ffffff;
+}
+.industry-body {
+  border-radius: 20px;
+  height: 24px;
+  margin: 5px 5px 0 5px;
+  text-align: center;
+  &.all {
+    background: #fff2ea;
+    width: 50px;
+  }
+  &.insurance {
+    background: #c8bbed;
+    border: none;
+    width: 100px;
+  }
+  &.standard {
+    background: #d5f169;
+    border: none;
+    width: 100px;
+  }
+}
+.row-view {
+  margin-top: 12px;
+}
+
+.view-style {
+  text-decoration: underline;
+  @include font-format($heavent-reg, 700, 20px, 24px, #491dc5);
+  position: fixed;
+  z-index: 5;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 11px;
+  height: 11px;
+  background-size: cover;
+}
+
+.icon-del {
+  background-image: url(/assets/icons/del-project.svg);
+}
+.icon-del:hover,
+.icon-del:focus {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(100%) saturate(4587%)
+    hue-rotate(257deg) brightness(77%) contrast(102%);
+}
+
+.icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 11px;
+  height: 11px;
+  background-size: cover;
+}
+
+.img-update {
+  width: 11px;
+  height: 11px;
+}
+
+.icon-del {
+  background-image: url(/assets/icons/del-project.svg);
+}
+.icon-del:hover,
+.icon-del:focus {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(60%) saturate(5267%)
+    hue-rotate(250deg) brightness(103%) contrast(122%);
+}
+
+.row-table-striped {
+  background: #f5f5f5;
+}
+
+.row-table-non-striped {
+  background: #ffffff;
+}
 
 .font-14px {
-  @include font-format(400, 14px, 18px, #9a9a9a);
+  @include font-format($heavent-reg, 400, 14px, 18px, #9a9a9a);
 }
 
 .font-16px {
-  @include font-format(700, 16px, 18px, #ffffff);
+  @include font-format($heavent-bold, 700, 16px, 18px, #ffffff);
 }
 
 .font-18px {
-  @include font-format(500, 24px, 18px, #020202);
+  @include font-format($heavent-bold, 500, 24px, 18px, #020202);
 }
 
 .font-42px {
-  @include font-format(800, 42px, 57px, #020202);
+  @include font-format($heavent-bold, 800, 42px, 57px, #020202);
 }
 
 .font-blue {
@@ -59,16 +345,16 @@ input:focus {
 }
 
 ::placeholder {
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
   opacity: 1 !important; /* Firefox */
 }
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
 }
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  @include font-format(400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  @include font-format($heavent-bold, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
 }
 
 ::ng-deep .navbar-logo {

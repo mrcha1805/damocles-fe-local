@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4500",
     "build": "ng build --prod --configuration=local --output-hashing=none",
     "build-dev": "ng build --prod --configuration=dev --output-hashing=none --base-href /actionable-insight/",
     "build-prod": "ng build --prod --configuration=production --output-hashing=none --base-href /actionable-insight/",
@@ -25,6 +25,7 @@
     "@angular/platform-browser": "~12.1.0-",
     "@angular/platform-browser-dynamic": "~12.1.0-",
     "@angular/router": "~12.1.0-",
+    "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@popperjs/core": "^2.11.6",
     "@types/lodash": "^4.14.184",
     "angular-oauth2-oidc": "^13.0.1",

@@ -40,6 +40,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { DatePipe } from '@angular/common';
 import {
   NgxPopperjsModule,
   NgxPopperjsOptions,
@@ -47,12 +48,17 @@ import {
 } from 'ngx-popperjs';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthModule } from './auth/auth.module';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NewProjectComponent } from './components/new-project/new-project.component';
 import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { NavbarLogoComponent } from './components/navbar-logo/navbar-logo.component';
 import { CreateKpiComponent } from './components/create-kpi/create-kpi.component';
 import { HomeComponent } from '@components/home/home.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { SearchFilterPipe } from './services/search-filter.pipe';
+import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -67,6 +73,10 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     KpiByProductComponent,
     NavbarLogoComponent,
     CreateKpiComponent,
+    DemographicComponent,
+    FilterComponent,
+    SearchFilterPipe,
+    DeleteProjectModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,8 +123,10 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     NgxPopperjsModule.forRoot(TOOLTIP_DEFAULT_OPTIONS),
     NgxSpinnerModule,
     AuthModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    NgbModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

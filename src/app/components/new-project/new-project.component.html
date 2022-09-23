@@ -1,24 +1,128 @@
 <app-navbar-logo></app-navbar-logo>
+
 <div fxLayout="row" class="grid-item viewport">
-    <div fxLayout="column" fxFlex>
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
-            <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout p-5">
-                <div fxLayout="column" class="text-center p-4">
-                    <img src="./assets/icons/welcome.svg" width="250" />
-                </div>
+    <div fxLayout="column" fxLayoutGap="10px" fxFlex>
+        <div class="block-1 grid-item-row row">
+            <div fxFlex fxLayout="column" fxLayoutAlign="center start" fxFlexFill class="grid-item-content mx-5">
+                <span class="header1">Choose your project or</span>
+                <span class="header2">Create <span class="header3">New Project!</span></span>
             </div>
-            <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center" class="grid-item-layout p-5">
-                <div fxLayout="column" class="text-center p-4">
-                    <span class="font-42px">Actionable <font class="font-blue">Insight</font></span>
-                    <span class="font-14px mt-3">Ready to Work on the Biggest Data Project of all Time?</span>
-                    <input type="text" class="p-3 my-4 project-name" placeholder="Enter Your Project Name" />
-                    <div fxLayoutAlign="center center">
-                        <button class="btn btn-blue font-16px" (click)="goKpi()">Let’s Start</button>
+        </div>
+        <div class="row grid-item-row1 d-flex align-items-center  mx-5 ">
+            <div class="col-xs-12 col-sm-12 col-md-3 mt-1 p-0 ">
+                <div class="input-container mx-1 px-2">
+                    <img src="./assets/icons/search.svg" width="16" class="search-icon m-2">
+                    <input type="text" placeholder="Search" class="search-input " [(ngModel)]="search" />
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5 mt-sm-1 d-flex justify-content-sm-center justify-content-md-start">
+                <button class="filter-btn all" (click)="filter('all')"
+                    [ngClass]="{'sel-filter': industryFilterMode === 0}">All</button>
+                <button class="filter-btn insurance" (click)="filter('insurance')"
+                    [ngClass]="{'sel-filter': industryFilterMode === 1}">Insurance</button>
+                <button class="filter-btn standard" (click)="filter('standard')"
+                    [ngClass]="{'sel-filter': industryFilterMode === 2}">Standard</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4  mt-sm-1 d-flex justify-content-sm-center justify-content-md-end ">
+                <button class="new-project-btn" (click)="goKpi()">+ New Project</button>
+            </div>
+        </div>
+        <div class="row block-1 grid-item-table mx-5 mt-2">
+            <section>
+                <div class="col">
+                    <div class="row row-header-tb">
+                        <div class="col-5">
+                            <span class="header-tb1">Project Name</span>
+                        </div>
+                        <div class="col-2">
+                            <div class="header-tb2">
+                                <span class="header-tb2">Latest Updated</span>
+                                <img src="./assets/icons/sortab.svg" class="img-update mx-1" style="cursor: pointer"
+                                    (click)="sortUpdatedIconChange()"
+                                    [ngStyle]="{'transform': sortUpdated ? 'rotateZ(180deg)' : 'rotateZ(0deg)'}" />
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-start">
+                            <span class="header-tb1 mx-2">Industry</span>
+                        </div>
+                        <div class="col-2">
+                            <div class="header-tb2">
+                                <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex>
+                                    <span class="header-tb2">Product</span>
+                                    <img class="arrow-icon" src="./assets/icons/navbar-arrow.svg" mat-button
+                                        [matMenuTriggerFor]="menu" style="cursor: pointer" (click)="productIconChange()"
+                                        [ngStyle]="{'transform': productIsCollapsed ? 'rotateZ(0deg)' : 'rotateZ(180deg)'}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                        </div>
+                    </div>
+                    <div *ngIf="userProjectCount === 0" class="empty-project-container">
+                        <div class="d-flex justify-content-center mt-2">
+                            <div>
+                                <img src="./assets/icons/non-project-bg.svg" alt="" class="non-project">
+                                <p class="non1">No Projects created yet! </p>
+                                <p class="non2">Click the purple button to get started.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div *ngIf="userProjectCount > 0" class="data-container mt-2">
+
+
+                        <div class="row row-margin project-row"
+                            [ngClass]="{'disable-scroll': filterMetadata.data.length <= 5}"
+                            *ngFor="let p of projectList| searchFilter: search: filterMetadata;let i = index"
+                            [ngClass]="{'row-table-non-striped': i % 2 == 0, 'row-table-striped': i % 2 != 0}">
+                            <div class="col-5">
+                                <div class="row m-1">
+                                    <div class="col-1 ">
+                                        <img [src]="p.industry==='Insurance'?'./assets/icons/insurance-icon.svg':'./assets/icons/standard-icon.svg'"
+                                            width="32px" height="32px" />
+                                    </div>
+                                    <div class="col mx-3">
+                                        <div class="header-body1">{{p.name}}</div>
+                                        <div class="header-body2">{{p.description}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2 d-flex align-items-center">
+                                <div class="header-body3 ">{{p.timeLabel}}</div>
+                            </div>
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="header-body3 industry-body "
+                                    [ngClass]="{'insurance': p.industry==='Insurance', 'standard ': p.industry==='Standard'}">
+                                    {{p.industry}}
+                                </p>
+                            </div>
+                            <div class="col-2 d-flex align-items-center">
+                                <p class="header-body3">{{p.product}}</p>
+                            </div>
+                            <div class="col-1 d-flex align-items-center">
+                                <img src="/assets/icons/del-project.svg" class="icon icon-del"
+                                    (click)="deleteProject(p)" />
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+            </section>
+        </div>
+        <div class="row row-view"
+            *ngIf="userProjectCount > 0 && projectList.length > 0 && filterMetadata.data.length > 0 ">
+            <div class="col d-flex justify-content-end mx-5">
+                <span class="view-style">View All</span>
             </div>
         </div>
     </div>
-</div>
+    <mat-menu #menu="matMenu" class="mat-menu" (closed)="productMenuClose()">
+        <div class="mat-container">
+            <a *ngFor="let i of productList" mat-menu-item (click)="filterProduct(i.name)" class="mat-menu-style">
+                {{i.name}}
+            </a>
+        </div>
 
-<ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>
+    </mat-menu>
+    <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>

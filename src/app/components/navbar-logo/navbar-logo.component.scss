@@ -1,10 +1,13 @@
-@mixin font-format($weight, $size, $height, $hexcolor) {
-  font-family: Noto Sans, sans-serif !important;
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font  !important;
   font-style: normal;
-  font-weight: $weight;
+  //font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor;
+  color: $hexcolor  !important;
 }
 
 // .grid-item {
@@ -18,16 +21,38 @@
 
 .navbar-logo {
   z-index: 1;
-  position: sticky;
+  position: sticky !important;
   top: 0;
   width: 100%;
-  background-image: repeating-linear-gradient(
-    rgb(255, 255, 255),
-    rgba(255, 255, 255, 0.8) 200%,
-    rgba(255, 255, 255, 0.1) 10%
-  );
+  background-image: repeating-linear-gradient(rgb(255, 255, 255),
+      rgba(255, 255, 255, 0.8) 200%,
+      rgba(255, 255, 255, 0.1) 10%);
 }
 
-.font-16px {
-  @include font-format(700, 16px, 20px, #020202);
+.username {
+  @include font-format($heavent-bold, 700, 24px, 100%, #020202);
+}
+
+::ng-deep .mat-menu-panel {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 40px;
+  width: 88px;
+  border-radius: 4px;
+  min-height: 40px !important;
+  overflow: hidden !important;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08);
+}
+
+::ng-deep .mat-menu-content {
+  padding: 0px !important;
+}
+
+.mat-menu-item{
+  line-height:40px;
+  height:40px;
+}
+
+.logout {
+  @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
 }

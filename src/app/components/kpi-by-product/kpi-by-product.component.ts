@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { end } from '@popperjs/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -35,27 +36,84 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class KpiByProductComponent implements OnInit {
   kpiList: any = [
+    // {
+    //   name: 'Standard',
+    //   image: './assets/icons/standard-icon.svg',
+    //   desc: 'Standard Industrial Domain Insight',
+    //   info: 'xxxxx',
+    //   isSelected: false,
+    //   data: [
+    //     { value: 'Deposit', info: 'xxxxx', isSelected: false },
+    //     { value: 'Credit', info: 'xxxxx', isSelected: false },
+    //     { value: 'Investment', info: 'xxxxx', isSelected: false },
+    //   ],
+    // },
     {
-      name: 'Banking',
-      image: './assets/icons/banking.svg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan lorem.',
+      name: 'Standard',
+      image: './assets/icons/insurance-icon.svg',
+      desc: 'You can customize KPIs for your project',
       info: 'xxxxx',
       isSelected: false,
       data: [
-        { value: 'Deposit', info: 'xxxxx', isSelected: true },
-        { value: 'Credit', info: 'xxxxx', isSelected: false },
-        { value: 'Investment', info: 'xxxxx', isSelected: false },
+        {
+          value: 'Asset Protection',
+          info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Health Insurance',
+          info: 'Finding target for health insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Personal Accident Insurance',
+          info: 'Finding target for personal accident insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Saving Insurance',
+          info: 'Finding target for saving insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Travel Accident Insurance',
+          info: 'Finding target for travel accident insurance',
+          isSelected: false,
+        },
       ],
     },
     {
       name: 'Insurance',
-      image: './assets/icons/insurance.svg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan lorem.',
+      image: './assets/icons/insurance-icon.svg',
+      desc: 'Insurance Industrial Domain Insight',
       info: 'xxxxx',
       isSelected: false,
       data: [
-        { value: 'Life', info: 'xxxxx', isSelected: true },
-        { value: 'Non - Life', info: 'xxxxx', isSelected: false },
+        {
+          value: 'Asset Protection',
+          info: 'Finding target for asset protection such as motor insurance, house insurance and gadget insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Health Insurance',
+          info: 'Finding target for health insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Personal Accident Insurance',
+          info: 'Finding target for personal accident insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Saving Insurance',
+          info: 'Finding target for saving insurance',
+          isSelected: false,
+        },
+        {
+          value: 'Travel Accident Insurance',
+          info: 'Finding target for travel accident insurance',
+          isSelected: false,
+        },
       ],
     },
   ];
@@ -94,6 +152,21 @@ export class KpiByProductComponent implements OnInit {
   ngOnInit() {}
 
   collapsed(index: number) {
+    // if (index === 0) {
+    //   return;
+    // } else {
+    //   if (this.isCollapsed === index) {
+    //     this.isCollapsed = -1;
+    //     this.kpiList.forEach((e: any) => {
+    //       e.isSelected = false;
+    //     });
+    //   } else {
+    //     this.isCollapsed = index;
+    //     this.kpiList.forEach((e: any) => {
+    //       e.isSelected = true;
+    //     });
+    //   }
+    // }
     if (this.isCollapsed === index) {
       this.isCollapsed = -1;
       this.kpiList.forEach((e: any) => {
@@ -108,17 +181,50 @@ export class KpiByProductComponent implements OnInit {
   }
 
   setBorderCollapsed(index: number) {
-    if (this.isCollapsed === index) {
-      this.style = {
-        border: '2px solid #491DC5',
-        boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
-      };
-    } else {
-      this.style = {
-        border: '0.8px solid #9A9A9A',
-        margin: '1.2px',
-      };
-    }
+    this.kpiList.forEach((e: any, i: number) => {
+      if (i === index) {
+        var value = e.data.every((element: any) => {
+          return element.isSelected === false;
+        });
+        if (value === false) {
+          this.style = {
+            border: '2px solid #491DC5',
+            // boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+          };
+        } else if (this.isCollapsed === index) {
+          this.style = {
+            border: '2px solid #491DC5',
+            // boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+          };
+        } else {
+          this.style = {
+            border: '0.8px solid #9A9A9A',
+            margin: '1.2px',
+          };
+        }
+      }
+    });
+    return this.style;
+  }
+
+  setIconSelected(index: number) {
+    this.kpiList.forEach((e: any, i: number) => {
+      if (i === index) {
+        var value = e.data.every((element: any) => {
+          return element.isSelected === false;
+        });
+
+        if (value === false) {
+          this.style = {
+            display: '',
+          };
+        } else {
+          this.style = {
+            display: 'none',
+          };
+        }
+      }
+    });
     return this.style;
   }
 
@@ -132,12 +238,29 @@ export class KpiByProductComponent implements OnInit {
   changeSelected(index: number, target: number) {
     setTimeout(() => {
       this.kpiList.forEach((e: any, i: number) => {
-        if (i === index) {
-          e.data.forEach((item: any, j: number) => {
-            item.isSelected = j === target ? true : false;
-          });
-        }
+        // e.data.forEach((item: any, j: number) => {
+        //   item.isSelected = j === target ? true : false;
+        // });
+        var value = e.data.every((element: any) => {
+          return element.isSelected === false;
+        });
+        e.data.forEach((item: any, j: number) => {
+          if (i === index) {
+            if (value === false) {
+              item.isSelected = j === target ? true : false;
+            } else {
+              item.isSelected = false;
+            }
+          } else {
+            if (value === true) {
+              item.isSelected = j === target ? false : false;
+            } else {
+              item.isSelected = false;
+            }
+          }
+        });
       });
+      console.log(this.kpiList);
     }, 100);
   }
 
@@ -150,7 +273,7 @@ export class KpiByProductComponent implements OnInit {
   }
 
   goCreateProject() {
-    this.showSpinner('/createproject');
+    this.showSpinner('/create-project');
   }
 
   goCreateKpi() {

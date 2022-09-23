@@ -13,4 +13,8 @@ export class NavbarLogoComponent implements OnInit {
   ngOnInit(): void {
     this.userName = 'Jessica K.';
   }
+
+  logout() {
+    console.log('logout');
+  }
 }

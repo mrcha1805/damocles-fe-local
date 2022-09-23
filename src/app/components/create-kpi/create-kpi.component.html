@@ -1,50 +1,85 @@
-<div fxLayout="row" class="grid-item viewport-100" fxFlex>
-    <div fxLayout="column" fxFlex>
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
-            <div fxFlex fxLayout="column" fxLayoutAlign="start center" class="grid-item-layout box-left" fxFlex>
-                <div class="w-100">
-                    <app-navbar-logo></app-navbar-logo>
-                </div>
-            </div>
-            <div fxFlex="60" fxLayout="column" class="grid-item-layout p-5">
-                <div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item-layout box-right-top">
-                    <div fxFlex="50" class="grid-item-layout">
-                        <span class="font-20px">Project Name : <font class="font-blue">BLA 10/5</font></span>
+<app-navbar-logo fxHide.gt-sm></app-navbar-logo>
+
+<div fxLayout="column">
+    <div fxLayout="row" class="grid-item viewport-100" fxFlex>
+        <div fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="start center" class="grid-item-layout box-left">
+                    <div fxHide.lt-md class="w-100">
+                        <app-navbar-logo></app-navbar-logo>
                     </div>
-                    <div class="grid-item-layout" fxLayoutAlign="end center" fxFlex>
-                        <span class="font-20px">Product : <font class="font-blue">Insurance (Life)</font></span>
-                    </div>
-                </div>
-                <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout" fxLayoutAlign="center stretch"
-                    class="my-5">
-                    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" class="grid-item-layout">
-                        <div fxLayout="column" class="grid-item-layout py-2 px-5 border-default text-center">
-                            <span class="font-44px py-1">40,053,155</span>
-                            <span class="font-16px py-1">Total - Customers</span>
+                    <div fxLayout="column" class="grid-item-layout w-100 p-1 pb-3" fxFlex>
+                        <div fxLayout="column" class="grid-item-layout px-2" fxLayoutAlign="start start" fxFlex>
+                            <app-filter fxFill></app-filter>
                         </div>
-                        <div fxLayout="column" class="grid-item-layout py-2 px-5 border-blue text-center">
-                            <span class="font-44px py-1 font-blue">70,543</span>
-                            <span class="font-16px py-1 font-blue">Complete - Unique</span>
+                        <div fxLayout="row" class="grid-item-layout mt-3 px-5" fxLayoutAlign="end end" fxFlex>
+                            <div fxLayout="row" fxLayoutGap="20" class="btn p-3 box-left-bottom" fxFlex>
+                                <div fxLayoutAlign="none start" class="grid-item-layout">
+                                    <img src="./assets/icons/Advance-KPI.svg" width="30" />
+                                </div>
+                                <div fxLayout="column" fxFlex="90" class="grid-item-layout text-start">
+                                    <span class="font-12px p-1">Advance KPI</span>
+                                    <span class="font-11px p-1">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan
+                                        lorem.
+                                    </span>
+                                </div>
+                                <div fxLayoutAlign="center center" fxFlex="10" class="grid-item-layout">
+                                    <img src="./assets/icons/arrow_collapse_b.svg" width="9" height="15" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div fxLayout="row" class="grid-item-layout">
-                    <div id="chart-funnel"></div>
-                </div>
-                <div fxLayout="row" class="grid-item-layout" fxLayoutAlign="end center"
-                    fxLayoutAlign.lt-md="center center">
-                    <div fxFlex="50" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" fxLayoutAlign="end end"
-                        class="grid-item-layout my-4">
-                        <button class="btn btn-light font-16px-b">
-                            Export
-                        </button>
-                        <button class="btn btn-blue font-16px-b">
-                            Save
-                        </button>
+                <div fxFlex="auto" fxLayout="column" class="grid-item-layout p-5 pb-3">
+                    <div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item-layout box-right-top">
+                        <div fxFlex="50" class="grid-item-layout">
+                            <span class="font-20px">Project Name : <font class="font-blue">BLA 10/5</font>
+                            </span>
+                        </div>
+                        <div class="grid-item-layout" fxLayoutAlign="end center" fxFlex>
+                            <span class="font-20px">Product : <font class="font-blue">Insurance (Life)</font>
+                            </span>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout" fxLayoutAlign="center stretch"
+                        class="my-5">
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" class="grid-item-layout">
+                            <div fxLayout="column" class="grid-item-layout py-2 px-5 border-default text-center">
+                                <span class="font-44px py-1">40,053,155</span>
+                                <span class="font-16px py-1">Total - Customers</span>
+                            </div>
+                            <div fxLayout="column" class="grid-item-layout py-2 px-5 border-blue text-center">
+                                <span class="font-44px py-1 font-blue">0</span>
+                                <span class="font-16px py-1 font-blue">Complete - Unique</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="column" class="grid-item-layout min-height box-right-bottom w-100"
+                        fxLayoutAlign="center center">
+                        <img src="./assets/icons/Choose-KPI-for-Data-Visualization.svg" width="200" />
+                        <span class="font-14px">Choose KPI for Data Visualization</span>
+                    </div>
+                    <!-- <div fxLayout="column" class="grid-item-layout min-height box-right-bottom w-100"
+                        fxLayoutAlign="center center">
+                        <div id="chart-funnel" fxFlex></div>
+                    </div> -->
+                    <div fxLayout="row" class="grid-item-layout" fxLayoutAlign="end center"
+                        fxLayoutAlign.lt-md="center center" class="mt-4">
+                        <div fxFlex="50" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" fxLayoutAlign="end end"
+                            class="grid-item-layout">
+                            <button class="btn btn-light font-16px-b">
+                                Export
+                            </button>
+                            <button class="btn btn-blue font-16px-b">
+                                Save
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>
+<ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>
