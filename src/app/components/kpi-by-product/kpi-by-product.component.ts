@@ -191,6 +191,11 @@ export class KpiByProductComponent implements OnInit {
             border: '2px solid #491DC5',
             boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
           };
+        } else if (this.isCollapsed === index) {
+          this.style = {
+            border: '2px solid #491DC5',
+            boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+          };
         } else {
           this.style = {
             border: '0.8px solid #9A9A9A',
@@ -236,33 +241,25 @@ export class KpiByProductComponent implements OnInit {
         // e.data.forEach((item: any, j: number) => {
         //   item.isSelected = j === target ? true : false;
         // });
-        if (i === index) {
-          var value = e.data.every((element: any) => {
-            return element.isSelected === false;
-          });
-          if (value === false) {
-            e.data.forEach((item: any, j: number) => {
+        var value = e.data.every((element: any) => {
+          return element.isSelected === false;
+        });
+        e.data.forEach((item: any, j: number) => {
+          if (i === index) {
+            if (value === false) {
               item.isSelected = j === target ? true : false;
-            });
-          } else {
-            e.data.forEach((item: any) => {
+              console.log('check:', item.value, item.isSelected)
+            } else {
               item.isSelected = false;
-            });
-          }
-        } else {
-          var value = e.data.every((element: any) => {
-            return element.isSelected === false;
-          });
-          if (value === true) {
-            e.data.forEach((item: any, j: number) => {
+            }
+          } else {
+            if (value === true) {
               item.isSelected = j === target ? false : false;
-            });
-          } else {
-            e.data.forEach((item: any) => {
+            } else {
               item.isSelected = false;
-            });
+            }
           }
-        }
+        });
       });
     }, 100);
   }
