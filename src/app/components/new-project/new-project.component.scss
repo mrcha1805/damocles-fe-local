@@ -179,10 +179,10 @@ $heavent-normal: DB Heavent Nor;
     width: 50px;
     border: none;
     &:hover {
-      border: 2px solid #ff7b31;
+      border: 1px solid #ff7b31;
     }
     &.sel-filter {
-      border: 2px solid #ff7b31;
+      border: 1px solid #ff7b31;
     }
   }
   &.insurance {
@@ -190,19 +190,23 @@ $heavent-normal: DB Heavent Nor;
     border: none;
     width: 100px;
     &:hover {
-      border: 2px solid #491dc5;
+      border: 1px solid #491dc5;
     }
     &.sel-filter {
-      border: 2px solid #491dc5;
+      border: 1px solid #491dc5;
     }
   }
   &.standard {
     background: #d5f169;
     border: none;
     width: 100px;
-    // &:hover {
-    //   border: 2px solid #c3eb29;
-    // }
+    &:hover {
+      background: #e1f594;
+      border: 1px solid #9ddf3e;
+    }
+    &.sel-filter {
+      border: 1px solid #9ddf3e;
+    }
   }
 }
 .mat-container {

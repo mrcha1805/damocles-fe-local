@@ -21,7 +21,8 @@
                     [ngClass]="{'sel-filter': industryFilterMode === 0}">All</button>
                 <button class="filter-btn insurance" (click)="filter('insurance')"
                     [ngClass]="{'sel-filter': industryFilterMode === 1}">Insurance</button>
-                <!-- <button class="filter-btn standard" (click)="filter('standard')">Standard</button> -->
+                <button class="filter-btn standard" (click)="filter('standard')"
+                    [ngClass]="{'sel-filter': industryFilterMode === 2}">Standard</button>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4  mt-sm-1 d-flex justify-content-sm-center justify-content-md-end ">
                 <button class="new-project-btn" (click)="goKpi()">+ New Project</button>
