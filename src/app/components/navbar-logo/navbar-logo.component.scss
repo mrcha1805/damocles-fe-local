@@ -1,12 +1,13 @@
 $heavent-bold: DB Heavent Bd;
 $heavent-reg: DB Heavent Reg;
+
 @mixin font-format($font, $weight, $size, $height, $hexcolor) {
-  font-family: $font !important;
+  font-family: $font  !important;
   font-style: normal;
   //font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor !important;
+  color: $hexcolor  !important;
 }
 
 // .grid-item {
@@ -23,38 +24,34 @@ $heavent-reg: DB Heavent Reg;
   position: sticky !important;
   top: 0;
   width: 100%;
-  background-image: repeating-linear-gradient(
-    rgb(255, 255, 255),
-    rgba(255, 255, 255, 0.8) 200%,
-    rgba(255, 255, 255, 0.1) 10%
-  );
+  background-image: repeating-linear-gradient(rgb(255, 255, 255),
+      rgba(255, 255, 255, 0.8) 200%,
+      rgba(255, 255, 255, 0.1) 10%);
 }
 
 .username {
   @include font-format($heavent-bold, 700, 24px, 100%, #020202);
 }
-// ::ng-deep .mat-menu-panel {
-//   min-width: 112px;
-//   max-width: 280px;
-//   overflow: auto;
-//   -webkit-overflow-scrolling: touch;
-//   max-height: calc(100vh - 48px);
-//   border-radius: 4px;
-//   outline: 0;
-//   min-height: 34px !important;
-//   overflow: hidden !important;
-// }
-// ::ng-deep .mat-menu-content {
-//   height: 20px;
-// }
-.mat-menu-content {
+
+::ng-deep .mat-menu-panel {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 40px;
   width: 88px;
-  // height: 40px;
-  padding: 0px;
+  border-radius: 4px;
+  min-height: 40px !important;
+  overflow: hidden !important;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08);
 }
-// ::ng-deep .mat-menu-content{
-//   padding:0px !important;
-// }
+
+::ng-deep .mat-menu-content {
+  padding: 0px !important;
+}
+
+.mat-menu-item{
+  line-height:40px;
+  height:40px;
+}
 
 .logout {
   @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
