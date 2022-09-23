@@ -21,7 +21,7 @@
                     <article class="grid-item-layout-collapse mb-2 mt-3" *ngFor="let item of kpiList; let i = index"
                         [ngStyle]="setBorderCollapsed(i)">
                         <img src="./assets/icons/expand-selected.svg" width="24" class="expand-selected"
-                            [ngStyle]="setIconSelected()" [@openClose]="helpMenuOpen" />
+                            [ngStyle]="setIconSelected(i)" [@openClose]="helpMenuOpen" />
                         <div class="collapse-title" (click)="collapsed(i)" (click)="toggleHelpMenu()" fxLayoutGap="250">
                             <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse">
                                 <div class="grid-item-layout-collapse" fxLayoutAlign="center center">

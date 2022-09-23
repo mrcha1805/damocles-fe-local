@@ -181,40 +181,43 @@ export class KpiByProductComponent implements OnInit {
   }
 
   setBorderCollapsed(index: number) {
-    this.kpiList.forEach((e: any) => {
-      var value = e.data.every((element: any) => {
-        return element.isSelected === false;
-      });
-      console.log(value);
-      if (value === false) {
-        this.style = {
-          border: '2px solid #491DC5',
-          boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
-        };
-      } else {
-        this.style = {
-          border: '0.8px solid #9A9A9A',
-          margin: '1.2px',
-        };
+    this.kpiList.forEach((e: any, i: number) => {
+      if (i === index) {
+        var value = e.data.every((element: any) => {
+          return element.isSelected === false;
+        });
+        if (value === false) {
+          this.style = {
+            border: '2px solid #491DC5',
+            boxShadow: '5px 5px 20px rgba(73, 29, 197, 0.2)',
+          };
+        } else {
+          this.style = {
+            border: '0.8px solid #9A9A9A',
+            margin: '1.2px',
+          };
+        }
       }
     });
     return this.style;
   }
 
-  setIconSelected() {
-    this.kpiList.forEach((e: any) => {
-      var value = e.data.every((element: any) => {
-        return element.isSelected === false;
-      });
-      console.log(value);
-      if (value === false) {
-        this.style = {
-          display: '',
-        };
-      } else {
-        this.style = {
-          display: 'none',
-        };
+  setIconSelected(index: number) {
+    this.kpiList.forEach((e: any, i: number) => {
+      if (i === index) {
+        var value = e.data.every((element: any) => {
+          return element.isSelected === false;
+        });
+        console.log(value);
+        if (value === false) {
+          this.style = {
+            display: '',
+          };
+        } else {
+          this.style = {
+            display: 'none',
+          };
+        }
       }
     });
     return this.style;
@@ -231,9 +234,21 @@ export class KpiByProductComponent implements OnInit {
     setTimeout(() => {
       this.kpiList.forEach((e: any, i: number) => {
         if (i === index) {
-          e.data.forEach((item: any, j: number) => {
-            item.isSelected = j === target ? true : false;
+          // e.data.forEach((item: any, j: number) => {
+          //   item.isSelected = j === target ? true : false;
+          // });
+          var value = e.data.every((element: any) => {
+            return element.isSelected === false;
           });
+          if (value === false) {
+            e.data.forEach((item: any, j: number) => {
+              item.isSelected = j === target ? true : false;
+            });
+          } else {
+            e.data.forEach((item: any) => {
+              item.isSelected = false;
+            });
+          }
         }
       });
     }, 100);
