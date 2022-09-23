@@ -5,7 +5,7 @@ import { IProject } from 'src/app/model/project-interface';
   name: 'searchFilter',
 })
 export class SearchFilterPipe implements PipeTransform {
-  transform(items: IProject[], searchText: string): IProject[] {
+  transform(items: IProject[], searchText: string, metaData: any): IProject[] {
     searchText = searchText.toLowerCase();
     let filteredItems: IProject[] = items;
     if (searchText != '') {
@@ -18,6 +18,8 @@ export class SearchFilterPipe implements PipeTransform {
         );
       });
     }
+
+    metaData.data = filteredItems;
     return filteredItems;
   }
 }

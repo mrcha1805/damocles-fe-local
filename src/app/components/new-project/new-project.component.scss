@@ -92,6 +92,16 @@ $heavent-normal: DB Heavent Nor;
   background: #ede8f9;
   border: 2px solid #491dc5;
 }
+.empty-project-container {
+  margin-top: 50px;
+  height: 300px;
+
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.disable-scroll {
+  overflow: hidden;
+}
 .data-container {
   height: 250px;
   overflow: auto !important;
@@ -111,8 +121,8 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .project-row {
-  background: #ede8f9;
-  border: 2px solid #ffffff00;
+  // background: #ede8f9;
+  // border: 2px solid #ffffff00;
 }
 
 .row-margin {
@@ -169,10 +179,10 @@ $heavent-normal: DB Heavent Nor;
     width: 50px;
     border: none;
     &:hover {
-      border: 2px solid #ff7b31;
+      border: 1px solid #ff7b31;
     }
     &.sel-filter {
-      border: 2px solid #ff7b31;
+      border: 1px solid #ff7b31;
     }
   }
   &.insurance {
@@ -180,19 +190,23 @@ $heavent-normal: DB Heavent Nor;
     border: none;
     width: 100px;
     &:hover {
-      border: 2px solid #491dc5;
+      border: 1px solid #491dc5;
     }
     &.sel-filter {
-      border: 2px solid #491dc5;
+      border: 1px solid #491dc5;
     }
   }
   &.standard {
     background: #d5f169;
     border: none;
     width: 100px;
-    // &:hover {
-    //   border: 2px solid #c3eb29;
-    // }
+    &:hover {
+      background: #e1f594;
+      border: 1px solid #9ddf3e;
+    }
+    &.sel-filter {
+      border: 1px solid #9ddf3e;
+    }
   }
 }
 .mat-container {
@@ -200,12 +214,12 @@ $heavent-normal: DB Heavent Nor;
   height: 100px;
 }
 .mat-menu-style {
-  @include font-format($heavent-reg, 700, 14px, 10px, #000000);
+  @include font-format($heavent-reg, 700, 14px, 17px, #000000);
   height: 20px;
   display: block;
 }
 .mat-menu-style:hover {
-  @include font-format($heavent-reg, 700, 14px, 10px, #491dc5);
+  @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
   background: #ffffff;
 }
 .industry-body {

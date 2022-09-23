@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,7 +20,7 @@ enum DaysNum {
   templateUrl: './new-project.component.html',
   styleUrls: ['./new-project.component.scss'],
 })
-export class NewProjectComponent implements OnInit {
+export class NewProjectComponent implements OnInit, OnChanges {
   isOpen: boolean = false;
   typeSelected: string;
 
@@ -32,108 +32,6 @@ export class NewProjectComponent implements OnInit {
   ) {
     this.typeSelected = 'ball-atom';
   }
-
-  // projectMasterData: IProject[] = [
-  //   {
-  //     name: 'FlexiDrive 202201',
-  //     description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-  //     created: '2021-09-16T04:40:31.720Z',
-  //     industry: 'Standard',
-  //     product: 'Health Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'Travel Freemium 2022004',
-  //     description: 'Size of user who hav propensity to travel',
-  //     created: '2022-09-13T20:21:11.496Z',
-  //     industry: 'Standard',
-  //     product: 'Health Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'FlexiDrive 202206',
-  //     description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-  //     created: '2022-09-10T07:56:36.000Z',
-  //     industry: 'Insurance',
-  //     product: 'Travel Accident Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'Easy Easy 2+ 3+ 202209',
-  //     description: 'For 2+ 3+ Car owner',
-  //     created: '2022-08-20T04:21:11.496Z',
-  //     industry: 'Insurance',
-  //     product: 'Travel Accident Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'Travel Accident Insurance 202207',
-  //     description: 'Genral Travel Accident Insurance Propensity to Travel',
-  //     created: '2022-08-09T04:25:11.496Z',
-  //     industry: 'Insurance',
-  //     product: 'Health Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'Travel Freemium 202208',
-  //     description: 'Size of user who hav propensity to travel',
-  //     created: '2021-08-09T08:13:36.000Z',
-  //     industry: 'Insurance',
-  //     product: 'Saving Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'FlexiDrive 202201',
-  //     description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-  //     created: '2022-01-11T07:56:36.000Z',
-  //     industry: 'Standard',
-  //     product: 'Health Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'Travel Freemium 2022004',
-  //     description: 'Size of user who hav propensity to travel',
-  //     created: '2022-04-05T19:32:36.000Z',
-  //     industry: 'Standard',
-  //     product: 'Health Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'FlexiDrive 202202',
-  //     description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-  //     created: '2022-02-24T10:34:36.000Z',
-  //     industry: 'Standard',
-  //     product: 'Health Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'Travel Freemium CA',
-  //     description: 'Size of user who hav propensity to travel',
-  //     created: '2022-02-24T12:34:36.000Z',
-  //     industry: 'Insurance',
-  //     product: 'Travel Accident Insurance',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  //   {
-  //     name: 'FlexiDrive ACS',
-  //     description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-  //     created: '2022-01-11T07:56:36.000Z',
-  //     industry: 'Standard',
-  //     product: 'Asset Protection',
-  //     timeFormat: '',
-  //     timeLabel: '',
-  //   },
-  // ];
 
   projectMasterData: IProject[] = [
     {
@@ -234,8 +132,10 @@ export class NewProjectComponent implements OnInit {
   search: string = '';
 
   productIsCollapsed: boolean = true;
-  sortUpdated: boolean = false;
+  sortUpdated: boolean = true;
   industryFilterMode: any = 0;
+  userProjectCount: number = 0;
+  filterMetadata = { data: [] };
   industryMode = [
     {
       name: 'All',
@@ -284,21 +184,33 @@ export class NewProjectComponent implements OnInit {
       value: 12,
     },
   ];
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updateSearchDataFilter(this.filterMetadata.data);
+  }
+
+  updateSearchDataFilter(data: any): void {
+    this.industryFilterMode = 0;
+    this.projectData = data;
+    this.setData();
+  }
+
   async ngOnInit(): Promise<void> {
     this.projectList = [];
     this.projectData = [];
     this.projectFilter = [];
     this.mode = 'all';
 
-    this.sortUpdated = false;
+    this.sortUpdated = true;
     this.industryFilterMode = 0;
+
+    this.userProjectCount = 0;
+    this.userProjectCount = this.projectMasterData.length;
 
     this.projectData = this.projectMasterData;
     await this.setData();
   }
   async setData() {
     for (let i of this.projectData) {
-      console.log(i.created);
       i.timeFormat = this.datePipe
         .transform(i.created, 'd MMM, hh:mm:ss')
         ?.toString();
@@ -307,7 +219,6 @@ export class NewProjectComponent implements OnInit {
       const createTime = new Date(i.created);
       const diffTime = currentTime.getTime() - createTime.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      console.log(diffDays);
       if (diffDays == DaysNum.Today) {
         i.timeLabel = `Today, ${this.datePipe
           .transform(i.created, 'hh:mm:ss')
@@ -332,6 +243,7 @@ export class NewProjectComponent implements OnInit {
     }
     console.log(this.projectData);
     this.projectList = this.projectFilter = this.projectData;
+    this.sortUpdatedIconChange();
   }
 
   filter(mode: string) {
@@ -354,9 +266,7 @@ export class NewProjectComponent implements OnInit {
   }
   filterProduct(f: string) {
     console.log('filterProduct: ' + f);
-    const result: IProject[] = this.projectFilter.filter(
-      (e) => e.product === f
-    );
+    const result: IProject[] = this.projectData.filter((e) => e.product === f);
     this.projectList = result;
   }
   removeProject(p: IProject) {
@@ -383,6 +293,7 @@ export class NewProjectComponent implements OnInit {
     const modalRef = this.ngModalService.open(DeleteProjectModalComponent, {
       size: 'md',
       centered: true,
+      backdrop: 'static',
     });
     modalRef.componentInstance.projectName = p.name;
     modalRef.result.then((result: any) => {
@@ -395,7 +306,14 @@ export class NewProjectComponent implements OnInit {
 
   sortUpdatedIconChange() {
     this.sortUpdated = !this.sortUpdated;
-
+    if (this.filterMetadata.data.length > 0) {
+      this.projectList =
+        this.projectFilter =
+        this.projectData =
+          this.filterMetadata.data;
+    } else {
+      this.projectList = this.projectFilter = this.projectData;
+    }
     if (this.sortUpdated) {
       this.projectList.sort((a, b) => {
         return a.created < b.created ? -1 : a.created > b.created ? 1 : 0;
