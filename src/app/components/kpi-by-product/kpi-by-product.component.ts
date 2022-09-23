@@ -233,16 +233,29 @@ export class KpiByProductComponent implements OnInit {
   changeSelected(index: number, target: number) {
     setTimeout(() => {
       this.kpiList.forEach((e: any, i: number) => {
+        // e.data.forEach((item: any, j: number) => {
+        //   item.isSelected = j === target ? true : false;
+        // });
         if (i === index) {
-          // e.data.forEach((item: any, j: number) => {
-          //   item.isSelected = j === target ? true : false;
-          // });
           var value = e.data.every((element: any) => {
             return element.isSelected === false;
           });
           if (value === false) {
             e.data.forEach((item: any, j: number) => {
               item.isSelected = j === target ? true : false;
+            });
+          } else {
+            e.data.forEach((item: any) => {
+              item.isSelected = false;
+            });
+          }
+        } else {
+          var value = e.data.every((element: any) => {
+            return element.isSelected === false;
+          });
+          if (value === true) {
+            e.data.forEach((item: any, j: number) => {
+              item.isSelected = j === target ? false : false;
             });
           } else {
             e.data.forEach((item: any) => {
