@@ -9,9 +9,9 @@ import { IProject } from 'src/app/model/project-interface';
 import { DeleteProjectModalComponent } from 'src/app/modals/delete-project-modal/delete-project-modal.component';
 
 enum DaysNum {
-  Today = 1,
+  Today = 0,
   Week = 7,
-  Month = 30,
+  Month = 12,
   Year = 365,
 }
 
@@ -34,15 +34,70 @@ export class NewProjectComponent implements OnInit, OnChanges {
   }
 
   projectMasterData: IProject[] = [
-    {
-      name: 'Flexdrive 202101',
-      description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2021-01-16T04:40:31.000Z',
-      industry: 'Insurance',
-      product: 'Health Insurance',
-      timeFormat: '',
-      timeLabel: '',
-    },
+    // {
+    //   name: 'Flexdrive 202101',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created: '2021-11-24T00:14:39.000Z',
+    //   industry: 'Insurance',
+    //   product: 'Health Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   name: 'Flexdrive 202101',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created: '2021-08-24T00:14:39.000Z',
+    //   industry: 'Insurance',
+    //   product: 'Health Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   name: 'Flexdrive 202101',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created: '2021-09-25T00:14:39.000Z',
+    //   industry: 'Insurance',
+    //   product: 'Health Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   name: 'Flexdrive 202101',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created: '2022-09-17T00:14:39.000Z',
+    //   industry: 'Insurance',
+    //   product: 'Health Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   name: 'Flexdrive 202101',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created: '2022-09-18T00:14:39.000Z',
+    //   industry: 'Insurance',
+    //   product: 'Health Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   name: 'Flexdrive 202101',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created: '2022-09-25T07:10:50.000Z',
+    //   industry: 'Insurance',
+    //   product: 'Health Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   name: 'Flexdrive 202101',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created: '2022-09-24T00:14:39.000Z',
+    //   industry: 'Insurance',
+    //   product: 'Health Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+
     {
       name: 'Flexdrive 202108',
       description: 'Size of user who hav propensity to travel',
@@ -217,30 +272,52 @@ export class NewProjectComponent implements OnInit, OnChanges {
         .transform(i.created, 'd MMM, hh:mm:ss')
         ?.toString();
 
-      const currentTime = new Date();
-      const createTime = new Date(i.created);
-      const diffTime = currentTime.getTime() - createTime.getTime();
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      if (diffDays == DaysNum.Today) {
-        i.timeLabel = `Today, ${this.datePipe
-          .transform(i.created, 'hh:mm:ss')
-          ?.toString()}`;
-      } else if (diffDays <= DaysNum.Week) {
-        i.timeLabel = `${diffDays} days ago, ${this.datePipe
-          .transform(i.created, 'hh:mm:ss')
-          ?.toString()}`;
-      } else if (diffDays > DaysNum.Week && diffDays <= DaysNum.Month) {
-        i.timeLabel = this.datePipe
-          .transform(i.created, 'dd EEE, hh:mm:ss')
-          ?.toString();
-      } else if (diffDays > DaysNum.Month && diffDays <= DaysNum.Year) {
-        i.timeLabel = this.datePipe
-          .transform(i.created, 'dd MMM, hh:mm:ss')
-          ?.toString();
-      } else {
+      const currentDate = new Date();
+      const createDate = new Date(i.created);
+
+      const currentYear = currentDate.getFullYear();
+      const createYear = createDate.getFullYear();
+      const diffYear = currentYear - createYear;
+      if (diffYear === 1) {
+        const diffMonth = currentDate.getMonth() - createDate.getMonth();
+        if (diffMonth <= 0) {
+          i.timeLabel = this.datePipe
+            .transform(i.created, 'dd MMM, hh:mm:ss')
+            ?.toString();
+        } else {
+          i.timeLabel = this.datePipe
+            .transform(i.created, 'dd MMM YYYY, hh:mm:ss')
+            ?.toString();
+        }
+      } else if (diffYear > 0) {
         i.timeLabel = this.datePipe
           .transform(i.created, 'dd MMM YYYY, hh:mm:ss')
           ?.toString();
+      } else {
+        const diffTime = currentDate.getTime() - createDate.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays == DaysNum.Today) {
+          i.timeLabel = `Today, ${this.datePipe
+            .transform(i.created, 'hh:mm:ss')
+            ?.toString()}`;
+        } else if (diffDays <= DaysNum.Week) {
+          i.timeLabel = `${diffDays} days ago, ${this.datePipe
+            .transform(i.created, 'hh:mm:ss')
+            ?.toString()}`;
+        } else {
+          const currentMonth = currentDate.getMonth();
+          const createMonth = createDate.getMonth();
+          const diffMonth = currentMonth - createMonth;
+          if (diffMonth === 0) {
+            i.timeLabel = this.datePipe
+              .transform(i.created, 'dd EEE, hh:mm:ss')
+              ?.toString();
+          } else if (diffMonth < DaysNum.Month) {
+            i.timeLabel = this.datePipe
+              .transform(i.created, 'dd MMM, hh:mm:ss')
+              ?.toString();
+          }
+        }
       }
     }
     console.log(this.projectData);
