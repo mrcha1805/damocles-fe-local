@@ -260,7 +260,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.industryFilterMode = 0;
 
     this.userProjectCount = 0;
-    this.userRecentProjectCount = 3;
+    this.userRecentProjectCount = 10;
     this.userProjectCount = this.projectMasterData.length;
 
     this.projectData = this.projectMasterData;
