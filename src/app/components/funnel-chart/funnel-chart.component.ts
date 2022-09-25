@@ -161,4 +161,8 @@ export class FunnelChartComponent {
     moveItemInArray(this.funnelList, event.previousIndex, event.currentIndex);
   }
 
+  cardChartColor() {
+    console.log('test')
+  }
+
 }
