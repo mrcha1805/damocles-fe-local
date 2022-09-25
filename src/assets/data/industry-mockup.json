@@ -20,9 +20,9 @@
       ]
     },
     {
-      "industry_id": "1",
-      "industry_name": "Insurance",
-      "industry_descript": "Insurance Industrial Domain Insight",
+      "industry_id": "2",
+      "industry_name": "Banking",
+      "industry_descript": "Banking Industrial Domain Insight",
       "product": [
         {
           "product_id": "8",

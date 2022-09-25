@@ -2,7 +2,8 @@
 
 <div fxLayout="row" class="grid-item viewport">
     <div fxLayout="column" fxFlex>
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutAlign.sm="center center" fxLayoutAlign.xs="center center" fxLayout fxFlex>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutAlign.sm="center center"
+            fxLayoutAlign.xs="center center" fxLayout fxFlex>
             <div fxLayoutAlign="center center" fxLayoutAlign.gt-sm="end center" class="grid-item-layout py-3">
                 <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
                     <div class="my-2">
@@ -18,18 +19,19 @@
             <div fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center center"
                 class="grid-item-layout p-5">
                 <div fxLayout="column" class="grid-item-layout kpi-layout text-start px-3">
-                    <article class="grid-item-layout-collapse mb-2 mt-3" *ngFor="let item of kpiList; let i = index"
-                        [ngStyle]="setBorderCollapsed(i)">
+                    <article class="grid-item-layout-collapse mb-2 mt-3"
+                        *ngFor="let item of industryData?.resultData; let i = index" [ngStyle]="setBorderCollapsed(i)">
                         <img src="./assets/icons/expand-selected.svg" width="24" class="expand-selected"
                             [ngStyle]="setIconSelected(i)" [@openClose]="helpMenuOpen" />
-                        <div class="collapse-title card-selected" (click)="collapsed(i)" (click)="toggleHelpMenu()" fxLayoutGap="250">
+                        <div class="collapse-title card-selected" (click)="collapsed(i)" (click)="toggleHelpMenu()"
+                            fxLayoutGap="250">
                             <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse">
                                 <div class="grid-item-layout-collapse" fxLayoutAlign="center center">
-                                    <img src="{{ item.image }}" width="50" />
+                                    <img [src]="getDefaultImage(item.industry_name)" width="50" />
                                 </div>
                                 <div fxLayout="column" class="grid-item-layout-collapse">
                                     <span class="font-32px p-1">
-                                        {{ item.name }}
+                                        {{ item.industry_name }}
                                         &nbsp;
                                         <!-- <span [popper]="popperContent" [popperTrigger]="triggers.hover"
                                             [popperModifiers]="offsetModifiers" [popperPlacement]="placements.RIGHT">
@@ -37,9 +39,9 @@
                                         </span> -->
                                     </span>
                                     <popper-content #popperContent>
-                                        <span>{{ item.info }}</span><br />
+                                        <span>{{ item.industry_descript }}</span><br />
                                     </popper-content>
-                                    <span class="font-16px p-1">{{ item.desc }}</span>
+                                    <span class="font-16px p-1">{{ item.industry_descript }}</span>
                                 </div>
                             </div>
                             <span class="collapse-title-expand-indicator">
@@ -57,11 +59,11 @@
                                 <div fxLayout="column" class="collapse-effect" fxFlex>
                                     <div class="grid-item-layout-collapse" [id]="'collapseViewMore-' + i"
                                         [collapse]="i !== isCollapsed">
-                                        <div class="py-1" *ngFor="let data of item.data; let j = index">
+                                        <div class="py-1" *ngFor="let data of item.product; let j = index">
                                             <div fxLayout="row" class="grid-item-layout">
                                                 <mat-checkbox fxFlex="85" [(ngModel)]="data.isSelected"
                                                     (change)="changeSelected(i, j)">
-                                                    <span class="font-16px">{{ data.value }}</span>
+                                                    <span class="font-16px">{{ data.product_name }}</span>
                                                 </mat-checkbox>
                                                 &nbsp;
                                                 <div fxLayoutAlign="end center" fxFlex>
@@ -72,10 +74,11 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div *ngIf="j !== item.data.length - 1" class="border-bottom-dashed py-1">
+                                            <div *ngIf="j !== item.product.length - 1"
+                                                class="border-bottom-dashed py-1">
                                             </div>
                                             <popper-content #popperContent_sub>
-                                                <span>{{ data.info }}</span><br />
+                                                <span>{{ data.product_description }}</span><br />
                                             </popper-content>
                                         </div>
                                     </div>

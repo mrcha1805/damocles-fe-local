@@ -157,11 +157,30 @@ export class KpiByProductComponent implements OnInit {
     this.getIndustryApiMockup();
   }
 
+  getDefaultImage(name: string) {
+    let img;
+    if (name === 'Standard') {
+      img = './assets/icons/insurance-icon.svg';
+    } else if (name === 'Insurance') {
+      img = './assets/icons/insurance-icon.svg';
+    } else if (name === 'Banking') {
+      img = './assets/icons/insurance-icon.svg';
+    }
+    return img;
+  }
+
   getIndustryApiMockup() {
     this.apiService.dynamicIndustryMockup().subscribe((data) => {
       console.log(data);
       this.industryData = data.body!;
       console.log('==>' + JSON.stringify(this.industryData.resultData));
+      this.industryData.resultData.forEach((e: any) => {
+        e.isSelected = false;
+        e.product.forEach((i: any) => {
+          i.isSelected = false;
+        });
+      });
+      console.log(this.industryData);
     });
   }
 
@@ -178,33 +197,33 @@ export class KpiByProductComponent implements OnInit {
     // } else {
     //   if (this.isCollapsed === index) {
     //     this.isCollapsed = -1;
-    //     this.kpiList.forEach((e: any) => {
+    //     this.industryData?.resultData.forEach((e: any) => {
     //       e.isSelected = false;
     //     });
     //   } else {
     //     this.isCollapsed = index;
-    //     this.kpiList.forEach((e: any) => {
+    //     this.industryData?.resultData.forEach((e: any) => {
     //       e.isSelected = true;
     //     });
     //   }
     // }
     if (this.isCollapsed === index) {
       this.isCollapsed = -1;
-      this.kpiList.forEach((e: any) => {
+      this.industryData?.resultData.forEach((e: any) => {
         e.isSelected = false;
       });
     } else {
       this.isCollapsed = index;
-      this.kpiList.forEach((e: any) => {
+      this.industryData?.resultData.forEach((e: any) => {
         e.isSelected = true;
       });
     }
   }
 
   setBorderCollapsed(index: number) {
-    this.kpiList.forEach((e: any, i: number) => {
+    this.industryData?.resultData.forEach((e: any, i: number) => {
       if (i === index) {
-        var value = e.data.every((element: any) => {
+        var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
         if (value === false) {
@@ -229,9 +248,9 @@ export class KpiByProductComponent implements OnInit {
   }
 
   setIconSelected(index: number) {
-    this.kpiList.forEach((e: any, i: number) => {
+    this.industryData?.resultData.forEach((e: any, i: number) => {
       if (i === index) {
-        var value = e.data.every((element: any) => {
+        var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
 
@@ -258,11 +277,11 @@ export class KpiByProductComponent implements OnInit {
 
   changeSelected(index: number, target: number) {
     setTimeout(() => {
-      this.kpiList.forEach((e: any, i: number) => {
+      this.industryData?.resultData.forEach((e: any, i: number) => {
         // e.data.forEach((item: any, j: number) => {
         //   item.isSelected = j === target ? true : false;
         // });
-        var value = e.data.every((element: any) => {
+        var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
         e.data.forEach((item: any, j: number) => {
@@ -281,7 +300,7 @@ export class KpiByProductComponent implements OnInit {
           }
         });
       });
-      console.log(this.kpiList);
+      console.log(this.industryData?.resultData);
     }, 100);
   }
 

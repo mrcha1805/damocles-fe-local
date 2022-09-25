@@ -21,6 +21,7 @@ interface IIndustryData {
   industry_id: string;
   industry_name: string;
   industry_descript: string;
+  isSelected: boolean | false;
   product: Product[];
 }
 
@@ -28,4 +29,5 @@ interface Product {
   product_id: string;
   product_name: string;
   product_description: string;
+  isSelected: boolean | false;
 }
