@@ -59,6 +59,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { SearchFilterPipe } from './services/search-filter.pipe';
 import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WorkspaceComponent } from './workspace/workspace.component';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -77,6 +78,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     FilterComponent,
     SearchFilterPipe,
     DeleteProjectModalComponent,
+    WorkspaceComponent,
   ],
   imports: [
     BrowserModule,
