@@ -284,7 +284,7 @@ export class KpiByProductComponent implements OnInit {
         var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
-        e.data.forEach((item: any, j: number) => {
+        e.product.forEach((item: any, j: number) => {
           if (i === index) {
             if (value === false) {
               item.isSelected = j === target ? true : false;
