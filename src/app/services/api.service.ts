@@ -1,4 +1,9 @@
-import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpResponse,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { IIndustry } from '../model/industry';
@@ -19,7 +24,12 @@ export class ApiService {
       'Content-Type': 'application/json',
     }),
   };
-  industryAPI(): Observable<IIndustry> {
+  dynamicIndustryMockup(): Observable<HttpResponse<IIndustry>> {
+    return this.http.get<IIndustry>('assets/data/industry-mockup.json', {
+      observe: 'response',
+    });
+  }
+  getIndustryAPI(): Observable<IIndustry> {
     return this.http
       .get<IIndustry>(this.endpoint + this.industry, this.httpOption)
       .pipe(

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { end } from '@popperjs/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { IIndustry } from 'src/app/model/industry';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-kpi-by-product',
@@ -144,12 +146,31 @@ export class KpiByProductComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    private apiService: ApiService
   ) {
     this.typeSelected = 'ball-atom';
   }
+  industryData: IIndustry | undefined;
+  ngOnInit() {
+    //this.getIndustryApi();
+    this.getIndustryApiMockup();
+  }
 
-  ngOnInit() {}
+  getIndustryApiMockup() {
+    this.apiService.dynamicIndustryMockup().subscribe((data) => {
+      console.log(data);
+      this.industryData = data.body!;
+      console.log('==>' + JSON.stringify(this.industryData.resultData));
+    });
+  }
+
+  getIndustryApi() {
+    this.apiService.getIndustryAPI().subscribe((res) => {
+      this.industryData = res;
+      console.log(this.industryData);
+    });
+  }
 
   collapsed(index: number) {
     // if (index === 0) {

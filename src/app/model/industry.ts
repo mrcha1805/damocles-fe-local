@@ -4,15 +4,28 @@ export interface IIndustry {
   resultData: IIndustryData[];
 }
 
+// interface IIndustryData {
+//   industry_id: (null | number | number)[];
+//   industry_name: string;
+//   industry_shortname: string;
+//   industry_description_th?: string;
+//   industry_description_en: string;
+//   product_id?: number;
+//   product_name?: string;
+//   product_shortname?: string;
+//   product_description_th?: string;
+//   product_description_en?: string;
+// }
+
 interface IIndustryData {
-  industry_id: (null | number | number)[];
+  industry_id: string;
   industry_name: string;
-  industry_shortname: string;
-  industry_description_th?: string;
-  industry_description_en: string;
-  product_id?: number;
-  product_name?: string;
-  product_shortname?: string;
-  product_description_th?: string;
-  product_description_en?: string;
+  industry_descript: string;
+  product: Product[];
+}
+
+interface Product {
+  product_id: string;
+  product_name: string;
+  product_description: string;
 }
