@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IProject, IProjectModel } from 'src/app/model/project-interface';
-import { DeleteProjectModalComponent } from 'src/app/modals/delete-project-modal/delete-project-modal.component';
-import { ApiService } from 'src/app/services/api.service';
+import { IProject, IProjectModel } from 'app/model/project-interface';
+import { DeleteProjectModalComponent } from 'app/modals/delete-project-modal/delete-project-modal.component';
+import { ApiService } from 'app/services/api.service';
 
 enum DaysNum {
   Today = 0,
@@ -274,11 +274,11 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.getProjectApi();
   }
   getProjectApi() {
-    this.apiService.getProjectAPI('1').subscribe(async (data) => {
+    this.apiService.getProjectAPI('1').subscribe(async (data: any) => {
       this.projectDataApi = data;
-      if (this.projectDataApi.resultCode === '20000') {
+      if (this.projectDataApi!.resultCode === '20000') {
         console.log(this.projectDataApi);
-        this.projectMasterData = this.projectDataApi.resultData.project;
+        this.projectMasterData = this.projectDataApi!.resultData.project;
         this.projectData = this.projectMasterData;
         this.userProjectCount = this.projectMasterData.length;
         await this.setData();
