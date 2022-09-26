@@ -7,10 +7,9 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { end } from '@popperjs/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { IIndustry } from 'src/app/model/industry';
+import { IIndustry } from 'src/app/model/industry-interface';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({

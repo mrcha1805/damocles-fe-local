@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IProject } from 'src/app/model/project-interface';
+import { IProject, IProjectModel } from 'src/app/model/project-interface';
 import { DeleteProjectModalComponent } from 'src/app/modals/delete-project-modal/delete-project-modal.component';
+import { ApiService } from 'src/app/services/api.service';
 
 enum DaysNum {
   Today = 0,
@@ -28,157 +29,157 @@ export class NewProjectComponent implements OnInit, OnChanges {
     private router: Router,
     private datePipe: DatePipe,
     private spinnerService: NgxSpinnerService,
-    private ngModalService: NgbModal
+    private ngModalService: NgbModal,
+    private apiService: ApiService
   ) {
     this.typeSelected = 'ball-atom';
   }
 
   projectMasterData: IProject[] = [
     // {
-    //   name: 'Flexdrive 202101',
+    //   project_name: 'Flexdrive 202101',
     //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-    //   created: '2021-11-24T00:14:39.000Z',
-    //   industry: 'Insurance',
-    //   product: 'Health Insurance',
+    //   created_at: '2021-11-24T00:14:39.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Health Insurance',
     //   timeFormat: '',
     //   timeLabel: '',
     // },
     // {
-    //   name: 'Flexdrive 202101',
+    //   project_name: 'Flexdrive 202101',
     //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-    //   created: '2021-08-24T00:14:39.000Z',
-    //   industry: 'Insurance',
-    //   product: 'Health Insurance',
+    //   created_at: '2021-08-24T00:14:39.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Health Insurance',
     //   timeFormat: '',
     //   timeLabel: '',
     // },
     // {
-    //   name: 'Flexdrive 202101',
+    //   project_name: 'Flexdrive 202101',
     //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-    //   created: '2021-09-25T00:14:39.000Z',
-    //   industry: 'Insurance',
-    //   product: 'Health Insurance',
+    //   created_at: '2021-09-25T00:14:39.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Health Insurance',
     //   timeFormat: '',
     //   timeLabel: '',
     // },
     // {
-    //   name: 'Flexdrive 202101',
+    //   project_name: 'Flexdrive 202101',
     //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-    //   created: '2022-09-17T00:14:39.000Z',
-    //   industry: 'Insurance',
-    //   product: 'Health Insurance',
+    //   created_at: '2022-09-17T00:14:39.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Health Insurance',
     //   timeFormat: '',
     //   timeLabel: '',
     // },
     // {
-    //   name: 'Flexdrive 202101',
+    //   project_name: 'Flexdrive 202101',
     //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-    //   created: '2022-09-18T00:14:39.000Z',
-    //   industry: 'Insurance',
-    //   product: 'Health Insurance',
+    //   created_at: '2022-09-18T00:14:39.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Health Insurance',
     //   timeFormat: '',
     //   timeLabel: '',
     // },
     // {
-    //   name: 'Flexdrive 202101',
+    //   project_name: 'Flexdrive 202101',
     //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-    //   created: '2022-09-25T07:10:50.000Z',
-    //   industry: 'Insurance',
-    //   product: 'Health Insurance',
+    //   created_at: '2022-09-25T07:10:50.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Health Insurance',
     //   timeFormat: '',
     //   timeLabel: '',
     // },
     // {
-    //   name: 'Flexdrive 202101',
+    //   project_name: 'Flexdrive 202101',
     //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-    //   created: '2022-09-24T00:14:39.000Z',
-    //   industry: 'Insurance',
-    //   product: 'Health Insurance',
+    //   created_at: '2022-09-24T00:14:39.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Health Insurance',
     //   timeFormat: '',
     //   timeLabel: '',
     // },
-
-    {
-      name: 'Flexdrive 202108',
-      description: 'Size of user who hav propensity to travel',
-      created: '2021-08-18T04:40:31.000Z',
-      industry: 'Insurance',
-      product: 'Saving Insurance',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'Flexdrive 202201',
-      description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2022-01-16T07:56:36.000Z',
-      industry: 'Insurance',
-      product: 'Asset Protection',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'Flexdrive 202208',
-      description: 'For 2+ 3+ Car owner',
-      created: '2022-08-21T02:30:41.000Z',
-      industry: 'Insurance',
-      product: 'Personal Accident Insurance',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'Flexdrive 202209',
-      description: 'Genral Travel Accident Insurance Propensity to Travel',
-      created: '2022-09-21T02:30:41.000Z',
-      industry: 'Insurance',
-      product: 'Travel Accident Insurance',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'Easy Easy 2+ 3+ 202209',
-      description: 'Size of user who hav propensity to travel',
-      created: '2022-09-20T02:30:41.000Z',
-      industry: 'Insurance',
-      product: 'Travel Accident Insurance',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'FlexiDrive ACS',
-      description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2022-09-03T02:30:41.000Z',
-      industry: 'Insurance',
-      product: 'Asset Protection',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'Travel Freemium 202209',
-      description: 'Size of user who hav propensity to travel',
-      created: '2022-09-15T02:30:41.000Z',
-      industry: 'Insurance',
-      product: 'Travel Accident Insurance',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'Travel Freemium 202204',
-      description: '4 Persona : Somjad , BiBi, Jennie, Tik',
-      created: '2022-04-06T07:32:36.000Z',
-      industry: 'Insurance',
-      product: 'Asset Protection',
-      timeFormat: '',
-      timeLabel: '',
-    },
-    {
-      name: 'test',
-      description: 'Size of user who hav propensity to travel',
-      created: '2021-09-16T04:40:31.000Z',
-      industry: 'Standard',
-      product: 'Test1',
-      timeFormat: '',
-      timeLabel: '',
-    },
+    // {
+    //   project_name: 'Flexdrive 202108',
+    //   description: 'Size of user who hav propensity to travel',
+    //   created_at: '2021-08-18T04:40:31.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Saving Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'Flexdrive 202201',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created_at: '2022-01-16T07:56:36.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Asset Protection',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'Flexdrive 202208',
+    //   description: 'For 2+ 3+ Car owner',
+    //   created_at: '2022-08-21T02:30:41.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Personal Accident Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'Flexdrive 202209',
+    //   description: 'Genral Travel Accident Insurance Propensity to Travel',
+    //   created_at: '2022-09-21T02:30:41.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Travel Accident Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'Easy Easy 2+ 3+ 202209',
+    //   description: 'Size of user who hav propensity to travel',
+    //   created_at: '2022-09-20T02:30:41.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Travel Accident Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'FlexiDrive ACS',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created_at: '2022-09-03T02:30:41.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Asset Protection',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'Travel Freemium 202209',
+    //   description: 'Size of user who hav propensity to travel',
+    //   created_at: '2022-09-15T02:30:41.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Travel Accident Insurance',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'Travel Freemium 202204',
+    //   description: '4 Persona : Somjad , BiBi, Jennie, Tik',
+    //   created_at: '2022-04-06T07:32:36.000Z',
+    //   industry_name: 'Insurance',
+    //   product_name: 'Asset Protection',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
+    // {
+    //   project_name: 'test',
+    //   description: 'Size of user who hav propensity to travel',
+    //   created_at: '2021-09-16T04:40:31.000Z',
+    //   industry_name: 'Standard',
+    //   product_name: 'Test1',
+    //   timeFormat: '',
+    //   timeLabel: '',
+    // },
   ];
   projectList: IProject[] = [];
   projectData: IProject[] = [];
@@ -249,6 +250,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.projectData = data;
     this.setData();
   }
+  projectDataApi: IProjectModel | undefined;
 
   async ngOnInit(): Promise<void> {
     this.projectList = [];
@@ -261,19 +263,30 @@ export class NewProjectComponent implements OnInit, OnChanges {
 
     this.userProjectCount = 0;
     this.userRecentProjectCount = 10;
-    this.userProjectCount = this.projectMasterData.length;
 
-    this.projectData = this.projectMasterData;
-    await this.setData();
+    this.getProjectApi();
   }
+  getProjectApi() {
+    this.apiService.getProjectAPI('1').subscribe(async (data) => {
+      this.projectDataApi = data;
+      if (this.projectDataApi.resultCode === '20000') {
+        console.log(this.projectDataApi);
+        this.projectMasterData = this.projectDataApi.resultData.project;
+        this.projectData = this.projectMasterData;
+        this.userProjectCount = this.projectMasterData.length;
+        await this.setData();
+      }
+    });
+  }
+
   async setData() {
     for (let i of this.projectData) {
       i.timeFormat = this.datePipe
-        .transform(i.created, 'd MMM, hh:mm:ss')
+        .transform(i.created_at, 'd MMM, hh:mm:ss')
         ?.toString();
 
       const currentDate = new Date();
-      const createDate = new Date(i.created);
+      const createDate = new Date(i.created_at);
 
       const currentYear = currentDate.getFullYear();
       const createYear = createDate.getFullYear();
@@ -282,27 +295,27 @@ export class NewProjectComponent implements OnInit, OnChanges {
         const diffMonth = currentDate.getMonth() - createDate.getMonth();
         if (diffMonth <= 0) {
           i.timeLabel = this.datePipe
-            .transform(i.created, 'dd MMM, hh:mm:ss')
+            .transform(i.created_at, 'dd MMM, hh:mm:ss')
             ?.toString();
         } else {
           i.timeLabel = this.datePipe
-            .transform(i.created, 'dd MMM YYYY, hh:mm:ss')
+            .transform(i.created_at, 'dd MMM YYYY, hh:mm:ss')
             ?.toString();
         }
       } else if (diffYear > 0) {
         i.timeLabel = this.datePipe
-          .transform(i.created, 'dd MMM YYYY, hh:mm:ss')
+          .transform(i.created_at, 'dd MMM YYYY, hh:mm:ss')
           ?.toString();
       } else {
         const diffTime = currentDate.getTime() - createDate.getTime();
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         if (diffDays == DaysNum.Today) {
           i.timeLabel = `Today, ${this.datePipe
-            .transform(i.created, 'hh:mm:ss')
+            .transform(i.created_at, 'hh:mm:ss')
             ?.toString()}`;
         } else if (diffDays <= DaysNum.Week) {
           i.timeLabel = `${diffDays} days ago, ${this.datePipe
-            .transform(i.created, 'hh:mm:ss')
+            .transform(i.created_at, 'hh:mm:ss')
             ?.toString()}`;
         } else {
           const currentMonth = currentDate.getMonth();
@@ -310,11 +323,11 @@ export class NewProjectComponent implements OnInit, OnChanges {
           const diffMonth = currentMonth - createMonth;
           if (diffMonth === 0) {
             i.timeLabel = this.datePipe
-              .transform(i.created, 'dd EEE, hh:mm:ss')
+              .transform(i.created_at, 'dd EEE, hh:mm:ss')
               ?.toString();
           } else if (diffMonth < DaysNum.Month) {
             i.timeLabel = this.datePipe
-              .transform(i.created, 'dd MMM, hh:mm:ss')
+              .transform(i.created_at, 'dd MMM, hh:mm:ss')
               ?.toString();
           }
         }
@@ -331,7 +344,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.mode = mode;
     if (mode !== 'all') {
       let filterData = this.projectList.filter(
-        (e) => e.industry.toLowerCase() === mode
+        (e) => e.industry_name.toLowerCase() === mode
       );
 
       console.log('mode: ' + mode);
@@ -345,12 +358,16 @@ export class NewProjectComponent implements OnInit, OnChanges {
   }
   filterProduct(f: string) {
     console.log('filterProduct: ' + f);
-    const result: IProject[] = this.projectData.filter((e) => e.product === f);
+    const result: IProject[] = this.projectData.filter(
+      (e) => e.product_name === f
+    );
     this.projectList = result;
   }
   removeProject(p: IProject) {
-    console.log(p.name);
-    const dIndex = this.projectData.findIndex((e) => e.name === p.name);
+    console.log(p.project_name);
+    const dIndex = this.projectData.findIndex(
+      (e) => e.project_name === p.project_name
+    );
 
     console.log(dIndex);
     this.projectData.splice(dIndex, 1);
@@ -374,7 +391,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
       centered: true,
       backdrop: 'static',
     });
-    modalRef.componentInstance.projectName = p.name;
+    modalRef.componentInstance.projectName = p.project_name;
     modalRef.result.then((result: any) => {
       if (result.search('deleting') != -1) {
         this.removeProject(p);
@@ -395,11 +412,19 @@ export class NewProjectComponent implements OnInit, OnChanges {
     }
     if (this.sortUpdated) {
       this.projectList.sort((a, b) => {
-        return a.created < b.created ? -1 : a.created > b.created ? 1 : 0;
+        return a.created_at < b.created_at
+          ? -1
+          : a.created_at > b.created_at
+          ? 1
+          : 0;
       });
     } else {
       this.projectList.sort((a, b) => {
-        return a.created > b.created ? -1 : a.created > b.created ? 1 : 0;
+        return a.created_at > b.created_at
+          ? -1
+          : a.created_at > b.created_at
+          ? 1
+          : 0;
       });
     }
   }

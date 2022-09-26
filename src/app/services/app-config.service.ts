@@ -28,4 +28,5 @@ export class AppConfigService {
 export interface ActionableConfig {
   apiEndpoint: string;
   industryRoute: string;
+  projectRoute: string;
 }

@@ -1,0 +1,33 @@
+{
+  "resultCode": "20000",
+  "resultDescription": "Success",
+  "resultData": [
+    {
+      "project_id": 1,
+      "project_name": "FlexiDrive 202206",
+      "project_description": "4 Persona : Somjad , BiBi, Jennie, Tik",
+      "created_at": "2022-08-30T17:30:12.000Z",
+      "updated_at": "2022-08-31T16:30:12.000Z",
+      "product_name": "Travel Accident Insurance",
+      "industry_name": "insurance"
+    },
+    {
+      "project_id": 2,
+      "project_name": "Easy Easy 2+ 3+ 202209",
+      "project_description": "For 2+ 3+ Car owner.",
+      "created_at": "2022-09-04T08:30:22.000Z",
+      "updated_at": "2022-09-14T16:10:12.000Z",
+      "product_name": "Travel Accident Insurance",
+      "industry_name": "insurance"
+    },
+    {
+      "project_id": 3,
+      "project_name": "Health Insurance 202207",
+      "project_description": "Genral Health Insurance Propensity to anyone",
+      "created_at": "2022-09-18T17:30:12.000Z",
+      "updated_at": "2022-09-19T17:30:12.000Z",
+      "product_name": "Health Insurance",
+      "industry_name": "insurance"
+    }
+  ]
+}

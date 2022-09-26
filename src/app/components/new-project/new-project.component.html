@@ -79,12 +79,12 @@
                             <div class="col-5">
                                 <div class="row m-1">
                                     <div class="col-1 ">
-                                        <img [src]="p.industry==='Insurance'?'./assets/icons/insurance-icon.svg':'./assets/icons/standard-icon.svg'"
+                                        <img [src]="p.industry_name==='Insurance'?'./assets/icons/insurance-icon.svg':'./assets/icons/standard-icon.svg'"
                                             width="32px" height="32px" />
                                     </div>
                                     <div class="col mx-3">
-                                        <div class="header-body1">{{p.name}}</div>
-                                        <div class="header-body2">{{p.description}}</div>
+                                        <div class="header-body1">{{p.project_name}}</div>
+                                        <div class="header-body2">{{p.project_description}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -93,12 +93,12 @@
                             </div>
                             <div class="col-2 d-flex align-items-center ">
                                 <p class="header-body3 industry-body "
-                                    [ngClass]="{'insurance': p.industry==='Insurance', 'standard ': p.industry==='Standard'}">
-                                    {{p.industry}}
+                                    [ngClass]="{'insurance': p.industry_name==='Insurance', 'standard ': p.industry_name==='Standard'}">
+                                    {{p.industry_name}}
                                 </p>
                             </div>
                             <div class="col-2 d-flex align-items-center">
-                                <p class="header-body3">{{p.product}}</p>
+                                <p class="header-body3">{{p.product_name}}</p>
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <img src="/assets/icons/del-project.svg" class="icon icon-del"
