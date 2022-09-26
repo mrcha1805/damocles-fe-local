@@ -10,9 +10,9 @@ $heavent-normal: DB Heavent Nor;
   color: $hexcolor !important;
 }
 
-.collapse-test {
+.collapse-card {
   position: absolute;
-  top: 45%;
+  top: 40%;
   right: 10%;
 }
 
@@ -33,6 +33,7 @@ $heavent-normal: DB Heavent Nor;
 }
 .font-16px {
   @include font-format($heavent-reg, 400, 16px, 15px, #000000);
+  overflow: auto;
 }
 
 .font-18px {

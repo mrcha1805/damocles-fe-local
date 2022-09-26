@@ -1,6 +1,6 @@
 <app-navbar-logo></app-navbar-logo>
 
-<div fxLayout="row" class="grid-item viewport">
+<div fxLayout="row" class="grid-item viewport mt-4">
     <div fxLayout="column" fxFlex>
         <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutAlign.sm="center center"
             fxLayoutAlign.xs="center center" fxLayout fxFlex>
@@ -29,7 +29,7 @@
                                 <div class="grid-item-layout-collapse" fxLayoutAlign="center center">
                                     <img [src]="getDefaultImage(item.industry_name)" width="50" />
                                 </div>
-                                <div fxLayout="column" class="grid-item-layout-collapse px-3">
+                                <div fxLayout="column" class="grid-item-layout-collapse pr-3">
                                     <span class="font-32px p-1">
                                         {{ item.industry_name }}
                                         &nbsp;
@@ -41,9 +41,9 @@
                                     <popper-content #popperContent>
                                         <span>{{ item.industry_descript }}</span><br />
                                     </popper-content>
-                                    <span class="font-16px p-1">{{ item.industry_descript }}</span>
+                                    <span class="font-16px p-1">Insurance Industrial Domain Insight</span>
                                 </div>
-                                <div class="collapse-test">
+                                <div class="collapse-card">
                                     <div fxLayoutGap="20">
                                         <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
                                             [ngStyle]="{'transform': isCollapsed == i ? 'rotateZ(90deg)' : 'rotateZ(0deg)'}">
