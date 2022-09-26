@@ -65,6 +65,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SaveSuccessWorkspaceModalComponent } from './modals/save-success-workspace-modal/save-success-workspace-modal.component';
 import { SaveWorkspaceModalComponent } from './modals/save-workspace-modal/save-workspace-modal.component';
 import { SaveExistsWorkspaceModalComponent } from './modals/save-exists-workspace-modal/save-exists-workspace-modal.component';
+import { FunnelChartComponent } from './components/funnel-chart/funnel-chart.component';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -88,6 +89,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     SaveSuccessWorkspaceModalComponent,
     SaveWorkspaceModalComponent,
     SaveExistsWorkspaceModalComponent,
+    FunnelChartComponent,
   ],
   imports: [
     BrowserModule,
