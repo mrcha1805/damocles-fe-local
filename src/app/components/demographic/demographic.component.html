@@ -1,6 +1,6 @@
 <section>
-  <div fxFill class="pb-3">
-    <div fxLayout="row" fxLayoutGap="10" fxFill>
+  <div fxFill class="pb-3 border-close">
+    <div fxLayout="row" fxLayoutGap="10" fxFill class="mt-3">
       <div fxFlex="50" class="header1 py-2">
         <span>Age&nbsp;
           <span [popper]="popperContent_age" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
@@ -14,7 +14,7 @@
       </div>
       <div fxFlex fxLayoutAlign="end center">
         <div fxLayout="row">
-          <div fxFill class="text-end header2">
+          <div fxFill class="text-end text-user">
             <span>0 users</span>
           </div>
           <div fxFlex></div>
@@ -81,8 +81,10 @@
       </div>
     </div>
   </div>
+
+
   <div fxFill class="pb-3 border-close">
-    <div fxLayout="row" fxLayoutGap="10" fxFill>
+    <div fxLayout="row" fxLayoutGap="10" fxFill class="mt-3">
       <div fxFlex="50" class="header1 py-2">
         <span>Gender&nbsp;
           <span [popper]="popperContent_gender" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
@@ -96,7 +98,7 @@
       </div>
       <div fxFlex fxLayoutAlign="end center">
         <div fxLayout="row">
-          <div fxFill class="text-end header2">
+          <div fxFill class="text-end text-user">
             <span>20,000,000 users</span>
           </div>
           <div fxFlex></div>
@@ -162,6 +164,12 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10" fxFill>
+    <div class="add-criterion" fxLayoutAlign="end end">
+      <span>+ Add Criterion</span>
     </div>
   </div>
 </section>

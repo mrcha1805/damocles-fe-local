@@ -48,6 +48,7 @@ import {
 } from 'ngx-popperjs';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { LoginComponent } from './components/login/login.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
@@ -66,6 +67,7 @@ import { SaveSuccessWorkspaceModalComponent } from './modals/save-success-worksp
 import { SaveWorkspaceModalComponent } from './modals/save-workspace-modal/save-workspace-modal.component';
 import { SaveExistsWorkspaceModalComponent } from './modals/save-exists-workspace-modal/save-exists-workspace-modal.component';
 import { FunnelChartComponent } from './components/funnel-chart/funnel-chart.component';
+import { FilterSliderComponent } from './components/filter-slider/filter-slider.component';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -90,6 +92,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     SaveWorkspaceModalComponent,
     SaveExistsWorkspaceModalComponent,
     FunnelChartComponent,
+    FilterSliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -137,7 +140,8 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
     NgbModule,
-    DragDropModule
+    DragDropModule,
+    NgxSliderModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

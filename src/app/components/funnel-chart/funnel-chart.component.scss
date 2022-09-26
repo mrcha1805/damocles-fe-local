@@ -10,14 +10,14 @@ $heavent-normal: DB Heavent Nor;
   color: $hexcolor !important;
 }
 
-.grid-funnel {
-  border: solid 1px #ccc;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  padding-bottom: 40px;
-  margin-top: 100px;
-}
+// .grid-funnel {
+//   border: solid 1px #ccc;
+//   background: white;
+//   border-radius: 8px;
+//   overflow: hidden;
+//   padding-bottom: 40px;
+//   background: white;
+// }
 
 .funnel-box {
   font-size: 14px;
@@ -73,15 +73,43 @@ $heavent-normal: DB Heavent Nor;
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
+.color0 {
+  background-color: #EDE8F9;
+  width: 219px;
+}
 .color1 {
-  color: '#EDE8F9'
+  background-color: #DBD2F3;
+  width: 210px;
 }
 .color2 {
-  color: '#DBD2F3'
+  background-color: #C8BBED;
+  width: 200px;
 }
 .color3 {
-  color: '#C8BBED'
+  background-color: #B6A5E8;
+  width: 190px;
 }
 .color4 {
-  color: '#B6A5E8'
+  background-color: #A48EE2;
+  width: 180px;
+}
+.color5 {
+  background-color: #9278DC;
+  width: 170px;
+}
+.color6 {
+  background-color: #7F61D6;
+  width: 160px;
+}
+.color7 {
+  background-color: #6D4AD0;
+  width: 150px;
+}
+.color8 {
+  background-color: #5B34CA;
+  width: 86px;
+}
+.color9 {
+  background-color: #491DC5;
+  width: 79px;
 }

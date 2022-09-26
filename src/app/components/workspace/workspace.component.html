@@ -8,26 +8,9 @@
                     <div fxHide.lt-md class="w-100">
                         <app-navbar-logo></app-navbar-logo>
                     </div>
-                    <div fxLayout="column" class="grid-item-layout w-100 p-1 pb-3" fxFlex>
-                        <div fxLayout="column" class="grid-item-layout px-2" fxLayoutAlign="start start" fxFlex>
+                    <div fxLayout="column" class="grid-item-layout w-100 pb-3" fxFlex>
+                        <div fxLayout="column" class="grid-item-layout" fxLayoutAlign="start start" fxFlex>
                             <app-filter fxFill></app-filter>
-                        </div>
-                        <div fxLayout="row" class="grid-item-layout mt-3 px-5" fxLayoutAlign="end end" fxFlex>
-                            <div fxLayout="row" fxLayoutGap="20" class="btn p-3 box-left-bottom" fxFlex>
-                                <div fxLayoutAlign="none start" class="grid-item-layout">
-                                    <img src="./assets/icons/Advance-KPI.svg" width="30" />
-                                </div>
-                                <div fxLayout="column" fxFlex="90" class="grid-item-layout text-start">
-                                    <span class="font-12px p-1">Advance KPI</span>
-                                    <span class="font-11px p-1">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis accumsan
-                                        lorem.
-                                    </span>
-                                </div>
-                                <div fxLayoutAlign="center center" fxFlex="10" class="grid-item-layout">
-                                    <img src="./assets/icons/arrow_collapse_b.svg" width="9" height="15" />
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,10 +39,11 @@
                         <div class="funnel-clear" fxLayoutAlign="end end">
                             <span (click)="clearAll()">Clear All</span> 
                         </div>
-                        <div fxLayout="column" fxLayoutAlign="center center" class="grid-item-layout box-chart">
+                        <app-funnel-chart></app-funnel-chart>
+                        <!-- <div fxLayout="column" fxLayoutAlign="center center" class="grid-item-layout box-chart">
                             <img src="./assets/icons/Choose-KPI-for-Data-Visualization.svg" width="200" />
                             <span class="font-14px">Choose KPI for Data Visualization</span>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div fxLayoutGap="20" fxLayoutAlign="end stretch" class="my-2">

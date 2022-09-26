@@ -14,17 +14,26 @@
 
         </mat-panel-description>
         <mat-panel-description fxLayout="row" fxLayoutAlign="end center">
-
           <img src="./assets/icons/filter.svg">
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <ng-container *ngFor="let sub of item.subMenu">
 
+      <div *ngIf="item.fileType === 'filter'">
+        <app-demographic></app-demographic>
+      </div>
+
+      <div *ngIf="item.fileType === 'slider'">  
+        <app-filter-slider></app-filter-slider>
+      </div>
+      
+      <!-- <ng-container *ngFor="let sub of item.subMenu">
         <mat-expansion-panel [expanded]="false" hideToggle>
           <mat-expansion-panel-header>
-            <!-- <mat-panel-title>
+
+            <mat-panel-title>
                 <span>sub title</span>
-              </mat-panel-title> -->
+              </mat-panel-title>
+
             <mat-panel-description fxFill>
               <span class="header2" fxFill>{{sub.name}}&nbsp;
                 <span>
@@ -35,8 +44,7 @@
           </mat-expansion-panel-header>
           <app-demographic></app-demographic>
         </mat-expansion-panel>
-
-      </ng-container>
+      </ng-container> -->
 
     </mat-expansion-panel>
   </mat-accordion>

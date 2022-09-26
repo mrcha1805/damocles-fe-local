@@ -7,9 +7,9 @@
   color: $hexcolor !important;
 }
 
-.mat-form-field + .mat-form-field {
-  // margin-left: 8px;
-}
+// .mat-form-field + .mat-form-field {
+//   margin-left: 8px;
+// }
 mat-expansion-panel {
   width: 100%;
 }
@@ -19,8 +19,7 @@ mat-expansion-panel-header {
   margin: 0;
 }
 .header-style {
-  background: #ede8f9;
-  border-radius: 5px;
+  background: #EDE8F9 !important;
 }
 .header-style:hover {
   background: #d8cbf8 !important;
