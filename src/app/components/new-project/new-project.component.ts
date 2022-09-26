@@ -34,6 +34,11 @@ export class NewProjectComponent implements OnInit, OnChanges {
   ) {
     this.typeSelected = 'ball-atom';
   }
+  IndustryENum = {
+    all: 'all',
+    insurance: 'Insurance',
+    standard: 'Standard',
+  };
 
   projectMasterData: IProject[] = [
     // {
@@ -184,7 +189,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
   projectList: IProject[] = [];
   projectData: IProject[] = [];
   projectFilter: IProject[] = [];
-  mode: string | undefined;
+  mode: any;
   search: string = '';
 
   productIsCollapsed: boolean = true;
@@ -258,7 +263,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.projectList = [];
     this.projectData = [];
     this.projectFilter = [];
-    this.mode = 'all';
+    this.mode = this.IndustryENum.all;
 
     this.sortUpdated = true;
     this.industryFilterMode = 0;
@@ -342,21 +347,19 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.spinnerService.hide();
   }
 
-  filter(mode: string) {
+  filter(mode: any) {
     this.productIsCollapsed = true;
     this.projectList = this.projectData;
     this.mode = mode;
-    if (mode !== 'all') {
-      let filterData = this.projectList.filter(
-        (e) => e.industry_name.toLowerCase() === mode
-      );
+    if (mode !== this.IndustryENum.all) {
+      let filterData = this.projectList.filter((e) => e.industry_name === mode);
 
-      console.log('mode: ' + mode);
-      console.log('filter: ' + JSON.stringify(filterData));
+      // console.log('mode: ' + mode);
+      // console.log('filter: ' + JSON.stringify(filterData));
       this.projectList = filterData;
     }
     this.industryFilterMode = this.industryMode.find(
-      (e) => e.name.toLowerCase() === mode
+      (e) => e.name === mode
     )?.value;
     this.projectFilter = this.projectList;
   }
