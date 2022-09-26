@@ -158,15 +158,15 @@ export class KpiByProductComponent implements OnInit {
   }
 
   getDefaultImage(name: string) {
-    let img;
-    if (name === 'standard') {
-      img = './assets/icons/insurance-icon.svg';
-    } else if (name === 'insurance') {
-      img = './assets/icons/insurance-icon.svg';
-    } else if (name === 'banking') {
-      img = './assets/icons/insurance-icon.svg';
-    }
-    return img;
+    // let img;
+    // if (name === 'standard') {
+    //   img = './assets/icons/insurance-icon.svg';
+    // } else if (name === 'insurance') {
+    //   img = './assets/icons/insurance-icon.svg';
+    // } else if (name === 'banking') {
+    //   img = './assets/icons/insurance-icon.svg';
+    // }
+    return './assets/icons/insurance-icon.svg';
   }
 
   getIndustryApiMockup() {
