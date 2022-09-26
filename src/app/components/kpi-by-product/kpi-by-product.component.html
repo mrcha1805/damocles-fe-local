@@ -27,7 +27,7 @@
                                 <div class="grid-item-layout-collapse" fxLayoutAlign="center center">
                                     <img src="{{ item.image }}" width="50" />
                                 </div>
-                                <div fxLayout="column" class="grid-item-layout-collapse">
+                                <div fxLayout="column" class="grid-item-layout-collapse px-3">
                                     <span class="font-32px p-1">
                                         {{ item.name }}
                                         &nbsp;
@@ -41,13 +41,13 @@
                                     </popper-content>
                                     <span class="font-16px p-1">{{ item.desc }}</span>
                                 </div>
-                            </div>
-                            <span class="collapse-title-expand-indicator">
-                                <div fxLayoutGap="20">
-                                    <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
-                                        [ngStyle]="{'transform': isCollapsed == i ? 'rotateZ(90deg)' : 'rotateZ(0deg)'}">
+                                <div class="collapse-test">
+                                    <div fxLayoutGap="20">
+                                        <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
+                                            [ngStyle]="{'transform': isCollapsed == i ? 'rotateZ(90deg)' : 'rotateZ(0deg)'}">
+                                    </div>
                                 </div>
-                            </span>
+                            </div>
                         </div>
                         <div [ngStyle]="setStyleCollapsed(i)" [@openClose]="helpMenuOpen">
                             <div fxLayout="row" fxLayoutGap="20" class="grid-item-layout-collapse collapse-sub-title">
