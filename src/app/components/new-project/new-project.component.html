@@ -49,10 +49,10 @@
                         </div>
                         <div class="col-2">
                             <div class="header-tb2">
-                                <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex>
+                                <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="start center" fxFlex
+                                    [matMenuTriggerFor]="menu" style="cursor: pointer" (click)="productIconChange()">
                                     <span class="header-tb2">Product</span>
                                     <img class="arrow-icon" src="./assets/icons/navbar-arrow.svg" mat-button
-                                        [matMenuTriggerFor]="menu" style="cursor: pointer" (click)="productIconChange()"
                                         [ngStyle]="{'transform': productIsCollapsed ? 'rotateZ(0deg)' : 'rotateZ(180deg)'}">
                                 </div>
                             </div>
