@@ -39,13 +39,14 @@
                                         </span> -->
                                     </span>
                                     <popper-content #popperContent>
-                                        <span>{{ item.industry_descript }}</span><br />
+                                        <span>{{ item.industry_description_en }}</span><br />
                                     </popper-content>
-                                    <span class="font-16px p-1">Insurance Industrial Domain Insight</span>
+                                    <span class="font-16px p-1">{{ item.industry_description_en }}</span>
                                 </div>
                                 <div class="collapse-card">
                                     <div fxLayoutGap="20">
-                                        <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg" alt="plus-icon"
+                                        <img class="collapse-icon" src="./assets/icons/arrow_collapse.svg"
+                                            alt="plus-icon"
                                             [ngStyle]="{'transform': isCollapsed == i ? 'rotateZ(90deg)' : 'rotateZ(0deg)'}">
                                     </div>
                                 </div>
@@ -78,7 +79,7 @@
                                                 class="border-bottom-dashed py-1">
                                             </div>
                                             <popper-content #popperContent_sub>
-                                                <span>{{ data.product_description }}</span><br />
+                                                <span>{{ data.product_description_en }}</span><br />
                                             </popper-content>
                                         </div>
                                     </div>
@@ -87,8 +88,8 @@
                         </div>
                     </article>
                 </div>
-                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20" fxLayoutAlign="center center" class="my-4"
-                    style="padding: 0px 4rem;">
+                <div fxLayout="row" *ngIf="showPage" fxLayout.lt-sm="column" fxLayoutGap="20"
+                    fxLayoutAlign="center center" class="my-4" style="padding: 0px 4rem;">
                     <button class="btn btn-light font-24back" (click)="goCreateProject()">
                         <img src=" ./assets/icons/arrow-left.svg" class="icon-back" />
                         Back

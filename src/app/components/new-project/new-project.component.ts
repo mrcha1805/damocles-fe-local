@@ -251,8 +251,10 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.setData();
   }
   projectDataApi: IProjectModel | undefined;
-
+  showPage: boolean = false;
   async ngOnInit(): Promise<void> {
+    this.showPage = false;
+    this.spinnerService.show();
     this.projectList = [];
     this.projectData = [];
     this.projectFilter = [];
@@ -336,6 +338,8 @@ export class NewProjectComponent implements OnInit, OnChanges {
     console.log(this.projectData);
     this.projectList = this.projectFilter = this.projectData;
     this.sortUpdatedIconChange();
+    this.showPage = true;
+    this.spinnerService.hide();
   }
 
   filter(mode: string) {
@@ -375,10 +379,11 @@ export class NewProjectComponent implements OnInit, OnChanges {
   }
   showSpinner(path: string) {
     this.spinnerService.show();
-    setTimeout(() => {
-      this.spinnerService.hide();
-      this.router.navigateByUrl(path);
-    }, 1000);
+    this.router.navigateByUrl(path);
+    // setTimeout(() => {
+    //   this.spinnerService.hide();
+    //   this.router.navigateByUrl(path);
+    // }, 1000);
   }
 
   goKpi() {

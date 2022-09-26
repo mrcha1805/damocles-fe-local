@@ -142,7 +142,7 @@ export class KpiByProductComponent implements OnInit {
   tempIndex: number = 0;
 
   typeSelected: string;
-
+  showPage: boolean = false;
   constructor(
     private router: Router,
     private spinnerService: NgxSpinnerService,
@@ -152,17 +152,18 @@ export class KpiByProductComponent implements OnInit {
   }
   industryData: IIndustry | undefined;
   ngOnInit() {
-    //this.getIndustryApi();
-    this.getIndustryApiMockup();
+    this.showPage = false;
+    this.getIndustryApi();
+    //this.getIndustryApiMockup();
   }
 
   getDefaultImage(name: string) {
     let img;
-    if (name === 'Standard') {
+    if (name === 'standard') {
       img = './assets/icons/insurance-icon.svg';
-    } else if (name === 'Insurance') {
+    } else if (name === 'insurance') {
       img = './assets/icons/insurance-icon.svg';
-    } else if (name === 'Banking') {
+    } else if (name === 'banking') {
       img = './assets/icons/insurance-icon.svg';
     }
     return img;
@@ -186,13 +187,17 @@ export class KpiByProductComponent implements OnInit {
   getIndustryApi() {
     this.apiService.getIndustryAPI().subscribe((res) => {
       this.industryData = res;
-      this.industryData?.resultData.forEach((e: any) => {
-        e.isSelected = false;
-        e.product.forEach((i: any) => {
-          i.isSelected = false;
+      if (this.industryData.resultCode === '20000') {
+        this.industryData?.resultData.forEach((e: any) => {
+          e.isSelected = false;
+          e.product.forEach((i: any) => {
+            i.isSelected = false;
+          });
         });
-      });
-      console.log(this.industryData);
+        console.log(this.industryData);
+        this.spinnerService.hide();
+        this.showPage = true;
+      }
     });
   }
 
@@ -239,6 +244,9 @@ export class KpiByProductComponent implements OnInit {
 
   setIconSelected(index: number) {
     this.industryData?.resultData.forEach((e: any, i: number) => {
+      if (e.product.length === 0) {
+        return;
+      }
       if (i === index) {
         var value = e.product.every((element: any) => {
           return element.isSelected === false;
