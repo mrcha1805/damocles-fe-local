@@ -7,9 +7,10 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { end } from '@popperjs/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { IIndustry } from 'src/app/model/industry-interface';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-kpi-by-product',
@@ -141,49 +142,83 @@ export class KpiByProductComponent implements OnInit {
   tempIndex: number = 0;
 
   typeSelected: string;
-
+  showPage: boolean = false;
   constructor(
     private router: Router,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    private apiService: ApiService
   ) {
     this.typeSelected = 'ball-atom';
   }
+  industryData: IIndustry | undefined;
+  ngOnInit() {
+    this.showPage = false;
+    this.getIndustryApi();
+    //this.getIndustryApiMockup();
+  }
 
-  ngOnInit() {}
+  getDefaultImage(name: string) {
+    let img;
+    if (name === 'standard') {
+      img = './assets/icons/insurance-icon.svg';
+    } else if (name === 'insurance') {
+      img = './assets/icons/insurance-icon.svg';
+    } else if (name === 'banking') {
+      img = './assets/icons/insurance-icon.svg';
+    }
+    return img;
+  }
+
+  getIndustryApiMockup() {
+    this.apiService.dynamicIndustryMockup().subscribe((data) => {
+      console.log(data);
+      this.industryData = data.body!;
+      console.log('==>' + JSON.stringify(this.industryData.resultData));
+      this.industryData.resultData.forEach((e: any) => {
+        e.isSelected = false;
+        e.product.forEach((i: any) => {
+          i.isSelected = false;
+        });
+      });
+      console.log(this.industryData);
+    });
+  }
+
+  getIndustryApi() {
+    this.apiService.getIndustryAPI().subscribe((res) => {
+      this.industryData = res;
+      if (this.industryData.resultCode === '20000') {
+        this.industryData?.resultData.forEach((e: any) => {
+          e.isSelected = false;
+          e.product.forEach((i: any) => {
+            i.isSelected = false;
+          });
+        });
+        console.log(this.industryData);
+        this.spinnerService.hide();
+        this.showPage = true;
+      }
+    });
+  }
 
   collapsed(index: number) {
-    // if (index === 0) {
-    //   return;
-    // } else {
-    //   if (this.isCollapsed === index) {
-    //     this.isCollapsed = -1;
-    //     this.kpiList.forEach((e: any) => {
-    //       e.isSelected = false;
-    //     });
-    //   } else {
-    //     this.isCollapsed = index;
-    //     this.kpiList.forEach((e: any) => {
-    //       e.isSelected = true;
-    //     });
-    //   }
-    // }
     if (this.isCollapsed === index) {
       this.isCollapsed = -1;
-      this.kpiList.forEach((e: any) => {
+      this.industryData?.resultData.forEach((e: any) => {
         e.isSelected = false;
       });
     } else {
       this.isCollapsed = index;
-      this.kpiList.forEach((e: any) => {
+      this.industryData?.resultData.forEach((e: any) => {
         e.isSelected = true;
       });
     }
   }
 
   setBorderCollapsed(index: number) {
-    this.kpiList.forEach((e: any, i: number) => {
+    this.industryData?.resultData.forEach((e: any, i: number) => {
       if (i === index) {
-        var value = e.data.every((element: any) => {
+        var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
         if (value === false) {
@@ -208,9 +243,9 @@ export class KpiByProductComponent implements OnInit {
   }
 
   setIconSelected(index: number) {
-    this.kpiList.forEach((e: any, i: number) => {
+    this.industryData?.resultData.forEach((e: any, i: number) => {
       if (i === index) {
-        var value = e.data.every((element: any) => {
+        var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
 
@@ -237,14 +272,14 @@ export class KpiByProductComponent implements OnInit {
 
   changeSelected(index: number, target: number) {
     setTimeout(() => {
-      this.kpiList.forEach((e: any, i: number) => {
+      this.industryData?.resultData.forEach((e: any, i: number) => {
         // e.data.forEach((item: any, j: number) => {
         //   item.isSelected = j === target ? true : false;
         // });
-        var value = e.data.every((element: any) => {
+        var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
-        e.data.forEach((item: any, j: number) => {
+        e.product.forEach((item: any, j: number) => {
           if (i === index) {
             if (value === false) {
               item.isSelected = j === target ? true : false;
@@ -260,7 +295,7 @@ export class KpiByProductComponent implements OnInit {
           }
         });
       });
-      console.log(this.kpiList);
+      //console.log(this.industryData?.resultData);
     }, 100);
   }
 

@@ -24,6 +24,7 @@ $heavent-reg: DB Heavent Reg;
   position: sticky !important;
   top: 0;
   width: 100%;
+  margin-top: 25px;
   background-image: repeating-linear-gradient(rgb(255, 255, 255),
       rgba(255, 255, 255, 0.8) 200%,
       rgba(255, 255, 255, 0.1) 10%);
@@ -33,7 +34,7 @@ $heavent-reg: DB Heavent Reg;
   @include font-format($heavent-bold, 700, 24px, 100%, #020202);
 }
 
-::ng-deep .mat-menu-panel {
+::ng-deep .logout {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   height: 40px;
@@ -53,6 +54,6 @@ $heavent-reg: DB Heavent Reg;
   height:40px;
 }
 
-.logout {
+.text-logout {
   @include font-format($heavent-bold, 700, 14px, 17px, #491dc5);
 }

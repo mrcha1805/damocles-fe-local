@@ -1,0 +1,40 @@
+{
+  "resultCode": "20000",
+  "resultDescription": "Success",
+  "resultData": [
+    {
+      "industry_id": "1",
+      "industry_name": "Insurance",
+      "industry_descript": "Insurance Industrial Domain Insight",
+      "product": [
+        {
+          "product_id": "1",
+          "product_name": "Asset Protection",
+          "product_description": "Finding target for asset protection such as motor insurance house insurance and gadget insurance"
+        },
+        {
+          "product_id": "2",
+          "product_name": "Health Insurance",
+          "product_description": "Finding target for health insurancee"
+        }
+      ]
+    },
+    {
+      "industry_id": "2",
+      "industry_name": "Banking",
+      "industry_descript": "Banking Industrial Domain Insight",
+      "product": [
+        {
+          "product_id": "8",
+          "product_name": "Personal Accident Insurance",
+          "product_description": "Finding target for personal accident insurance"
+        },
+        {
+          "product_id": "9",
+          "product_name": "Saving Insurance",
+          "product_description": "Finding target for saving insurance"
+        }
+      ]
+    }
+  ]
+}

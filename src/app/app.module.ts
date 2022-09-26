@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,6 +59,14 @@ import { FilterComponent } from './components/filter/filter.component';
 import { SearchFilterPipe } from './services/search-filter.pipe';
 import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WorkspaceComponent } from './workspace/workspace.component';
+import { AppConfigService } from './services/app-config.service';
+import { HttpClientModule } from '@angular/common/http';
+export function initializeApp(appConfigService: AppConfigService) {
+  return (): Promise<any> => {
+    return appConfigService.load();
+  };
+}
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -77,6 +85,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     FilterComponent,
     SearchFilterPipe,
     DeleteProjectModalComponent,
+    WorkspaceComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,8 +134,21 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     AuthModule.forRoot(),
     BsDropdownModule.forRoot(),
     NgbModule,
+    HttpClientModule,
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppConfigService],
+      multi: true,
+    },
+    {
+      provide: ErrorHandler,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

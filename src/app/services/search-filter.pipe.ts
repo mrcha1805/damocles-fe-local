@@ -11,10 +11,10 @@ export class SearchFilterPipe implements PipeTransform {
     if (searchText != '') {
       filteredItems = filteredItems.filter((e) => {
         return (
-          e.name.toLowerCase().includes(searchText) ||
-          e.description.toLowerCase().includes(searchText) ||
-          e.industry.toLowerCase().includes(searchText) ||
-          e.product.toLowerCase().includes(searchText)
+          e.project_name.toLowerCase().includes(searchText) ||
+          e.project_description.toLowerCase().includes(searchText) ||
+          e.industry_name.toLowerCase().includes(searchText) ||
+          e.product_name.toLowerCase().includes(searchText)
         );
       });
     }

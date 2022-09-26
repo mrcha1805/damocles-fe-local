@@ -1,0 +1,5 @@
+{
+  "apiEndpoint": "http://104.43.115.28:23001/api/v1/",
+  "industryRoute": "industry",
+  "projectRoute": "project"
+}

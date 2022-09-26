@@ -10,14 +10,11 @@ $heavent-normal: DB Heavent Nor;
   color: $hexcolor !important;
 }
 
-// .grid-item {
-//   background-color: lightsalmon;
-// }
-
-// .grid-item-layout {
-//   background-color: cadetblue;
-//   border: 1px solid #ffffff;
-// }
+.collapse-card {
+  position: absolute;
+  top: 40%;
+  right: 10%;
+}
 
 .grid-item-layout-collapse {
   background-color: #ffffff;
@@ -31,8 +28,12 @@ $heavent-normal: DB Heavent Nor;
   overflow-x: hidden;
 }
 
+.card-selected {
+  width: 600px;
+}
 .font-16px {
   @include font-format($heavent-reg, 400, 16px, 15px, #000000);
+  overflow: auto;
 }
 
 .font-18px {
