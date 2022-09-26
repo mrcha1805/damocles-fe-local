@@ -5,6 +5,7 @@ import { DemographicComponent } from './components/demographic/demographic.compo
 import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
+import {WorkspaceComponent } from './components/workspace/workspace.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'create-kpi',
     component: CreateKpiComponent,
+  },
+  {
+    path: 'workspace',
+    component: WorkspaceComponent,
   },
 ];
 

@@ -59,7 +59,11 @@ import { FilterComponent } from './components/filter/filter.component';
 import { SearchFilterPipe } from './services/search-filter.pipe';
 import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { WorkspaceComponent } from './workspace/workspace.component';
+import { WorkspaceComponent } from './components/workspace/workspace.component';
+import { ClearallWorkspaceModalComponent } from './modals/clearall-workspace-modal/clearall-workspace-modal.component';
+import { SaveSuccessWorkspaceModalComponent } from './modals/save-success-workspace-modal/save-success-workspace-modal.component';
+import { SaveWorkspaceModalComponent } from './modals/save-workspace-modal/save-workspace-modal.component';
+import { SaveExistsWorkspaceModalComponent } from './modals/save-exists-workspace-modal/save-exists-workspace-modal.component';
 
 export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
   trigger: NgxPopperjsTriggers.hover,
@@ -79,6 +83,10 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     SearchFilterPipe,
     DeleteProjectModalComponent,
     WorkspaceComponent,
+    ClearallWorkspaceModalComponent,
+    SaveSuccessWorkspaceModalComponent,
+    SaveWorkspaceModalComponent,
+    SaveExistsWorkspaceModalComponent,
   ],
   imports: [
     BrowserModule,
