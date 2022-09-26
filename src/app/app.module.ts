@@ -47,14 +47,15 @@ import {
   NgxPopperjsTriggers,
 } from 'ngx-popperjs';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { AuthModule } from './auth/auth.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-import { LoginComponent } from './components/login/login.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
 import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { NavbarLogoComponent } from './components/navbar-logo/navbar-logo.component';
 import { CreateKpiComponent } from './components/create-kpi/create-kpi.component';
 import { DemographicComponent } from './components/demographic/demographic.component';
+import { HomeComponent } from '@components/home/home.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SearchFilterPipe } from './services/search-filter.pipe';
 import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
@@ -76,7 +77,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    HomeComponent,
     NewProjectComponent,
     KpiByProductComponent,
     NavbarLogoComponent,
@@ -131,6 +132,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     CollapseModule.forRoot(),
     NgxPopperjsModule.forRoot(TOOLTIP_DEFAULT_OPTIONS),
     NgxSpinnerModule,
+    AuthModule.forRoot(),
     BsDropdownModule.forRoot(),
     NgbModule,
     HttpClientModule,

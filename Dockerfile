@@ -1,12 +1,19 @@
-FROM node:14.15.0-alpine3.11 as build
-WORKDIR /app
+FROM node:14.15.0-alpine
 
-RUN npm install -g @angular/cli
+ENV TZ=Asia/Bangkok
+RUN apk update
+RUN apk upgrade
+RUN apk add ca-certificates && update-ca-certificates
+RUN apk add --update tzdata
+RUN rm -rf /var/cache/apk/*
 
-COPY ./package.json .
-RUN npm install
+ARG mode
+
+WORKDIR /app/actionable-insight-fe
 COPY . .
-RUN ng build
 
-FROM nginx as runtime
-COPY --from=build /app/dist/damocles-insight-fe /usr/share/nginx/html
+WORKDIR /app/actionable-insight-fe
+RUN npm install
+RUN npm run ${mode}
+
+CMD node server.js

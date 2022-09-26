@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/damocles-insight-fe'),
+      dir: require('path').join(__dirname, './coverage/actionable-insight-fe'),
       subdir: '.',
       reporters: [
         { type: 'html' },
