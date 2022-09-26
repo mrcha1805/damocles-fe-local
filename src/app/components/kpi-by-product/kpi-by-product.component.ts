@@ -186,26 +186,17 @@ export class KpiByProductComponent implements OnInit {
   getIndustryApi() {
     this.apiService.getIndustryAPI().subscribe((res) => {
       this.industryData = res;
+      this.industryData?.resultData.forEach((e: any) => {
+        e.isSelected = false;
+        e.product.forEach((i: any) => {
+          i.isSelected = false;
+        });
+      });
       console.log(this.industryData);
     });
   }
 
   collapsed(index: number) {
-    // if (index === 0) {
-    //   return;
-    // } else {
-    //   if (this.isCollapsed === index) {
-    //     this.isCollapsed = -1;
-    //     this.industryData?.resultData.forEach((e: any) => {
-    //       e.isSelected = false;
-    //     });
-    //   } else {
-    //     this.isCollapsed = index;
-    //     this.industryData?.resultData.forEach((e: any) => {
-    //       e.isSelected = true;
-    //     });
-    //   }
-    // }
     if (this.isCollapsed === index) {
       this.isCollapsed = -1;
       this.industryData?.resultData.forEach((e: any) => {
@@ -299,7 +290,7 @@ export class KpiByProductComponent implements OnInit {
           }
         });
       });
-      console.log(this.industryData?.resultData);
+      //console.log(this.industryData?.resultData);
     }, 100);
   }
 
