@@ -61,7 +61,6 @@ import { DeleteProjectModalComponent } from './modals/delete-project-modal/delet
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WorkspaceComponent } from './components/workspace/workspace.component';
 import { ClearallWorkspaceModalComponent } from './modals/clearall-workspace-modal/clearall-workspace-modal.component';
-import { FunnelChartComponent } from './components/funnel-chart/funnel-chart.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SaveSuccessWorkspaceModalComponent } from './modals/save-success-workspace-modal/save-success-workspace-modal.component';
 import { SaveWorkspaceModalComponent } from './modals/save-workspace-modal/save-workspace-modal.component';
@@ -85,7 +84,6 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     SearchFilterPipe,
     DeleteProjectModalComponent,
     WorkspaceComponent,
-    FunnelChartComponent,
     ClearallWorkspaceModalComponent,
     SaveSuccessWorkspaceModalComponent,
     SaveWorkspaceModalComponent,
