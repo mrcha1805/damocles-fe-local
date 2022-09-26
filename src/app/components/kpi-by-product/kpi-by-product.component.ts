@@ -244,9 +244,6 @@ export class KpiByProductComponent implements OnInit {
 
   setIconSelected(index: number) {
     this.industryData?.resultData.forEach((e: any, i: number) => {
-      if (e.product.length === 0) {
-        return;
-      }
       if (i === index) {
         var value = e.product.every((element: any) => {
           return element.isSelected === false;

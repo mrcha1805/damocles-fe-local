@@ -11,7 +11,7 @@ export class SearchFilterPipe implements PipeTransform {
     if (searchText != '') {
       filteredItems = filteredItems.filter((e) => {
         return (
-          e.product_name.toLowerCase().includes(searchText) ||
+          e.project_name.toLowerCase().includes(searchText) ||
           e.project_description.toLowerCase().includes(searchText) ||
           e.industry_name.toLowerCase().includes(searchText) ||
           e.product_name.toLowerCase().includes(searchText)
