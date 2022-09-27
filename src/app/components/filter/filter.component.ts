@@ -54,14 +54,19 @@ export class FilterComponent implements OnInit {
 
   menu = [
     {
-      headerMenu: 'Audience Profile',
+      headerMenu: 'Customer Profile',
       no: 0,
-      subMenu: [
-        {
-          name: 'Demographic',
-          fileType: 'filter',
-        },
-      ],
+      fileType: 'filter'
+    },
+    {
+      headerMenu: 'Product Related',
+      no: 1,
+      fileType: 'slider'
+    },
+    {
+      headerMenu: 'Propensity ',
+      no: 2,
+      fileType: 'filter'
     },
   ];
   menuIndex = -1;

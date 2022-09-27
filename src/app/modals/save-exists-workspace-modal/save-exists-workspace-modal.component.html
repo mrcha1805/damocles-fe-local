@@ -1,0 +1,26 @@
+<div class="container body">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <label class="header-text" align="center">
+                "INS_TA_20220916_Travel Preemium"  <br />
+                already exists. <br />
+                Do you want to replace it? </label>
+        </div>
+    </div>
+    <div class="row description">
+        <div class="col d-flex justify-content-center">
+            <label class="description-text" align="center">A file with the same name already exists in the Project.
+                Replacing it will overwrite it’s current contents.</label>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 48px">
+        <div class="col d-flex justify-content-center">
+            <div class="btn btn-cancel" style="margin-right: 12px" (click)="cancelExists()">
+                Cancel
+            </div>
+            <div class="btn btn-replace" style="margin-left: 12px" (click)="replace()">
+                Replace
+            </div>
+        </div>
+    </div>
+</div>
