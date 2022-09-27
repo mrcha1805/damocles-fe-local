@@ -71,6 +71,8 @@ import { FunnelChartComponent } from './components/funnel-chart/funnel-chart.com
 import { FilterSliderComponent } from './components/filter-slider/filter-slider.component';
 import { AppConfigService } from './services/app-config.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterItemComponent } from './components/filter-item/filter-item.component';
+import { FeatureSearchFilterPipe } from './services/feature-search-filter.pipe';
 export function initializeApp(appConfigService: AppConfigService) {
   return (): Promise<any> => {
     return appConfigService.load();
@@ -101,6 +103,8 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     SaveExistsWorkspaceModalComponent,
     FunnelChartComponent,
     FilterSliderComponent,
+    FilterItemComponent,
+    FeatureSearchFilterPipe,
   ],
   imports: [
     BrowserModule,

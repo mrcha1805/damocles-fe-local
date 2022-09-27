@@ -11,27 +11,27 @@
     "product_name": "Asset Protection",
     "kpi_group": [
       {
-        "headerMenu": "Customer Profile",
+        "headerMenu": "Customer Profilexx",
         "id": "1",
         "subFeature": [
           {
             "feature_id": "10001",
-            "feature_name": "Gender",
+            "feature_name": "Gender12",
             "description": "Gender presents Mobile User Gender",
             "operator": "Is",
             "type": "muti-select",
             "ui": "dropdown",
-            "feature_order": "1",
-            " item_value": ["Male", "Female", "Unknow"]
+            "feature_order": 1,
+            "item_value": ["Male", "Female", "Unknow"]
           },
           {
             "feature_id": "10002",
-            "feature_name": "Age",
+            "feature_name": "Age2",
             "description": "Age presents Mobile User Age",
             "operator": "Is",
             "type": "muti-select",
             "ui": "dropdown",
-            "feature_order": "2",
+            "feature_order": 2,
             "item_value": [
               "<15-19",
               "20-24",
@@ -52,7 +52,7 @@
         ]
       },
       {
-        "headerMenu": "Product Relate",
+        "headerMenu": "Product Relate xxx",
         "id": "2",
         "subFeature": [
           {
@@ -62,7 +62,7 @@
             "operator": "Is",
             "type": "range",
             "ui": "slider",
-            "feature_order": "8",
+            "feature_order": 8,
             "item_value": [],
             "range_value": [0, 1]
           }

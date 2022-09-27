@@ -10,7 +10,7 @@
                     </div>
                     <div fxLayout="column" class="grid-item-layout w-100 pb-3" fxFlex>
                         <div fxLayout="column" class="grid-item-layout" fxLayoutAlign="start start" fxFlex>
-                            <app-filter fxFill></app-filter>
+                            <app-filter [menu]="kpiGroup" fxFill></app-filter>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
 
                     <div fxLayout="column" class="grid-item-layout min-height box-right-bottom w-100 my-4">
                         <div class="funnel-clear" fxLayoutAlign="end end">
-                            <span (click)="clearAll()">Clear All</span> 
+                            <span (click)="clearAll()">Clear All</span>
                         </div>
                         <app-funnel-chart></app-funnel-chart>
                         <!-- <div fxLayout="column" fxLayoutAlign="center center" class="grid-item-layout box-chart">
@@ -47,14 +47,13 @@
                     </div>
 
                     <div fxLayoutGap="20" fxLayoutAlign="end stretch" class="my-2">
-                        <div fxLayout="row" fxLayoutAlign="start stretch"
-                            class="grid-item-layout box-unique">
-                            <div fxLayout="column" fxLayoutAlign="center start" class="grid-item-layout px-4" >
+                        <div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item-layout box-unique">
+                            <div fxLayout="column" fxLayoutAlign="center start" class="grid-item-layout px-4">
                                 <span class="font-14px font-blue pt-2">Unique customer</span>
                                 <span class="font-36px">400,000</span>
                             </div>
                             <div fxLayout="column" fxLayoutAlign="center end" fxFlex class="grid-item-layout px-4">
-                                <img src="./assets/icons/workspace-unique.svg" width="40" class="workspace-img"/>
+                                <img src="./assets/icons/workspace-unique.svg" width="40" class="workspace-img" />
                             </div>
                         </div>
                     </div>

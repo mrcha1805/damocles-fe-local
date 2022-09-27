@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Kpigroup } from 'app/model/project-template-interface';
 
 @Component({
   selector: 'app-filter',
@@ -52,28 +53,30 @@ export class FilterComponent implements OnInit {
   //   },
   // ];
 
-  menu = [
-    {
-      headerMenu: 'Customer Profile',
-      no: 0,
-      fileType: 'filter'
-    },
-    {
-      headerMenu: 'Product Related',
-      no: 1,
-      fileType: 'slider'
-    },
-    {
-      headerMenu: 'Propensity ',
-      no: 2,
-      fileType: 'filter'
-    },
-  ];
-  menuIndex = -1;
+  // menu = [
+  //   {
+  //     headerMenu: 'Customer Profile',
+  //     no: 0,
+  //     fileType: 'filter'
+  //   },
+  //   {
+  //     headerMenu: 'Product Related',
+  //     no: 1,
+  //     fileType: 'slider'
+  //   },
+  //   {
+  //     headerMenu: 'Propensity ',
+  //     no: 2,
+  //     fileType: 'filter'
+  //   },
+  // ];
+  menuIndex: string = '1';
+  @Input() menu: Kpigroup[] | undefined;
+
   ngOnInit(): void {
-    this.menuIndex = -1;
+    this.menuIndex = '1';
   }
-  setSelection(index: number) {
+  setSelection(index: string) {
     this.menuIndex = index;
   }
 }

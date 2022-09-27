@@ -1,6 +1,6 @@
 <div *ngFor="let item of menu">
   <mat-accordion>
-    <mat-expansion-panel [expanded]="menuIndex === item.no" (opened)="setSelection(item.no)" hideToggle>
+    <mat-expansion-panel [expanded]="menuIndex === item.id" (opened)="setSelection(item.id)" hideToggle>
       <mat-expansion-panel-header class="header-style px-4">
         <mat-panel-title>
           <img src="./assets/icons/workspace-customer-profile.svg" class="title-icon">
@@ -20,17 +20,20 @@
             <img src="./assets/icons/header-dropdown.svg" width="6.45px" height="10.47px" class="expand-action" />
           </span>
         </mat-panel-description>
-        
+
       </mat-expansion-panel-header>
 
-      <div *ngIf="item.fileType === 'filter'">
+      <!-- <div *ngIf="item.fileType === 'filter'">
         <app-demographic></app-demographic>
+      </div> -->
+      <div>
+        <app-filter-item [subMenu]="item.subFeature"></app-filter-item>
       </div>
 
-      <div *ngIf="item.fileType === 'slider'">  
+      <!-- <div *ngIf="item.fileType === 'slider'">  
         <app-filter-slider></app-filter-slider>
-      </div>
-      
+      </div> -->
+
       <!-- <ng-container *ngFor="let sub of item.subMenu">
         <mat-expansion-panel [expanded]="false" hideToggle>
           <mat-expansion-panel-header>

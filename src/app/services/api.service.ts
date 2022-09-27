@@ -10,6 +10,7 @@ import { IIndustry } from '../model/industry-interface';
 import { AppConfigService } from './app-config.service';
 import { catchError } from 'rxjs/operators';
 import { IProject, IProjectModel } from '../model/project-interface';
+import { IProjectTemplate } from 'app/model/project-template-interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -52,6 +53,32 @@ export class ApiService {
   getProjectAPI(id: string): Observable<IProjectModel> {
     return this.http
       .get<IProjectModel>(
+        this.endpoint + this.project + '?profile_id=' + id,
+        this.httpOption
+      )
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.log('error api:', error);
+          console.log(`HttpHeader status: ${error.status} ${error.statusText}`);
+          console.log(
+            `resultCode: ${error.error.resultCode}, resultDescription: ${error.error.resultDescription}, diagnosticMessage: ${error.error.diagnosticMessage}`
+          );
+          return throwError(error);
+        })
+      );
+  }
+
+  dynamicProjectTemplateMockup(): Observable<HttpResponse<IProjectTemplate>> {
+    return this.http.get<IProjectTemplate>(
+      'assets/data/project-template-mockup.json',
+      {
+        observe: 'response',
+      }
+    );
+  }
+  getProjectTemplateAPI(id: string): Observable<IProjectTemplate> {
+    return this.http
+      .get<IProjectTemplate>(
         this.endpoint + this.project + '?profile_id=' + id,
         this.httpOption
       )

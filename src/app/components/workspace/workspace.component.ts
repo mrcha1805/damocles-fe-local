@@ -13,7 +13,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { ClearallWorkspaceModalComponent } from 'app/modals/clearall-workspace-modal/clearall-workspace-modal.component';
 import { SaveWorkspaceModalComponent } from 'app/modals/save-workspace-modal/save-workspace-modal.component';
-
+import { ApiService } from 'app/services/api.service';
+import {
+  IProjectTemplate,
+  Kpigroup,
+} from 'app/model/project-template-interface';
 @Component({
   selector: 'app-workspace',
   templateUrl: './workspace.component.html',
@@ -48,7 +52,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   constructor(
     private router: Router,
     private spinnerService: NgxSpinnerService,
-    private ngModalService: NgbModal
+    private ngModalService: NgbModal,
+    private apiService: ApiService
   ) {
     this.typeSelected = 'ball-atom';
   }
@@ -57,8 +62,19 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     this.setOptionChartFunnel();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getProjectTemplateApi();
+  }
 
+  projectDataApi: IProjectTemplate | undefined;
+  kpiGroup: Kpigroup[] | undefined;
+  getProjectTemplateApi() {
+    this.apiService.dynamicProjectTemplateMockup().subscribe((data: any) => {
+      this.projectDataApi = data.body;
+      console.log(this.projectDataApi);
+      this.kpiGroup = this.projectDataApi?.resultData.kpi_group;
+    });
+  }
   setOptionChartFunnel() {
     this.chart = Highcharts.chart('chart-funnel', {
       accessibility: {
