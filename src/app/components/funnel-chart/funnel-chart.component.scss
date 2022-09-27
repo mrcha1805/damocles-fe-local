@@ -1,13 +1,14 @@
 $heavent-bold: DB Heavent Bd;
 $heavent-reg: DB Heavent Reg;
 $heavent-normal: DB Heavent Nor;
+
 @mixin font-format($font, $weight, $size, $height, $hexcolor) {
-  font-family: $font !important;
+  font-family: $font  !important;
   font-style: normal;
   font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor !important;
+  color: $hexcolor  !important;
 }
 
 // .grid-funnel {
@@ -36,6 +37,9 @@ $heavent-normal: DB Heavent Nor;
 .mat-card {
   height: 30px;
   border-radius: 0px;
+  box-shadow: 0 5px 5px -3px rgba(255, 255, 255, 0.2),
+    0 8px 10px 1px rgba(255, 255, 255, 0.14),
+    0 3px 14px 2px rgba(255, 255, 255, 0.12);
 }
 
 .funnel-value {
@@ -77,38 +81,47 @@ $heavent-normal: DB Heavent Nor;
   background-color: #EDE8F9;
   width: 219px;
 }
+
 .color1 {
   background-color: #DBD2F3;
   width: 210px;
 }
+
 .color2 {
   background-color: #C8BBED;
   width: 200px;
 }
+
 .color3 {
   background-color: #B6A5E8;
   width: 190px;
 }
+
 .color4 {
   background-color: #A48EE2;
   width: 180px;
 }
+
 .color5 {
   background-color: #9278DC;
   width: 170px;
 }
+
 .color6 {
   background-color: #7F61D6;
   width: 160px;
 }
+
 .color7 {
   background-color: #6D4AD0;
   width: 150px;
 }
+
 .color8 {
   background-color: #5B34CA;
   width: 86px;
 }
+
 .color9 {
   background-color: #491DC5;
   width: 79px;

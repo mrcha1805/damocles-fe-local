@@ -37,7 +37,7 @@ export class DemographicComponent implements OnInit {
   }
 
   myControl = new FormControl()
-  options: string[] = ['Angular', 'React', 'Vue']
+  options: string[] = ['Propentity to buy a car', 'Propentity to buy a house', 'Propentity to buy a cat']
   objectOptions = [
     { name: 'Propentity to buy a car' },
     { name: 'Propentity to buy a house' },

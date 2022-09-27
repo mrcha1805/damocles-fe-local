@@ -6,7 +6,7 @@
         <div class="row funnel-box" *ngFor="let item of funnelList; let i = index, let j = index" cdkDrag>
             <div class="col-5" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center center">
                 <span [popper]="popperContent" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
-                    [popperPlacement]="placements.TOP" [popperApplyClass]="'popperFunnel'">
+                    [popperPlacement]="placements.TOP">
                     <mat-card [ngClass]="{color0: i == 0, color1: i == 1, color2: i == 2, color3: i == 3, color4: i == 4, 
                         color5: i == 5, color6: i == 6, color7: i == 7, color8: i == 8, color9: i == 9}">
                     </mat-card>

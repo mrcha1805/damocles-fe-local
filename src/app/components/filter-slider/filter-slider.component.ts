@@ -38,7 +38,7 @@ export class FilterSliderComponent implements OnInit {
   }
 
   myControl = new FormControl()
-  options: string[] = ['Angular', 'React', 'Vue']
+  options: string[] = ['Propentity to buy a car', 'Propentity to buy a house', 'Propentity to buy a cat']
   objectOptions = [
     { name: 'Propentity to buy a car' },
     { name: 'Propentity to buy a house' },
@@ -60,9 +60,18 @@ export class FilterSliderComponent implements OnInit {
   }
 
 
-  lowValue: number = 0.3;
-  highValue: number = 0.8;
-  options2: Options = {
+  lowValue1: number = 0.3;
+  highValue1: number = 0.8;
+  slider1: Options = {
+    floor: 0.0,
+    ceil: 1.0,
+    step: 0.1,
+    pushRange: true,
+  };
+
+  lowValue2: number = 0.3;
+  highValue2: number = 0.8;
+  slider2: Options = {
     floor: 0.0,
     ceil: 1.0,
     step: 0.1,
