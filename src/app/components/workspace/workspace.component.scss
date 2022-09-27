@@ -89,6 +89,11 @@ input:focus {
   cursor: pointer;
 }
 
+.app-filter {
+  overflow: auto; 
+  height: 100vh;
+}
+
 .box {
   &-left {
     background-color: #f0f0f0;

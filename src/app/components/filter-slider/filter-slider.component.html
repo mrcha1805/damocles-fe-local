@@ -107,6 +107,169 @@
     </div>
   </div>
 
+    <!-- filter-silder #2 -->
+    <div fxFill class="pb-3 border-close">
+      <div fxLayout="row" fxLayoutGap="10" fxFill class="mt-3">
+        <div fxFlex="50" class="header1 py-2">
+          <span>Digital Spending Score&nbsp;
+            <span [popper]="popperContent_age" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
+              [popperPlacement]="placements.RIGHT">
+              <img src="./assets/icons/info.svg" width="15" height="15" />
+            </span>
+          </span>
+          <popper-content #popperContent_age>
+            <span>xxxxx</span><br />
+          </popper-content>
+        </div>
+        <div fxFlex fxLayoutAlign="end center">
+          <div fxLayout="row">
+            <div fxFill class="text-end text-user">
+              <span>0 users</span>
+            </div>
+            <div fxFlex></div>
+          </div>
+        </div>
+      </div>
+  
+      <div fxLayout="row" fxLayoutGap="10" fxFill>
+        <div fxFlex>
+          <div fxLayout="row" class="my-3">
+            <mat-checkbox class="example-margin">Include Unknown</mat-checkbox>
+          </div>
+  
+          <div fxLayout="row">
+            <div fxFill>
+              <div fxLayout="column" class="btn-group custom-dropdown" dropdown dropdown="bs-dropdown" [autoClose]="true"
+                [insideClick]='true' fxFill>
+                <ngx-slider [(value)]="lowValue2" [(highValue)]="highValue2" [options]="slider2"></ngx-slider>
+              </div>
+            </div>
+            <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
+              <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
+            </div>
+          </div>
+  
+          <div fxLayout="row" fxLayoutGap="10" fxFill>
+            <div fxFlex="50" class="header3 ">
+              <span>Minimum</span>
+            </div>
+            <div fxFlex="50" class="header3 text-end">
+              <span>Maximum</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- filter-silder #2 -->
+  <div fxFill class="pb-3 border-close">
+    <div fxLayout="row" fxLayoutGap="10" fxFill class="mt-3">
+      <div fxFlex="50" class="header1 py-2">
+        <span>Digital Spending Score&nbsp;
+          <span [popper]="popperContent_age" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
+            [popperPlacement]="placements.RIGHT">
+            <img src="./assets/icons/info.svg" width="15" height="15" />
+          </span>
+        </span>
+        <popper-content #popperContent_age>
+          <span>xxxxx</span><br />
+        </popper-content>
+      </div>
+      <div fxFlex fxLayoutAlign="end center">
+        <div fxLayout="row">
+          <div fxFill class="text-end text-user">
+            <span>0 users</span>
+          </div>
+          <div fxFlex></div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="10" fxFill>
+      <div fxFlex>
+        <div fxLayout="row" class="my-3">
+          <mat-checkbox class="example-margin">Include Unknown</mat-checkbox>
+        </div>
+
+        <div fxLayout="row">
+          <div fxFill>
+            <div fxLayout="column" class="btn-group custom-dropdown" dropdown dropdown="bs-dropdown" [autoClose]="true"
+              [insideClick]='true' fxFill>
+              <ngx-slider [(value)]="lowValue2" [(highValue)]="highValue2" [options]="slider2"></ngx-slider>
+            </div>
+          </div>
+          <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
+            <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="10" fxFill>
+          <div fxFlex="50" class="header3 ">
+            <span>Minimum</span>
+          </div>
+          <div fxFlex="50" class="header3 text-end">
+            <span>Maximum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- filter-silder #2 -->
+    <div fxFill class="pb-3 border-close">
+      <div fxLayout="row" fxLayoutGap="10" fxFill class="mt-3">
+        <div fxFlex="50" class="header1 py-2">
+          <span>Digital Spending Score&nbsp;
+            <span [popper]="popperContent_age" [popperTrigger]="triggers.hover" [popperModifiers]="offsetModifiers"
+              [popperPlacement]="placements.RIGHT">
+              <img src="./assets/icons/info.svg" width="15" height="15" />
+            </span>
+          </span>
+          <popper-content #popperContent_age>
+            <span>xxxxx</span><br />
+          </popper-content>
+        </div>
+        <div fxFlex fxLayoutAlign="end center">
+          <div fxLayout="row">
+            <div fxFill class="text-end text-user">
+              <span>0 users</span>
+            </div>
+            <div fxFlex></div>
+          </div>
+        </div>
+      </div>
+  
+      <div fxLayout="row" fxLayoutGap="10" fxFill>
+        <div fxFlex>
+          <div fxLayout="row" class="my-3">
+            <mat-checkbox class="example-margin">Include Unknown</mat-checkbox>
+          </div>
+  
+          <div fxLayout="row">
+            <div fxFill>
+              <div fxLayout="column" class="btn-group custom-dropdown" dropdown dropdown="bs-dropdown" [autoClose]="true"
+                [insideClick]='true' fxFill>
+                <ngx-slider [(value)]="lowValue2" [(highValue)]="highValue2" [options]="slider2"></ngx-slider>
+              </div>
+            </div>
+            <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
+              <img src="./assets/icons/delete.svg" width="20" (click)="deleteSelector()" class="del-icon">
+            </div>
+          </div>
+  
+          <div fxLayout="row" fxLayoutGap="10" fxFill>
+            <div fxFlex="50" class="header3 ">
+              <span>Minimum</span>
+            </div>
+            <div fxFlex="50" class="header3 text-end">
+              <span>Maximum</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
   <div fxLayout="column" fxLayoutGap="10" fxFill style="padding-left: 20px;">
     <div class="add-criterion" fxLayoutAlign="start end" (click)="toggle()">
       <span>+ Add Criterion</span>
