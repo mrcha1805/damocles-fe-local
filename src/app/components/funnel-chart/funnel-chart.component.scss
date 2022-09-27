@@ -113,3 +113,13 @@ $heavent-normal: DB Heavent Nor;
   background-color: #491DC5;
   width: 79px;
 }
+
+.popper-header {
+  @include font-format($heavent-normal, 700, 14px, 17px, #000000);
+}
+
+.popper-detail {
+  width: 240px;
+  @include font-format($heavent-normal, 400, 14px, 17px, #000000);
+  padding-top: 5px;
+}
