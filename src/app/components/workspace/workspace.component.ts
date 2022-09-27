@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
-import { ClearallWorkspaceModalComponent } from 'src/app/modals/clearall-workspace-modal/clearall-workspace-modal.component';
-import { SaveWorkspaceModalComponent } from 'src/app/modals/save-workspace-modal/save-workspace-modal.component';
+import { ClearallWorkspaceModalComponent } from 'app/modals/clearall-workspace-modal/clearall-workspace-modal.component';
+import { SaveWorkspaceModalComponent } from 'app/modals/save-workspace-modal/save-workspace-modal.component';
 
 @Component({
   selector: 'app-workspace',
   templateUrl: './workspace.component.html',
-  styleUrls: ['./workspace.component.scss']
+  styleUrls: ['./workspace.component.scss'],
 })
 export class WorkspaceComponent implements AfterViewInit, OnInit {
   isOpen: boolean = false;
@@ -127,8 +127,6 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     this.showSpinner('/kpi');
   }
 
-
-
   clearAll() {
     console.log('clear all');
     const modalRef = this.ngModalService.open(ClearallWorkspaceModalComponent, {
@@ -138,7 +136,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     });
     modalRef.result.then((result: any) => {
       if (result.search('clear all') != -1) {
-        console.log('clear all')
+        console.log('clear all');
         // TODO: update project lists
       }
     });
@@ -153,10 +151,9 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     });
     modalRef.result.then((result: any) => {
       if (result.search('save-success') != -1) {
-        console.log('save success')
+        console.log('save success');
         // TODO: update project lists
       }
     });
   }
-
 }

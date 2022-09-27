@@ -6,12 +6,12 @@ import { DemographicComponent } from './components/demographic/demographic.compo
 import { FunnelChartComponent } from './components/funnel-chart/funnel-chart.component';
 import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
-import {WorkspaceComponent } from './components/workspace/workspace.component';
+import { WorkspaceComponent } from './components/workspace/workspace.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'funnel',
+    redirectTo: 'workspace',
     pathMatch: 'full',
   },
   {
