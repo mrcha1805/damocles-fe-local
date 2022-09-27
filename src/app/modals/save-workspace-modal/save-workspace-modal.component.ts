@@ -19,6 +19,7 @@ export class SaveWorkspaceModalComponent implements OnInit {
     // console.log('modal cancel!');
     // this.activeModal.close('cancel');
 
+    // # Open when save file already exists
     console.log('cancel');
     const modalRef = this.ngModalService.open(SaveExistsWorkspaceModalComponent, {
       size: 'sm',
@@ -30,8 +31,8 @@ export class SaveWorkspaceModalComponent implements OnInit {
         console.log('cancel')
         // TODO: update project lists
       }
-      this.activeModal.close('cancel');
     });
+
   }
 
   saveProject() {

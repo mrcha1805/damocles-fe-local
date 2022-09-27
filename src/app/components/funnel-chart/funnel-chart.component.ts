@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 
 @Component({
   selector: 'app-funnel-chart',
@@ -7,6 +8,24 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
   styleUrls: ['./funnel-chart.component.scss']
 })
 export class FunnelChartComponent implements OnInit {
+
+  triggers = NgxPopperjsTriggers;
+  placements = NgxPopperjsPlacements;
+  offsetModifiers = [
+    {
+      name: 'offset',
+      options: {
+        offset: [0, 2],
+      },
+    },
+    {
+      name: 'flip',
+      options: {
+        flipVariations: true,
+      },
+    },
+  ];
+
   funnelList: any = [
     {
       name: 'Age',

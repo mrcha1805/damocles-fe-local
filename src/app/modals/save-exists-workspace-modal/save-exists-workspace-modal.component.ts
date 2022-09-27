@@ -11,15 +11,14 @@ export class SaveExistsWorkspaceModalComponent implements OnInit {
   projectName: string | undefined;
 
   ngOnInit(): void {}
-  cancel() {
-    console.log('modal cancel!');
-    this.activeModal.close('cancel');
+  cancelExists() {
+    console.log('modal cancel exists!');
+    this.activeModal.close('cancel exists');
   }
 
   replace() {
     console.log('modal replace!');
     // TODO: call api delete project
-
     this.activeModal.close('replace');
   }
 
