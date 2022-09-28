@@ -167,9 +167,25 @@
     </div>
   </div>
 
-  <div fxLayout="row" fxLayoutGap="10" fxFill>
-    <div class="add-criterion" fxLayoutAlign="end end">
+  <div fxLayout="column" fxLayoutGap="10" fxFill style="padding-left: 20px;">
+    <div class="add-criterion" fxLayoutAlign="start end" (click)="toggle()">
       <span>+ Add Criterion</span>
     </div>
+    <div fxLayoutAlign="start end" class="row" *ngIf="show">
+      <form class="input-form">
+        <mat-form-field class="input-full-width" appearance="outline">
+          <mat-label>Search</mat-label>
+          <img matPrefix src="./assets/icons/search.svg" width="16" class="search-icon">
+          <input matInput [formControl]="myControl" [matAutocomplete]="auto" class="search-input">
+          <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"> -->
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
   </div>
+  
 </section>

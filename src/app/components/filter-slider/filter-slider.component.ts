@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { Options } from "@angular-slider/ngx-slider";
+import { FormControl } from '@angular/forms'
+import { Observable } from 'rxjs'
+import { map, startWith } from 'rxjs/operators'
 
 export interface Tag {
   name: string;
@@ -16,9 +19,59 @@ export interface Tag {
 export class FilterSliderComponent implements OnInit {
   constructor() {}
 
-  lowValue: number = 0.3;
-  highValue: number = 0.8;
-  options: Options = {
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    )
+  }
+  
+  // show/hide Add Criterion
+  public show:boolean = false;
+  public buttonName:any = 'Show';
+  toggle() {
+    this.show = !this.show;
+    if(this.show)  
+      this.buttonName = "Hide";
+    else
+      this.buttonName = "Show";
+  }
+
+  myControl = new FormControl()
+  options: string[] = ['Propentity to buy a car', 'Propentity to buy a house', 'Propentity to buy a cat']
+  objectOptions = [
+    { name: 'Propentity to buy a car' },
+    { name: 'Propentity to buy a house' },
+    { name: 'Propentity to buy a cat' },
+    { name: 'Propentity to buy a dog' }
+  ]
+  filteredOptions!: Observable<string[]>;
+
+  // displayFn(subject: { name: any; }) {
+  //   console.log(subject)
+  //   return subject ? subject.name : undefined
+  // }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase()
+    return this.options.filter(option =>
+      option.toLowerCase().includes(filterValue)
+    )
+  }
+
+
+  lowValue1: number = 0.3;
+  highValue1: number = 0.8;
+  slider1: Options = {
+    floor: 0.0,
+    ceil: 1.0,
+    step: 0.1,
+    pushRange: true,
+  };
+
+  lowValue2: number = 0.3;
+  highValue2: number = 0.8;
+  slider2: Options = {
     floor: 0.0,
     ceil: 1.0,
     step: 0.1,
@@ -95,8 +148,6 @@ export class FilterSliderComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {}
-
   selectAgeList(name: string, value: string) {
     const tagSelect = this.ageList
       .filter((item) => {
@@ -148,5 +199,4 @@ export class FilterSliderComponent implements OnInit {
       });
     }
   }
-
 }

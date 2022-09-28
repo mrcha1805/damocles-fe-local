@@ -4,11 +4,11 @@
     <div fxLayout="row" class="grid-item viewport-100" fxFlex>
         <div fxLayout="column" fxFlex>
             <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" fxFlex>
-                <div fxFlex="40" fxLayout="column" fxLayoutAlign="start center" class="grid-item-layout box-left">
+                <div fxFlex="35" fxLayout="column" fxLayoutAlign="start start" class="grid-item-layout box-left">
                     <div fxHide.lt-md class="w-100">
                         <app-navbar-logo></app-navbar-logo>
                     </div>
-                    <div fxLayout="column" class="grid-item-layout w-100 pb-3" fxFlex>
+                    <div fxLayout="column" class="grid-item-layout app-filter w-100 pb-3" fxFlex>
                         <div fxLayout="column" class="grid-item-layout" fxLayoutAlign="start start" fxFlex>
                             <app-filter [menu]="kpiGroup" fxFill></app-filter>
                         </div>

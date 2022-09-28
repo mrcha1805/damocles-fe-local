@@ -67,7 +67,7 @@ export class FilterComponent implements OnInit {
   //   {
   //     headerMenu: 'Propensity ',
   //     no: 2,
-  //     fileType: 'filter'
+//      fileType: 'slider'
   //   },
   // ];
   menuIndex: string = '1';

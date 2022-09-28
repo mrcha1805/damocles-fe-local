@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
+
+export interface Ifunnel {
+  product: string;
+  measure: string;
+}
 
 @Component({
   selector: 'app-funnel-chart',
@@ -8,6 +13,8 @@ import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
   styleUrls: ['./funnel-chart.component.scss']
 })
 export class FunnelChartComponent implements OnInit {
+
+  style: object = {};
 
   triggers = NgxPopperjsTriggers;
   placements = NgxPopperjsPlacements;
@@ -26,66 +33,46 @@ export class FunnelChartComponent implements OnInit {
     },
   ];
 
-  funnelList: any = [
+  funnelList: Ifunnel[] = [
     {
-      name: 'Age',
-      value: '40,000,000',
-      color: '#EDE8F9',
-      width:  '219'
+      product: 'Age',
+      measure: '40,000,000',
     },
     {
-      name: 'Gender',
-      value: '9,000,000',
-      color: '#DBD2F3',
-      width:  '210'
+      product: 'Gender',
+      measure: '9,000,000',
     },
     {
-      name: 'Nationality',
-      value: '8,900,000',
-      color: '#C8BBED',
-      width:  '200'
+      product: 'Nationality',
+      measure: '8,900,000',
     },
     {
-      name: 'Home Location',
-      value: '8,500,000',
-      color: '#B6A5E8',
-      width:  '190'
+      product: 'Home Location',
+      measure: '8,500,000',
     },
     {
-      name: 'Occupation',
-      value: '8,000,000',
-      color: '#A48EE2',
-      width:  '180'
+      product: 'Occupation',
+      measure: '8,000,000',
     },
     {
-      name: 'Work Location',
-      value: '6,800,000',
-      color: '#9278DC',
-      width:  '170'
+      product: 'Work Location',
+      measure: '6,800,000',
     },
     {
-      name: 'Life Status',
-      value: '4,900,000',
-      color: '#7F61D6',
-      width:  '160'
+      product: 'Life Status',
+      measure: '4,900,000',
     },
     {
-      name: 'Net Worth',
-      value: '400,000',
-      color: '#6D4AD0',
-      width:  '150'
+      product: 'Net Worth',
+      measure: '400,000',
     },
     {
-      name: 'Digital Spending Score',
-      value: '5,000,000',
-      color: '#5B34CA',
-      width:  '86'
+      product: 'Digital Spending Score',
+      measure: '5,000,000',
     },
     {
-      name: 'Propensity to find a job',
-      value: '500,000',
-      color: '#491DC5',
-      width:  '79'
+      product: 'Propensity to find a job',
+      measure: '500,000',
     },
   ]
 
@@ -100,6 +87,19 @@ export class FunnelChartComponent implements OnInit {
 
   cardChartColor() {
     console.log('test')
+  }
+
+  setStyleChart(fn: Ifunnel) {
+    var widthChart = parseFloat(fn.measure) / 2;
+    var heightChart = (360 / this.funnelList.length);
+
+    this.style = {
+      width: widthChart.toString() + 'px',
+      height: heightChart.toString() + 'px',
+    };
+
+    console.log(this.style);
+    return this.style;
   }
 
 }
