@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SubFeature } from 'app/model/project-template-interface';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { Options } from '@angular-slider/ngx-slider';
-
-export interface Tag {
-  name: string;
-  value: string;
-  selected: boolean;
-}
+import { Tag } from 'app/model/project-template-interface';
+// export interface Tag {
+//   name: string;
+//   value: string;
+//   selected: boolean;
+// }
 @Component({
   selector: 'app-filter-item',
   templateUrl: './filter-item.component.html',
@@ -37,12 +37,15 @@ export class FilterItemComponent implements OnInit {
       e.itemList = [];
       e.tagSelect = [];
       e.item_value?.forEach((i) => {
-        let item: Tag;
-        item = {
+        let item = {
           name: i,
           value: i,
           selected: false,
         };
+        //   name: i,
+        //   value: i,
+        //   selected: false,
+        // };
         e.itemList?.push(item);
       });
     });

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Kpigroup } from 'app/model/project-template-interface';
+import { Featuregroup } from 'app/model/project-template-interface';
 
 @Component({
   selector: 'app-filter',
@@ -67,11 +67,11 @@ export class FilterComponent implements OnInit {
   //   {
   //     headerMenu: 'Propensity ',
   //     no: 2,
-//      fileType: 'slider'
+  //      fileType: 'slider'
   //   },
   // ];
   menuIndex: string = '1';
-  @Input() menu: Kpigroup[] | undefined;
+  @Input() menu: Featuregroup[] | undefined;
 
   ngOnInit(): void {
     this.menuIndex = '1';

@@ -72,7 +72,7 @@ export class ApiService {
 
   dynamicProjectTemplateMockup(): Observable<HttpResponse<IProjectTemplate>> {
     return this.http.get<IProjectTemplate>(
-      'assets/data/project-template-mockup.json',
+      'assets/data/project-template-all-mockup.json',
       {
         observe: 'response',
       }

@@ -16,7 +16,7 @@ import { SaveWorkspaceModalComponent } from 'app/modals/save-workspace-modal/sav
 import { ApiService } from 'app/services/api.service';
 import {
   IProjectTemplate,
-  Kpigroup,
+  Featuregroup,
 } from 'app/model/project-template-interface';
 @Component({
   selector: 'app-workspace',
@@ -67,12 +67,12 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   projectDataApi: IProjectTemplate | undefined;
-  kpiGroup: Kpigroup[] | undefined;
+  kpiGroup: Featuregroup[] | undefined;
   getProjectTemplateApi() {
     this.apiService.dynamicProjectTemplateMockup().subscribe((data: any) => {
       this.projectDataApi = data.body;
       console.log(this.projectDataApi);
-      this.kpiGroup = this.projectDataApi?.resultData.kpi_group;
+      this.kpiGroup = this.projectDataApi?.resultData.feature_group;
     });
   }
   setOptionChartFunnel() {
