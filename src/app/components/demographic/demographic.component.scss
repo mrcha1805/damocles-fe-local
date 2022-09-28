@@ -48,7 +48,13 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .col-age {
-  border-left: 0.7px solid #e6e6e6;
+  padding: 10px 10px 10px 20px;
+  cursor: pointer;
+  background: #ffffff;
+  @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
+}
+.col-age:hover {
+  background: #F3F3F3;
 }
 
 .del-icon {
@@ -127,11 +133,11 @@ section {
     border: 0.698851px solid #adadad;
     border-radius: 5px;
     margin-left: -2rem;
+    width: 100%;
   }
   &-input:focus {
     outline: none;
   }
-
   &-icon {
     margin: 0 0.5rem;
     z-index: 2;
@@ -180,6 +186,9 @@ section {
 
   .mat-expansion-panel-header {
     background-color: #f0f0f0 !important;
+  }
+  .mat-autocomplete-panel .mat-autocomplete {
+    box-shadow: #491dc5;
   }
 }
 

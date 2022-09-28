@@ -40,35 +40,35 @@ export class FunnelChartComponent implements OnInit {
     },
     {
       product: 'Gender',
-      measure: '9,000,000',
+      measure: '20,000,000',
     },
     {
       product: 'Nationality',
-      measure: '8,900,000',
+      measure: '19,900,000',
     },
     {
       product: 'Home Location',
-      measure: '8,500,000',
+      measure: '17,500,000',
     },
     {
       product: 'Occupation',
-      measure: '8,000,000',
+      measure: '16,300,000',
     },
     {
       product: 'Work Location',
-      measure: '6,800,000',
+      measure: '15,800,000',
     },
     {
       product: 'Life Status',
-      measure: '4,900,000',
+      measure: '7,900,000',
     },
     {
       product: 'Net Worth',
-      measure: '400,000',
+      measure: '5,400,000',
     },
     {
       product: 'Digital Spending Score',
-      measure: '5,000,000',
+      measure: '2,200,000',
     },
     {
       product: 'Propensity to find a job',
@@ -90,15 +90,33 @@ export class FunnelChartComponent implements OnInit {
   }
 
   setStyleChart(fn: Ifunnel) {
-    var widthChart = parseFloat(fn.measure) / 2;
-    var heightChart = (360 / this.funnelList.length);
+    const heightChart = (360 / this.funnelList.length);
+    const position: number = this.funnelList.findIndex(x => x.product === fn.product);
+    
+    let firstChart: number = 0;
+    let calFirstChart: number = 0;
+    let chart: number = 0;
 
-    this.style = {
-      width: widthChart.toString() + 'px',
-      height: heightChart.toString() + 'px',
-    };
+    if (position === 0) {
+      firstChart = parseFloat(this.funnelList[position].measure.replace(/,/g, ''));
+      calFirstChart = ( firstChart / firstChart) * 400
+      
+      this.style = {
+        width: calFirstChart + 'px',
+        height: heightChart.toString() + 'px',
+      };
 
-    console.log(this.style);
+    } else if (position > 0) {
+      firstChart = parseFloat(this.funnelList[position].measure.replace(/,/g, ''));
+      // chart = parseFloat(this.funnelList[position-1].measure.replace(/,/g, ''));
+      chart = parseFloat(this.funnelList[0].measure.replace(/,/g, ''));
+      const finalWidth = ( firstChart / chart) * 400
+  
+      this.style = {
+        width: finalWidth + 'px',
+        height: heightChart.toString() + 'px',
+      };
+    }
     return this.style;
   }
 

@@ -19,7 +19,8 @@ export interface Tag {
 })
 export class FilterSliderComponent implements OnInit {
   @Input() subSlider: SubFeature | undefined;
-  constructor() {}
+  constructor() { }
+  style: object = {};
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -29,12 +30,22 @@ export class FilterSliderComponent implements OnInit {
   }
 
   // show/hide Add Criterion
-  public show: boolean = false;
-  public buttonName: any = 'Show';
+  public hide: boolean = false;
+  public buttonName: any = 'Hide';
   toggle() {
-    this.show = !this.show;
-    if (this.show) this.buttonName = 'Hide';
-    else this.buttonName = 'Show';
+    this.hide = !this.hide;
+    if (this.hide) {
+      console.log('Show')
+      this.setStyleSearch();
+    } else {
+      this.buttonName = "Hide";
+      console.log('Hide')
+      this.setStyleSearch();
+    }
+  }
+
+  criterion(option: any) {
+    console.log('click' , option)
   }
 
   myControl = new FormControl();
@@ -50,7 +61,6 @@ export class FilterSliderComponent implements OnInit {
     { name: 'Propentity to buy a dog' },
   ];
   filteredOptions!: Observable<string[]>;
-
   // displayFn(subject: { name: any; }) {
   //   console.log(subject)
   //   return subject ? subject.name : undefined
@@ -61,6 +71,16 @@ export class FilterSliderComponent implements OnInit {
     return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue)
     );
+  }
+
+  setStyleSearch() {
+    console.log('setStyleSearch');
+    this.style = {
+      background: '#000000',
+      // border-radius: 5px;,
+      // padding-top: 10px;,
+      height: '200px'
+    };
   }
 
   lowValue1: number = 0.3;
