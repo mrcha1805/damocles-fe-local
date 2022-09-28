@@ -79,7 +79,7 @@ export interface SubFeature {
   item_value?: any[];
   itemList?: Tag[];
   tagSelect: any[];
-  range_value?: number[];
+  range_value: number[];
   selected: boolean | false;
 }
 

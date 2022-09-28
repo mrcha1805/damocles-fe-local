@@ -19,14 +19,24 @@ export interface Tag {
 })
 export class FilterSliderComponent implements OnInit {
   @Input() subSlider: SubFeature | undefined;
-  constructor() { }
+  constructor() {}
   style: object = {};
-
+  lowValue: number = 0.3;
+  highValue: number = 0.8;
+  sliderOption: Options = {
+    floor: 0.0,
+    ceil: 2.0,
+    step: 0.1,
+    pushRange: true,
+  };
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
+    //code
+    this.sliderOption.floor = this.subSlider?.range_value[0];
+    this.sliderOption.ceil = this.subSlider?.range_value[1];
   }
 
   // show/hide Add Criterion
@@ -35,17 +45,17 @@ export class FilterSliderComponent implements OnInit {
   toggle() {
     this.hide = !this.hide;
     if (this.hide) {
-      console.log('Show')
+      console.log('Show');
       this.setStyleSearch();
     } else {
-      this.buttonName = "Hide";
-      console.log('Hide')
+      this.buttonName = 'Hide';
+      console.log('Hide');
       this.setStyleSearch();
     }
   }
 
   criterion(option: any) {
-    console.log('click' , option)
+    console.log('click', option);
   }
 
   myControl = new FormControl();
@@ -79,80 +89,71 @@ export class FilterSliderComponent implements OnInit {
       background: '#000000',
       // border-radius: 5px;,
       // padding-top: 10px;,
-      height: '200px'
+      height: '200px',
     };
   }
 
-  lowValue1: number = 0.3;
-  highValue1: number = 0.8;
-  slider1: Options = {
-    floor: 0.0,
-    ceil: 1.0,
-    step: 0.1,
-    pushRange: true,
-  };
+  // lowValue2: number = 0.3;
+  // highValue2: number = 0.8;
+  // slider2: Options = {
+  //   floor: 0.0,
+  //   ceil: 1.0,
+  //   step: 0.1,
+  //   pushRange: true,
+  // };
 
-  lowValue2: number = 0.3;
-  highValue2: number = 0.8;
-  slider2: Options = {
-    floor: 0.0,
-    ceil: 1.0,
-    step: 0.1,
-    pushRange: true,
-  };
+  // ageSelected: any;
+  // genderSelected: any;
+  // ageList: Tag[] = [
+  //   {
+  //     name: '25-34',
+  //     value: 'age01',
+  //     selected: false,
+  //   },
+  //   {
+  //     name: '35-44',
+  //     value: 'age02',
+  //     selected: false,
+  //   },
+  //   {
+  //     name: '45-54',
+  //     value: 'age03',
+  //     selected: false,
+  //   },
+  //   {
+  //     name: '56-60',
+  //     value: 'age04',
+  //     selected: false,
+  //   },
+  //   {
+  //     name: '>60',
+  //     value: 'age05',
+  //     selected: false,
+  //   },
+  // ];
 
-  ageSelected: any;
-  genderSelected: any;
-  ageList: Tag[] = [
-    {
-      name: '25-34',
-      value: 'age01',
-      selected: false,
-    },
-    {
-      name: '35-44',
-      value: 'age02',
-      selected: false,
-    },
-    {
-      name: '45-54',
-      value: 'age03',
-      selected: false,
-    },
-    {
-      name: '56-60',
-      value: 'age04',
-      selected: false,
-    },
-    {
-      name: '>60',
-      value: 'age05',
-      selected: false,
-    },
-  ];
-
-  genderList: Tag[] = [
-    {
-      name: 'Female',
-      value: 'g1',
-      selected: false,
-    },
-    {
-      name: 'Male',
-      value: 'g2',
-      selected: false,
-    },
-    {
-      name: 'Inferred Female',
-      value: 'g3',
-      selected: false,
-    },
-    {
-      name: 'Inferred Male',
-      value: 'g4',
-      selected: false,
-    },
-  ];
+  // genderList: Tag[] = [
+  //   {
+  //     name: 'Female',
+  //     value: 'g1',
+  //     selected: false,
+  //   },
+  //   {
+  //     name: 'Male',
+  //     value: 'g2',
+  //     selected: false,
+  //   },
+  //   {
+  //     name: 'Inferred Female',
+  //     value: 'g3',
+  //     selected: false,
+  //   },
+  //   {
+  //     name: 'Inferred Male',
+  //     value: 'g4',
+  //     selected: false,
+  //   },
+  // ];
 
   triggers = NgxPopperjsTriggers;
   placements = NgxPopperjsPlacements;
@@ -171,55 +172,55 @@ export class FilterSliderComponent implements OnInit {
     },
   ];
 
-  selectAgeList(name: string, value: string) {
-    const tagSelect = this.ageList
-      .filter((item) => {
-        return item.selected === true;
-      })
-      .map((item) => {
-        return item.name;
-      });
-    this.ageSelected = [];
-    this.ageSelected.push(...tagSelect);
-  }
-  selectGenderList(name: string, value: string) {
-    const tagSelect = this.genderList
-      .filter((item) => {
-        return item.selected === true;
-      })
-      .map((item) => {
-        return item.name;
-      });
-    this.genderSelected = [];
-    this.genderSelected.push(...tagSelect);
-  }
+  // selectAgeList(name: string, value: string) {
+  //   const tagSelect = this.ageList
+  //     .filter((item) => {
+  //       return item.selected === true;
+  //     })
+  //     .map((item) => {
+  //       return item.name;
+  //     });
+  //   this.ageSelected = [];
+  //   this.ageSelected.push(...tagSelect);
+  // }
+  // selectGenderList(name: string, value: string) {
+  //   const tagSelect = this.genderList
+  //     .filter((item) => {
+  //       return item.selected === true;
+  //     })
+  //     .map((item) => {
+  //       return item.name;
+  //     });
+  //   this.genderSelected = [];
+  //   this.genderSelected.push(...tagSelect);
+  // }
   deleteSelector() {
     console.log('delete');
   }
 
-  removeTagAge(item: string): void {
-    const index = this.ageSelected.indexOf(item);
+  // removeTagAge(item: string): void {
+  //   const index = this.ageSelected.indexOf(item);
 
-    if (index >= 0) {
-      this.ageSelected.splice(index, 1);
-      this.ageList.map((i) => {
-        if (i.name === item) {
-          i.selected = !i.selected;
-        }
-      });
-    }
-  }
+  //   if (index >= 0) {
+  //     this.ageSelected.splice(index, 1);
+  //     this.ageList.map((i) => {
+  //       if (i.name === item) {
+  //         i.selected = !i.selected;
+  //       }
+  //     });
+  //   }
+  // }
 
-  removeTagGender(item: string): void {
-    const index = this.genderSelected.indexOf(item);
+  //   removeTagGender(item: string): void {
+  //     const index = this.genderSelected.indexOf(item);
 
-    if (index >= 0) {
-      this.genderSelected.splice(index, 1);
-      this.genderList.map((i) => {
-        if (i.name === item) {
-          i.selected = !i.selected;
-        }
-      });
-    }
-  }
+  //     if (index >= 0) {
+  //       this.genderSelected.splice(index, 1);
+  //       this.genderList.map((i) => {
+  //         if (i.name === item) {
+  //           i.selected = !i.selected;
+  //         }
+  //       });
+  //     }
+  //   }
 }

@@ -143,6 +143,18 @@
             "feature_order": 8,
             "item_value": [],
             "range_value": [0, 1]
+          },
+          {
+            "project_feature_id": 10009,
+            "product_feature_id": 10009,
+            "feature_name": "Net Worth unknown",
+            "description": "Affluency score presents customer affluency percentile, compared with Thai population 0 means customer has affluency at 0 percentile, compared with Thai population /1 means customer has aflluency at 100 percentile, compared with Thai population",
+            "operator": "IS",
+            "type": "range with unknown",
+            "ui": "slider with unknown",
+            "feature_order": 8,
+            "item_value": [],
+            "range_value": [0, 2]
           }
         ]
       }

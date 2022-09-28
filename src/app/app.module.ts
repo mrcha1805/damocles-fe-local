@@ -73,6 +73,7 @@ import { AppConfigService } from './services/app-config.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterItemComponent } from './components/filter-item/filter-item.component';
 import { FeatureSearchFilterPipe } from './services/feature-search-filter.pipe';
+import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 export function initializeApp(appConfigService: AppConfigService) {
   return (): Promise<any> => {
     return appConfigService.load();
@@ -105,6 +106,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     FilterSliderComponent,
     FilterItemComponent,
     FeatureSearchFilterPipe,
+    FilterLocationComponent,
   ],
   imports: [
     BrowserModule,

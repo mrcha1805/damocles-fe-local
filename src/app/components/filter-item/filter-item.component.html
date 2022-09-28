@@ -95,8 +95,11 @@
         </div>
       </div>
     </div>
-    <div *ngIf="item.ui == 'slider'">
+    <div *ngIf="item.ui == 'slider' || item.ui== 'slider with unknown'">
       <app-filter-slider [subSlider]="item"></app-filter-slider>
+    </div>
+    <div *ngIf="item.ui == 'location dropdown'">
+      <!-- <app-filter-slider [subSlider]="item"></app-filter-slider> -->
     </div>
     <!-- <div *ngIf="item.ui == 'slider'">
 
