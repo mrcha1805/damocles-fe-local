@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IProject, IProjectModel } from 'app/model/project-interface';
 import { DeleteProjectModalComponent } from 'app/modals/delete-project-modal/delete-project-modal.component';
 import { ApiService } from 'app/services/api.service';
+import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select/select';
 
 enum DaysNum {
   Today = 0,
@@ -258,6 +259,9 @@ export class NewProjectComponent implements OnInit, OnChanges {
   projectDataApi: IProjectModel | undefined;
   showPage: boolean = false;
   async ngOnInit(): Promise<void> {
+    this.setDefault();
+  }
+  setDefault() {
     this.showPage = false;
     this.spinnerService.show();
     this.projectList = [];
@@ -277,7 +281,6 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.apiService.getProjectAPI('1').subscribe(async (data: any) => {
       this.projectDataApi = data;
       if (this.projectDataApi!.resultCode === '20000') {
-        console.log(this.projectDataApi);
         this.projectMasterData = this.projectDataApi!.resultData.project;
         this.projectData = this.projectMasterData;
         this.userProjectCount = this.projectMasterData.length;
@@ -340,7 +343,7 @@ export class NewProjectComponent implements OnInit, OnChanges {
         }
       }
     }
-    console.log(this.projectData);
+
     this.projectList = this.projectFilter = this.projectData;
     this.sortUpdatedIconChange();
     this.showPage = true;
@@ -353,9 +356,6 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.mode = mode;
     if (mode !== this.IndustryENum.all) {
       let filterData = this.projectList.filter((e) => e.industry_name === mode);
-
-      // console.log('mode: ' + mode);
-      // console.log('filter: ' + JSON.stringify(filterData));
       this.projectList = filterData;
     }
     this.industryFilterMode = this.industryMode.find(
@@ -364,45 +364,40 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.projectFilter = this.projectList;
   }
   filterProduct(f: string) {
-    console.log('filterProduct: ' + f);
     const result: IProject[] = this.projectData.filter(
       (e) => e.product_name === f
     );
     this.projectList = result;
   }
   removeProject(p: IProject) {
-    console.log(p.project_name);
     const dIndex = this.projectData.findIndex(
       (e) => e.project_name === p.project_name
     );
 
-    console.log(dIndex);
     this.projectData.splice(dIndex, 1);
     this.filter(this.mode!);
   }
   showSpinner(path: string) {
     this.spinnerService.show();
     this.router.navigateByUrl(path);
-    // setTimeout(() => {
-    //   this.spinnerService.hide();
-    //   this.router.navigateByUrl(path);
-    // }, 1000);
   }
 
   goKpi() {
     this.showSpinner('/kpi');
   }
+
   deleteProject(p: IProject) {
-    console.log('deleteProject');
     const modalRef = this.ngModalService.open(DeleteProjectModalComponent, {
       size: 'md',
       centered: true,
       backdrop: 'static',
     });
     modalRef.componentInstance.projectName = p.project_name;
+    modalRef.componentInstance.projectId = p.project_id;
     modalRef.result.then((result: any) => {
       if (result.search('deleting') != -1) {
-        this.removeProject(p);
+        this.spinnerService.show();
+        window.location.reload();
         // TODO: update project lists
       }
     });
