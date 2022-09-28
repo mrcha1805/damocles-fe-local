@@ -1,12 +1,12 @@
 <div *ngFor="let item of menu">
-  <mat-accordion>
+  <mat-accordion >
     <mat-expansion-panel [expanded]="menuIndex === item.no" (opened)="setSelection(item.no)" hideToggle>
       <mat-expansion-panel-header class="header-style px-5">
         <mat-panel-title>
           <img src="./assets/icons/workspace-customer-profile.svg" class="title-icon">
         </mat-panel-title>
 
-        <mat-panel-description fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-panel-description fxLayout="row" fxLayoutAlign="space-between center" >
           <span class="header1">{{item.headerMenu}}&nbsp;
             <!-- <span>
               <img src="./assets/icons/header-dropdown.svg" width="6.45px" height="10.47px" class="expand-action" />

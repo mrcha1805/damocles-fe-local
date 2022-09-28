@@ -47,7 +47,13 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .col-age {
-  border-left: 0.7px solid #e6e6e6;
+  padding: 10px 10px 10px 20px;
+  cursor: pointer;
+  background: #ffffff;
+  @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
+}
+.col-age:hover {
+  background: #F3F3F3;
 }
 
 .del-icon {
@@ -89,6 +95,13 @@ section {
   width: 100%;
 }
 
+.bgInputForm {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding-top: 10px;
+  height: 200px !important;
+}
+
 ::ng-deep .mat-form-field-flex>.mat-form-field-infix {
   padding: 5px 0px !important;
 }
@@ -112,23 +125,22 @@ section {
   border: 0.698851px solid #adadad;
 }
 
-.search {
-  // &-input {
-  //   width: 100%;
-  //   height: 36.28px !important;
-  //   background: #ffffff;
-  //   border: 0.698851px solid #adadad;
-  //   border-radius: 5px;
-  //   margin-top: -10px;
-  //   margin-left: -20px;
-  // }
+.grid-item-layout .search {
+  &-input {
+    padding-left: 2rem !important;
+    height: 30px !important;
+    background: #ffffff;
+    border: 0.698851px solid #adadad;
+    border-radius: 5px;
+    margin-left: -2rem;
+    width: 100%;
+  }
   &-input:focus {
     outline: none;
   }
   &-icon {
+    margin: 0 0.5rem;
     z-index: 2;
-    padding-bottom: 15px;
-    margin-right: 10px
   }
 }
 

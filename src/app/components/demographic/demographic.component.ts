@@ -36,6 +36,10 @@ export class DemographicComponent implements OnInit {
       this.buttonName = "Show";
   }
 
+  criterion(option: any) {
+    console.log('click' , option)
+  }
+
   myControl = new FormControl()
   options: string[] = ['Propentity to buy a car', 'Propentity to buy a house', 'Propentity to buy a cat']
   objectOptions = [
