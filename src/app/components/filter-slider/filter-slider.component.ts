@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
-import { Options } from "@angular-slider/ngx-slider";
-import { FormControl } from '@angular/forms'
-import { Observable } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
+import { Options } from '@angular-slider/ngx-slider';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { SubFeature } from 'app/model/project-template-interface';
 
 export interface Tag {
   name: string;
@@ -14,37 +15,40 @@ export interface Tag {
 @Component({
   selector: 'app-filter-slider',
   templateUrl: './filter-slider.component.html',
-  styleUrls: ['./filter-slider.component.scss']
+  styleUrls: ['./filter-slider.component.scss'],
 })
 export class FilterSliderComponent implements OnInit {
+  @Input() subSlider: SubFeature | undefined;
   constructor() {}
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
-    )
-  }
-  
-  // show/hide Add Criterion
-  public show:boolean = false;
-  public buttonName:any = 'Show';
-  toggle() {
-    this.show = !this.show;
-    if(this.show)  
-      this.buttonName = "Hide";
-    else
-      this.buttonName = "Show";
+      map((value) => this._filter(value))
+    );
   }
 
-  myControl = new FormControl()
-  options: string[] = ['Propentity to buy a car', 'Propentity to buy a house', 'Propentity to buy a cat']
+  // show/hide Add Criterion
+  public show: boolean = false;
+  public buttonName: any = 'Show';
+  toggle() {
+    this.show = !this.show;
+    if (this.show) this.buttonName = 'Hide';
+    else this.buttonName = 'Show';
+  }
+
+  myControl = new FormControl();
+  options: string[] = [
+    'Propentity to buy a car',
+    'Propentity to buy a house',
+    'Propentity to buy a cat',
+  ];
   objectOptions = [
     { name: 'Propentity to buy a car' },
     { name: 'Propentity to buy a house' },
     { name: 'Propentity to buy a cat' },
-    { name: 'Propentity to buy a dog' }
-  ]
+    { name: 'Propentity to buy a dog' },
+  ];
   filteredOptions!: Observable<string[]>;
 
   // displayFn(subject: { name: any; }) {
@@ -53,12 +57,11 @@ export class FilterSliderComponent implements OnInit {
   // }
 
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase()
-    return this.options.filter(option =>
+    const filterValue = value.toLowerCase();
+    return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue)
-    )
+    );
   }
-
 
   lowValue1: number = 0.3;
   highValue1: number = 0.8;

@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SubFeature } from 'app/model/project-template-interface';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
+import { Options } from '@angular-slider/ngx-slider';
+
 export interface Tag {
   name: string;
   value: string;
@@ -16,6 +18,13 @@ export class FilterItemComponent implements OnInit {
   genderSelected: any;
   searchFilterStr: string | undefined;
   @Input() subMenu: SubFeature[] | undefined;
+  slider1: Options = {
+    floor: 0.0,
+    ceil: 1.0,
+    step: 0.1,
+    pushRange: true,
+  };
+
   constructor() {}
 
   ngOnInit(): void {
