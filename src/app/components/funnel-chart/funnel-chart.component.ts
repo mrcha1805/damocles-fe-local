@@ -85,10 +85,6 @@ export class FunnelChartComponent implements OnInit {
     moveItemInArray(this.funnelList, event.previousIndex, event.currentIndex);
   }
 
-  cardChartColor() {
-    console.log('test')
-  }
-
   setStyleChart(fn: Ifunnel) {
     const heightChart = (360 / this.funnelList.length);
     const position: number = this.funnelList.findIndex(x => x.product === fn.product);
@@ -105,7 +101,6 @@ export class FunnelChartComponent implements OnInit {
         width: calFirstChart + 'px',
         height: heightChart.toString() + 'px',
       };
-
     } else if (position > 0) {
       firstChart = parseFloat(this.funnelList[position].measure.replace(/,/g, ''));
       // chart = parseFloat(this.funnelList[position-1].measure.replace(/,/g, ''));
