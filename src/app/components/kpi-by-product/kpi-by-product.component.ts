@@ -312,7 +312,18 @@ export class KpiByProductComponent implements OnInit {
   }
 
   goCreateKpi() {
-    this.showSpinner('/create-kpi');
+    // let result: any;
+    // console.log(this.industryData?.resultData);
+    // this.industryData?.resultData.forEach((e) => {
+    //   result = e.product.filter((p) => {
+    //     return p.isSelected === true;
+    //   });
+    // });
+    // console.log(result);
+    //this.showSpinner('/workspace');
+    let obj = { productId: '1' };
+
+    this.router.navigate(['/workspace', obj]);
   }
 
   setStyleCollapsed(index: number) {

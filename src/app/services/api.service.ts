@@ -96,6 +96,23 @@ export class ApiService {
         })
       );
   }
+  getProjectTemplateByProductAPI(id: string): Observable<IProjectTemplate> {
+    return this.http
+      .get<IProjectTemplate>(
+        this.endpoint + this.project + '?product_id=' + id,
+        this.httpOption
+      )
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.log('error api:', error);
+          console.log(`HttpHeader status: ${error.status} ${error.statusText}`);
+          console.log(
+            `resultCode: ${error.error.resultCode}, resultDescription: ${error.error.resultDescription}, diagnosticMessage: ${error.error.diagnosticMessage}`
+          );
+          return throwError(error);
+        })
+      );
+  }
   deleteProjectAPI(id: string): Observable<IGlobal> {
     return this.http
       .delete<IGlobal>(
@@ -115,12 +132,9 @@ export class ApiService {
   }
 
   dynamicSaveProjectMockup(): Observable<HttpResponse<ISaveProject>> {
-    return this.http.get<ISaveProject>(
-      'assets/data/save-project-mockup.json',
-      {
-        observe: 'response',
-      }
-    );
+    return this.http.get<ISaveProject>('assets/data/save-project-mockup.json', {
+      observe: 'response',
+    });
   }
 
   postSaveProjectAPI(id: string): Observable<ISaveProject> {
@@ -140,14 +154,16 @@ export class ApiService {
           switch (error.status) {
             case 403:
               if (error.error.diagnosticMessage == undefined) {
-                errorMessage = "You do not have permission to access.";
-
-              } else if (error.error.diagnosticMessage.toLowerCase().trim().indexOf("name is duplicate name") != -1) {
-                errorMessage = "name is duplicate name.";
-
+                errorMessage = 'You do not have permission to access.';
+              } else if (
+                error.error.diagnosticMessage
+                  .toLowerCase()
+                  .trim()
+                  .indexOf('name is duplicate name') != -1
+              ) {
+                errorMessage = 'name is duplicate name.';
               } else {
-                errorMessage = "You do not have permission to access.";
-
+                errorMessage = 'You do not have permission to access.';
               }
               break;
           }

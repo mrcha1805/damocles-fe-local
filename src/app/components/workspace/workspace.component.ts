@@ -7,7 +7,7 @@ import HighchartsFunnel from 'highcharts/modules/funnel';
 HighchartsMore(Highcharts);
 HighchartsFunnel(Highcharts);
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
@@ -53,7 +53,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     private router: Router,
     private spinnerService: NgxSpinnerService,
     private ngModalService: NgbModal,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.typeSelected = 'ball-atom';
   }
@@ -63,7 +64,11 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.getProjectTemplateApi();
+    //this.getProjectTemplateApi();
+    let productId = this.activatedRoute.snapshot.params.productId;
+    if (productId) {
+      this.getProjectTemplateByProductApi(productId);
+    }
   }
 
   projectDataApi: IProjectTemplate | undefined;
@@ -74,6 +79,19 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       console.log(this.projectDataApi);
       this.kpiGroup = this.projectDataApi?.resultData.feature_group;
     });
+  }
+
+  getProjectTemplateByProductApi(id: string) {
+    this.spinnerService.show();
+    this.apiService
+      .getProjectTemplateByProductAPI(id)
+      .subscribe((data: any) => {
+        this.projectDataApi = data;
+        if (this.projectDataApi?.resultCode === '20000') {
+          this.kpiGroup = this.projectDataApi?.resultData.feature_group;
+        }
+        this.spinnerService.hide();
+      });
   }
   setOptionChartFunnel() {
     this.chart = Highcharts.chart('chart-funnel', {
