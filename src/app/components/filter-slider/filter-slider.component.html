@@ -272,7 +272,7 @@
 
     <div fxLayout="column" class="btn-group custom-dropdown" dropdown dropdown="bs-dropdown" [autoClose]="true"
       [insideClick]='true' fxFill>
-      <div class="add-criterion" fxLayoutAlign="start end" style="display: none;">
+      <div class="add-criterion" fxLayoutAlign="start end">
         <span dropdownToggle class="btn btn-custom">+ Add Criterion</span>
       </div>
       <div *dropdownMenu class="dropdown-menu w-100" role="menu" aria="dropdown-triggers">
@@ -285,24 +285,21 @@
 
           <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout">
             <div fxFlex class="mt-2">
-              <!-- <div *ngIf="filteredOptions !== null">
+              <div *ngIf="filteredOptions !== null">
                 <div *ngFor="let option of filteredOptions | async" class="col-age">
                   <span (click)="criterion(option)">{{option}}</span>
                 </div>
-              </div> -->
-              <div *ngFor="let option of filteredOptions | async; let i = index" class="col-age">
-                <div [ngStyle]="{'display': filteredOptions !== null ? '' : 'none'}">
+              </div>
+              <!-- <div *ngFor="let option of filteredOptions | async; let i = index" class="col-age">
+                <div [ngStyle]="{'display': filteredOptions !== null ? 'none' : 'block'}">
                   <span (click)="criterion(option)">{{option}}</span>
                 </div>
               </div>
-              <div [ngStyle]="{'display': filteredOptions === null ? 'none !important' : ''}" fxLayout="row" fxLayoutAlign="center center"
+              <div [ngStyle]="{'display': filteredOptions === null ? 'none' : 'block'}" fxLayout="row" fxLayoutAlign="center center"
                 class="grid-item-layout search-already">
                 <span>KPI is already used</span>
-              </div>
-
-
-
-
+              </div> -->
+              
             </div>
           </div>
 
