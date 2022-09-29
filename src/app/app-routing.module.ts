@@ -11,7 +11,7 @@ import { WorkspaceComponent } from './components/workspace/workspace.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'workspace',
+    redirectTo: 'create-project',
     pathMatch: 'full',
   },
   {
