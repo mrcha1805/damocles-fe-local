@@ -3,11 +3,10 @@ import { SubFeature } from 'app/model/project-template-interface';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { Options } from '@angular-slider/ngx-slider';
 import { Tag } from 'app/model/project-template-interface';
-// export interface Tag {
-//   name: string;
-//   value: string;
-//   selected: boolean;
-// }
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+
 @Component({
   selector: 'app-filter-item',
   templateUrl: './filter-item.component.html',
@@ -29,8 +28,29 @@ export class FilterItemComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.subMenu);
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value))
+    );
     this.setDefaultSelected();
   }
+  private _filter(value: any): any {
+    throw new Error('Method not implemented.');
+  }
+  myControl = new FormControl();
+  options: string[] = [
+    'Propentity to buy a car',
+    'Propentity to buy a house',
+    'Propentity to buy a cat',
+  ];
+  objectOptions = [
+    { name: 'Propentity to buy a car' },
+    { name: 'Propentity to buy a house' },
+    { name: 'Propentity to buy a cat' },
+    { name: 'Propentity to buy a dog' },
+  ];
+  filteredOptions!: Observable<string[]>;
+
   async setDefaultSelected() {
     await this.subMenu?.forEach((e) => {
       e.search = '';
@@ -43,10 +63,7 @@ export class FilterItemComponent implements OnInit {
           value: i,
           selected: false,
         };
-        //   name: i,
-        //   value: i,
-        //   selected: false,
-        // };
+
         e.itemList?.push(item);
       });
     });
@@ -151,6 +168,10 @@ export class FilterItemComponent implements OnInit {
         return (s.selected = false);
       });
     this.addTag(v);
+  }
+
+  criterion(option: any) {
+    console.log('click', option);
   }
 
   selectGenderList(name: string, value: string) {
