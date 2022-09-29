@@ -33,6 +33,10 @@ $heavent-normal: DB Heavent Nor;
   cursor: move;
 }
 
+.dragdrop {
+  overflow-x: hidden;
+}
+
 .mat-card {
   height: 90px;
   border-radius: 0px;
