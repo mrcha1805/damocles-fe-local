@@ -30,4 +30,5 @@ export interface ActionableConfig {
   industryRoute: string;
   userProfile: string;
   projectRoute: string;
+  criterion: string;
 }

@@ -13,6 +13,7 @@ import { IProject, IProjectModel } from '../model/project-interface';
 import { IProjectTemplate } from 'app/model/project-template-interface';
 import { IGlobal } from 'app/model/global-interface';
 import { ISaveProject } from 'app/model/save-project-interface';
+import { ICriterion } from 'app/model/criterion-interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,6 +25,7 @@ export class ApiService {
   industry: string = this.globalConfig.industryRoute;
   userProfile: string = this.globalConfig.userProfile;
   project: string = this.globalConfig.projectRoute;
+  criterion: string = this.globalConfig.criterion;
   httpOption = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -131,6 +133,7 @@ export class ApiService {
       );
   }
 
+  //Save Project
   dynamicSaveProjectMockup(): Observable<HttpResponse<ISaveProject>> {
     return this.http.get<ISaveProject>('assets/data/save-project-mockup.json', {
       observe: 'response',
@@ -167,6 +170,33 @@ export class ApiService {
               }
               break;
           }
+          return throwError(error);
+        })
+      );
+  }
+
+  //Get Criterion
+  dynamicCriterionMockup(): Observable<HttpResponse<ICriterion>> {
+    return this.http.get<ICriterion>('assets/data/criterion-mockup.json', {
+      observe: 'response',
+    });
+  }
+  getCriterionAPI(
+    projectId: string,
+    featureGroupId: string
+  ): Observable<ICriterion> {
+    return this.http
+      .get<ICriterion>(
+        `${this.endpoint}${this.criterion}/${projectId}/${featureGroupId}`,
+        this.httpOption
+      )
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.log('error api:', error);
+          console.log(`HttpHeader status: ${error.status} ${error.statusText}`);
+          console.log(
+            `resultCode: ${error.error.resultCode}, resultDescription: ${error.error.resultDescription}, diagnosticMessage: ${error.error.diagnosticMessage}`
+          );
           return throwError(error);
         })
       );

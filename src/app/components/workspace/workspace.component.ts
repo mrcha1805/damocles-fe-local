@@ -73,6 +73,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   projectDataApi: IProjectTemplate | undefined;
   kpiGroup: Featuregroup[] | undefined;
+  projectId: string | undefined;
   getProjectTemplateApi() {
     this.apiService.dynamicProjectTemplateMockup().subscribe((data: any) => {
       this.projectDataApi = data.body;
@@ -88,7 +89,9 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       .subscribe((data: any) => {
         this.projectDataApi = data;
         if (this.projectDataApi?.resultCode === '20000') {
+          console.log('-->' + JSON.stringify(this.projectDataApi.resultData));
           this.kpiGroup = this.projectDataApi?.resultData.feature_group;
+          this.projectId = this.projectDataApi.resultData.project_id;
         }
         this.spinnerService.hide();
       });

@@ -2,5 +2,6 @@
   "apiEndpoint": "http://104.43.115.28:23001/api/v1/",
   "industryRoute": "industry",
   "userProfile": "userprofile",
-  "projectRoute": "project"
+  "projectRoute": "project",
+  "criterion": "creterion"
 }
