@@ -74,6 +74,30 @@ export class FunnelChartComponent implements OnInit {
       product: 'Propensity to find a job',
       measure: '500,000',
     },
+    {
+      product: 'Occupation',
+      measure: '16,300,000',
+    },
+    {
+      product: 'Work Location',
+      measure: '15,800,000',
+    },
+    {
+      product: 'Life Status',
+      measure: '7,900,000',
+    },
+    {
+      product: 'Net Worth',
+      measure: '5,400,000',
+    },
+    {
+      product: 'Digital Spending Score',
+      measure: '2,200,000',
+    },
+    {
+      product: 'Propensity to find a job',
+      measure: '500,000',
+    },
   ]
 
   constructor() { }

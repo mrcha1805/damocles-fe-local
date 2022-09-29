@@ -11,14 +11,15 @@ $heavent-normal: DB Heavent Nor;
   color: $hexcolor  !important;
 }
 
-// .grid-funnel {
+.grid-funnel {
 //   border: solid 1px #ccc;
 //   background: white;
 //   border-radius: 8px;
 //   overflow: hidden;
 //   padding-bottom: 40px;
-//   background: white;
-// }
+//   overflow: auto;
+  padding-bottom: 20px;
+}
 
 .funnel-box {
   font-size: 14px;
@@ -31,6 +32,9 @@ $heavent-normal: DB Heavent Nor;
   align-items: center;
   justify-content: space-between;
   cursor: move;
+}
+.dragdrop {
+  overflow-x: hidden;
 }
 
 .mat-card {

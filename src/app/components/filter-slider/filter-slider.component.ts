@@ -30,18 +30,6 @@ export class FilterSliderComponent implements OnInit {
   // show/hide Add Criterion
   public hide: boolean = false;
   public buttonName: any = 'Hide';
-  toggle() {
-    this.hide = !this.hide;
-    if (this.hide) {
-      this.buttonName = "Show";
-      console.log('Show')
-      this.setStyleSearch();
-    } else {
-      this.buttonName = "Hide";
-      console.log('Hide')
-      this.setStyleSearch();
-    }
-  }
 
   criterion(option: any) {
     console.log('click' , option)
@@ -68,16 +56,9 @@ export class FilterSliderComponent implements OnInit {
     )
   }
 
-  setStyleSearch() {
-    console.log('setStyleSearch');
-    this.style = {
-      background: '#000000',
-      // border-radius: 5px;,
-      // padding-top: 10px;,
-      height: '200px'
-    };
+  setAlreadyFilter() {
+    console.log('test test');
   }
-
 
   lowValue1: number = 0.3;
   highValue1: number = 0.8;

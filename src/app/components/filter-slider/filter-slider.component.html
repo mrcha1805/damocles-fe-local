@@ -272,22 +272,40 @@
 
     <div fxLayout="column" class="btn-group custom-dropdown" dropdown dropdown="bs-dropdown" [autoClose]="true"
       [insideClick]='true' fxFill>
-      <div class="add-criterion" fxLayoutAlign="start end">
+      <div class="add-criterion" fxLayoutAlign="start end" style="display: none;">
         <span dropdownToggle class="btn btn-custom">+ Add Criterion</span>
       </div>
       <div *dropdownMenu class="dropdown-menu w-100" role="menu" aria="dropdown-triggers">
         <div fxFill fxLayout="column" class="selection-container p-2 pt-0 pb-0">
+
           <div fxLayout="row" class="grid-item-layout">
             <img src="./assets/icons/search.svg" width="16" class="search-icon">
             <input type="text" placeholder="Search" [formControl]="myControl" class="search-input">
           </div>
+
           <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout">
             <div fxFlex class="mt-2">
-              <div *ngFor="let option of filteredOptions | async" class="col-age">
-                <span (click)="criterion(option)">{{option}}</span>
+              <!-- <div *ngIf="filteredOptions !== null">
+                <div *ngFor="let option of filteredOptions | async" class="col-age">
+                  <span (click)="criterion(option)">{{option}}</span>
+                </div>
+              </div> -->
+              <div *ngFor="let option of filteredOptions | async; let i = index" class="col-age">
+                <div [ngStyle]="{'display': filteredOptions !== null ? '' : 'none'}">
+                  <span (click)="criterion(option)">{{option}}</span>
+                </div>
               </div>
+              <div [ngStyle]="{'display': filteredOptions === null ? 'none !important' : ''}" fxLayout="row" fxLayoutAlign="center center"
+                class="grid-item-layout search-already">
+                <span>KPI is already used</span>
+              </div>
+
+
+
+
             </div>
           </div>
+
         </div>
       </div>
     </div>
