@@ -85,10 +85,6 @@ export class FunnelChartComponent implements OnInit {
     moveItemInArray(this.funnelList, event.previousIndex, event.currentIndex);
   }
 
-  cardChartColor() {
-    console.log('test')
-  }
-
   setStyleChart(fn: Ifunnel) {
     var widthChart = parseFloat(fn.measure) / 2;
     var heightChart = (360 / this.funnelList.length);
@@ -97,8 +93,6 @@ export class FunnelChartComponent implements OnInit {
       width: widthChart.toString() + 'px',
       height: heightChart.toString() + 'px',
     };
-
-    console.log(this.style);
     return this.style;
   }
 

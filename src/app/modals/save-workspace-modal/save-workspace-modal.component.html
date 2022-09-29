@@ -16,20 +16,22 @@
                 <span class="header1">Create name</span>
             </div>
             <div class="d-flex ">
-                <input type="text" placeholder="INS_TA_20190916_CreateYourName" class="desc-input" />
+                <input type="text" id="projectName" name="projectName" [(ngModel)]="projectName"
+                    placeholder="INS_TA_20190916_CreateYourName" class="desc-input">
             </div>
         </div>
 
         <div fxLayout="column" fxLayoutGap="10px" fxFlex class="m-2">
             <div class="d-flex justify-content-left">
-                <span class="header1">Description 
+                <span class="header1">Description
                     <font class="header2">
                         (Optional)
                     </font>
                 </span>
             </div>
             <div class="d-flex justify-content-center">
-                <input type="text" placeholder="Enter a description..." class="desc-input" />
+                <input type="text" id="projectDesc" name="projectDesc" [(ngModel)]="projectDesc"
+                    type="text" placeholder="Enter a description..." class="desc-input">
             </div>
         </div>
     </div>
