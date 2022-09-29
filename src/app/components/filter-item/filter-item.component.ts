@@ -36,6 +36,7 @@ export class FilterItemComponent implements OnInit {
       e.search = '';
       e.itemList = [];
       e.tagSelect = [];
+
       e.item_value?.forEach((i) => {
         let item = {
           name: i,
@@ -130,7 +131,7 @@ export class FilterItemComponent implements OnInit {
     this.ageSelected = [];
     this.ageSelected.push(...tagSelect);
   }
-  selectItem(v: SubFeature) {
+  addTag(v: SubFeature) {
     const result: any = v.itemList
       ?.filter((e) => {
         return e.selected === true;
@@ -140,6 +141,16 @@ export class FilterItemComponent implements OnInit {
       });
     v.tagSelect = [];
     v.tagSelect.push(...result);
+  }
+  deleteTag(name: string, v: SubFeature) {
+    const rs: any = v.itemList
+      ?.filter((r) => {
+        return r.name == name;
+      })
+      .map((s) => {
+        return (s.selected = false);
+      });
+    this.addTag(v);
   }
 
   selectGenderList(name: string, value: string) {

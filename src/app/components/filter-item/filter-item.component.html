@@ -25,9 +25,10 @@
       </div>
       <div fxLayout="row" fxLayoutGap="10" fxFill>
         <div fxFlex="20" class="custom-from">
-          <select class="form-select input-select-option font-10px" aria-label="Default select example">
-            <option value="1" selected>Is</option>
-            <option value="2">Not</option>
+          <select [(ngModel)]="item.operator" class="form-select input-select-option font-10px"
+            aria-label="Default select example">
+            <option value="IS">Is</option>
+            <option value="NOT">Not</option>
           </select>
         </div>
         <div fxFlex>
@@ -39,7 +40,7 @@
                   <div fxFlex="90">
                     <mat-label>
                       <mat-chip-list aria-label="age tags">
-                        <mat-chip *ngFor="let tag of item.tagSelect" (removed)="removeTagAge(tag)">
+                        <mat-chip *ngFor="let tag of item.tagSelect" (removed)="deleteTag(tag, item)">
                           {{tag}}
                           <button matChipRemove>
                             <img src="./assets/icons/close-tag.svg" class="tag-icon">
@@ -69,7 +70,7 @@
 
                         <div *ngFor="let il of item.itemList" class="p-1">
 
-                          <mat-checkbox [(ngModel)]="il.selected" (ngModelChange)="selectItem(item)">
+                          <mat-checkbox [(ngModel)]="il.selected" (ngModelChange)="addTag(item)">
                             <span class="font-12px">{{ il.name }}</span>
                           </mat-checkbox>
                         </div>
@@ -78,7 +79,7 @@
 
                         <div *ngFor="let il of item.itemList!|featureSearchFilter: item.search" class="p-1">
 
-                          <mat-checkbox [(ngModel)]="il.selected" (ngModelChange)="selectItem(item)">
+                          <mat-checkbox [(ngModel)]="il.selected" (ngModelChange)="addTag(item)">
                             <span class="font-12px">{{ il.name }}</span>
                           </mat-checkbox>
                         </div>
