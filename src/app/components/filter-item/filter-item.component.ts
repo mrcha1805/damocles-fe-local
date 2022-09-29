@@ -27,7 +27,7 @@ export class FilterItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.subMenu);
+    //console.log(this.subMenu);
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))

@@ -27,8 +27,8 @@
         <div fxFlex="20" class="custom-from">
           <select [(ngModel)]="item.operator" class="form-select input-select-option font-10px"
             aria-label="Default select example">
-            <option value="IS">Is</option>
-            <option value="NOT">Not</option>
+            <option value="Is">Is</option>
+            <option value="Not">Not</option>
           </select>
         </div>
         <div fxFlex>
@@ -264,10 +264,11 @@
           </div>
           <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout">
             <div fxFlex class="mt-2">
-              <div *ngFor="let option of filteredOptions | async" class="col-age">
+              <div *ngFor="let option of options" class="col-age">
                 <span (click)="criterion(option)">{{option}}</span>
               </div>
-              <div [ngStyle]="{'display': this.options.length == 0 ? 'block' : 'none'}" fxLayout="row" fxLayoutAlign="center center" class="grid-item-layout search-already">
+              <div [ngStyle]="{'display': options === null ? 'none' : 'block'}" fxLayout="row"
+                fxLayoutAlign="center center" class="grid-item-layout search-already">
                 <span>KPI is already used</span>
               </div>
             </div>
