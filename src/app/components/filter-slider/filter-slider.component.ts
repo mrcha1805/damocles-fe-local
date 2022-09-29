@@ -21,12 +21,12 @@ export class FilterSliderComponent implements OnInit {
   @Input() subSlider: SubFeature | undefined;
   constructor() {}
   style: object = {};
-  lowValue: number = 0.3;
-  highValue: number = 0.8;
+  lowValue: number = 0.0;
+  highValue: number = 1.0;
   sliderOption: Options = {
     floor: 0.0,
     ceil: 2.0,
-    step: 0.1,
+    step: 0.05,
     pushRange: true,
   };
   ngOnInit() {
