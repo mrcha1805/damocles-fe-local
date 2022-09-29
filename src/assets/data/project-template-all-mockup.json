@@ -72,6 +72,106 @@
             "range_value": []
           },
           {
+            "project_feature_id": 10003,
+            "product_feature_id": 10003,
+            "feature_name": "Occupation",
+            "description": "Occupation presents job or profession of user",
+            "operator": "IS",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 3,
+            "item_value": [
+              "Irregular",
+              "Work from Home",
+              "Self-Employed",
+              "Rider",
+              "Freelancer",
+              "Regular",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10003,
+            "product_feature_id": 10003,
+            "feature_name": "Occupation",
+            "description": "Occupation presents job or profession of user",
+            "operator": "IS",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 3,
+            "item_value": [
+              "Irregular",
+              "Work from Home",
+              "Self-Employed",
+              "Rider",
+              "Freelancer",
+              "Regular",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10003,
+            "product_feature_id": 10003,
+            "feature_name": "Occupation",
+            "description": "Occupation presents job or profession of user",
+            "operator": "IS",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 3,
+            "item_value": [
+              "Irregular",
+              "Work from Home",
+              "Self-Employed",
+              "Rider",
+              "Freelancer",
+              "Regular",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10003,
+            "product_feature_id": 10003,
+            "feature_name": "Occupation",
+            "description": "Occupation presents job or profession of user",
+            "operator": "IS",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 3,
+            "item_value": [
+              "Irregular",
+              "Work from Home",
+              "Self-Employed",
+              "Rider",
+              "Freelancer",
+              "Regular",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10003,
+            "product_feature_id": 10003,
+            "feature_name": "Occupation",
+            "description": "Occupation presents job or profession of user",
+            "operator": "IS",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 3,
+            "item_value": [
+              "Irregular",
+              "Work from Home",
+              "Self-Employed",
+              "Rider",
+              "Freelancer",
+              "Regular",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
             "project_feature_id": 10004,
             "product_feature_id": 10004,
             "feature_name": "Home location",

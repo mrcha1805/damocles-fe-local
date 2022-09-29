@@ -77,7 +77,7 @@ section {
     height: 30px !important;
   }
 }
-.search {
+.grid-item-layout .search {
   &-input {
     padding-left: 2rem !important;
     height: 30px !important;
@@ -85,6 +85,7 @@ section {
     border: 0.698851px solid #adadad;
     border-radius: 5px;
     margin-left: -2rem;
+    width: 100%;
   }
   &-input:focus {
     outline: none;
