@@ -1,0 +1,163 @@
+{
+  "resultCode": "20000",
+  "resultDescription": "Success",
+  "resultData": {
+    "project_id": "10001",
+    "project_name": "INS_ASSET_20220922_Template_01",
+    "industry_id": "1",
+    "industry_name": "Insurance",
+    "industry_shortname": "INS",
+    "product_id": 1,
+    "product_name": "Asset Protection",
+    "feature_group": [
+      {
+        "feature_group_name": "Customer Profile",
+        "feature_group_id": "1",
+        "subFeature": [
+          {
+            "project_feature_id": 10001,
+            "product_feature_id": 10001,
+            "feature_name": "Gender",
+            "description": "Gender presents Mobile User Gender",
+            "operator": "Is",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 1,
+            "item_value": ["Male", "Female", "Unknow"]
+          },
+          {
+            "project_feature_id": 10002,
+            "product_feature_id": 10002,
+            "feature_name": "Age",
+            "description": "Age presents Mobile User Age",
+            "operator": "Is",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 2,
+            "item_value": [
+              "<15-19",
+              "20-24",
+              "25-29",
+              "30-34",
+              "35-39",
+              "40-44",
+              "45-49",
+              "50-54",
+              "55-59",
+              "60-64",
+              "65-69",
+              ">=70",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10003,
+            "product_feature_id": 10003,
+            "feature_name": "Occupation",
+            "description": "Occupation presents job or profession of user",
+            "operator": "Not",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 3,
+            "item_value": [
+              "Irregular",
+              "Work from Home",
+              "Self-Employed",
+              "Rider",
+              "Freelancer",
+              "Regular",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10004,
+            "product_feature_id": 10004,
+            "feature_name": "Home location",
+            "description": "Home location presents district and provice of user is customer home",
+            "operator": "Is",
+            "type": "location",
+            "ui": "location dropdown",
+            "feature_order": 4,
+            "item_value": [],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10005,
+            "product_feature_id": 10005,
+            "feature_name": "Work location",
+            "description": "Work location presents district and provice of user is customer workplace",
+            "operator": "Is",
+            "type": "location",
+            "ui": "location dropdown",
+            "feature_order": 5,
+            "item_value": [],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10006,
+            "product_feature_id": 10006,
+            "feature_name": "Life stage",
+            "description": "Life Stage presents life stage of customer",
+            "operator": "Is",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 6,
+            "item_value": [
+              "Student",
+              "Building Family",
+              "Glowing Family",
+              "Supporting Family",
+              "Retrired",
+              "Unknown"
+            ],
+            "range_value": []
+          },
+          {
+            "project_feature_id": 10007,
+            "product_feature_id": 10007,
+            "feature_name": "Age",
+            "description": "User nationality",
+            "operator": "Is",
+            "type": "single-select",
+            "ui": "dropdown",
+            "feature_order": 7,
+            "item_value": ["Foreigner", "Thai", "Unknown"],
+            "range_value": []
+          }
+        ]
+      },
+      {
+        "feature_group_name": "Product Related",
+        "feature_group_id": "2",
+        "subFeature": [
+          {
+            "project_feature_id": 10008,
+            "product_feature_id": 10008,
+            "feature_name": "Net Worth",
+            "description": "Affluency score presents customer affluency percentile, compared with Thai population 0 means customer has affluency at 0 percentile, compared with Thai population /1 means customer has aflluency at 100 percentile, compared with Thai population",
+            "operator": "Is",
+            "type": "range",
+            "ui": "slider",
+            "feature_order": 8,
+            "item_value": [],
+            "range_value": [0, 1]
+          },
+          {
+            "project_feature_id": 10009,
+            "product_feature_id": 10009,
+            "feature_name": "Net Worth unknown",
+            "description": "Affluency score presents customer affluency percentile, compared with Thai population 0 means customer has affluency at 0 percentile, compared with Thai population /1 means customer has aflluency at 100 percentile, compared with Thai population",
+            "operator": "Is",
+            "type": "range with unknown",
+            "ui": "slider with unknown",
+            "feature_order": 8,
+            "item_value": [],
+            "range_value": [0, 2]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+    "resultCode": "20100",
+    "resultDescription": "Created",
+    "resultData": [
+        {
+            "profile_id": "6",
+            "project_name": "INS_ASSET_20220926_Untitle_01",
+            "project_description": "INS_ASSET_test",
+            "create_date": "2022-09-27T13:32:43z",
+            "update_date": "2022-09-27T13:40:38z",
+            "inductry_id": 1,
+            "product_id": 1,
+            "feature": [
+                {
+                    "product_feature_id": 10001,
+                    "operator": "Is",
+                    "item_value": [
+                        "Female",
+                        "Male",
+                        "Unknow"
+                    ],
+                    "reange_value": [],
+                    "graph_order": 1,
+                    "feature_order": 1
+                },
+                {
+                    "product_feature_id": 10002,
+                    "operator": "Is",
+                    "item_value": [
+                        "20-24",
+                        "25-29",
+                        "30-34"
+                    ],
+                    "reange_value": [],
+                    "graph_order": 1,
+                    "feature_order": 1
+                }
+            ]
+        }
+    ]
+}

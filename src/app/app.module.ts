@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -49,19 +49,31 @@ import {
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthModule } from './auth/auth.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { NewProjectComponent } from './components/new-project/new-project.component';
 import { KpiByProductComponent } from './components/kpi-by-product/kpi-by-product.component';
 import { NavbarLogoComponent } from './components/navbar-logo/navbar-logo.component';
 import { CreateKpiComponent } from './components/create-kpi/create-kpi.component';
+import { DemographicComponent } from './components/demographic/demographic.component';
 import { HomeComponent } from '@components/home/home.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SearchFilterPipe } from './services/search-filter.pipe';
 import { DeleteProjectModalComponent } from './modals/delete-project-modal/delete-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { WorkspaceComponent } from './workspace/workspace.component';
+import { WorkspaceComponent } from './components/workspace/workspace.component';
+import { ClearallWorkspaceModalComponent } from './modals/clearall-workspace-modal/clearall-workspace-modal.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SaveSuccessWorkspaceModalComponent } from './modals/save-success-workspace-modal/save-success-workspace-modal.component';
+import { SaveWorkspaceModalComponent } from './modals/save-workspace-modal/save-workspace-modal.component';
+import { SaveExistsWorkspaceModalComponent } from './modals/save-exists-workspace-modal/save-exists-workspace-modal.component';
+import { FunnelChartComponent } from './components/funnel-chart/funnel-chart.component';
+import { FilterSliderComponent } from './components/filter-slider/filter-slider.component';
 import { AppConfigService } from './services/app-config.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterItemComponent } from './components/filter-item/filter-item.component';
+import { FeatureSearchFilterPipe } from './services/feature-search-filter.pipe';
+import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 export function initializeApp(appConfigService: AppConfigService) {
   return (): Promise<any> => {
     return appConfigService.load();
@@ -86,6 +98,15 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     SearchFilterPipe,
     DeleteProjectModalComponent,
     WorkspaceComponent,
+    ClearallWorkspaceModalComponent,
+    SaveSuccessWorkspaceModalComponent,
+    SaveWorkspaceModalComponent,
+    SaveExistsWorkspaceModalComponent,
+    FunnelChartComponent,
+    FilterSliderComponent,
+    FilterItemComponent,
+    FeatureSearchFilterPipe,
+    FilterLocationComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +114,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -134,7 +156,9 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     AuthModule.forRoot(),
     BsDropdownModule.forRoot(),
     NgbModule,
+    DragDropModule,
     HttpClientModule,
+    NgxSliderModule,
   ],
   providers: [
     DatePipe,

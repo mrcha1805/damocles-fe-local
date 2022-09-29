@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import * as _ from 'lodash';
-import { IProject } from 'src/app/model/project-interface';
+import { IProject } from 'app/model/project-interface';
 @Pipe({
   name: 'searchFilter',
 })

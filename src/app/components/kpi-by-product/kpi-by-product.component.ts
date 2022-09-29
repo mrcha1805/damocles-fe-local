@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { IIndustry } from 'src/app/model/industry-interface';
-import { ApiService } from 'src/app/services/api.service';
+import { IIndustry, Product } from 'app/model/industry-interface';
+import { ApiService } from 'app/services/api.service';
 
 @Component({
   selector: 'app-kpi-by-product',
@@ -158,15 +158,15 @@ export class KpiByProductComponent implements OnInit {
   }
 
   getDefaultImage(name: string) {
-    let img;
-    if (name === 'standard') {
-      img = './assets/icons/insurance-icon.svg';
-    } else if (name === 'insurance') {
-      img = './assets/icons/insurance-icon.svg';
-    } else if (name === 'banking') {
-      img = './assets/icons/insurance-icon.svg';
-    }
-    return img;
+    // let img;
+    // if (name === 'standard') {
+    //   img = './assets/icons/insurance-icon.svg';
+    // } else if (name === 'insurance') {
+    //   img = './assets/icons/insurance-icon.svg';
+    // } else if (name === 'banking') {
+    //   img = './assets/icons/insurance-icon.svg';
+    // }
+    return './assets/icons/insurance-icon.svg';
   }
 
   getIndustryApiMockup() {
@@ -273,9 +273,6 @@ export class KpiByProductComponent implements OnInit {
   changeSelected(index: number, target: number) {
     setTimeout(() => {
       this.industryData?.resultData.forEach((e: any, i: number) => {
-        // e.data.forEach((item: any, j: number) => {
-        //   item.isSelected = j === target ? true : false;
-        // });
         var value = e.product.every((element: any) => {
           return element.isSelected === false;
         });
@@ -312,7 +309,20 @@ export class KpiByProductComponent implements OnInit {
   }
 
   goCreateKpi() {
-    this.showSpinner('/create-kpi');
+    let productSelectItem: Product[] = [];
+    this.industryData?.resultData.forEach((e) => {
+      const a = e.product.every((f) => f.isSelected === false);
+      if (!e.product.every((f) => f.isSelected === false)) {
+        productSelectItem = e.product;
+      }
+    });
+    if (productSelectItem) {
+      let product = productSelectItem
+        .filter((e) => e.isSelected === true)
+        .map((f) => f.product_id);
+      let obj = { productId: product };
+      this.router.navigate(['/workspace', obj]);
+    }
   }
 
   setStyleCollapsed(index: number) {

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Featuregroup } from 'app/model/project-template-interface';
 
 @Component({
   selector: 'app-filter',
@@ -52,23 +53,30 @@ export class FilterComponent implements OnInit {
   //   },
   // ];
 
-  menu = [
-    {
-      headerMenu: 'Audience Profile',
-      no: 0,
-      subMenu: [
-        {
-          name: 'Demographic',
-          fileType: 'filter',
-        },
-      ],
-    },
-  ];
-  menuIndex = -1;
+  // menu = [
+  //   {
+  //     headerMenu: 'Customer Profile',
+  //     no: 0,
+  //     fileType: 'filter'
+  //   },
+  //   {
+  //     headerMenu: 'Product Related',
+  //     no: 1,
+  //     fileType: 'slider'
+  //   },
+  //   {
+  //     headerMenu: 'Propensity ',
+  //     no: 2,
+  //      fileType: 'slider'
+  //   },
+  // ];
+  menuIndex: string = '1';
+  @Input() menu: Featuregroup[] | undefined;
+
   ngOnInit(): void {
-    this.menuIndex = -1;
+    this.menuIndex = '1';
   }
-  setSelection(index: number) {
+  setSelection(index: string) {
     this.menuIndex = index;
   }
 }

@@ -1,0 +1,178 @@
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+$heavent-normal: DB Heavent Nor;
+
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font  !important;
+  font-style: normal;
+  // font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $hexcolor  !important;
+}
+
+.font-11px {
+  @include font-format($heavent-reg, 400, 8px, 11px, #000000);
+}
+
+.font-12px {
+  @include font-format($heavent-reg, 700, 12px, 9px, #020202);
+}
+
+.font-14px {
+  @include font-format($heavent-reg, 500, 14px, 17px, #808080);
+}
+
+.font-14pxTotal {
+  @include font-format($heavent-reg, 500, 14px, 17px, #808080);
+  font-style: italic;
+}
+
+.font-20px {
+  @include font-format($heavent-bold, 400, 20px, 24px, #000000);
+}
+
+.font-24px-b {
+  @include font-format($heavent-bold, 700, 24px, 24px, #ffffff);
+}
+
+.font-36px {
+  @include font-format($heavent-bold, 700, 36px, 43.57px, #491DC5);
+}
+
+.font-blue {
+  color: #491DC5 !important;
+}
+
+.my-custom-tooltip {
+  overflow: auto;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+::placeholder {
+  @include font-format($heavent-reg, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
+  opacity: 1 !important;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  @include font-format($heavent-reg, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  @include font-format($heavent-reg, 400, 14px, 19px, rgba(53, 53, 53, 0.32));
+}
+
+:host::ng-deep .navbar-logo {
+  background-image: none !important;
+  background-image: repeating-linear-gradient(rgb(240, 240, 240),
+      rgba(240, 240, 240, 0.8) 200%,
+      rgba(240, 240, 240, 0.1) 10%) !important;
+}
+
+.min {
+  &-height {
+    height: 500px;
+  }
+}
+
+.funnel-clear {
+  @include font-format($heavent-normal, 700, 16px, 19px, #491DC5);
+  text-decoration-line: underline;
+  margin: 14px;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.app-filter {
+  overflow: auto; 
+  height: 100vh;
+}
+
+.box {
+  &-left {
+    background-color: #f0f0f0;
+  }
+
+  &-left-bottom {
+    background: #ffffff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.32);
+    border-radius: 10px;
+  }
+
+  &-right-top {
+    margin-top: -0.8rem;
+  }
+
+  &-right-bottom {
+    background: #FFFFFF;
+    box-shadow: 0px 10px 100px 1px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+  }
+
+  &-unique {
+    width: 342px;
+    height: 90px;
+    background: #FFFFFF;
+    box-shadow: 7px 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+  }
+  &-chart {
+    height: 500px;
+    margin-bottom: 40px;
+  }
+}
+
+.projectname {
+  width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.workspace-img {
+  border: 2px solid #491DC5; 
+  border-radius: 40px;
+}
+
+.btn-calculate {
+  width: 150px;
+  height: 40px;
+  color: #491DC5 !important;
+  background: #CCCCCC;
+  border-radius: 4px;
+}
+.btn-calculate:hover {
+  background: #CCCCCC;
+}
+
+.btn-light {
+  width: 150px;
+  height: 40px;
+  color: #491DC5 !important;
+  background: #FFFFFF;
+  border: 2px solid #491DC5;
+  border-radius: 4px;
+}
+.btn-light:hover {
+  background: #EDE8F9;
+  border: 2px solid #491DC5;
+}
+
+.btn-blue {
+  width: 150px;
+  height: 40px;
+  background: #491DC5;
+  border-radius: 4px;
+}
+.btn-blue:hover {
+  background: #3B189E;
+}
+
+.product-text {
+  text-align: end;
+}

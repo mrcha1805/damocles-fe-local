@@ -1,0 +1,73 @@
+{
+  "resultCode": "20000",
+  "resultDescription": "Success",
+  "resultData": {
+    "project_id": "10001",
+    "project_name": "INS_ASSET_20220922_Template_01",
+    "industry_id": "1",
+    "industry_name": "Insurance",
+    "industry_shortname": "INS",
+    "product_id": "1",
+    "product_name": "Asset Protection",
+    "kpi_group": [
+      {
+        "headerMenu": "Customer Profilexx",
+        "id": "1",
+        "subFeature": [
+          {
+            "feature_id": "10001",
+            "feature_name": "Gender12",
+            "description": "Gender presents Mobile User Gender",
+            "operator": "Is",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 1,
+            "item_value": ["Male", "Female", "Unknow"]
+          },
+          {
+            "feature_id": "10002",
+            "feature_name": "Age2",
+            "description": "Age presents Mobile User Age",
+            "operator": "Is",
+            "type": "muti-select",
+            "ui": "dropdown",
+            "feature_order": 2,
+            "item_value": [
+              "<15-19",
+              "20-24",
+              "25-29",
+              "30-34",
+              "35-39",
+              "40-44",
+              "45-49",
+              "50-54",
+              "55-59",
+              "60-64",
+              "65-69",
+              ">=70",
+              "Unknown"
+            ],
+            "range_value": []
+          }
+        ]
+      },
+      {
+        "headerMenu": "Product Relate xxx",
+        "id": "2",
+        "subFeature": [
+          {
+            "feature_id": "10008",
+            "feature_name": "Affluency",
+            "description": "Gender presents Mobile User Gender",
+            "operator": "Is",
+            "type": "range",
+            "ui": "slider",
+            "feature_order": 8,
+            "item_value": [],
+            "range_value": [0, 1]
+          }
+        ]
+      }
+    ]
+  }
+}

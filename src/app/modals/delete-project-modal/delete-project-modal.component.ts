@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from '@services/api.service';
 
 @Component({
   selector: 'app-delete-project-modal',
@@ -7,9 +8,12 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./delete-project-modal.component.scss'],
 })
 export class DeleteProjectModalComponent implements OnInit {
-  constructor(private activeModal: NgbActiveModal) {}
+  constructor(
+    private activeModal: NgbActiveModal,
+    private apiService: ApiService
+  ) {}
   projectName: string | undefined;
-
+  projectId: string | undefined;
   ngOnInit(): void {}
   cancel() {
     console.log('modal cancel!');
@@ -19,7 +23,10 @@ export class DeleteProjectModalComponent implements OnInit {
   delete() {
     console.log('modal delete!');
     // TODO: call api delete project
-
-    this.activeModal.close('deleting');
+    this.apiService.deleteProjectAPI(this.projectId!).subscribe((data) => {
+      if (data.resultCode === '20000') {
+        this.activeModal.close('deleting');
+      }
+    });
   }
 }

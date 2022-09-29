@@ -13,7 +13,7 @@ interface IIndustryData {
   product: Product[];
 }
 
-interface Product {
+export interface Product {
   product_id: number;
   product_name: string;
   isSelected: boolean | false;

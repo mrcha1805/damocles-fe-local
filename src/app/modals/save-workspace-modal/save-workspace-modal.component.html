@@ -1,0 +1,49 @@
+<div class="container body">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <label class="header-text">Save Your Project</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <label class="description-text" align="center">Would you like to save before exiting?</label>
+        </div>
+    </div>
+
+    <div class="row input-container">
+        <div fxLayout="column" fxLayoutGap="10px" fxFlex class="m-2">
+            <div class="d-flext">
+                <span class="header1">Create name</span>
+            </div>
+            <div class="d-flex ">
+                <input type="text" id="projectName" name="projectName" [(ngModel)]="projectName"
+                    placeholder="INS_TA_20190916_CreateYourName" class="desc-input">
+            </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="10px" fxFlex class="m-2">
+            <div class="d-flex justify-content-left">
+                <span class="header1">Description
+                    <font class="header2">
+                        (Optional)
+                    </font>
+                </span>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="text" id="projectDesc" name="projectDesc" [(ngModel)]="projectDesc"
+                    type="text" placeholder="Enter a description..." class="desc-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-5">
+        <div class="col d-flex justify-content-center">
+            <div class="btn btn-cancel" style="margin-right: 12px" (click)="cancel()">
+                Cancel
+            </div>
+            <div class="btn btn-save" style="margin-left: 12px" (click)="saveProject()">
+                Save
+            </div>
+        </div>
+    </div>
+</div>

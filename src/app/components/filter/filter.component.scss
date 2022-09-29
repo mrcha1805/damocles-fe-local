@@ -1,5 +1,8 @@
-@mixin font-format($weight, $size, $height, $hexcolor) {
-  font-family: Noto Sans, sans-serif !important;
+$heavent-bold: DB Heavent Bd;
+$heavent-reg: DB Heavent Reg;
+$heavent-normal: DB Heavent Nor;
+@mixin font-format($font, $weight, $size, $height, $hexcolor) {
+  font-family: $font !important;
   font-style: normal;
   font-weight: $weight;
   font-size: $size;
@@ -7,9 +10,6 @@
   color: $hexcolor !important;
 }
 
-.mat-form-field + .mat-form-field {
-  // margin-left: 8px;
-}
 mat-expansion-panel {
   width: 100%;
 }
@@ -19,23 +19,30 @@ mat-expansion-panel-header {
   margin: 0;
 }
 .header-style {
-  background: #ede8f9;
-  border-radius: 5px;
+  background: #EDE8F9 !important;
+  height: 48px;
 }
 .header-style:hover {
   background: #d8cbf8 !important;
+  height: 48px;
 }
 .title-icon {
   width: 20px;
   height: 20px;
   margin-left: 10px;
+  margin-top: 3px;
 }
 .header1 {
-  @include font-format(800, 18px, 18px, #491dc5);
+  @include font-format($heavent-normal, 700, 24px, 24px, #491dc5);
 }
 .header2 {
-  @include font-format(700, 16px, 18px, #020202);
+  @include font-format($heavent-normal, 700, 16px, 18px, #020202);
 }
+.appFilterItem {
+  overflow: auto; 
+  height: 100vh;
+}
+
 mat-expansion-panel-body {
   padding: 0;
 }

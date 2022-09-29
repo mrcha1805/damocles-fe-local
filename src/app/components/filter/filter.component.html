@@ -1,30 +1,48 @@
 <div *ngFor="let item of menu">
   <mat-accordion>
-    <mat-expansion-panel [expanded]="menuIndex === item.no" (opened)="setSelection(item.no)" hideToggle>
-      <mat-expansion-panel-header class="header-style px-4">
+    <mat-expansion-panel [expanded]="menuIndex === item.feature_group_id" (opened)="setSelection(item.feature_group_id)"
+      hideToggle>
+      <mat-expansion-panel-header class="header-style px-5">
         <mat-panel-title>
-          <img src="./assets/icons/audience.svg" class="title-icon">
+          <img src="./assets/icons/workspace-customer-profile.svg" class="title-icon">
         </mat-panel-title>
+
         <mat-panel-description fxLayout="row" fxLayoutAlign="space-between center">
-          <span class="header1">{{item.headerMenu}}&nbsp;
-            <span>
+          <span class="header1">{{item.feature_group_name}}&nbsp;
+            <!-- <span>
               <img src="./assets/icons/header-dropdown.svg" width="6.45px" height="10.47px" class="expand-action" />
-            </span>
+            </span> -->
           </span>
-
         </mat-panel-description>
+
         <mat-panel-description fxLayout="row" fxLayoutAlign="end center">
-
-          <img src="./assets/icons/filter.svg">
+          <!-- <img src="./assets/icons/filter.svg"> -->
+          <span>
+            <img src="./assets/icons/header-dropdown.svg" width="6.45px" height="10.47px" class="expand-action" />
+          </span>
         </mat-panel-description>
-      </mat-expansion-panel-header>
-      <ng-container *ngFor="let sub of item.subMenu">
 
+      </mat-expansion-panel-header>
+
+      <!-- <div *ngIf="item.fileType === 'filter'">
+        <app-demographic></app-demographic>
+      </div> -->
+      <div class="appFilterItem">
+        <app-filter-item [subMenu]="item.subFeature"></app-filter-item>
+      </div>
+
+      <!-- <div *ngIf="item.fileType === 'slider'">  
+        <app-filter-slider></app-filter-slider>
+      </div> -->
+
+      <!-- <ng-container *ngFor="let sub of item.subMenu">
         <mat-expansion-panel [expanded]="false" hideToggle>
           <mat-expansion-panel-header>
-            <!-- <mat-panel-title>
+
+            <mat-panel-title>
                 <span>sub title</span>
-              </mat-panel-title> -->
+              </mat-panel-title>
+
             <mat-panel-description fxFill>
               <span class="header2" fxFill>{{sub.name}}&nbsp;
                 <span>
@@ -35,8 +53,7 @@
           </mat-expansion-panel-header>
           <app-demographic></app-demographic>
         </mat-expansion-panel>
-
-      </ng-container>
+      </ng-container> -->
 
     </mat-expansion-panel>
   </mat-accordion>
