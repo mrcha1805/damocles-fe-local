@@ -18,6 +18,7 @@ export class FilterItemComponent implements OnInit {
   ageSelected: any;
   genderSelected: any;
   searchFilterStr: string | undefined;
+  search: string = '';
   @Input() subMenu: SubFeature[] | undefined;
   @Input() criterionData: ICriterionData | undefined;
   @Input() projectId: string | undefined;

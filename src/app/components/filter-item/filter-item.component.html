@@ -260,12 +260,21 @@
         <div fxFill fxLayout="column" class="selection-container p-2 pt-0 pb-0">
           <div fxLayout="row" class="grid-item-layout">
             <img src="./assets/icons/search.svg" width="16" class="search-icon">
-            <input type="text" placeholder="Search" [formControl]="myControl" class="search-input">
+            <input type="text" placeholder="Search" [(ngModel)]="search" [formControl]="myControl" class="search-input">
           </div>
           <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout">
-            <div fxFlex class="mt-2">
-              <div *ngFor="let option of options" class="col-age">
-                <span (click)="criterion(option)">{{option}}</span>
+            <div *ngIf="search.length == 0" fxFlex class="mt-2">
+              <div *ngFor="let option of criterionData?.subFeature!" class="col-age">
+                <span (click)="criterion(option)">{{option.feature_name}}</span>
+              </div>
+              <div [ngStyle]="{'display': options === null ? 'none' : 'block'}" fxLayout="row"
+                fxLayoutAlign="center center" class="grid-item-layout search-already">
+                <span>KPI is already used</span>
+              </div>
+            </div>
+            <div *ngIf="search.length > 0" fxFlex class="mt-2">
+              <div *ngFor="let option of criterionData?.subFeature!| criterionSearch: search" class="col-age">
+                <span (click)="criterion(option)">{{option.feature_name}}</span>
               </div>
               <div [ngStyle]="{'display': options === null ? 'none' : 'block'}" fxLayout="row"
                 fxLayoutAlign="center center" class="grid-item-layout search-already">
