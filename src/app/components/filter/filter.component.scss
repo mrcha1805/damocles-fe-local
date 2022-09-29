@@ -38,6 +38,11 @@ mat-expansion-panel-header {
 .header2 {
   @include font-format($heavent-normal, 700, 16px, 18px, #020202);
 }
+.appFilterItem {
+  overflow: auto; 
+  height: 100vh;
+}
+
 mat-expansion-panel-body {
   padding: 0;
 }

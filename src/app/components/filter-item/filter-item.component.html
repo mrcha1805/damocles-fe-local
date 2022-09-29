@@ -267,6 +267,9 @@
               <div *ngFor="let option of filteredOptions | async" class="col-age">
                 <span (click)="criterion(option)">{{option}}</span>
               </div>
+              <div [ngStyle]="{'display': filteredOptions === null ? 'none' : 'block'}" fxLayout="row" fxLayoutAlign="center center" class="grid-item-layout search-already">
+                <span>KPI is already used</span>
+              </div>
             </div>
           </div>
         </div>
