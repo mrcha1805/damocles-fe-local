@@ -28,7 +28,8 @@
         <app-demographic></app-demographic>
       </div> -->
       <div class="appFilterItem">
-        <app-filter-item [subMenu]="item.subFeature"></app-filter-item>
+        <app-filter-item [subMenu]="item.subFeature" [criterionData]="item.criterionData" [projectId]="projectId"
+          [featureGroupId]="item.feature_group_id"></app-filter-item>
       </div>
 
       <!-- <div *ngIf="item.fileType === 'slider'">  

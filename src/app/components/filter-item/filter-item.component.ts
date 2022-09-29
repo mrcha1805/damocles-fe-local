@@ -6,6 +6,8 @@ import { Tag } from 'app/model/project-template-interface';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ApiService } from '@services/api.service';
+import { ICriterionData } from 'app/model/criterion-interface';
 
 @Component({
   selector: 'app-filter-item',
@@ -17,6 +19,9 @@ export class FilterItemComponent implements OnInit {
   genderSelected: any;
   searchFilterStr: string | undefined;
   @Input() subMenu: SubFeature[] | undefined;
+  @Input() criterionData: ICriterionData | undefined;
+  @Input() projectId: string | undefined;
+  @Input() featureGroupId: string | undefined;
   slider1: Options = {
     floor: 0.0,
     ceil: 1.0,
@@ -24,7 +29,7 @@ export class FilterItemComponent implements OnInit {
     pushRange: true,
   };
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     //console.log(this.subMenu);
@@ -35,10 +40,10 @@ export class FilterItemComponent implements OnInit {
     this.setDefaultSelected();
   }
   private _filter(value: any): any {
-    const filterValue = value.toLowerCase()
-    return this.options.filter(option =>
+    const filterValue = value.toLowerCase();
+    return this.options.filter((option) =>
       option.toLocaleLowerCase().includes(filterValue)
-    )
+    );
     // throw new Error('Method not implemented.');
   }
   myControl = new FormControl();
@@ -171,6 +176,22 @@ export class FilterItemComponent implements OnInit {
 
   criterion(option: any) {
     console.log('click', option);
+  }
+
+  loadCriterion() {
+    // this.apiService.dynamicCriterionMockup().subscribe((data) => {
+    //   this.criterionData = data.body?.resultData;
+    //   console.log(this.criterionData);
+    // });
+
+    this.apiService
+      .getCriterionAPI(this.projectId!, this.featureGroupId!)
+      .subscribe((data) => {
+        if (data.resultCode === '20000') {
+          this.criterionData = data.resultData;
+          console.log(this.criterionData);
+        }
+      });
   }
 
   selectGenderList(name: string, value: string) {

@@ -1,3 +1,5 @@
+import { ICriterionData } from './criterion-interface';
+
 export interface IProjectTemplate {
   resultCode: string;
   resultDescription: string;
@@ -19,6 +21,7 @@ export interface Featuregroup {
   feature_group_name: string;
   feature_group_id: string;
   subFeature: SubFeature[];
+  criterionData: ICriterionData;
 }
 
 export interface SubFeature {
