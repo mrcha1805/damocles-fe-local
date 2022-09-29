@@ -39,6 +39,11 @@ export class FilterSliderComponent implements OnInit {
     this.sliderOption.ceil = this.subSlider?.range_value[1];
   }
 
+  sliderChange() {
+    console.log('lowValue', this.lowValue);
+    console.log('highValue', this.highValue);
+  }
+
   // show/hide Add Criterion
   public hide: boolean = false;
   public buttonName: any = 'Hide';
