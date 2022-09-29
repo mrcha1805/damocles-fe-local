@@ -35,7 +35,11 @@ export class FilterItemComponent implements OnInit {
     this.setDefaultSelected();
   }
   private _filter(value: any): any {
-    throw new Error('Method not implemented.');
+    const filterValue = value.toLowerCase()
+    return this.options.filter(option =>
+      option.toLocaleLowerCase().includes(filterValue)
+    )
+    // throw new Error('Method not implemented.');
   }
   myControl = new FormControl();
   options: string[] = [
@@ -43,15 +47,10 @@ export class FilterItemComponent implements OnInit {
     'Propentity to buy a house',
     'Propentity to buy a cat',
   ];
-  objectOptions = [
-    { name: 'Propentity to buy a car' },
-    { name: 'Propentity to buy a house' },
-    { name: 'Propentity to buy a cat' },
-    { name: 'Propentity to buy a dog' },
-  ];
   filteredOptions!: Observable<string[]>;
 
   async setDefaultSelected() {
+    console.log('test', this.options.length);
     await this.subMenu?.forEach((e) => {
       e.search = '';
       e.itemList = [];
