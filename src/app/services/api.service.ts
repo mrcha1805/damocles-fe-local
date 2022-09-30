@@ -15,6 +15,7 @@ import { IGlobal } from 'app/model/global-interface';
 import { ISaveProject } from 'app/model/save-project-interface';
 import { ICriterion } from 'app/model/criterion-interface';
 import { IFilterLocation } from 'app/model/filter-location';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +24,11 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   protected globalConfig = AppConfigService.settings;
-  endpoint: string = this.globalConfig.apiEndpoint;
-  industry: string = this.globalConfig.industryRoute;
-  userProfile: string = this.globalConfig.userProfile;
-  project: string = this.globalConfig.projectRoute;
-  criterion: string = this.globalConfig.criterion;
+  endpoint: string = environment.authen.beEndpoint;
+  industry: string = '/industry';
+  userProfile: string = '/userprofile';
+  project: string = '/project';
+  criterion: string = '/criterion';
   httpOption = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
