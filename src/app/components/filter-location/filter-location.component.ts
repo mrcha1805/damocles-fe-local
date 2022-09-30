@@ -5,6 +5,8 @@ import { Observable } from 'rxjs'
 import { map, startWith } from 'rxjs/operators'
 import { SubFeature } from 'app/model/project-template-interface';
 import { District } from 'app/model/province-interface';
+import { ApiService } from '@services/api.service';
+import { IFilterLocation } from 'app/model/filter-location';
 
 export interface Tag {
   name: string;
@@ -20,13 +22,27 @@ export interface Tag {
 export class FilterLocationComponent implements OnInit {
   @Input() subLocation: SubFeature | undefined;
   @Input() District: District | undefined;
-  constructor() { }
+  @Input() filterLocationApi: IFilterLocation | undefined;
+  constructor(
+    private apiService: ApiService
+  ) {}
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     )
+    this.getFilterLocationAPI();
+  }
+  
+  getFilterLocationAPI() {
+    this.apiService
+      .dynamicFilterLocationMockup().subscribe((data: any) => {
+        this.filterLocationApi = data.body!;
+        if (this.filterLocationApi?.resultCode === '20000') {
+          console.log('Filter Location API -->' + JSON.stringify(this.filterLocationApi.resultData));
+        }
+      });
   }
 
   // show/hide District

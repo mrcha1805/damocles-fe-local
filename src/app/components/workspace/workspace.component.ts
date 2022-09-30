@@ -96,6 +96,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         this.spinnerService.hide();
       });
   }
+  
   setOptionChartFunnel() {
     this.chart = Highcharts.chart('chart-funnel', {
       accessibility: {

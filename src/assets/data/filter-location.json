@@ -1,0 +1,40 @@
+{
+    "resultCode":"20000",
+    "resultDescription":"Success",
+    "resultData":[
+       {
+          "province_id":22,
+          "province_name":"AMNAT CHAROEN",
+          "district":[
+             {
+                "district_id":326,
+                "district_name":"PATHUM RATCHAWONGSA"
+             },
+             {
+                "district_id":433,
+                "district_name":"SENANGKHANIKHOM"
+             },
+             {
+                "district_id":510,
+                "district_name":"LUE AMNAT"
+             }
+          ]
+       },
+       {
+          "province_id":77,
+          "province_id_name":"BANGKOK",
+          "district":[
+             {
+                "district_id":199,
+                "district_name":"SAI MAI"
+             },
+             {
+                "district_id":191,
+                "district_name":"KHLONG SAN"
+             }
+          ]
+       }
+    ]
+ }
+ 
+ 
