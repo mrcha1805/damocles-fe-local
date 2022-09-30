@@ -14,6 +14,8 @@ import { IProjectTemplate } from 'app/model/project-template-interface';
 import { IGlobal } from 'app/model/global-interface';
 import { ISaveProject } from 'app/model/save-project-interface';
 import { ICriterion } from 'app/model/criterion-interface';
+import { IFilterLocation } from 'app/model/filter-location';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -198,4 +200,32 @@ export class ApiService {
         })
       );
   }
+
+  //Get Location
+  dynamicFilterLocationMockup(): Observable<HttpResponse<IFilterLocation>> {
+    return this.http.get<IFilterLocation>(
+      'assets/data/filter-location.json',
+      {
+        observe: 'response',
+      }
+    );
+  }
+  getFilterLocationAPI(id: string): Observable<IFilterLocation> {
+    return this.http
+      .get<IFilterLocation>(
+        this.endpoint + '/location',
+        this.httpOption
+      )
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.log('error api:', error);
+          console.log(`HttpHeader status: ${error.status} ${error.statusText}`);
+          console.log(
+            `resultCode: ${error.error.resultCode}, resultDescription: ${error.error.resultDescription}, diagnosticMessage: ${error.error.diagnosticMessage}`
+          );
+          return throwError(error);
+        })
+      );
+  }
+
 }

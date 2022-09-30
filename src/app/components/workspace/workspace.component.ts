@@ -96,6 +96,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         this.spinnerService.hide();
       });
   }
+  
   setOptionChartFunnel() {
     this.chart = Highcharts.chart('chart-funnel', {
       accessibility: {
@@ -180,7 +181,6 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   save() {
-    console.log('save');
     const modalRef = this.ngModalService.open(SaveWorkspaceModalComponent, {
       size: 'md',
       centered: true,

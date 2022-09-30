@@ -92,6 +92,14 @@ $heavent-reg: DB Heavent Reg;
     background: #3B189E;
   }
 }
+.btn-disabled {
+  @include font-format($heavent-bold, 700, 24px, 100%, #ffffff);
+  background: #1dc569;
+  border-radius: 4px;
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-top: 11px;
+}
 
 .btn-close {
   border-top-width: 10px;

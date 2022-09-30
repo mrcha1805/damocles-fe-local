@@ -28,13 +28,11 @@ export class SaveWorkspaceModalComponent implements OnInit {
   projectDesc: string = '';
 
   saveProject() {
-    console.log('modal save!');
+    console.log('btn saveProject');
     let req = {
       profile_id: '6',
-      project_name: '1FlexiDrive 202206',
-      project_description: 'INS_ASSET_test',
-      create_date: '20220927 13:32:43',
-      update_date: '20220927 13:40:38',
+      project_name: this.projectName,
+      project_description: this.projectDesc,
       inductry_id: '1',
       product_id: '1',
       feature: [
@@ -58,8 +56,10 @@ export class SaveWorkspaceModalComponent implements OnInit {
     };
 
     this.apiService.postSaveProjectAPI(req).subscribe((data) => {
-      if (data.resultData.length > 0) {
-        if (data.resultCode === '20000') {
+      // if (data.resultData.length > 0) {
+        console.log('data.resultData.length > 0');
+        if (data.resultCode === '20100') {
+          console.log('20100');
           const modalRef = this.ngModalService.open(
             SaveSuccessWorkspaceModalComponent,
             {
@@ -74,19 +74,8 @@ export class SaveWorkspaceModalComponent implements OnInit {
             }
           });
           this.activeModal.close('save');
-        } else {
-          console.log('already exists');
-          const modalRef = this.ngModalService.open(
-            SaveExistsWorkspaceModalComponent,
-            {
-              size: 'sm',
-              centered: true,
-              backdrop: 'static',
-            }
-          );
-          this.activeModal.close('save');
-        }
-      }
+        } 
+      // }
       // (errorMsg) => {
       //   console.log('saveProjectAPI: ', errorMsg);
 
