@@ -59,10 +59,8 @@ export class SaveWorkspaceModalComponent implements OnInit {
     // };
     this.data!.project_name = this.projectName;
     this.data!.project_description = this.projectDesc;
-      // if (data.resultData.length > 0) {
-        console.log('data.resultData.length > 0');
 
-      // }
+    console.log(`save project ${JSON.stringify(this.data)}`);
 
     // this.apiService.postSaveProjectAPI(this.data).subscribe((data) => {
     //   if (data.resultData.length > 0) {

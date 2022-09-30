@@ -42,7 +42,7 @@ export class FilterItemComponent implements OnInit {
       startWith(''),
       map((value) => this._filter(value))
     );
-    this.setDefaultSelected();
+    this.loadCriterion();
   }
   private _filter(value: any): any {
     const filterValue = value.toLowerCase();
@@ -78,57 +78,6 @@ export class FilterItemComponent implements OnInit {
     });
   }
 
-  ageList: Tag[] = [
-    {
-      name: '25-34',
-      value: 'age01',
-      selected: false,
-    },
-    {
-      name: '35-44',
-      value: 'age02',
-      selected: false,
-    },
-    {
-      name: '45-54',
-      value: 'age03',
-      selected: false,
-    },
-    {
-      name: '56-60',
-      value: 'age04',
-      selected: false,
-    },
-    {
-      name: '>60',
-      value: 'age05',
-      selected: false,
-    },
-  ];
-
-  genderList: Tag[] = [
-    {
-      name: 'Female',
-      value: 'g1',
-      selected: false,
-    },
-    {
-      name: 'Male',
-      value: 'g2',
-      selected: false,
-    },
-    {
-      name: 'Inferred Female',
-      value: 'g3',
-      selected: false,
-    },
-    {
-      name: 'Inferred Male',
-      value: 'g4',
-      selected: false,
-    },
-  ];
-
   triggers = NgxPopperjsTriggers;
   placements = NgxPopperjsPlacements;
   offsetModifiers = [
@@ -146,17 +95,17 @@ export class FilterItemComponent implements OnInit {
     },
   ];
 
-  selectAgeList(name: string, value: string) {
-    const tagSelect = this.ageList
-      .filter((item) => {
-        return item.selected === true;
-      })
-      .map((item) => {
-        return item.name;
-      });
-    this.ageSelected = [];
-    this.ageSelected.push(...tagSelect);
-  }
+  // selectAgeList(name: string, value: string) {
+  //   const tagSelect = this.ageList
+  //     .filter((item) => {
+  //       return item.selected === true;
+  //     })
+  //     .map((item) => {
+  //       return item.name;
+  //     });
+  //   this.ageSelected = [];
+  //   this.ageSelected.push(...tagSelect);
+  // }
   addTag(v: SubFeature) {
     const result: any = v.itemList
       ?.filter((e) => {
@@ -217,47 +166,49 @@ export class FilterItemComponent implements OnInit {
             this.criterionData = data.resultData;
             this.displayCriterionEmpty = false;
             this.criterionApiLoad = false;
+
             console.log(this.criterionData);
+            this.setDefaultSelected();
           }
         });
     }
   }
 
-  selectGenderList(name: string, value: string) {
-    const tagSelect = this.genderList
-      .filter((item) => {
-        return item.selected === true;
-      })
-      .map((item) => {
-        return item.name;
-      });
-    this.genderSelected = [];
-    this.genderSelected.push(...tagSelect);
-  }
+  // selectGenderList(name: string, value: string) {
+  //   const tagSelect = this.genderList
+  //     .filter((item) => {
+  //       return item.selected === true;
+  //     })
+  //     .map((item) => {
+  //       return item.name;
+  //     });
+  //   this.genderSelected = [];
+  //   this.genderSelected.push(...tagSelect);
+  // }
 
-  removeTagAge(item: string): void {
-    const index = this.ageSelected.indexOf(item);
+  // removeTagAge(item: string): void {
+  //   const index = this.ageSelected.indexOf(item);
 
-    if (index >= 0) {
-      this.ageSelected.splice(index, 1);
-      this.ageList.map((i) => {
-        if (i.name === item) {
-          i.selected = !i.selected;
-        }
-      });
-    }
-  }
+  //   if (index >= 0) {
+  //     this.ageSelected.splice(index, 1);
+  //     this.ageList.map((i) => {
+  //       if (i.name === item) {
+  //         i.selected = !i.selected;
+  //       }
+  //     });
+  //   }
+  // }
 
-  removeTagGender(item: string): void {
-    const index = this.genderSelected.indexOf(item);
+  //   removeTagGender(item: string): void {
+  //     const index = this.genderSelected.indexOf(item);
 
-    if (index >= 0) {
-      this.genderSelected.splice(index, 1);
-      this.genderList.map((i) => {
-        if (i.name === item) {
-          i.selected = !i.selected;
-        }
-      });
-    }
-  }
+  //     if (index >= 0) {
+  //       this.genderSelected.splice(index, 1);
+  //       this.genderList.map((i) => {
+  //         if (i.name === item) {
+  //           i.selected = !i.selected;
+  //         }
+  //       });
+  //     }
+  //   }
 }
