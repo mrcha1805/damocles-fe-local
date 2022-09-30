@@ -24,7 +24,7 @@ export class FilterLocationComponent implements OnInit {
   @Input() District: District | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
   @Input() filterLocationApi: IFilterLocation | undefined;
-  constructor() {}
+  constructor(
     private apiService: ApiService
   ) {}
 

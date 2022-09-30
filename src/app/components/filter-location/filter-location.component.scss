@@ -69,10 +69,11 @@ $heavent-normal: DB Heavent Nor;
   height: 240px; 
   overflow: auto;
   border-left: 1px solid #E6E6E6;
+  padding-left: 5px
 }
 .col-district {
   @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
-  padding: 0px 0px 0px 10px;
+  padding: 0px;
   width: 100%;
   cursor: pointer;
 }

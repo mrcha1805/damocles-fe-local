@@ -39,12 +39,14 @@ mat-expansion-panel-header {
   @include font-format($heavent-normal, 700, 16px, 18px, #020202);
 }
 .appFilterItem {
-  overflow: auto; 
+  // overflow: auto; 
   height: 100vh;
+  width: 95%;
 }
 
-mat-expansion-panel-body {
-  padding: 0;
+::ng-deep.mat-expansion-panel-content .mat-expansion-panel-body {
+  padding: 0px;
+  margin: 0px 10px;
 }
 
 mat-panel {
