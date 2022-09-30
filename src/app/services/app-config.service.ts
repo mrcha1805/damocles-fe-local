@@ -26,9 +26,9 @@ export class AppConfigService {
 }
 
 export interface ActionableConfig {
-  apiEndpoint: 'http://104.43.115.28:23001/api/v1';
+  apiEndpoint: string;
   industryRoute: string;
   userProfile: string;
-  projectRoute: '/project';
+  projectRoute: string;
   criterion: string;
 }
