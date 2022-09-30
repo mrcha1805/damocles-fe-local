@@ -20,6 +20,7 @@ export class FilterItemComponent implements OnInit {
   searchFilterStr: string | undefined;
   search: string = '';
   displayCriterionEmpty: boolean = true;
+  criterionApiLoad: boolean = true;
   @Input() subMenu: SubFeature[] | undefined;
   @Input() criterionData: ICriterionData | undefined;
   @Input() projectId: string | undefined;
@@ -36,6 +37,7 @@ export class FilterItemComponent implements OnInit {
   ngOnInit(): void {
     //console.log(this.subMenu);
     this.displayCriterionEmpty = true;
+    this.criterionApiLoad = true;
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
@@ -177,8 +179,20 @@ export class FilterItemComponent implements OnInit {
     this.addTag(v);
   }
 
-  criterion(option: any) {
-    console.log('click', option);
+  criterion(dataSelect: SubFeature) {
+    console.log('click', dataSelect);
+    if (dataSelect) {
+      let ind = this.criterionData?.subFeature.findIndex((e) => {
+        return e.feature_name === dataSelect.feature_name;
+      });
+      console.log(ind);
+
+      this.subMenu?.push(dataSelect);
+      this.criterionData?.subFeature.splice(ind!, 1);
+      if (this.criterionData?.subFeature.length == 0) {
+        this.displayCriterionEmpty = true;
+      }
+    }
   }
 
   loadCriterion() {
@@ -187,15 +201,18 @@ export class FilterItemComponent implements OnInit {
     //   console.log(this.criterionData);
     // });
 
-    this.apiService
-      .getCriterionAPI(this.projectId!, this.featureGroupId!)
-      .subscribe((data) => {
-        if (data.resultCode === '20000') {
-          this.criterionData = data.resultData;
-          this.displayCriterionEmpty = false;
-          console.log(this.criterionData);
-        }
-      });
+    if (this.criterionApiLoad) {
+      this.apiService
+        .getCriterionAPI(this.projectId!, this.featureGroupId!)
+        .subscribe((data) => {
+          if (data.resultCode === '20000') {
+            this.criterionData = data.resultData;
+            this.displayCriterionEmpty = false;
+            this.criterionApiLoad = false;
+            console.log(this.criterionData);
+          }
+        });
+    }
   }
 
   selectGenderList(name: string, value: string) {
