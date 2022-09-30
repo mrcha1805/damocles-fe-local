@@ -59,7 +59,7 @@ $heavent-normal: DB Heavent Nor;
 .col-province {
   @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
   padding: 10px 10px 10px 20px;
-  border-right: 1px solid #E6E6E6;
+  
   cursor: pointer;
 }
 .col-province:hover {
@@ -68,6 +68,7 @@ $heavent-normal: DB Heavent Nor;
 .box-district {
   height: 240px; 
   overflow: auto;
+  border-left: 1px solid #E6E6E6;
 }
 .col-district {
   @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
