@@ -124,6 +124,7 @@ export class AuthService {
         if (response.resultCode === '20000') {
           const userProfile: UserProfile = {
             email: response?.resultData.email,
+            userId: response?.resultData.profile_id,
             firstName: response?.resultData.first_name,
             lastName: response?.resultData.last_name,
             bank: response?.resultData.bank_short_name,

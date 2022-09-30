@@ -9,13 +9,13 @@ export enum Bank {
 
 export interface UserProfile {
   email: string;
+  userId: string;
   firstName: string;
   lastName: string;
   bank: Bank;
   img: string;
   imgUrl: string;
 }
-
 
 export interface UserProfileData {
   resultCode: string;
@@ -25,6 +25,7 @@ export interface UserProfileData {
 
 interface ResultData {
   email: string;
+  profile_id: string;
   first_name: string;
   last_name: string;
   bank_id: number;
