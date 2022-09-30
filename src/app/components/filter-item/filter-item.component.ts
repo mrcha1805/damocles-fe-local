@@ -19,6 +19,7 @@ export class FilterItemComponent implements OnInit {
   genderSelected: any;
   searchFilterStr: string | undefined;
   search: string = '';
+  displayCriterionEmpty: boolean = true;
   @Input() subMenu: SubFeature[] | undefined;
   @Input() criterionData: ICriterionData | undefined;
   @Input() projectId: string | undefined;
@@ -34,6 +35,7 @@ export class FilterItemComponent implements OnInit {
 
   ngOnInit(): void {
     //console.log(this.subMenu);
+    this.displayCriterionEmpty = true;
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
@@ -190,6 +192,7 @@ export class FilterItemComponent implements OnInit {
       .subscribe((data) => {
         if (data.resultCode === '20000') {
           this.criterionData = data.resultData;
+          this.displayCriterionEmpty = false;
           console.log(this.criterionData);
         }
       });

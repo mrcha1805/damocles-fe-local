@@ -267,7 +267,7 @@
               <div *ngFor="let option of criterionData?.subFeature!" class="col-age">
                 <span (click)="criterion(option)">{{option.feature_name}}</span>
               </div>
-              <div [ngStyle]="{'display': options === null ? 'none' : 'block'}" fxLayout="row"
+              <div [ngStyle]="{'display': !displayCriterionEmpty? 'none' : 'block'}" fxLayout="row"
                 fxLayoutAlign="center center" class="grid-item-layout search-already">
                 <span>KPI is already used</span>
               </div>
@@ -276,7 +276,7 @@
               <div *ngFor="let option of criterionData?.subFeature!| criterionSearch: search" class="col-age">
                 <span (click)="criterion(option)">{{option.feature_name}}</span>
               </div>
-              <div [ngStyle]="{'display': options === null ? 'none' : 'block'}" fxLayout="row"
+              <div [ngStyle]="{'display': !displayCriterionEmpty? 'none' : 'block'}" fxLayout="row"
                 fxLayoutAlign="center center" class="grid-item-layout search-already">
                 <span>KPI is already used</span>
               </div>
