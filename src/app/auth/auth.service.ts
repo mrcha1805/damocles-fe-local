@@ -134,7 +134,7 @@ export class AuthService {
 
           console.log(JSON.stringify(userProfile));
           localStorage.setItem('userProfile', JSON.stringify(userProfile));
-          this.router.navigateByUrl('/createproject');
+          this.router.navigateByUrl('/create-project');
         }
       },
       (error) => {
