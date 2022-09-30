@@ -316,7 +316,7 @@ export class KpiByProductComponent implements OnInit {
         productSelectItem = e.product;
       }
     });
-    if (productSelectItem) {
+    if (productSelectItem.length > 0) {
       let product = productSelectItem
         .filter((e) => e.isSelected === true)
         .map((f) => f.product_id);

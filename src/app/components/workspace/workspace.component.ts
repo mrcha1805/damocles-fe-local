@@ -17,7 +17,9 @@ import { ApiService } from 'app/services/api.service';
 import {
   IProjectTemplate,
   Featuregroup,
+  ProjectTemplateData,
 } from 'app/model/project-template-interface';
+import { Feature, IRequestProject } from 'app/model/create-project-inteface';
 @Component({
   selector: 'app-workspace',
   templateUrl: './workspace.component.html',
@@ -74,11 +76,14 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   projectDataApi: IProjectTemplate | undefined;
   kpiGroup: Featuregroup[] | undefined;
   projectId: string | undefined;
+  projectData: ProjectTemplateData | undefined;
   getProjectTemplateApi() {
     this.apiService.dynamicProjectTemplateMockup().subscribe((data: any) => {
       this.projectDataApi = data.body;
-      console.log(this.projectDataApi);
+
       this.kpiGroup = this.projectDataApi?.resultData.feature_group;
+      this.projectData = this.projectDataApi?.resultData;
+      console.log(`project Data: ${this.projectData}`);
     });
   }
 
@@ -89,14 +94,28 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       .subscribe((data: any) => {
         this.projectDataApi = data;
         if (this.projectDataApi?.resultCode === '20000') {
-          console.log('-->' + JSON.stringify(this.projectDataApi.resultData));
           this.kpiGroup = this.projectDataApi?.resultData.feature_group;
           this.projectId = this.projectDataApi.resultData.project_id;
+          this.projectData = this.projectDataApi?.resultData;
+          console.log(`project Data: ${JSON.stringify(this.projectData)}`);
+          this.setSelectProjectFeature();
         }
         this.spinnerService.hide();
       });
   }
-  
+  objSelect: IRequestProject | undefined;
+  setSelectProjectFeature() {
+    let featureSelect: Feature[] = [];
+
+    this.objSelect = {
+      profile_id: '6',
+      project_name: '',
+      project_description: '',
+      inductry_id: this.projectData?.industry_id,
+      product_id: this.projectData?.product_id.toString(),
+      feature: featureSelect,
+    };
+  }
   setOptionChartFunnel() {
     this.chart = Highcharts.chart('chart-funnel', {
       accessibility: {
@@ -186,6 +205,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       centered: true,
       backdrop: 'static',
     });
+    modalRef.componentInstance.data = this.objSelect;
     modalRef.result.then((result: any) => {
       if (result.search('save-success') != -1) {
         console.log('save success');

@@ -24,9 +24,7 @@ export class FilterLocationComponent implements OnInit {
   @Input() District: District | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
   @Input() filterLocationApi: IFilterLocation | undefined;
-  constructor() {}
-    private apiService: ApiService
-  ) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -35,15 +33,17 @@ export class FilterLocationComponent implements OnInit {
     );
     this.getFilterLocationAPI();
   }
-  
+
   getFilterLocationAPI() {
-    this.apiService
-      .dynamicFilterLocationMockup().subscribe((data: any) => {
-        this.filterLocationApi = data.body!;
-        if (this.filterLocationApi?.resultCode === '20000') {
-          console.log('Filter Location API -->' + JSON.stringify(this.filterLocationApi.resultData));
-        }
-      });
+    this.apiService.dynamicFilterLocationMockup().subscribe((data: any) => {
+      this.filterLocationApi = data.body!;
+      if (this.filterLocationApi?.resultCode === '20000') {
+        console.log(
+          'Filter Location API -->' +
+            JSON.stringify(this.filterLocationApi.resultData)
+        );
+      }
+    });
   }
 
   // show/hide District
