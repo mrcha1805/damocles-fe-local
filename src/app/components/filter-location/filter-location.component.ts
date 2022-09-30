@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
-import { FormControl } from '@angular/forms'
-import { Observable } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { SubFeature } from 'app/model/project-template-interface';
 import { District } from 'app/model/province-interface';
 
@@ -15,24 +15,25 @@ export interface Tag {
 @Component({
   selector: 'app-filter-location',
   templateUrl: './filter-location.component.html',
-  styleUrls: ['./filter-location.component.scss']
+  styleUrls: ['./filter-location.component.scss'],
 })
 export class FilterLocationComponent implements OnInit {
   @Input() subLocation: SubFeature | undefined;
   @Input() District: District | undefined;
-  constructor() { }
+  @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
+  constructor() {}
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
-    )
+      map((value) => this._filter(value))
+    );
   }
 
   // show/hide District
   public show: boolean = false;
   filterProvince(option: any) {
-    console.log('click' , option)
+    console.log('click', option);
     if (option !== null) {
       this.show = true;
       console.log('Show');
@@ -41,27 +42,27 @@ export class FilterLocationComponent implements OnInit {
     }
   }
 
-  myControl = new FormControl()
+  myControl = new FormControl();
   options: string[] = [
-    'Bangkok', 
-    'Amnat Charoen', 
-    'Ang Thong', 
+    'Bangkok',
+    'Amnat Charoen',
+    'Ang Thong',
     'Bueng Kan',
-    'Kanchanaburi', 
-    'Buriram', 
-    'Chachoengsao', 
-    'Chainat', 
-    'Chaiyaphum', 
-    'Chanthaburi', 
-    'Chiang Mai', 
-  ]
+    'Kanchanaburi',
+    'Buriram',
+    'Chachoengsao',
+    'Chainat',
+    'Chaiyaphum',
+    'Chanthaburi',
+    'Chiang Mai',
+  ];
   filteredOptions!: Observable<string[]>;
 
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase()
-    return this.options.filter(option =>
+    const filterValue = value.toLowerCase();
+    return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue)
-    )
+    );
   }
 
   ageSelected: any;
@@ -207,7 +208,8 @@ export class FilterLocationComponent implements OnInit {
     this.genderSelected.push(...tagSelect);
   }
   deleteSelector() {
-    console.log('delete');
+    console.log('delete' + this.subLocation);
+    this.deleteItem.emit(this.subLocation);
   }
 
   removeTagAge(item: string): void {
@@ -235,5 +237,4 @@ export class FilterLocationComponent implements OnInit {
       });
     }
   }
-
 }

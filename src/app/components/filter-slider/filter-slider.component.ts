@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormControl } from '@angular/forms';
@@ -19,6 +19,7 @@ export interface Tag {
 })
 export class FilterSliderComponent implements OnInit {
   @Input() subSlider: SubFeature | undefined;
+  @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
   constructor() {}
   style: object = {};
   lowValue: number = 0.0;
@@ -200,7 +201,8 @@ export class FilterSliderComponent implements OnInit {
   //   this.genderSelected.push(...tagSelect);
   // }
   deleteSelector() {
-    console.log('delete');
+    console.log('delete' + this.subSlider);
+    this.deleteItem.emit(this.subSlider);
   }
 
   // removeTagAge(item: string): void {

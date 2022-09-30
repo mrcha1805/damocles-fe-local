@@ -180,18 +180,26 @@ export class FilterItemComponent implements OnInit {
   }
 
   criterion(dataSelect: SubFeature) {
-    console.log('click', dataSelect);
     if (dataSelect) {
       let ind = this.criterionData?.subFeature.findIndex((e) => {
         return e.feature_name === dataSelect.feature_name;
       });
-      console.log(ind);
-
       this.subMenu?.push(dataSelect);
       this.criterionData?.subFeature.splice(ind!, 1);
       if (this.criterionData?.subFeature.length == 0) {
         this.displayCriterionEmpty = true;
       }
+    }
+  }
+  deleteSelector(data: SubFeature) {
+    console.log('delete' + JSON.stringify(data));
+    if (data) {
+      let ind = this.subMenu?.findIndex((e) => {
+        return e.product_feature_id === data.product_feature_id;
+      });
+      console.log(ind);
+      this.criterionData?.subFeature.push(data);
+      this.subMenu?.splice(ind!, 1);
     }
   }
 
@@ -225,9 +233,6 @@ export class FilterItemComponent implements OnInit {
       });
     this.genderSelected = [];
     this.genderSelected.push(...tagSelect);
-  }
-  deleteSelector() {
-    console.log('delete');
   }
 
   removeTagAge(item: string): void {
