@@ -140,12 +140,9 @@ export class ApiService {
     });
   }
 
-  postSaveProjectAPI(id: string): Observable<ISaveProject> {
+  postSaveProjectAPI(req: any): Observable<ISaveProject> {
     return this.http
-      .post<ISaveProject>(
-        this.endpoint + this.project + '?project_id=' + id,
-        this.httpOption
-      )
+      .post<ISaveProject>(this.endpoint + this.project, req, this.httpOption)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           let errorMessage;
