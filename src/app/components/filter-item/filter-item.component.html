@@ -67,23 +67,21 @@
                         <span class="font-12px">{{item.feature_name}}</span>
                       </div>
                       <div *ngIf="item.search.length == 0" class="col-age" fxFlex>
-
                         <div *ngFor="let il of item.itemList" class="p-1">
-
-                          <mat-checkbox [(ngModel)]="il.selected" (ngModelChange)="addTag(item)">
+                          <mat-checkbox [(ngModel)]="il.selected" (ngModelChange)="addTag(item)" class="col-item">
                             <span class="font-12px">{{ il.name }}</span>
                           </mat-checkbox>
                         </div>
                       </div>
+
                       <div *ngIf="item.search.length > 0" class="col-age" fxFlex>
-
                         <div *ngFor="let il of item.itemList!|featureSearchFilter: item.search" class="p-1">
-
                           <mat-checkbox [(ngModel)]="il.selected" (ngModelChange)="addTag(item)">
                             <span class="font-12px">{{ il.name }}</span>
                           </mat-checkbox>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -155,8 +153,6 @@
           </div>
         </div>
       </div>
-
-
     </div> -->
 
 
@@ -248,15 +244,12 @@
   </div> -->
 
   <div fxLayout="row" fxLayoutGap="10" fxFill>
-    <!-- <div class="add-criterion" fxLayoutAlign="end end">
-      <span>+ Add Criterion</span>
-    </div> -->
     <div fxLayout="column" class="btn-group custom-dropdown" dropdown dropdown="bs-dropdown" [autoClose]="true"
       [insideClick]='true' fxFill>
       <div class="add-criterion" fxLayoutAlign="start end">
         <span dropdownToggle class="btn btn-custom">+ Add Criterion</span>
       </div>
-      <div *dropdownMenu class="dropdown-menu w-100" role="menu" aria="dropdown-triggers">
+      <div *dropdownMenu class="dropdown-menu w-100 mb-3" role="menu" aria="dropdown-triggers">
         <div fxFill fxLayout="column" class="selection-container p-2 pt-0 pb-0">
           <div fxLayout="row" class="grid-item-layout">
             <img src="./assets/icons/search.svg" width="16" class="search-icon">

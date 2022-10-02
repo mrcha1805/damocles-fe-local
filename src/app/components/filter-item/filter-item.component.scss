@@ -47,8 +47,17 @@ $heavent-normal: DB Heavent Nor;
   background: #ffffff;
   @include font-format($heavent-normal, 400, 14px, 17px, #1b1b1b);
 }
-.col-age:hover {
-  background: #f3f3f3;
+// .col-age:hover {
+//   background: #b32626;
+// }
+.col-item {
+  @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
+  padding: 0px;
+  width: 100%;
+  cursor: pointer;
+}
+.col-item:hover {
+  background: #F3F3F3;
 }
 .del-icon {
   width: 14px;
@@ -150,11 +159,15 @@ $heavent-normal: DB Heavent Nor;
     border: 0 !important;
   }
   .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: #b6a5e8 !important;
+    background-color: #676767 !important;
     border-radius: 5px !important;
     width: 19px !important;
     height: 19px !important;
   }
+  .mat-checkbox-checkmark-path {
+    stroke: #FFFFFF !important;
+  }
+  
   .mat-checkbox-background {
     background-color: #e6e6e6 !important;
     border-radius: 5px !important;
@@ -172,9 +185,6 @@ $heavent-normal: DB Heavent Nor;
     border-radius: 5px !important;
     width: 19px !important;
     height: 19px !important;
-  }
-  .mat-checkbox-checkmark-path {
-    stroke: #491dc5 !important;
   }
   .mat-checkbox-checked .mat-checkbox-checkmark-path {
     stroke-dashoffset: 3 !important;
@@ -229,6 +239,6 @@ section {
 
 .add-criterion {
   @include font-format($heavent-bold, 700, 16px, 20px, #491dc5);
-  margin: 20px 0px;
+  margin: 10px 0px 5px 0px;
   cursor: pointer;
 }
