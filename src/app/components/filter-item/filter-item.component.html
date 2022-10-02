@@ -264,7 +264,7 @@
           </div>
           <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout">
             <div *ngIf="search.length == 0" fxFlex class="mt-2">
-              <div *ngFor="let option of criterionData?.subFeature!" class="col-age">
+              <div *ngFor="let option of criterionDisplay" class="col-age">
                 <span (click)="criterion(option)">{{option.feature_name}}</span>
               </div>
               <div [ngStyle]="{'display': !displayCriterionEmpty? 'none' : 'block'}" fxLayout="row"
@@ -273,7 +273,7 @@
               </div>
             </div>
             <div *ngIf="search.length > 0" fxFlex class="mt-2">
-              <div *ngFor="let option of criterionData?.subFeature!| criterionSearch: search" class="col-age">
+              <div *ngFor="let option of criterionDisplay| criterionSearch: search" class="col-age">
                 <span (click)="criterion(option)">{{option.feature_name}}</span>
               </div>
               <div [ngStyle]="{'display': !displayCriterionEmpty? 'none' : 'block'}" fxLayout="row"

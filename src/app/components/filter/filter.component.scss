@@ -19,7 +19,7 @@ mat-expansion-panel-header {
   margin: 0;
 }
 .header-style {
-  background: #EDE8F9 !important;
+  background: #ede8f9 !important;
   height: 48px;
 }
 .header-style:hover {
@@ -39,9 +39,9 @@ mat-expansion-panel-header {
   @include font-format($heavent-normal, 700, 16px, 18px, #020202);
 }
 .appFilterItem {
-  // overflow: auto; 
+  overflow: auto;
   height: 100vh;
-  width: 95%;
+  //width: 95%;
 }
 
 ::ng-deep.mat-expansion-panel-content .mat-expansion-panel-body {

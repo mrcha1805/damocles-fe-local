@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ApiService } from '@services/api.service';
 import { ICriterionData } from 'app/model/criterion-interface';
+import { remove } from 'lodash';
 
 @Component({
   selector: 'app-filter-item',
@@ -22,7 +23,6 @@ export class FilterItemComponent implements OnInit {
   displayCriterionEmpty: boolean = true;
   criterionApiLoad: boolean = true;
   @Input() subMenu: SubFeature[] | undefined;
-  @Input() criterionData: ICriterionData | undefined;
   @Input() projectId: string | undefined;
   @Input() featureGroupId: string | undefined;
   slider1: Options = {
@@ -35,7 +35,6 @@ export class FilterItemComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    //console.log(this.subMenu);
     this.displayCriterionEmpty = true;
     this.criterionApiLoad = true;
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -95,17 +94,6 @@ export class FilterItemComponent implements OnInit {
     },
   ];
 
-  // selectAgeList(name: string, value: string) {
-  //   const tagSelect = this.ageList
-  //     .filter((item) => {
-  //       return item.selected === true;
-  //     })
-  //     .map((item) => {
-  //       return item.name;
-  //     });
-  //   this.ageSelected = [];
-  //   this.ageSelected.push(...tagSelect);
-  // }
   addTag(v: SubFeature) {
     const result: any = v.itemList
       ?.filter((e) => {
@@ -130,85 +118,55 @@ export class FilterItemComponent implements OnInit {
 
   criterion(dataSelect: SubFeature) {
     if (dataSelect) {
-      let ind = this.criterionData?.subFeature.findIndex((e) => {
+      let ind = this.criterionDisplay.findIndex((e) => {
         return e.feature_name === dataSelect.feature_name;
       });
       this.subMenu?.push(dataSelect);
-      this.criterionData?.subFeature.splice(ind!, 1);
-      if (this.criterionData?.subFeature.length == 0) {
+      this.criterionDisplay.splice(ind!, 1);
+      if (this.criterionDisplay.length == 0) {
         this.displayCriterionEmpty = true;
       }
     }
   }
   deleteSelector(data: SubFeature) {
-    console.log('delete' + JSON.stringify(data));
     if (data) {
+      this.criterionDisplay.push(data);
+      this.displayCriterionEmpty = false;
       let ind = this.subMenu?.findIndex((e) => {
-        return e.product_feature_id === data.product_feature_id;
+        return e.feature_name === data.feature_name;
       });
       console.log(ind);
-      this.criterionData?.subFeature.push(data);
       this.subMenu?.splice(ind!, 1);
     }
   }
 
   loadCriterion() {
-    // this.apiService.dynamicCriterionMockup().subscribe((data) => {
-    //   this.criterionData = data.body?.resultData;
-    //   console.log(this.criterionData);
-    // });
-
     if (this.criterionApiLoad) {
       this.apiService
         .getCriterionAPI(this.projectId!, this.featureGroupId!)
         .subscribe((data) => {
           if (data.resultCode === '20000') {
-            this.criterionData = data.resultData;
-            this.displayCriterionEmpty = false;
             this.criterionApiLoad = false;
-
-            console.log(this.criterionData);
-            this.setDefaultSelected();
+            this.checkDuplicateCriterion(data.resultData);
           }
         });
     }
   }
-
-  // selectGenderList(name: string, value: string) {
-  //   const tagSelect = this.genderList
-  //     .filter((item) => {
-  //       return item.selected === true;
-  //     })
-  //     .map((item) => {
-  //       return item.name;
-  //     });
-  //   this.genderSelected = [];
-  //   this.genderSelected.push(...tagSelect);
-  // }
-
-  // removeTagAge(item: string): void {
-  //   const index = this.ageSelected.indexOf(item);
-
-  //   if (index >= 0) {
-  //     this.ageSelected.splice(index, 1);
-  //     this.ageList.map((i) => {
-  //       if (i.name === item) {
-  //         i.selected = !i.selected;
-  //       }
-  //     });
-  //   }
-  // }
-
-  //   removeTagGender(item: string): void {
-  //     const index = this.genderSelected.indexOf(item);
-
-  //     if (index >= 0) {
-  //       this.genderSelected.splice(index, 1);
-  //       this.genderList.map((i) => {
-  //         if (i.name === item) {
-  //           i.selected = !i.selected;
-  //         }
-  //       });
-  //     }
-  //   }
+  criterionDisplay: SubFeature[] = [];
+  checkDuplicateCriterion(data: ICriterionData) {
+    this.criterionDisplay = [];
+    this.displayCriterionEmpty = true;
+    for (let item of data.subFeature) {
+      const result = this.subMenu?.filter((e) => {
+        return e.feature_name === item.feature_name;
+      });
+      if (result?.length! > 0) {
+        console.log('Found: ' + JSON.stringify(result));
+      } else {
+        this.criterionDisplay.push(item);
+        this.displayCriterionEmpty = false;
+      }
+    }
+    this.setDefaultSelected();
+  }
 }
