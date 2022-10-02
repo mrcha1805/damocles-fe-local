@@ -12,9 +12,6 @@ export interface UserProfile {
   userId: string;
   firstName: string;
   lastName: string;
-  bank: Bank;
-  img: string;
-  imgUrl: string;
 }
 
 export interface UserProfileData {

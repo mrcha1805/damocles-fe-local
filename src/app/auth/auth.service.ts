@@ -121,15 +121,12 @@ export class AuthService {
 
     this.apiEndpointService.getUserProfile(token).subscribe(
       (response) => {
-        if (response.resultCode === '20000') {
+        if (response.resultCode === '20000'|| response.resultCode === '20100') {
           const userProfile: UserProfile = {
             email: response?.resultData.email,
             userId: response?.resultData.profile_id,
             firstName: response?.resultData.first_name,
             lastName: response?.resultData.last_name,
-            bank: response?.resultData.bank_short_name,
-            img: response?.resultData.picture_name,
-            imgUrl: response?.resultData.imageUrl,
           };
 
           console.log(JSON.stringify(userProfile));
