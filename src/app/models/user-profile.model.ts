@@ -9,12 +9,9 @@ export enum Bank {
 
 export interface UserProfile {
   email: string;
-  userId: string;
+  userId: number;
   firstName: string;
   lastName: string;
-  bank: Bank;
-  img: string;
-  imgUrl: string;
 }
 
 export interface UserProfileData {

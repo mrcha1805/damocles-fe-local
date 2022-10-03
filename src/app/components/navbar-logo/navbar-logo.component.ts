@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserProfile } from '@models/user-profile.model';
 
 @Component({
   selector: 'app-navbar-logo',
@@ -12,11 +13,16 @@ export class NavbarLogoComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.userName = 'Jessica K.';
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+    const userName = `${firstName} ${lastName?.charAt(0)}.`
+    console.log(`user profile: ${userName}`);
+    this.userName = userName;
   }
-  navigateToHome() {
+   navigateToHome() {
     this.router.navigateByUrl('/create-project');
   }
+  
 
   logout() {
     console.log('logout');
