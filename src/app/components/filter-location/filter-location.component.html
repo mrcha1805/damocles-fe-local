@@ -33,7 +33,7 @@
           <div fxLayout="column" class="btn-group custom-dropdown" dropdown dropdown="bs-dropdown" [autoClose]="true"
             [insideClick]='true' fxFill>
             <div fxLayout="row" type="text" class="input-selected-tag">
-              <div fxFlex="90">
+              <div fxFlex="90" class="py-2">
                 <mat-label>
                   <mat-chip-list aria-label="age tags">
                     <mat-chip *ngFor="let tag of proviceDataSelect" (removed)="removeTagProvinceSelect(tag)">

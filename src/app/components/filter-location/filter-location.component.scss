@@ -44,39 +44,74 @@ $heavent-normal: DB Heavent Nor;
   width: 100%;
   background: #ffffff;
 }
+
 .subHeader {
   @include font-format($heavent-bold, 700, 16px, 19.18px, #1B1B1B);
   margin: 10px 0px 0px 10px;
 }
+
 .mat-list-base {
   padding-top: 0px;
 }
+
+:host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+  padding: 0px;
+}
+
+:host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content-reverse,
+.mat-list-base .mat-list-option .mat-list-item-content-reverse {
+  padding: 0px;
+}
+
+
+:host ::ng-deep .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,
+.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,
+.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,
+.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+:host ::ng-deep .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,
+.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,
+.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,
+.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .provinceList {
   width: 100%;
-  height: 240px; 
+  height: 240px;
   overflow: auto;
 }
+
 .col-province {
   @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
   padding: 10px 10px 10px 20px;
-  
+
   cursor: pointer;
 }
+
 .col-province:hover {
   background: #F3F3F3;
 }
+
 .box-district {
-  height: 240px; 
+  height: 240px;
   overflow: auto;
   border-left: 1px solid #E6E6E6;
   padding-left: 5px
 }
+
 .col-district {
   @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
   padding: 0px;
   width: 100%;
   cursor: pointer;
 }
+
 .col-district:hover {
   background: #F3F3F3;
 }
@@ -155,9 +190,11 @@ $heavent-normal: DB Heavent Nor;
     margin-left: -2rem;
     width: 100%;
   }
+
   &-input:focus {
     outline: none;
   }
+
   &-icon {
     margin: 0 0.5rem;
     z-index: 2;
@@ -165,9 +202,9 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .input-full-width .search-icon {
-    z-index: 2;
-    padding-bottom: 15px;
-    margin-right: 10px
+  z-index: 2;
+  padding-bottom: 15px;
+  margin-right: 10px
 }
 
 .font-10px {
@@ -207,6 +244,7 @@ $heavent-normal: DB Heavent Nor;
   .mat-expansion-panel-header {
     background-color: #f0f0f0 !important;
   }
+
   .mat-autocomplete-panel .mat-autocomplete {
     box-shadow: #491dc5;
   }
@@ -277,8 +315,13 @@ $heavent-normal: DB Heavent Nor;
     border-radius: 4px;
     padding: 4px;
     padding-right: 0px;
-    margin: 8px;
-    margin-right: -4px;
+    margin: 4px 0px 4px 8px;
+    // margin-right: -4px;
+  }
+
+  .mat-standard-chip {
+    margin: 4px;
+    margin-left: 5px;
   }
 
   .mat-chip-list-wrapper input.mat-input-element,
@@ -293,7 +336,7 @@ $heavent-normal: DB Heavent Nor;
 
   .custom-dropdown .dropdown-menu.show {
     z-index: 999;
-    position: relative;
+    // position: relative;
   }
 }
 
