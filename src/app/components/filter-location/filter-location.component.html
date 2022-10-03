@@ -36,8 +36,8 @@
               <div fxFlex="90">
                 <mat-label>
                   <mat-chip-list aria-label="age tags">
-                    <mat-chip *ngFor="let tag of ageSelected" (removed)="removeTagAge(tag)">
-                      {{tag}}
+                    <mat-chip *ngFor="let tag of proviceDataSelect" (removed)="removeTagProvinceSelect(tag)">
+                      {{tag.province_tag}}
                       <button matChipRemove>
                         <img src="./assets/icons/close-tag.svg" class="tag-icon">
                       </button>
@@ -55,23 +55,30 @@
               <div fxFill fxLayout="column" class="selection-container p-2 pt-0 pb-0">
                 <div fxLayout="row" class="grid-item-layout">
                   <img src="./assets/icons/search.svg" width="16" class="search-icon">
-                  <input fxFill type="text" placeholder="Search" [formControl]="myControl"
+                  <input fxFill type="text" [(ngModel)]="searchText" placeholder="Search"
                     class="search-input font-14px" />
                 </div>
                 <span class="subHeader">{{subLocation?.feature_name!}}</span>
                 <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout">
-                  <mat-selection-list #shoes [multiple]="false" class="provinceList col">
-                    <mat-list-option *ngFor="let option of filteredOptions | async" [value]="option"
+                  <mat-selection-list *ngIf="searchText!.length === 0" #shoes [multiple]="false"
+                    class="provinceList col">
+                    <mat-list-option *ngFor="let pv of locationApiData" [value]="pv" class="col-province"
+                      style="height: 24px;">
+                      <span (click)="selectProvince(pv)">{{pv.province_name}}</span>
+                    </mat-list-option>
+                  </mat-selection-list>
+                  <mat-selection-list *ngIf="searchText!.length > 0" #shoes [multiple]="false" class="provinceList col">
+                    <mat-list-option *ngFor="let pv of locationApiData | locationSearch: searchText!" [value]="pv"
                       class="col-province" style="height: 24px;">
-                      <span (click)="filterProvince(option)">{{option}}</span>
+                      <span (click)="selectProvince(pv)">{{pv.province_name}}</span>
                     </mat-list-option>
                   </mat-selection-list>
 
                   <div class="col-6 box-district" fxFlex *ngIf="show">
-                    <div *ngFor="let item of ageList">
-                      <mat-checkbox [(ngModel)]="item.selected" class="col-district"
-                        (ngModelChange)="selectAgeList(item.name,item.value)">
-                        <span class="font-12px">{{ item.name }}</span>
+                    <div *ngFor="let district of districtDataDisplay">
+                      <mat-checkbox [(ngModel)]="district.selected" class="col-district"
+                        (ngModelChange)="selectDistrict(currentSelectProvince, district)">
+                        <span class="font-12px">{{ district.district_name}}</span>
                       </mat-checkbox>
                     </div>
                   </div>

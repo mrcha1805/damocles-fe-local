@@ -75,6 +75,7 @@ import { FilterItemComponent } from './components/filter-item/filter-item.compon
 import { FeatureSearchFilterPipe } from './services/feature-search-filter.pipe';
 import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 import { CriterionSearchPipe } from './services/criterion-search.pipe';
+import { LocationSearchPipe } from './services/location-search.pipe';
 export function initializeApp(appConfigService: AppConfigService) {
   return (): Promise<any> => {
     return appConfigService.load();
@@ -109,6 +110,7 @@ export const TOOLTIP_DEFAULT_OPTIONS: NgxPopperjsOptions = {
     FeatureSearchFilterPipe,
     FilterLocationComponent,
     CriterionSearchPipe,
+    LocationSearchPipe,
   ],
   imports: [
     BrowserModule,
