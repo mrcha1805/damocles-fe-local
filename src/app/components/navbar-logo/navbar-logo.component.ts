@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-logo',
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarLogoComponent implements OnInit {
   userName: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.userName = 'Jessica K.';
+  }
+  navigateToHome() {
+    this.router.navigateByUrl('/create-project');
   }
 
   logout() {
