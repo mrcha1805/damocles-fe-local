@@ -62,44 +62,40 @@ export class SaveWorkspaceModalComponent implements OnInit {
 
     console.log(`save project ${JSON.stringify(this.data)}`);
 
-    // this.apiService.postSaveProjectAPI(this.data).subscribe((data) => {
-    //   if (data.resultData.length > 0) {
-    //     if (data.resultCode === '20000') {
-    //       const modalRef = this.ngModalService.open(
-    //         SaveSuccessWorkspaceModalComponent,
-    //         {
-    //           size: 'md',
-    //           centered: true,
-    //           backdrop: 'static',
-    //         }
-    //       );
-    //       modalRef.result.then((result: any) => {
-    //         if (result.search('save') != -1) {
-    //           console.log('save');
-    //         }
-    //       });
-    //       this.activeModal.close('save');
-    //     } else {
-    //       console.log('already exists');
-    //       const modalRef = this.ngModalService.open(
-    //         SaveExistsWorkspaceModalComponent,
-    //         {
-    //           size: 'sm',
-    //           centered: true,
-    //           backdrop: 'static',
-    //         }
-    //       );
-    //       this.activeModal.close('save');
-    //     }
-    //   }
-    //   // (errorMsg) => {
-    //   //   console.log('saveProjectAPI: ', errorMsg);
+    this.apiService.postSaveProjectAPI(this.data).subscribe(
+      (data) => {
+        console.log('response data ' + JSON.stringify(data));
 
-    //   //   this.toaster.error(errorMsg, '', {
-    //   //     timeOut: 5000,
-    //   //     positionClass: 'toast-top-center',
-    //   //   })
-    //   // }
-    // });
+        if (data.resultCode === '20100') {
+          console.log('save return 20100');
+          const modalRef = this.ngModalService.open(
+            SaveSuccessWorkspaceModalComponent,
+            {
+              size: 'md',
+              centered: true,
+              backdrop: 'static',
+            }
+          );
+          modalRef.result.then((result: any) => {
+            if (result.search('save-success') != -1) {
+              console.log('save-success');
+            }
+          });
+          this.activeModal.close('save-success');
+        }
+      },
+      (errorMsg) => {
+        console.log('case project is exist ');
+        const modalRef = this.ngModalService.open(
+          SaveExistsWorkspaceModalComponent,
+          {
+            size: 'sm',
+            centered: true,
+            backdrop: 'static',
+          }
+        );
+        this.activeModal.close('projectIsExist');
+      }
+    );
   }
 }

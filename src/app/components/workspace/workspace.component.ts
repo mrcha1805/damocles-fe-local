@@ -107,15 +107,60 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   setSelectProjectFeature() {
     let featureSelect: Feature[] = [];
 
+    featureSelect = [
+      {
+        product_feature_id: 10001,
+        operator: 'Is',
+        item_value: ['Female', 'Male', 'Unknow'],
+        range_value: [],
+        graph_order: 1,
+        feature_order: 1,
+      },
+      {
+        product_feature_id: 10002,
+        operator: 'Is',
+        item_value: ['20-24', '25-29', '30-34'],
+        range_value: [],
+        graph_order: 2,
+        feature_order: 2,
+      },
+      {
+        product_feature_id: 10005,
+        operator: 'Is',
+        item_value: ['BANGKOK,SAI MAI', 'BANGKOK,WANG THONGLANG'],
+        range_value: [],
+        graph_order: 3,
+        feature_order: 3,
+      },
+      {
+        product_feature_id: 10008,
+        operator: 'Is',
+        item_value: [],
+        range_value: [0.0, 1.0],
+        graph_order: 4,
+        feature_order: 4,
+      },
+    ];
+
+    // this.objSelect = {
+    //   profile_id: '6',
+    //   project_name: '',
+    //   project_description: '',
+    //   inductry_id: this.projectData?.industry_id,
+    //   product_id: this.projectData?.product_id.toString(),
+    //   feature: featureSelect,
+    // };
+
     this.objSelect = {
       profile_id: '6',
       project_name: '',
       project_description: '',
-      inductry_id: this.projectData?.industry_id,
-      product_id: this.projectData?.product_id.toString(),
+      inductry_id: 1,
+      product_id: 1,
       feature: featureSelect,
     };
   }
+
   setOptionChartFunnel() {
     this.chart = Highcharts.chart('chart-funnel', {
       accessibility: {
