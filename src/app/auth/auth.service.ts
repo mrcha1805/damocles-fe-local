@@ -121,12 +121,15 @@ export class AuthService {
 
     this.apiEndpointService.getUserProfile(token).subscribe(
       (response) => {
-        if (response.resultCode === '20000'|| response.resultCode === '20100') {
+        if (
+          response.resultCode === '20000' ||
+          response.resultCode === '20100'
+        ) {
           console.log(JSON.stringify(response));
           localStorage.setItem('userId', response?.resultData.profile_id);
-          localStorage.setItem('userId', response?.resultData.email);
+          localStorage.setItem('email', response?.resultData.email);
           localStorage.setItem('firstName', response?.resultData.first_name);
-          localStorage.setItem('lastName', response?.resultData.last_name); 
+          localStorage.setItem('lastName', response?.resultData.last_name);
 
           this.router.navigateByUrl('/create-project');
         }
