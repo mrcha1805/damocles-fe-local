@@ -274,11 +274,13 @@ export class NewProjectComponent implements OnInit, OnChanges {
 
     this.userProjectCount = 0;
     this.userRecentProjectCount = 10;
-
-    this.getProjectApi();
+    let profileId = localStorage.getItem('userId');
+    if (profileId) {
+      this.getProjectApi(profileId);
+    }
   }
-  getProjectApi() {
-    this.apiService.getProjectAPI('1').subscribe(async (data: any) => {
+  getProjectApi(id: string) {
+    this.apiService.getProjectAPI(id).subscribe(async (data: any) => {
       this.projectDataApi = data;
       if (this.projectDataApi!.resultCode === '20000') {
         this.projectMasterData = this.projectDataApi!.resultData.project;
