@@ -21,7 +21,7 @@ import { ILocation } from 'app/model/location-interface';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   protected globalConfig = AppConfigService.settings;
   endpoint: string = this.globalConfig.apiEndpoint;
@@ -177,7 +177,7 @@ export class ApiService {
 
   replaceSaveProjectAPI(req: any, id: string): Observable<ISaveProject> {
     return this.http
-      .post<ISaveProject>(
+      .put<ISaveProject>(
         this.endpoint + this.project + '/' + id,
         req,
         this.httpOption
