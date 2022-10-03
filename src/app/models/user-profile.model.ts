@@ -9,7 +9,7 @@ export enum Bank {
 
 export interface UserProfile {
   email: string;
-  userId: string;
+  userId: number;
   firstName: string;
   lastName: string;
 }
