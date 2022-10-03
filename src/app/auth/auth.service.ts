@@ -121,24 +121,21 @@ export class AuthService {
 
     this.apiEndpointService.getUserProfile(token).subscribe(
       (response) => {
-        if (response.resultCode === '20000') {
-          const userProfile: UserProfile = {
-            email: response?.resultData.email,
-            userId: response?.resultData.profile_id,
-            firstName: response?.resultData.first_name,
-            lastName: response?.resultData.last_name,
-            bank: response?.resultData.bank_short_name,
-            img: response?.resultData.picture_name,
-            imgUrl: response?.resultData.imageUrl,
-          };
+        if (response.resultCode === '20000'|| response.resultCode === '20100') {
+          console.log(JSON.stringify(response));
+          localStorage.setItem('userId', response?.resultData.profile_id);
+          localStorage.setItem('userId', response?.resultData.email);
+          localStorage.setItem('firstName', response?.resultData.first_name);
+          localStorage.setItem('lastName', response?.resultData.last_name); 
 
-          console.log(JSON.stringify(userProfile));
-          localStorage.setItem('userProfile', JSON.stringify(userProfile));
-          this.router.navigateByUrl('/createproject');
+          this.router.navigateByUrl('/create-project');
         }
       },
       (error) => {
-        localStorage.removeItem('userProfile');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('email');
+        localStorage.removeItem('firstName');
+        localStorage.removeItem('lastName');
         if (error.error.resultCode === '40400') {
           console.log('case not found');
           let decode: any = jwt_decode(token);
