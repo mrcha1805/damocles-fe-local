@@ -94,6 +94,7 @@ export class SaveWorkspaceModalComponent implements OnInit {
             backdrop: 'static',
           }
         );
+        modalRef.componentInstance.data = this.data;
         this.activeModal.close('projectIsExist');
       }
     );

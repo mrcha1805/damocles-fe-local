@@ -14,7 +14,8 @@ import { IProjectTemplate } from 'app/model/project-template-interface';
 import { IGlobal } from 'app/model/global-interface';
 import { ISaveProject } from 'app/model/save-project-interface';
 import { ICriterion } from 'app/model/criterion-interface';
-import { IFilterLocation } from 'app/model/filter-location';
+
+import { ILocation } from 'app/model/location-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -174,6 +175,27 @@ export class ApiService {
       );
   }
 
+  replaceSaveProjectAPI(req: any, id: string): Observable<ISaveProject> {
+    return this.http
+      .post<ISaveProject>(
+        this.endpoint + this.project + '/' + id,
+        req,
+        this.httpOption
+      )
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          let errorMessage;
+          console.log('error api:', error);
+          console.log(`HttpHeader status: ${error.status} ${error.statusText}`);
+          console.log(
+            `resultCode: ${error.error.resultCode}, resultDescription: ${error.error.resultDescription}, diagnosticMessage: ${error.error.diagnosticMessage}`
+          );
+
+          return throwError(error);
+        })
+      );
+  }
+
   //Get Criterion
   dynamicCriterionMockup(): Observable<HttpResponse<ICriterion>> {
     return this.http.get<ICriterion>('assets/data/criterion-mockup.json', {
@@ -202,20 +224,14 @@ export class ApiService {
   }
 
   //Get Location
-  dynamicFilterLocationMockup(): Observable<HttpResponse<IFilterLocation>> {
-    return this.http.get<IFilterLocation>(
-      'assets/data/filter-location.json',
-      {
-        observe: 'response',
-      }
-    );
+  dynamicFilterLocationMockup(): Observable<HttpResponse<ILocation>> {
+    return this.http.get<ILocation>('assets/data/filter-location.json', {
+      observe: 'response',
+    });
   }
-  getFilterLocationAPI(id: string): Observable<IFilterLocation> {
+  getFilterLocationAPI(): Observable<ILocation> {
     return this.http
-      .get<IFilterLocation>(
-        this.endpoint + '/location',
-        this.httpOption
-      )
+      .get<ILocation>(this.endpoint + '/location', this.httpOption)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.log('error api:', error);
@@ -227,5 +243,4 @@ export class ApiService {
         })
       );
   }
-
 }
