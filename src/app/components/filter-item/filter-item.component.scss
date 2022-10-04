@@ -51,15 +51,16 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .col-age {
-  padding: 10px 10px 10px 20px;
-  cursor: pointer;
-  background: #ffffff;
   @include font-format($heavent-normal, 400, 14px, 17px, #1b1b1b);
+  margin: 10px 10px 10px 0px;
+  background: #ffffff;
+  border-left: 0.7px solid #E6E6E6;
+  cursor: pointer;
 }
-
 // .col-age:hover {
 //   background: #b32626;
 // }
+
 .col-item {
   @include font-format($heavent-normal, 400, 14px, 17px, #1B1B1B);
   padding: 0px;
@@ -286,9 +287,9 @@ section {
   height: 30px !important;
 }
 
-.btn.btn-custom {
+.btn .btn-custom {
   width: fit-content;
-  padding: 2px 0.5rem;
+  padding: 2px 0px;
   border: 0;
   float: right;
 }
@@ -304,4 +305,8 @@ section {
   @include font-format($heavent-bold, 700, 16px, 20px, #491dc5);
   margin: 10px 0px 5px 0px;
   cursor: pointer;
+}
+
+.add-criterion span {
+  @include font-format($heavent-bold, 700, 14px, 20px, #491DC5);
 }

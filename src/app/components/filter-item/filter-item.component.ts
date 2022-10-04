@@ -46,6 +46,12 @@ export class FilterItemComponent implements OnInit {
     this.loadCriterion();
     this.mapFilterUser();
   }
+
+  // show data select
+  changeSelect(e: any) {
+    console.log('changeSelect', e.target.value);
+  }
+
   private _filter(value: any): any {
     const filterValue = value.toLowerCase();
     return this.options.filter((option) =>

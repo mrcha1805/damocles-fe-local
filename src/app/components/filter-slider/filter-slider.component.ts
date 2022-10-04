@@ -40,6 +40,7 @@ export class FilterSliderComponent implements OnInit {
     this.sliderOption.ceil = this.subSlider?.range_value[1];
   }
 
+  // show data slider
   sliderChange() {
     console.log('lowValue', this.lowValue);
     console.log('highValue', this.highValue);
