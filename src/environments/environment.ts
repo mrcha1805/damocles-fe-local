@@ -8,19 +8,19 @@ export const environment = {
     clientId: 'wO6kzH+uR2FMCbco8D4MACn6EJ1sRRFag7vkkVSBV+9CkFtdFVEZaA==',
     clientSecret: 'clientSecret',
     redirectUri: 'https://stg-digital.ais.th/actionable-insight/home',
-    beEndpoint: "http://104.43.115.28:23000/api/v1"
+    beEndpoint: 'http://104.43.115.28:23001/api/v1',
   },
   DigitalCo: {
     endpointApi: 'https://iot-authv3.ais.co.th',
     endpointWeb: 'https://iot-authv3.ais.co.th',
     Parameters: {
-      identityHeader: 'X-Digitalco-Id'
+      identityHeader: 'X-Digitalco-Id',
     },
-    endpointApiCube: 'http://localhost:4000/analytic/v1'
+    endpointApiCube: 'http://localhost:4000/analytic/v1',
   },
   Logger: {
     logLevel: NgxLoggerLevel.TRACE,
     serverLogLevel: NgxLoggerLevel.OFF,
-    disableConsoleLogging: false
-  }
+    disableConsoleLogging: false,
+  },
 };

@@ -34,6 +34,9 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   integrateData: any = [];
   chartColor: any = [];
 
+  projectNameDisplay: string | undefined;
+  industryNameDisplay: string | undefined;
+  productNameDiaply: string | undefined;
   triggers = NgxPopperjsTriggers;
   placements = NgxPopperjsPlacements;
   offsetModifiers = [
@@ -83,6 +86,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
       this.kpiGroup = this.projectDataApi?.resultData.feature_group;
       this.projectData = this.projectDataApi?.resultData;
+
       console.log(`project Data: ${this.projectData}`);
     });
   }
@@ -97,10 +101,13 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           this.kpiGroup = this.projectDataApi?.resultData.feature_group;
           this.projectId = this.projectDataApi.resultData.project_id;
           this.projectData = this.projectDataApi?.resultData;
+          this.projectNameDisplay = this.projectData?.project_name;
+          this.industryNameDisplay = this.projectData?.industry_name;
+          this.productNameDiaply = this.projectData?.product_name;
           console.log(`project Data: ${JSON.stringify(this.projectData)}`);
           this.setSelectProjectFeature();
+          this.spinnerService.hide();
         }
-        this.spinnerService.hide();
       });
   }
   objSelect: IRequestProject | undefined;
