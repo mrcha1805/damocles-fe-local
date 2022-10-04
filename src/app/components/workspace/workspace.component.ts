@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsFunnel from 'highcharts/modules/funnel';
+import { CubeClientService } from '@services/common/cube-client.service';
 
 HighchartsMore(Highcharts);
 HighchartsFunnel(Highcharts);
@@ -20,6 +21,7 @@ import {
   ProjectTemplateData,
 } from 'app/model/project-template-interface';
 import { Feature, IRequestProject } from 'app/model/create-project-inteface';
+import { IQuery, LoadResponse, Result } from 'app/model/cube-interface';
 @Component({
   selector: 'app-workspace',
   templateUrl: './workspace.component.html',
@@ -51,12 +53,15 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     },
   ];
 
+  cubeResponse: any = [];
+
   constructor(
     private router: Router,
     private spinnerService: NgxSpinnerService,
     private ngModalService: NgbModal,
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private cubeService: CubeClientService
   ) {
     this.typeSelected = 'ball-atom';
   }
@@ -257,5 +262,201 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         // TODO: update project lists
       }
     });
+  }
+
+  filterCube: any = [
+    {
+      feature: 'gender',
+      query: {
+        measures: ['INSHealth.count'],
+        dimensions: ['INSHealth.gender'],
+        filters: [
+          {
+            member: 'INSHealth.gender',
+            operator: 'equals',
+            values: ['Female', 'Male'],
+          },
+        ],
+      },
+    },
+    {
+      feature: 'ageGroup',
+      query: {
+        measures: ['INSHealth.count'],
+        dimensions: ['INSHealth.ageGroup'],
+        filters: [
+          {
+            member: 'INSHealth.ageGroup',
+            operator: 'equals',
+            values: ['23-25', '26-30', '31-35'],
+          },
+        ],
+      },
+    },
+    {
+      feature: 'lifeStage',
+      query: {
+        measures: ['INSHealth.count'],
+        dimensions: ['INSHealth.lifeStage'],
+        filters: [
+          {
+            member: 'INSHealth.lifeStage',
+            operator: 'equals',
+            values: ['Student', 'Growing  Family', 'Supporting Family'],
+          },
+        ],
+      },
+    },
+  ];
+
+  funnel: any = [
+    {
+      titel: 'Gender',
+      query: {
+        measures: ['INSHealth.count'],
+        dimensions: ['INSHealth.job'],
+        order: {
+          'INSHealth.count': 'desc',
+        },
+        filters: [
+          {
+            member: 'INSHealth.ageGroup',
+            operator: 'equals',
+            values: ['17-22', '23-25', '26-30'],
+          },
+          {
+            member: 'INSHealth.gender',
+            operator: 'equals',
+            values: ['Female'],
+          },
+          {
+            member: 'INSHealth.job',
+            operator: 'notEquals',
+            values: ['Rider'],
+          },
+        ],
+      },
+      // {
+      //   measures: ['INSAsset.count'],
+      //   dimensions: ['INSAsset.gender'],
+      //   filters: [
+      //     {
+      //       member: 'INSAsset.gender',
+      //       operator: 'equals',
+      //       values: ['Female', 'Male'],
+      //     },
+      //   ],
+      // },
+    },
+    // {
+    //   title: 'Gender',
+    //   query: {
+    //     "measures": [
+    //       "INSAsset.count"
+    //     ],
+    //     "order": {
+    //       "INSAsset.dateCol": "asc"
+    //     },
+    //     "filters": [
+    //       {
+    //         "member": "INSAsset.gender",
+    //         "operator": "equals",
+    //         "values": [
+    //           "Female"
+    //         ]
+    //       }
+    //     ]
+    //   },
+    // },
+    // {
+    //   title: 'Net Worth',
+    //   query: {
+    //     "measures": [
+    //       "INSHealth.count"
+    //     ],
+    //     "filters": [
+    //       {
+    //         "member": "INSHealth.affluencyScore",
+    //         "operator": "gte",
+    //         "values": [
+    //           "0.03"
+    //         ]
+    //       },
+    //       {
+    //         "member": "INSHealth.affluencyScore",
+    //         "operator": "lte",
+    //         "values": [
+    //           "0.08"
+    //         ]
+    //       }
+    //     ]
+    //   }
+    //   ,
+    // },
+    // {
+    //   title: "",
+    //   query: {
+    //     "measures": [
+    //       "INSHealth.count"
+    //     ],
+    //     "filters": [
+    //      {
+    //         "member": "INSHealth.ageGroup",
+    //         "operator": "equals",
+    //         "values": [
+    //           "17-22",
+    //           "23-25",
+    //           "26-30",
+    //         ]
+    //       },
+    //       {
+    //         "member": "INSHealth.gender",
+    //         "operator": "equals",
+    //         "values": [
+    //           "Female"
+    //         ]
+    //       }
+    //     ]
+    //   }
+    // }
+  ];
+
+  loadData() {
+    var featureName: any = [];
+    this.filterCube.forEach(
+      (data: any, index: any) => {
+        // cubeResponse = { feature: data.feature };
+        featureName.push(data.feature);
+        this.cubeService
+          .cubeApi()
+          .load(data.query)
+          .then((resultSet: any) => {
+            // console.log(
+            //   `===load data query===: ${JSON.stringify(resultSet.loadResponse)}`
+            // );
+            const resultData = resultSet.loadResponse.results[0].data;
+            console.log(
+              `resultData response : ${JSON.stringify(resultData)}`
+            );
+
+            featureName.forEach((fname: any, index: any) => {
+              let name = Object.keys(resultData[0]);
+              console.log(name[0].includes(fname));
+              if (name[0].includes(fname)) {
+                // console.log(`featureName : ${JSON.stringify(fname)}`);
+                let responseItem = {
+                  feature: fname,
+                  result: resultData,
+                };
+                this.cubeResponse.push(responseItem);
+              }
+            });
+            console.log(`cube response : ${JSON.stringify(this.cubeResponse)}`);
+          });
+      },
+      (err: any) => {
+        console.log(JSON.stringify(err));
+      }
+    );
   }
 }
