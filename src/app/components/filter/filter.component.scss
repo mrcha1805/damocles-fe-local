@@ -13,14 +13,15 @@ $heavent-normal: DB Heavent Nor;
 mat-expansion-panel {
   width: 100%;
 }
-mat-expansion-panel-header {
+.mat-expansion-panel-header {
   width: 100%;
-  padding: 0;
-  margin: 0;
+  padding: 5px;
+  margin: 0px;
 }
 .header-style {
   background: #ede8f9 !important;
   height: 48px;
+  padding: 0px 5px 0px 45px;
 }
 .header-style:hover {
   background: #d8cbf8 !important;
@@ -29,11 +30,10 @@ mat-expansion-panel-header {
 .title-icon {
   width: 20px;
   height: 20px;
-  margin-left: 10px;
-  margin-top: 3px;
+  margin-top: 1px;
 }
 .header1 {
-  @include font-format($heavent-normal, 700, 24px, 24px, #491dc5);
+  @include font-format($heavent-bold, 700, 24px, 24px, #491dc5);
 }
 .header2 {
   @include font-format($heavent-normal, 700, 16px, 18px, #020202);
@@ -42,11 +42,12 @@ mat-expansion-panel-header {
   overflow: auto;
   height: 100vh;
   //width: 95%;
+  margin: 0px 0px 0px 40px;
 }
 
 ::ng-deep.mat-expansion-panel-content .mat-expansion-panel-body {
   padding: 0px;
-  margin: 0px 10px;
+  margin: 0px 0px;
 }
 
 mat-panel {

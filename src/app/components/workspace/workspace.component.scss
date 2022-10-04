@@ -82,7 +82,7 @@ input:focus {
 }
 
 .funnel-clear {
-  @include font-format($heavent-normal, 700, 16px, 19px, #491DC5);
+  @include font-format($heavent-bold, 700, 16px, 19.18px, #491DC5);
   text-decoration-line: underline;
   margin: 14px;
   justify-content: flex-end;

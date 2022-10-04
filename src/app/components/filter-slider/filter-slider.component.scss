@@ -68,7 +68,8 @@ $heavent-normal: DB Heavent Nor;
   justify-content: end;
 }
 section {
-  padding: 0 2rem;
+  width: 100%;
+  padding: 0px 5px 0px 5px;
 }
 
 .input {
@@ -303,9 +304,9 @@ section {
   .custom-dropdown .ngx-slider .ngx-slider-bubble{
     @include font-format($heavent-normal, 400, 16px, 15px, #491DC5);
   }
-  // .custom-dropdown .ngx-slider .ngx-slider-bar {
-  //   background-color: #B3B3B3 !important;
-  // }
+  .custom-dropdown .ngx-slider-bar {
+    background-color: #B3B3B3 !important;
+  }
   .custom-dropdown .ngx-slider.animate .ngx-slider-selection{
     background-color: #491DC5 !important;
   }
