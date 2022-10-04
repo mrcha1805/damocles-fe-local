@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { SubFeature } from 'app/model/project-template-interface';
 import { NgxPopperjsTriggers, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { Options } from '@angular-slider/ngx-slider';
@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ApiService } from '@services/api.service';
 import { ICriterionData } from 'app/model/criterion-interface';
-import { remove } from 'lodash';
 import { IDataFilter } from 'app/model/cube-interface';
 
 @Component({
@@ -27,6 +26,9 @@ export class FilterItemComponent implements OnInit {
   @Input() projectId: string | undefined;
   @Input() featureGroupId: string | undefined;
   @Input() filterUser: IDataFilter[] | undefined;
+
+  @Output() tagFilterSelectOutput: EventEmitter<SubFeature[]> =
+    new EventEmitter();
 
   slider1: Options = {
     floor: 0.0,
@@ -52,8 +54,10 @@ export class FilterItemComponent implements OnInit {
   }
 
   // show data select
-  changeSelect(e: any) {
+  changeSelect(e: any, it: SubFeature) {
     console.log('changeSelect', e.target.value);
+    it.operator = e.target.value;
+    console.log('subMenu update : ' + JSON.stringify(this.subMenu));
   }
 
   private _filter(value: any): any {
@@ -77,7 +81,8 @@ export class FilterItemComponent implements OnInit {
       e.search = '';
       e.itemList = [];
       e.tagSelect = [];
-
+      e.selectTag = false;
+      e.graph_order = e.feature_order;
       e.item_value?.forEach((i) => {
         let item = {
           name: i,
@@ -117,6 +122,16 @@ export class FilterItemComponent implements OnInit {
       });
     v.tagSelect = [];
     v.tagSelect.push(...result);
+    if (v.tagSelect.length > 0) {
+      v.selectTag = true;
+    } else {
+      v.selectTag = false;
+    }
+    this.updateTagFilterSelect();
+  }
+
+  updateTagFilterSelect() {
+    this.tagFilterSelectOutput.emit(this.subMenu);
   }
   deleteTag(name: string, v: SubFeature) {
     const rs: any = v.itemList
@@ -184,23 +199,23 @@ export class FilterItemComponent implements OnInit {
   }
 
   dataFilterUser: any = [];
-  mapFilterUser() {
-    this.subMenu?.forEach((e) => {
-      let sumUser: string = '0 users';
-      this.filterUser?.forEach((f) => {
-        if (e.feature_name.includes(f.feature)) {
-          if (!f.sum || f.sum == 0) {
-            sumUser = '0 users';
-          } else {
-            sumUser = `${f.sum} user`;
-          }
-        }
-      });
-      this.dataFilterUser.push(sumUser);
-      e.filterUser11 = sumUser;
-    });
-    console.log(`=======sub menu ${JSON.stringify(this.subMenu)} `);
-  }
+  // mapFilterUser() {
+  //   this.subMenu?.forEach((e) => {
+  //     let sumUser: string = '0 users';
+  //     this.filterUser?.forEach((f) => {
+  //       if (e.feature_name.includes(f.feature)) {
+  //         if (!f.sum || f.sum == 0) {
+  //           sumUser = '0 users';
+  //         } else {
+  //           sumUser = `${f.sum} user`;
+  //         }
+  //       }
+  //     });
+  //     this.dataFilterUser.push(sumUser);
+  //     e.filterUser11 = sumUser;
+  //   });
+  //   console.log(`=======sub menu ${JSON.stringify(this.subMenu)} `);
+  // }
   updateUser(str: string) {
     let nameDisplay: string | undefined;
     if (this.filterUser && this.filterUser?.length > 0) {

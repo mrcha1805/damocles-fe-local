@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import * as _ from 'lodash';
 import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
@@ -19,6 +26,7 @@ import {
   IProjectTemplate,
   Featuregroup,
   ProjectTemplateData,
+  SubFeature,
 } from 'app/model/project-template-interface';
 import { Feature, IRequestProject } from 'app/model/create-project-inteface';
 import {
@@ -115,6 +123,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   cubeResponse: IDataFilter[] = [];
 
+  //data for save
+  filterItem: SubFeature[] = [];
   constructor(
     private router: Router,
     private spinnerService: NgxSpinnerService,
@@ -239,6 +249,11 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       product_id: 1,
       feature: featureSelect,
     };
+  }
+
+  updateDataSelectFilter(data: Featuregroup[]) {
+    console.log('update data select filter');
+    console.log('data return : ' + JSON.stringify(data));
   }
 
   setOptionChartFunnel() {

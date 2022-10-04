@@ -12,7 +12,8 @@
                     </div>
                     <div fxLayout="column" class="grid-item-layout app-filter w-100 pb-3" fxFlex>
                         <div fxLayout="column" class="grid-item-layout" fxLayoutAlign="start start" fxFlex>
-                            <app-filter [menu]="kpiGroup" [projectId]="projectId" [filterUser]="cubeResponse" fxFill>
+                            <app-filter [menu]="kpiGroup" [projectId]="projectId" [filterUser]="cubeResponse"
+                                (featureGroupOutput)="updateDataSelectFilter($event)" fxFill>
                             </app-filter>
                         </div>
                     </div>
