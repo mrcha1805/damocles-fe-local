@@ -334,8 +334,13 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     modalRef.result.then((result: any) => {
       if (result.search('save-success') != -1) {
         console.log('save success');
-        // TODO: update project lists
-      }
+      } else if (result.search('cancel save') != -1) {
+        console.log('cancel save');
+      } else if (result.search('can not get project id') != -1) {
+        console.log('can not get project id');
+      } else if (result.search('cancel replace') != -1) {
+        console.log('cancel replace');
+      } 
     });
   }
 

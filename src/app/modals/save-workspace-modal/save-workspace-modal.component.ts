@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '@services/api.service';
 import { IRequestProject } from 'app/model/create-project-inteface';
+import { GetprojectIDData, IGetprojectID } from 'app/model/get-project-id-interface';
 import { SaveExistsWorkspaceModalComponent } from '../save-exists-workspace-modal/save-exists-workspace-modal.component';
 import { SaveSuccessWorkspaceModalComponent } from '../save-success-workspace-modal/save-success-workspace-modal.component';
 
@@ -15,14 +16,16 @@ export class SaveWorkspaceModalComponent implements OnInit {
     private activeModal: NgbActiveModal,
     private apiService: ApiService,
     private ngModalService: NgbModal
-  ) {}
-  projectId: string | undefined;
+  ) { }
   data: IRequestProject | undefined;
-  ngOnInit(): void {}
+  projectDataApi: IGetprojectID | undefined;
+  projectData: GetprojectIDData | undefined;
+
+  ngOnInit(): void { }
 
   cancel() {
-    console.log('modal cancel!');
-    this.activeModal.close('cancel');
+    console.log('cancel save');
+    this.activeModal.close('cancel save');
   }
 
   projectName: string = '';
@@ -85,18 +88,40 @@ export class SaveWorkspaceModalComponent implements OnInit {
         }
       },
       (errorMsg) => {
-        console.log('case project is exist ');
-        const modalRef = this.ngModalService.open(
-          SaveExistsWorkspaceModalComponent,
-          {
-            size: 'sm',
-            centered: true,
-            backdrop: 'static',
+        // this.projectName = 'xxx';
+        this.apiService.getProjectIDAPI(this.projectName).subscribe((data: IGetprojectID) => {
+          this.projectDataApi = data;
+          if (this.projectDataApi.resultCode === '20000') {
+            this.projectData = this.projectDataApi?.resultData;
+            console.log('dynamicProjectIDMockup:', this.projectData?.project_id);
+            console.log('case project is exist');
+            const modalRef = this.ngModalService.open(
+              SaveExistsWorkspaceModalComponent,
+              {
+                size: 'sm',
+                centered: true,
+                backdrop: 'static',
+              }
+            );
+            modalRef.componentInstance.data = this.data;
+            modalRef.componentInstance.projectID = this.projectData?.project_id;
+            modalRef.componentInstance.projectName = this.data!.project_name;
+            modalRef.result.then((result: any) => {
+              if (result.search('replace') != -1) {
+                this.activeModal.close('projectIsExist');
+                // TODO: update project lists
+              } else if (result.search('cancel replace') != -1) {
+                this.activeModal.close('cancel replace');
+              }
+            });
           }
-        );
-        modalRef.componentInstance.data = this.data;
-        this.activeModal.close('projectIsExist');
+          console.log('can not get ProjectIDAPI');
+        },
+          (errorMsg) => {
+            this.activeModal.close('can not get project id');
+          });
       }
     );
   }
+
 }

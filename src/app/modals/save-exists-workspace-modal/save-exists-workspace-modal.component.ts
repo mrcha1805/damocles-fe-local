@@ -13,18 +13,21 @@ export class SaveExistsWorkspaceModalComponent implements OnInit {
     private apiService: ApiService,
     private activeModal: NgbActiveModal
   ) {}
+  projectID!: string;
   projectName: string | undefined;
   data: IRequestProject | undefined;
   ngOnInit(): void {}
   cancelExists() {
-    console.log('modal cancel exists!');
-    this.activeModal.close('cancel exists');
+    console.log('cancel replace');
+    this.activeModal.close('cancel replace');
   }
 
   replace() {
-    console.log('modal replace!');
+    console.log('replace');
     // TODO: call api delete project
-    this.apiService.replaceSaveProjectAPI(this.data, '1').subscribe((data) => {
+    console.log('projectID: ', this.projectID);
+    this.apiService.replaceSaveProjectAPI(this.data, this.projectID).subscribe((data) => {
+      console.log('projectID: ', this.projectID);
       if (data.resultCode === '20100') {
         console.log('replace project ');
         this.activeModal.close('replace');

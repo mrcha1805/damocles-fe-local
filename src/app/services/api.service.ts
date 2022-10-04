@@ -17,6 +17,7 @@ import { ICriterion } from 'app/model/criterion-interface';
 
 import { ILocation } from 'app/model/location-interface';
 import { environment } from '@environments/environment';
+import { IGetprojectID } from 'app/model/get-project-id-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -175,6 +176,27 @@ export class ApiService {
         })
       );
   }
+
+    //Get ProjectID
+    dynamicProjectIDMockup(name: string): Observable<HttpResponse<IGetprojectID>> {
+      return this.http.get<IGetprojectID>('assets/data/get-project-id-mockup.json', {
+        observe: 'response',
+      });
+    }
+    getProjectIDAPI(name: string): Observable<IGetprojectID> {
+      return this.http
+        .get<IGetprojectID>(this.endpoint + '/project?project_name=' + name, this.httpOption)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            console.log('error api:', error);
+            console.log(`HttpHeader status: ${error.status} ${error.statusText}`);
+            console.log(
+              `resultCode: ${error.error.resultCode}, resultDescription: ${error.error.resultDescription}, diagnosticMessage: ${error.error.diagnosticMessage}`
+            );
+            return throwError(error);
+          })
+        );
+    }
 
   replaceSaveProjectAPI(req: any, id: string): Observable<ISaveProject> {
     return this.http
