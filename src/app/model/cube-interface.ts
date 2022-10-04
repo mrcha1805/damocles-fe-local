@@ -51,9 +51,9 @@ interface Measures {
   'INSAsset.count': INSAssetcount2;
 }
 
-export interface IDataFilter{
-  feature: string,
-  sum: number
+export interface IDataFilter {
+  feature: string;
+  sum: number;
 }
 
 interface INSAssetcount2 {
@@ -87,8 +87,7 @@ interface TransformedQuery {
   filterDimensionsSingleValueEqual: FilterDimensionsSingleValueEqual;
 }
 
-interface FilterDimensionsSingleValueEqual {
-}
+interface FilterDimensionsSingleValueEqual {}
 
 interface GranularityHierarchies {
   year: string[];
@@ -131,7 +130,7 @@ export interface IQuery {
   order?: Order[];
   dimensions: string[];
   timezone?: string;
-  filters: any[];
+  filters: FilterData[];
   timeDimensions?: any[];
   queryType?: string;
 }
@@ -139,4 +138,10 @@ export interface IQuery {
 interface Order {
   id: string;
   desc: boolean;
+}
+
+export interface FilterData {
+  operator: string;
+  values: string[];
+  member: string;
 }

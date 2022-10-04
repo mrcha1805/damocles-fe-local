@@ -3,7 +3,8 @@
 <div fxLayout="column">
     <div fxLayout="row" class="grid-item viewport-100" fxFlex>
         <div fxLayout="column" fxFlex>
-            <div fxLayout="row" fxLayout.lt-md="column" fxLayout.lt-sm="column" fxLayout.xs="column" fxLayoutAlign="center stretch" fxFlex>
+            <div fxLayout="row" fxLayout.lt-md="column" fxLayout.lt-sm="column" fxLayout.xs="column"
+                fxLayoutAlign="center stretch" fxFlex>
                 <div fxFlex="30" fxLayout="column" fxLayout.sm="row" fxLayoutAlign="start start"
                     class="grid-item-layout box-left app-filter">
                     <div fxHide.lt-md class="w-100">
@@ -11,7 +12,8 @@
                     </div>
                     <div fxLayout="column" class="grid-item-layout app-filter w-100 pb-3" fxFlex>
                         <div fxLayout="column" class="grid-item-layout" fxLayoutAlign="start start" fxFlex>
-                            <app-filter [menu]="kpiGroup" [projectId]="projectId" [filterUser]= "cubeResponse"fxFill></app-filter>
+                            <app-filter [menu]="kpiGroup" [projectId]="projectId" [filterUser]="cubeResponse" fxFill>
+                            </app-filter>
                         </div>
                     </div>
                 </div>
@@ -67,7 +69,7 @@
                         fxLayoutAlign.lt-md="center center">
                         <div fxFlex="50" fxLayout="row" fxLayoutGap="20" fxLayoutAlign="start end"
                             class="grid-item-layout">
-                            <button class="btn btn-calculate font-24px-b">
+                            <button class="btn btn-calculate font-24px-b" (click)="calculate()">
                                 Calculate
                             </button>
                         </div>

@@ -26,6 +26,7 @@ import {
   LoadResponse,
   IResult,
   IDataFilter,
+  FilterData,
 } from 'app/model/cube-interface';
 interface IDataMapping {
   dataCode: string;
@@ -130,7 +131,6 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData();
     //this.getProjectTemplateApi();
     let productId = this.activatedRoute.snapshot.params.productId;
     if (productId) {
@@ -323,6 +323,9 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       }
     });
   }
+  calculate() {
+    this.loadData();
+  }
 
   save() {
     const modalRef = this.ngModalService.open(SaveWorkspaceModalComponent, {
@@ -340,7 +343,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         console.log('can not get project id');
       } else if (result.search('cancel replace') != -1) {
         console.log('cancel replace');
-      } 
+      }
     });
   }
 
@@ -510,7 +513,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         .cubeApi()
         .load(data.query)
         .then((resultSet: any) => {
-          console.log(`===load data query===: ${JSON.stringify(resultSet)}`);
+          //console.log(`===load data query===: ${JSON.stringify(resultSet)}`);
           // const resultData = resultSet.loadResponse.results[0].data;
           const resultData: IResult = resultSet.loadResponse.results[0];
           console.log(
@@ -530,14 +533,33 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           //     this.cubeResponse.push(responseItem);
           //   }
           // });
-          console.log(
-            `======cube response : ${JSON.stringify(this.cubeResponse)}`
-          );
-          this.mappingDataCode(this.cubeResponse);
+
+          // console.log(
+          //   `======cube response : ${JSON.stringify(this.cubeResponse)}`
+          // );
+          this.mappingDataCode(resultData);
         });
     });
   }
 
-  mappingDataCode(cubeResponseData: IDataFilter[]) {}
-  
+  mappingDataCode(resultData: IResult) {
+    // cubeResponseData: IDataFilter[],
+    let nameCubeList: any = resultData.query.filters.filter((e) => {
+      return e.member;
+    });
+    let count: any = Object.values(resultData.data[0]);
+    let nameCubeFormat: string = nameCubeList[0].member;
+    let nameCube = nameCubeFormat.split('.')[1];
+    console.log('cube name: ' + nameCube + ' count: ' + count);
+    let featureMap = this.dataMapping.filter((e) => {
+      return e.dataCube.toLowerCase() === nameCube.toLowerCase();
+    });
+    console.log(featureMap);
+    this.cubeResponse.push({
+      feature: featureMap[0].dataCode,
+      sum: Number(count),
+    });
+
+    console.log('cube response : ' + JSON.stringify(this.cubeResponse));
+  }
 }

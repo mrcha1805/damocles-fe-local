@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IDataFilter } from 'app/model/cube-interface';
 import { Featuregroup } from 'app/model/project-template-interface';
 
 @Component({
@@ -12,8 +13,7 @@ export class FilterComponent implements OnInit {
   menuIndex: string = '1';
   @Input() menu: Featuregroup[] | undefined;
   @Input() projectId: string | undefined;
-  @Input() filterUser: any[] | undefined;
-  
+  @Input() filterUser: IDataFilter[] | undefined;
 
   ngOnInit(): void {
     this.menuIndex = '1';

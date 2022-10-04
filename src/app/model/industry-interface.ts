@@ -17,4 +17,5 @@ export interface Product {
   product_name: string;
   isSelected: boolean | false;
   product_description: string;
+  cube_name: string;
 }

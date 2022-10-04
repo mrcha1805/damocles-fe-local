@@ -9,6 +9,7 @@ import { map, startWith } from 'rxjs/operators';
 import { ApiService } from '@services/api.service';
 import { ICriterionData } from 'app/model/criterion-interface';
 import { remove } from 'lodash';
+import { IDataFilter } from 'app/model/cube-interface';
 
 @Component({
   selector: 'app-filter-item',
@@ -25,7 +26,7 @@ export class FilterItemComponent implements OnInit {
   @Input() subMenu: SubFeature[] | undefined;
   @Input() projectId: string | undefined;
   @Input() featureGroupId: string | undefined;
-  @Input() filterUser: any[] | undefined;
+  @Input() filterUser: IDataFilter[] | undefined;
 
   slider1: Options = {
     floor: 0.0,
@@ -35,7 +36,8 @@ export class FilterItemComponent implements OnInit {
   };
 
   constructor(private apiService: ApiService) {}
-
+  // userCount: number = 0;
+  // userFormat: string | undefined;
   ngOnInit(): void {
     this.displayCriterionEmpty = true;
     this.criterionApiLoad = true;
@@ -43,8 +45,10 @@ export class FilterItemComponent implements OnInit {
       startWith(''),
       map((value) => this._filter(value))
     );
+    // this.userCount = 0;
+    // this.userFormat = this.userCount + ' user';
     this.loadCriterion();
-    this.mapFilterUser();
+    //this.mapFilterUser();
   }
 
   // show data select
@@ -70,7 +74,6 @@ export class FilterItemComponent implements OnInit {
   async setDefaultSelected() {
     console.log('test', this.options.length);
     await this.subMenu?.forEach((e) => {
-
       e.search = '';
       e.itemList = [];
       e.tagSelect = [];
@@ -180,25 +183,42 @@ export class FilterItemComponent implements OnInit {
     this.setDefaultSelected();
   }
 
-  dataFilterUser:any = [];
-  mapFilterUser(){
-    
-    this.subMenu?.forEach(e=>{
-      let sumUser:string = '0 users';
-      this.filterUser?.forEach(f=>{
-        if(e.feature_name.includes(f.feature)){
-          
-          if(!f.sum || f.sum == 0){
-            sumUser = '0 users'
-          }
-          else{
-            sumUser = `${f.sum} user`
+  dataFilterUser: any = [];
+  mapFilterUser() {
+    this.subMenu?.forEach((e) => {
+      let sumUser: string = '0 users';
+      this.filterUser?.forEach((f) => {
+        if (e.feature_name.includes(f.feature)) {
+          if (!f.sum || f.sum == 0) {
+            sumUser = '0 users';
+          } else {
+            sumUser = `${f.sum} user`;
           }
         }
       });
       this.dataFilterUser.push(sumUser);
       e.filterUser11 = sumUser;
     });
-    console.log(`=======sub menu ${JSON.stringify(this.subMenu)} `)
+    console.log(`=======sub menu ${JSON.stringify(this.subMenu)} `);
+  }
+  updateUser(str: string) {
+    let nameDisplay: string | undefined;
+    if (this.filterUser && this.filterUser?.length > 0) {
+      let n = this.filterUser.filter((e) => {
+        return e.feature === str;
+      });
+      if (n.length > 0) {
+        if (n[0].sum > 1) {
+          nameDisplay = n[0].sum + ' users';
+        } else {
+          nameDisplay = n[0].sum + ' user';
+        }
+      } else {
+        nameDisplay = '0 user';
+      }
+    } else {
+      nameDisplay = '0 user';
+    }
+    return nameDisplay;
   }
 }
