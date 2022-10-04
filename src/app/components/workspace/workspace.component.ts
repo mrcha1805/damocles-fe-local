@@ -534,4 +534,5 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   mappingDataCode(cubeResponseData: IDataFilter[]) {}
+  
 }
