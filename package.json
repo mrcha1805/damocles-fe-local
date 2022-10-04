@@ -26,6 +26,8 @@
     "@angular/platform-browser": "~12.1.0-",
     "@angular/platform-browser-dynamic": "~12.1.0-",
     "@angular/router": "~12.1.0-",
+    "@cubejs-client/core": "^0.31.0",
+    "@cubejs-client/ngx": "^0.31.0",
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@popperjs/core": "^2.11.6",
     "@types/lodash": "^4.14.184",
