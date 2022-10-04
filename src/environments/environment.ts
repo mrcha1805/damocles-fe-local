@@ -8,7 +8,7 @@ export const environment = {
     clientId: 'wO6kzH+uR2FMCbco8D4MACn6EJ1sRRFag7vkkVSBV+9CkFtdFVEZaA==',
     clientSecret: 'clientSecret',
     redirectUri: 'http://104.43.115.28:23030/home',
-    beEndpoint: 'http://104.43.115.28:23001/api/v1',
+    beEndpoint: 'http://104.43.115.28:23000/api/v1',
   },
   DigitalCo: {
     endpointApi: 'https://iot-authv3.ais.co.th',
