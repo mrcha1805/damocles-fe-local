@@ -104,7 +104,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           this.projectNameDisplay = this.projectData?.project_name;
           this.industryNameDisplay = this.projectData?.industry_name;
           this.productNameDiaply = this.projectData?.product_name;
-          console.log(`project Data: ${JSON.stringify(this.projectData)}`);
+          //console.log(`project Data: ${JSON.stringify(this.projectData)}`);
           this.setSelectProjectFeature();
           this.spinnerService.hide();
         }

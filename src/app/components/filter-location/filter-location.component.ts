@@ -9,6 +9,7 @@ import {
   ILocationData,
   ILocationDataSelected,
 } from 'app/model/location-interface';
+import { idLocale } from 'ngx-bootstrap';
 
 export interface Tag {
   name: string;
@@ -59,7 +60,7 @@ export class FilterLocationComponent implements OnInit {
           });
         });
         this.locationApiData = api;
-        console.log(this.locationApiData);
+        // console.log(this.locationApiData);
       }
     });
   }
@@ -75,6 +76,15 @@ export class FilterLocationComponent implements OnInit {
     this.currentSelectProvince = province;
     console.log('select province: ' + province.province_name);
   }
+
+  // removeProvinceData(province: ILocationData) {
+  //   let arr: ILocationDataSelected[] = [];
+
+  //   for(let i = 0; i< this.proviceDataSelect.length; i++){
+
+  //   }
+  //   return arr;
+  // }
   selectDistrict(province: ILocationData, district: IDistrict) {
     console.log(
       'select district: ' +
@@ -84,17 +94,150 @@ export class FilterLocationComponent implements OnInit {
         ' province: ' +
         province.province_name
     );
-    if (district.selected) {
-      const pr: ILocationDataSelected = {
-        province_id: province.province_id,
-        province_id_name: province.province_id_name,
-        province_name: province.province_name,
-        district: [],
-      };
-      pr.district.push(district);
-      pr.province_tag = province.province_name + ', ' + district.district_name;
-      this.proviceDataSelect.push(pr);
-      console.log('list: ' + JSON.stringify(this.proviceDataSelect));
+    if (district.district_name === 'All') {
+      this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
+        return e.province_name !== province.province_name;
+      });
+      console.log('data :' + JSON.stringify(this.proviceDataSelect));
+
+      if (district.selected) {
+        this.locationApiData
+          .filter((e) => {
+            return e.province_name === province.province_name;
+          })
+          .filter((f) => {
+            f.district.map((s) => {
+              return (s.selected = district.selected);
+            });
+          });
+
+        const pr: ILocationDataSelected = {
+          province_id: province.province_id,
+          province_id_name: province.province_id_name,
+          province_name: province.province_name,
+          district: [],
+        };
+
+        pr.province_tag =
+          province.province_name + ', ' + district.district_name;
+        pr.district.push(...province.district);
+        this.proviceDataSelect.push(pr);
+        console.log('list: ' + JSON.stringify(this.proviceDataSelect));
+      } else {
+        // case uncheck
+        this.locationApiData
+          .filter((e) => {
+            return e.province_name === province.province_name;
+          })
+          .filter((f) => {
+            f.district.map((s) => {
+              return (s.selected = district.selected);
+            });
+          });
+
+        let rmIndex = this.proviceDataSelect.findIndex(
+          (e) => e.province_name === province.province_name
+        );
+
+        this.proviceDataSelect.splice(rmIndex, 1);
+        console.log(
+          'province data select: ' + JSON.stringify(this.proviceDataSelect)
+        );
+      }
+    } else {
+      if (district.selected) {
+        //check mode all
+        const districtCount: number = province.district.length;
+        const districtSelectCount: number = province.district.filter(
+          (e) => e.selected === true
+        ).length;
+
+        if (districtSelectCount === districtCount - 1) {
+          console.log('reset to mode all');
+          this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
+            return e.province_name !== province.province_name;
+          });
+
+          province.district[0].selected = true;
+          console.log(province);
+          console.log(this.proviceDataSelect);
+          const pr: ILocationDataSelected = {
+            province_id: province.province_id,
+            province_id_name: province.province_id_name,
+            province_name: province.province_name,
+            district: [],
+          };
+          pr.district.push(...province.district);
+          pr.province_tag = province.province_name + ', All';
+          this.proviceDataSelect.push(pr);
+        } else {
+          const pr: ILocationDataSelected = {
+            province_id: province.province_id,
+            province_id_name: province.province_id_name,
+            province_name: province.province_name,
+            district: [],
+          };
+          pr.district.push(district);
+          pr.province_tag =
+            province.province_name + ', ' + district.district_name;
+          this.proviceDataSelect.push(pr);
+          console.log('list: ' + JSON.stringify(this.proviceDataSelect));
+        }
+      } else {
+        //check uncheck case all
+        let searchCheckModeAll = province.province_name + ', All';
+        let prm: ILocationDataSelected[] = this.proviceDataSelect.filter(
+          (e) => {
+            return e.province_tag === searchCheckModeAll;
+          }
+        );
+        if (prm.length > 0) {
+          //Found mode all
+          console.log('Found: ' + JSON.stringify(prm));
+          console.log('metadata: ' + JSON.stringify(this.proviceDataSelect));
+          this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
+            return e.province_tag !== searchCheckModeAll;
+          });
+          prm.forEach((p) => {
+            p.district.forEach((r) => {
+              if (r.district_name === 'All') {
+                r.selected = false;
+              }
+            });
+          });
+          let dsList: IDistrict[] = [];
+          prm.forEach((e) => {
+            dsList = e.district.filter((j) => {
+              return j.district_name != 'All' && j.selected != false;
+            });
+          });
+          console.log(dsList);
+          if (dsList.length > 0) {
+            for (let item of dsList) {
+              const pr: ILocationDataSelected = {
+                province_id: province.province_id,
+                province_id_name: province.province_id_name,
+                province_name: province.province_name,
+                district: [],
+              };
+              pr.district.push(item);
+              pr.province_tag =
+                province.province_name + ', ' + item.district_name;
+              this.proviceDataSelect.push(pr);
+            }
+          }
+
+          console.log('complete: ' + JSON.stringify(this.proviceDataSelect));
+        } else {
+          //normal uncheck
+          let searchUncheck =
+            province.province_name + ', ' + district.district_name;
+          this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
+            return e.province_tag !== searchUncheck;
+          });
+          console.log(this.proviceDataSelect);
+        }
+      }
     }
   }
   removeTagProvinceSelect(rm: ILocationData) {
