@@ -294,14 +294,19 @@ export class AuthService {
         (val) => {
           console.log('POST call successful value returned in body', val);
           this.oauthService.logOut(true);
-          localStorage.removeItem('userProfile');
+          // localStorage.removeItem('userProfile');
+          localStorage.removeItem('userId');
+          localStorage.removeItem('email');
+          localStorage.removeItem('firstName');
+          localStorage.removeItem('lastName');
         },
         (response) => {
           console.log('POST call in error', response);
         },
         () => {
           console.log('The POST observable is now completed.');
-          this.router.navigateByUrl('/home');
+          // this.router.navigateByUrl('/home');
+          this.login();
         }
       );
     });
