@@ -4,10 +4,10 @@ export const environment = {
   production: false,
   env: 'dev',
   authen: {
-    domain: 'https://stg-digital.ais.th/auth/v3.1',
+    domain: 'https://104.43.115.28:23020/auth/v3.1',
     clientId: 'wO6kzH+uR2FMCbco8D4MACn6EJ1sRRFag7vkkVSBV+9CkFtdFVEZaA==',
     clientSecret: 'clientSecret',
-    redirectUri: 'https://stg-digital.ais.th/actionable-insight/home',
+    redirectUri: 'http://104.43.115.28:23030/home',
     beEndpoint: 'http://104.43.115.28:23001/api/v1',
   },
   DigitalCo: {
@@ -16,7 +16,7 @@ export const environment = {
     Parameters: {
       identityHeader: 'X-Digitalco-Id',
     },
-    endpointApiCube: 'http://localhost:4000/analytic/v1',
+    endpointApiCube: 'http://20.212.177.89:23000/analytic/v1',
   },
   Logger: {
     logLevel: NgxLoggerLevel.TRACE,

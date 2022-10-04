@@ -28,8 +28,8 @@ import {
   IDataFilter,
 } from 'app/model/cube-interface';
 interface IDataMapping {
-  dataCode:string,
-  dataCube:string
+  dataCode: string;
+  dataCube: string;
 }
 @Component({
   selector: 'app-workspace',
@@ -65,50 +65,50 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     },
   ];
 
-  dataMapping:IDataMapping[] = [
+  dataMapping: IDataMapping[] = [
     {
-      dataCode:'Age',
-      dataCube:'ageGroup'
+      dataCode: 'Age',
+      dataCube: 'ageGroup',
     },
     {
-      dataCode:'Gender',
-      dataCube:'gender'
+      dataCode: 'Gender',
+      dataCube: 'gender',
     },
     {
-      dataCode:'Occupation',
-      dataCube:'job'
+      dataCode: 'Occupation',
+      dataCube: 'job',
     },
     {
-      dataCode:'Work Location',
-      dataCube:'workLocationDistrict,workLocationProvince'
+      dataCode: 'Work Location',
+      dataCube: 'workLocationDistrict,workLocationProvince',
     },
     {
-      dataCode:'Life stage',
-      dataCube:'lifeStage'
+      dataCode: 'Life stage',
+      dataCube: 'lifeStage',
     },
     {
-      dataCode:'Net Worth',
-      dataCube:'affluencyScore'
+      dataCode: 'Net Worth',
+      dataCube: 'affluencyScore',
     },
     {
-      dataCode:'Digital Spending Score',
-      dataCube:'digitalActivityScore'
+      dataCode: 'Digital Spending Score',
+      dataCube: 'digitalActivityScore',
     },
     {
-      dataCode:'Propensity to find a job',
-      dataCube:'jobSearchScore'
+      dataCode: 'Propensity to find a job',
+      dataCube: 'jobSearchScore',
     },
     {
-      dataCode:'Propensity to buy a car',
-      dataCube:'carScore'
+      dataCode: 'Propensity to buy a car',
+      dataCube: 'carScore',
     },
     {
-      dataCode:'Propensity to buy a house',
-      dataCube:'homeScore'
+      dataCode: 'Propensity to buy a house',
+      dataCube: 'homeScore',
     },
     {
-      dataCode:'Nationality',
-      dataCube:'nationality'
+      dataCode: 'Nationality',
+      dataCube: 'nationality',
     },
   ];
 
@@ -135,6 +135,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     let productId = this.activatedRoute.snapshot.params.productId;
     if (productId) {
       this.getProjectTemplateByProductApi(productId);
+      //this.getProjectTemplateApi();
     }
   }
 
@@ -143,13 +144,22 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   projectId: string | undefined;
   projectData: ProjectTemplateData | undefined;
   getProjectTemplateApi() {
+    this.spinnerService.show();
     this.apiService.dynamicProjectTemplateMockup().subscribe((data: any) => {
       this.projectDataApi = data.body;
 
-      this.kpiGroup = this.projectDataApi?.resultData.feature_group;
-      this.projectData = this.projectDataApi?.resultData;
-
-      console.log(`project Data: ${this.projectData}`);
+      if (this.projectDataApi?.resultCode === '20000') {
+        this.kpiGroup = this.projectDataApi?.resultData.feature_group;
+        console.log(`=====kpiGroup: ${JSON.stringify(this.kpiGroup)}`);
+        this.projectId = this.projectDataApi.resultData.project_id;
+        this.projectData = this.projectDataApi?.resultData;
+        this.projectNameDisplay = this.projectData?.project_name;
+        this.industryNameDisplay = this.projectData?.industry_name;
+        this.productNameDiaply = this.projectData?.product_name;
+        //console.log(`project Data: ${JSON.stringify(this.projectData)}`);
+        this.setSelectProjectFeature();
+        this.spinnerService.hide();
+      }
     });
   }
 
@@ -523,10 +533,5 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     });
   }
 
-  mappingDataCode(cubeResponseData:IDataFilter[]){
-    
-
-  }
+  mappingDataCode(cubeResponseData: IDataFilter[]) {}
 }
-
-
