@@ -12,6 +12,8 @@ export class FilterComponent implements OnInit {
   menuIndex: string = '1';
   @Input() menu: Featuregroup[] | undefined;
   @Input() projectId: string | undefined;
+  @Input() filterUser: any[] | undefined;
+  
 
   ngOnInit(): void {
     this.menuIndex = '1';

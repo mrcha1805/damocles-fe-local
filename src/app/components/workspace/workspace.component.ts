@@ -21,7 +21,16 @@ import {
   ProjectTemplateData,
 } from 'app/model/project-template-interface';
 import { Feature, IRequestProject } from 'app/model/create-project-inteface';
-import { IQuery, LoadResponse, Result } from 'app/model/cube-interface';
+import {
+  IQuery,
+  LoadResponse,
+  IResult,
+  IDataFilter,
+} from 'app/model/cube-interface';
+interface IDataMapping {
+  dataCode:string,
+  dataCube:string
+}
 @Component({
   selector: 'app-workspace',
   templateUrl: './workspace.component.html',
@@ -56,7 +65,54 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     },
   ];
 
-  cubeResponse: any = [];
+  dataMapping:IDataMapping[] = [
+    {
+      dataCode:'Age',
+      dataCube:'ageGroup'
+    },
+    {
+      dataCode:'Gender',
+      dataCube:'gender'
+    },
+    {
+      dataCode:'Occupation',
+      dataCube:'job'
+    },
+    {
+      dataCode:'Work Location',
+      dataCube:'workLocationDistrict,workLocationProvince'
+    },
+    {
+      dataCode:'Life stage',
+      dataCube:'lifeStage'
+    },
+    {
+      dataCode:'Net Worth',
+      dataCube:'affluencyScore'
+    },
+    {
+      dataCode:'Digital Spending Score',
+      dataCube:'digitalActivityScore'
+    },
+    {
+      dataCode:'Propensity to find a job',
+      dataCube:'jobSearchScore'
+    },
+    {
+      dataCode:'Propensity to buy a car',
+      dataCube:'carScore'
+    },
+    {
+      dataCode:'Propensity to buy a house',
+      dataCube:'homeScore'
+    },
+    {
+      dataCode:'Nationality',
+      dataCube:'nationality'
+    },
+  ];
+
+  cubeResponse: IDataFilter[] = [];
 
   constructor(
     private router: Router,
@@ -74,6 +130,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    this.loadData();
     //this.getProjectTemplateApi();
     let productId = this.activatedRoute.snapshot.params.productId;
     if (productId) {
@@ -104,6 +161,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         this.projectDataApi = data;
         if (this.projectDataApi?.resultCode === '20000') {
           this.kpiGroup = this.projectDataApi?.resultData.feature_group;
+          console.log(`=====kpiGroup: ${JSON.stringify(this.kpiGroup)}`);
           this.projectId = this.projectDataApi.resultData.project_id;
           this.projectData = this.projectDataApi?.resultData;
           this.projectNameDisplay = this.projectData?.project_name;
@@ -276,7 +334,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       feature: 'gender',
       query: {
         measures: ['INSHealth.count'],
-        dimensions: ['INSHealth.gender'],
+        // dimensions: ['INSHealth.gender'],
         filters: [
           {
             member: 'INSHealth.gender',
@@ -290,7 +348,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       feature: 'ageGroup',
       query: {
         measures: ['INSHealth.count'],
-        dimensions: ['INSHealth.ageGroup'],
+        // dimensions: ['INSHealth.ageGroup'],
         filters: [
           {
             member: 'INSHealth.ageGroup',
@@ -304,7 +362,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       feature: 'lifeStage',
       query: {
         measures: ['INSHealth.count'],
-        dimensions: ['INSHealth.lifeStage'],
+        // dimensions: ['INSHealth.lifeStage'],
         filters: [
           {
             member: 'INSHealth.lifeStage',
@@ -430,40 +488,45 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   loadData() {
     var featureName: any = [];
-    this.filterCube.forEach(
-      (data: any, index: any) => {
-        // cubeResponse = { feature: data.feature };
-        featureName.push(data.feature);
-        this.cubeService
-          .cubeApi()
-          .load(data.query)
-          .then((resultSet: any) => {
-            // console.log(
-            //   `===load data query===: ${JSON.stringify(resultSet.loadResponse)}`
-            // );
-            const resultData = resultSet.loadResponse.results[0].data;
-            console.log(
-              `resultData response : ${JSON.stringify(resultData)}`
-            );
+    this.filterCube.forEach((data: any, index: any) => {
+      // cubeResponse = { feature: data.feature };
+      featureName.push(data.feature);
+      this.cubeService
+        .cubeApi()
+        .load(data.query)
+        .then((resultSet: any) => {
+          console.log(`===load data query===: ${JSON.stringify(resultSet)}`);
+          // const resultData = resultSet.loadResponse.results[0].data;
+          const resultData: IResult = resultSet.loadResponse.results[0];
+          console.log(
+            `=====resultData response : ${JSON.stringify(resultData)}`
+          );
+          console.log(
+            `============count :${Object.values(resultData.data[0])}`
+          );
 
-            featureName.forEach((fname: any, index: any) => {
-              let name = Object.keys(resultData[0]);
-              console.log(name[0].includes(fname));
-              if (name[0].includes(fname)) {
-                // console.log(`featureName : ${JSON.stringify(fname)}`);
-                let responseItem = {
-                  feature: fname,
-                  result: resultData,
-                };
-                this.cubeResponse.push(responseItem);
-              }
-            });
-            console.log(`cube response : ${JSON.stringify(this.cubeResponse)}`);
-          });
-      },
-      (err: any) => {
-        console.log(JSON.stringify(err));
-      }
-    );
+          // featureName.forEach((fname: any, index: any) => {
+          //   if (resultData.query.filters[0].member.includes(fname)) {
+          //     let sum = Object.values(resultData.data[0]);
+          //     let responseItem: IDataFilter = {
+          //       feature: fname,
+          //       sum: parseInt(sum[0]),
+          //     };
+          //     this.cubeResponse.push(responseItem);
+          //   }
+          // });
+          console.log(
+            `======cube response : ${JSON.stringify(this.cubeResponse)}`
+          );
+          this.mappingDataCode(this.cubeResponse);
+        });
+    });
+  }
+
+  mappingDataCode(cubeResponseData:IDataFilter[]){
+    
+
   }
 }
+
+

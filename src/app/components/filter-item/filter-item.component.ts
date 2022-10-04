@@ -25,6 +25,8 @@ export class FilterItemComponent implements OnInit {
   @Input() subMenu: SubFeature[] | undefined;
   @Input() projectId: string | undefined;
   @Input() featureGroupId: string | undefined;
+  @Input() filterUser: any[] | undefined;
+
   slider1: Options = {
     floor: 0.0,
     ceil: 1.0,
@@ -42,6 +44,7 @@ export class FilterItemComponent implements OnInit {
       map((value) => this._filter(value))
     );
     this.loadCriterion();
+    this.mapFilterUser();
   }
   private _filter(value: any): any {
     const filterValue = value.toLowerCase();
@@ -61,6 +64,7 @@ export class FilterItemComponent implements OnInit {
   async setDefaultSelected() {
     console.log('test', this.options.length);
     await this.subMenu?.forEach((e) => {
+
       e.search = '';
       e.itemList = [];
       e.tagSelect = [];
@@ -168,5 +172,27 @@ export class FilterItemComponent implements OnInit {
       }
     }
     this.setDefaultSelected();
+  }
+
+  dataFilterUser:any = [];
+  mapFilterUser(){
+    
+    this.subMenu?.forEach(e=>{
+      let sumUser:string = '0 users';
+      this.filterUser?.forEach(f=>{
+        if(e.feature_name.includes(f.feature)){
+          
+          if(!f.sum || f.sum == 0){
+            sumUser = '0 users'
+          }
+          else{
+            sumUser = `${f.sum} user`
+          }
+        }
+      });
+      this.dataFilterUser.push(sumUser);
+      e.filterUser11 = sumUser;
+    });
+    console.log(`=======sub menu ${JSON.stringify(this.subMenu)} `)
   }
 }

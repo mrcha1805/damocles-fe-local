@@ -16,7 +16,7 @@ export const environment = {
     Parameters: {
       identityHeader: 'X-Digitalco-Id'
     },
-    endpointApiCube: 'http://localhost:4000/analytic/v1'
+    endpointApiCube: 'http://20.212.177.89:23000/analytic/v1'
   },
   Logger: {
     logLevel: NgxLoggerLevel.TRACE,

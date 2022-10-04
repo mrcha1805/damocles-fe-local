@@ -22,6 +22,7 @@ export interface Featuregroup {
   feature_group_id: string;
   subFeature: SubFeature[];
   criterionData: ICriterionData;
+  filterUser?:string;
 }
 
 export interface SubFeature {
@@ -39,6 +40,8 @@ export interface SubFeature {
   tagSelect: any[];
   range_value: number[];
   selected: boolean | false;
+  filterUser?:any[];
+  filterUser11?:string;
 }
 
 export interface Tag {

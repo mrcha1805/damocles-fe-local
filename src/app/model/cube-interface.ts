@@ -1,19 +1,19 @@
 export interface ICubeResponse {
   loadResponse: LoadResponse;
   queryType: string;
-  loadResponses: Result[];
+  loadResponses: IResult[];
   options: FilterDimensionsSingleValueEqual;
   backwardCompatibleData: any[];
 }
 
 export interface LoadResponse {
   queryType: string;
-  results: Result[];
+  results: IResult[];
   pivotQuery: IQuery;
   slowQuery: boolean;
 }
 
-export interface Result {
+export interface IResult {
   query: IQuery;
   data: Datum[];
   lastRefreshTime: string;
@@ -49,6 +49,11 @@ interface INSAssetageGroup {
 
 interface Measures {
   'INSAsset.count': INSAssetcount2;
+}
+
+export interface IDataFilter{
+  feature: string,
+  sum: number
 }
 
 interface INSAssetcount2 {
