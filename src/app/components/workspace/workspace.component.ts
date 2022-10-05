@@ -399,6 +399,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       if (result.search('clear all') != -1) {
         console.log('clear all');
         // TODO: update project lists
+        this.funnelData = [];
       }
     });
   }
