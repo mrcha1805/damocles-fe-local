@@ -657,43 +657,12 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         {
           member: 'INSHealth.affluencyScore',
           operator: 'gte',
-          values: ['0.03'],
-        },
-      ],
-    },
-    {
-      measures: ['INSHealth.count'],
-      dimensions: ['INSHealth.affluencyScore'],
-      filters: [
-        {
-          member: 'INSHealth.gender',
-          operator: 'equals',
-          values: ['Female', 'Male'],
-        },
-        {
-          member: 'INSHealth.ageGroup',
-          operator: 'equals',
-          values: ['23-25', '26-30', '31-35'],
-        },
-        {
-          member: 'INSHealth.lifeStage',
-          operator: 'equals',
-          values: ['Student', 'Growing  Family', 'Supporting Family'],
-        },
-        {
-          member: 'INSHealth.job',
-          operator: 'notEquals',
-          values: ['Rider'],
-        },
-        {
-          member: 'INSHealth.affluencyScore',
-          operator: 'gte',
-          values: ['0.03'],
+          values: ['0.05'],
         },
         {
           member: 'INSHealth.affluencyScore',
           operator: 'lte',
-          values: ['0.08'],
+          values: ['0.1'],
         },
       ],
     },

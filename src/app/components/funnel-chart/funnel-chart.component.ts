@@ -80,9 +80,9 @@ export class FunnelChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.funnelList?.sort((a, b) => {
-      return a.sum - b.sum;
-  });
+    //   this.funnelList?.sort((a, b) => {
+    //     return a.sum - b.sum;
+    // });
   }
 
   drop(event: CdkDragDrop<string[]>) {
