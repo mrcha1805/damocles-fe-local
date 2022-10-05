@@ -104,7 +104,9 @@ export class FunnelChartComponent implements OnInit {
       //   this.funnelList![position].sum.replace(/,/g, '')
       // );
       firstChart =this.funnelList![position].sum;
-      calFirstChart = (firstChart / firstChart) * 400;
+      calFirstChart = (firstChart / firstChart) * 500;
+
+      console.log('calFirstChart', calFirstChart , 'name:', fn.feature);
 
       this.style = {
         width: calFirstChart + 'px',
@@ -118,7 +120,8 @@ export class FunnelChartComponent implements OnInit {
       // chart = parseFloat(this.funnelList[position-1].sum.replace(/,/g, ''));
       // chart = parseFloat(this.funnelList![0].sum.replace(/,/g, ''));
       chart = this.funnelList![0].sum;
-      const finalWidth = (firstChart / chart) * 400;
+      const finalWidth = (firstChart / chart) * 900;
+      console.log('finalWidth', finalWidth , 'name:', fn.feature);
 
       this.style = {
         width: finalWidth + 'px',

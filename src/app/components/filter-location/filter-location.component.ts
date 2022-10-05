@@ -27,7 +27,7 @@ export class FilterLocationComponent implements OnInit {
   @Input() District: District | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
   @Output() subLocationOutput: EventEmitter<SubFeature> = new EventEmitter();
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
 
   locationApiData: ILocationData[] = [];
   proviceDataSelect: ILocationDataSelected[] = [];
@@ -94,11 +94,11 @@ export class FilterLocationComponent implements OnInit {
   selectDistrict(province: ILocationData, district: IDistrict) {
     console.log(
       'select district: ' +
-        district.district_name +
-        ' select: ' +
-        district.selected +
-        ' province: ' +
-        province.province_name
+      district.district_name +
+      ' select: ' +
+      district.selected +
+      ' province: ' +
+      province.province_name
     );
     if (district.district_name === 'All') {
       this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
@@ -145,7 +145,7 @@ export class FilterLocationComponent implements OnInit {
           (e) => e.province_name === province.province_name
         );
 
-        this.proviceDataSelect.splice(rmIndex, 1);
+        this.proviceDataSelect.splice(rmIndex, 0);
         console.log(
           'province data select: ' + JSON.stringify(this.proviceDataSelect)
         );
@@ -285,15 +285,15 @@ export class FilterLocationComponent implements OnInit {
     console.log('remove tag: ' + JSON.stringify(rm));
     if (rm) {
       let dt: IDistrict = rm.district[0];
-      this.proviceDataSelect.forEach((e) => {
-        if (e.province_name === rm.province_name) {
-          e.district.forEach((d) => {
-            if (d === dt) {
-              d.selected = false;
-            }
-          });
-        }
-      });
+        this.proviceDataSelect.forEach((e) => {
+          if (e.province_name === rm.province_name) {
+            e.district.forEach((d) => {
+              if (d === dt) {
+                d.selected = false;
+              }
+            });
+          }
+        });
       console.log(this.locationApiData);
       this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
         return e != rm;

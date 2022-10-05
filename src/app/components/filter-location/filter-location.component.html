@@ -60,7 +60,7 @@
                     class="search-input font-14px" />
                 </div>
                 <span class="subHeader">{{subLocation?.feature_name!}}</span>
-                <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout">
+                <div fxLayout="row" fxLayoutAlign="start start" class="grid-item-layout mx-3">
                   <mat-selection-list *ngIf="searchText!.length === 0" #shoes [multiple]="false"
                     class="provinceList col">
                     <mat-list-option *ngFor="let pv of locationApiData" [value]="pv" class="col-province"
