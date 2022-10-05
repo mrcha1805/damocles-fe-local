@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { SubFeature } from 'app/model/project-template-interface';
+import { IDataFilter } from 'app/model/cube-interface';
 
 export interface Tag {
   name: string;
@@ -21,7 +22,10 @@ export class FilterSliderComponent implements OnInit {
   @Input() subSlider: SubFeature | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
   @Output() subSliderOutput: EventEmitter<SubFeature> = new EventEmitter();
-  constructor() {this.IsChecked = false;}
+  @Input() filterUser: IDataFilter[] | undefined;
+  constructor() {
+    this.IsChecked = false;
+  }
   IsChecked: boolean;
   style: object = {};
   lowValue: number = 0.0;
@@ -58,6 +62,26 @@ export class FilterSliderComponent implements OnInit {
     this.subSliderOutput.emit(this.subSlider);
   }
 
+  updateUser(str: string) {
+    let nameDisplay: string | undefined;
+    if (this.filterUser && this.filterUser?.length > 0) {
+      let n = this.filterUser.filter((e) => {
+        return e.feature === str;
+      });
+      if (n.length > 0) {
+        if (n[0].sum > 1) {
+          nameDisplay = n[0].sum + ' users';
+        } else {
+          nameDisplay = n[0].sum + ' user';
+        }
+      } else {
+        nameDisplay = '0 user';
+      }
+    } else {
+      nameDisplay = '0 user';
+    }
+    return nameDisplay;
+  }
   checkBoxUnknow($event: any) {
     console.log($event.checked);
     $event.source.focus();

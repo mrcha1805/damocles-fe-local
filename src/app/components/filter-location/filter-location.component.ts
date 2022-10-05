@@ -10,6 +10,7 @@ import {
   ILocationDataSelected,
 } from 'app/model/location-interface';
 import { idLocale } from 'ngx-bootstrap';
+import { IDataFilter } from 'app/model/cube-interface';
 
 export interface Tag {
   name: string;
@@ -25,9 +26,11 @@ export interface Tag {
 export class FilterLocationComponent implements OnInit {
   @Input() subLocation: SubFeature | undefined;
   @Input() District: District | undefined;
+  @Input() filterUser: IDataFilter[] | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
   @Output() subLocationOutput: EventEmitter<SubFeature> = new EventEmitter();
-  constructor(private apiService: ApiService) { }
+
+  constructor(private apiService: ApiService) {}
 
   locationApiData: ILocationData[] = [];
   proviceDataSelect: ILocationDataSelected[] = [];
@@ -65,6 +68,27 @@ export class FilterLocationComponent implements OnInit {
     });
   }
 
+  updateUser(str: string) {
+    let nameDisplay: string | undefined;
+    if (this.filterUser && this.filterUser?.length > 0) {
+      let n = this.filterUser.filter((e) => {
+        return e.feature === str;
+      });
+      if (n.length > 0) {
+        if (n[0].sum > 1) {
+          nameDisplay = n[0].sum + ' users';
+        } else {
+          nameDisplay = n[0].sum + ' user';
+        }
+      } else {
+        nameDisplay = '0 user';
+      }
+    } else {
+      nameDisplay = '0 user';
+    }
+    return nameDisplay;
+  }
+
   selectProvince(province: ILocationData) {
     this.districtDataDisplay = [];
     this.districtDataDisplay = province.district;
@@ -94,11 +118,11 @@ export class FilterLocationComponent implements OnInit {
   selectDistrict(province: ILocationData, district: IDistrict) {
     console.log(
       'select district: ' +
-      district.district_name +
-      ' select: ' +
-      district.selected +
-      ' province: ' +
-      province.province_name
+        district.district_name +
+        ' select: ' +
+        district.selected +
+        ' province: ' +
+        province.province_name
     );
     if (district.district_name === 'All') {
       this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
@@ -285,15 +309,15 @@ export class FilterLocationComponent implements OnInit {
     console.log('remove tag: ' + JSON.stringify(rm));
     if (rm) {
       let dt: IDistrict = rm.district[0];
-        this.proviceDataSelect.forEach((e) => {
-          if (e.province_name === rm.province_name) {
-            e.district.forEach((d) => {
-              if (d === dt) {
-                d.selected = false;
-              }
-            });
-          }
-        });
+      this.proviceDataSelect.forEach((e) => {
+        if (e.province_name === rm.province_name) {
+          e.district.forEach((d) => {
+            if (d === dt) {
+              d.selected = false;
+            }
+          });
+        }
+      });
       console.log(this.locationApiData);
       this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
         return e != rm;

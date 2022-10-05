@@ -278,26 +278,67 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           //data for cube filter
           let messures: string = s.cube_name + '.count';
           let featureName: string = s.cube_dimension;
-          let operatorCube: string = 'Is';
+          // let operatorCube: string = 'Is';
           let memberFormat: string = s.cube_name + '.' + s.cube_dimension;
 
           if (s.ui == 'dropdown') {
             if (s.operator == 'Is') {
-              operatorCube = 'equals';
+              filterCubeData = {
+                measures: [messures],
+                filters: [
+                  {
+                    member: memberFormat,
+                    operator: 'equals',
+                    values: s.tagSelect,
+                  },
+                ],
+              };
             } else {
-              operatorCube = 'not equals';
+              filterCubeData = {
+                measures: [messures],
+                filters: [
+                  {
+                    member: memberFormat,
+                    operator: 'not equals',
+                    values: s.tagSelect,
+                  },
+                ],
+              };
             }
-          } else if (s.ui == '')
+          } else if (s.ui == 'slider with unknown') {
             filterCubeData = {
               measures: [messures],
               filters: [
                 {
                   member: memberFormat,
-                  operator: operatorCube,
-                  values: s.tagSelect,
+                  operator: 'gte',
+                  values: ['-1'],
+                },
+                {
+                  member: memberFormat,
+                  operator: 'lte',
+                  values: [s.range_value[1].toString()],
                 },
               ],
             };
+          } else if (s.ui == 'slider') {
+            filterCubeData = {
+              measures: [messures],
+              filters: [
+                {
+                  member: memberFormat,
+                  operator: 'gte',
+                  values: [s.range_value[0].toString()],
+                },
+                {
+                  member: memberFormat,
+                  operator: 'lte',
+                  values: [s.range_value[1].toString()],
+                },
+              ],
+            };
+          }
+
           this.filterCubeObj.push({
             feature: featureName,
             query: filterCubeData,
