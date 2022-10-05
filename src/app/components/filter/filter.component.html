@@ -28,8 +28,9 @@
         <app-demographic></app-demographic>
       </div> -->
       <div class="appFilterItem">
-        <app-filter-item [subMenu]="item.subFeature" [projectId]="projectId" [featureGroupId]="item.feature_group_id"
-          [filterUser]="filterUser" (tagFilterSelectOutput)="dataOutput($event)">
+        <app-filter-item [subMenu]="item.subFeature" [projectId]="projectId" [productId]="productId"
+          [featureGroupId]="item.feature_group_id" [filterUser]="filterUser"
+          (tagFilterSelectOutput)="dataOutput($event)">
 
         </app-filter-item>
       </div>

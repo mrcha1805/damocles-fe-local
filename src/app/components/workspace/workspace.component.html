@@ -12,8 +12,9 @@
                     </div>
                     <div fxLayout="column" class="grid-item-layout app-filter w-100 pb-3" fxFlex>
                         <div fxLayout="column" class="grid-item-layout" fxLayoutAlign="start start" fxFlex>
-                            <app-filter [menu]="kpiGroup" [projectId]="projectId" [filterUser]="cubeResponse"
-                                (featureGroupOutput)="updateDataSelectFilter($event)" fxFill>
+                            <app-filter [menu]="kpiGroup" [projectId]="projectId" [productId]="productId"
+                                [filterUser]="cubeResponse" (featureGroupOutput)="updateDataSelectFilter($event)"
+                                fxFill>
                             </app-filter>
                         </div>
                     </div>
@@ -80,7 +81,8 @@
                             <button *ngIf="funnelData.length > 0" class="btn btn-calculate" (click)="calculate()">
                                 Calculate
                             </button>
-                            <button *ngIf="funnelData.length == 0" class="btn btn-calculate-disabled" (click)="calculate()">
+                            <button *ngIf="funnelData.length == 0" class="btn btn-calculate-disabled"
+                                (click)="calculate()">
                                 Calculate
                             </button>
                         </div>
@@ -95,7 +97,8 @@
                             <button *ngIf="funnelData.length > 0" class="btn btn-blue" (click)="save()">
                                 Save
                             </button>
-                            <button *ngIf="funnelData.length == 0" disabled class="btn btn-blue-disabled" (click)="save()">
+                            <button *ngIf="funnelData.length == 0" disabled class="btn btn-blue-disabled"
+                                (click)="save()">
                                 Save
                             </button>
                         </div>

@@ -13,6 +13,7 @@ export class FilterComponent implements OnInit {
   menuIndex: string = '1';
   @Input() menu: Featuregroup[] | undefined;
   @Input() projectId: string | undefined;
+  @Input() productId: string | undefined;
   @Input() filterUser: IDataFilter[] | undefined;
 
   @Output() featureGroupOutput: EventEmitter<Featuregroup[]> =

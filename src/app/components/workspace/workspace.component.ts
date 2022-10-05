@@ -143,16 +143,16 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     this.setOptionChartFunnel();
   }
-
+  productId: string | undefined;
   ngOnInit(): void {
     this.funnelData = [];
     this.UniqueCustomer = 0;
     // this.loadFunnelData();
     // this.loadData();
     //this.getProjectTemplateApi();
-    let productId = this.activatedRoute.snapshot.params.productId;
-    if (productId) {
-      this.getProjectTemplateByProductApi(productId);
+    this.productId = this.activatedRoute.snapshot.params.productId;
+    if (this.productId) {
+      this.getProjectTemplateByProductApi(this.productId);
       //this.getProjectTemplateApi();
     }
   }
@@ -287,18 +287,17 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
             } else {
               operatorCube = 'not equals';
             }
-          }
-
-          filterCubeData = {
-            measures: [messures],
-            filters: [
-              {
-                member: memberFormat,
-                operator: operatorCube,
-                values: s.tagSelect,
-              },
-            ],
-          };
+          } else if (s.ui == '')
+            filterCubeData = {
+              measures: [messures],
+              filters: [
+                {
+                  member: memberFormat,
+                  operator: operatorCube,
+                  values: s.tagSelect,
+                },
+              ],
+            };
           this.filterCubeObj.push({
             feature: featureName,
             query: filterCubeData,
@@ -817,7 +816,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           );
           this.UniqueCustomer = this.funnelData[this.funnelData.length - 1].sum;
         });
-      });
+    });
     console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData.length)}`);
   }
 

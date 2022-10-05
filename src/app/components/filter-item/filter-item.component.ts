@@ -24,6 +24,7 @@ export class FilterItemComponent implements OnInit {
   criterionApiLoad: boolean = true;
   @Input() subMenu: SubFeature[] | undefined;
   @Input() projectId: string | undefined;
+  @Input() productId: string | undefined;
   @Input() featureGroupId: string | undefined;
   @Input() filterUser: IDataFilter[] | undefined;
 
@@ -178,9 +179,10 @@ export class FilterItemComponent implements OnInit {
   loadCriterion() {
     if (this.criterionApiLoad) {
       this.apiService
-        .getCriterionAPI(this.projectId!, this.featureGroupId!)
+        .getCriterionAPI(this.productId!, this.featureGroupId!)
         .subscribe((data) => {
           if (data.resultCode === '20000') {
+            console.log(data);
             this.criterionApiLoad = false;
             this.checkDuplicateCriterion(data.resultData);
           }
