@@ -36,7 +36,7 @@
                 <!-- <ngx-slider [(value)]="subSlider?.range_value[0]!" [(highValue)]="subSlider?.range_value[1]!"
                 [options]="slider1"></ngx-slider> -->
                 <ngx-slider [(value)]="lowValue" [(highValue)]="highValue" [options]="sliderOption"
-                  (valueChange)="sliderChange()"></ngx-slider>
+                  (valueChange)="sliderChange()" (highValueChange)="sliderChange()"></ngx-slider>
               </div>
             </div>
             <div fxFlex fxLayoutAlign="start center" class="px-2 h-30">
