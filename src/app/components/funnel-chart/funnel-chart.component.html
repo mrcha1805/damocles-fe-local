@@ -22,8 +22,8 @@
                     <span class="popper-header">{{ item.feature }}</span>
  
                     <div class="row popper-detail" *ngFor="let data of item.data;let i = index;">
-                        <span class="col-4">{{data.item}}</span><br />
-                        <span class="col-8 text-start">{{percentage(data.value, item.sum)}}</span>
+                        <span fxFlex="40">{{data.item}}</span><br />
+                        <span fxFlex="60" class=" text-start">{{percentage(data.value, item.sum)}}</span>
                     </div>
                     <!-- <div class="row popper-detail">
                         <span class="col-4">35 - 44</span><br />

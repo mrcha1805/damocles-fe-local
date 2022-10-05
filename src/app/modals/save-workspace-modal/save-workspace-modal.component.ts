@@ -25,9 +25,7 @@ export class SaveWorkspaceModalComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.InitialProjectName) {
-      console.log('InitialProjectName', this.InitialProjectName);
       this.InitialProjectNameFormat = this.InitialProjectName.substring(0,19)
-      console.log('InitialProjectNameFormat', this.InitialProjectNameFormat);
     }
   }
 
@@ -68,10 +66,11 @@ export class SaveWorkspaceModalComponent implements OnInit {
     //     },
     //   ],
     // };
-    this.data!.project_name = this.projectName;
+    this.data!.project_name = (this.InitialProjectNameFormat + this.projectName);
     this.data!.project_description = this.projectDesc;
 
     console.log(`save project ${JSON.stringify(this.data)}`);
+    console.log('project_name', this.data!.project_name);
 
     this.apiService.postSaveProjectAPI(this.data).subscribe(
       (data) => {

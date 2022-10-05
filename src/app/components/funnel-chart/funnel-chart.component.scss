@@ -132,11 +132,22 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .popper-header {
-  @include font-format($heavent-normal, 700, 14px, 17px, #000000);
+  @include font-format($heavent-bold, 700, 14px, 17px, #000000);
 }
 
 .popper-detail {
   width: 240px;
   @include font-format($heavent-normal, 400, 14px, 17px, #000000);
   padding-top: 5px;
+}
+
+::ng-deep .ngxp__container.ngxp__animation {
+  padding: 10px 10px;
+}
+
+::ng-deep .ngxp__container {
+  padding: 0px;
+  max-height: 330px;
+  // overflow: auto;
+  // overflow-x: hidden;
 }

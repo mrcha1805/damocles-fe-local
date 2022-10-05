@@ -274,12 +274,18 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
             };
           }
           featureSelect.push(ft);
+          console.log('featureSelect', featureSelect);
 
           //data for cube filter
           let messures: string = s.cube_name + '.count';
           let featureName: string = s.cube_dimension;
           // let operatorCube: string = 'Is';
           let memberFormat: string = s.cube_name + '.' + s.cube_dimension;
+          let provice_location = s.tagSelect.splice(0, 1);
+          let district_location = s.tagSelect.splice(0, 1);
+          console.log('featureSelect:', s.tagSelect);
+          console.log('provice_location:', provice_location);
+          console.log('district_location:', district_location);
 
           if (s.ui == 'dropdown') {
             if (s.operator == 'Is') {
@@ -336,6 +342,40 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
                   values: [s.range_value[1].toString()],
                 },
               ],
+            };
+          } else if (s.ui == 'location dropdown') {
+            if (s.operator == 'Is') {
+              filterCubeData = {
+                measures: [messures],
+                filters: [
+                  {
+                    member: 'INSAsset.homeLocationProvince',
+                    operator: 'equals',
+                    values: provice_location
+                  },
+                  {
+                    member: 'INSAsset.homeLocationDistrict',
+                    operator: 'equals',
+                    values: district_location
+                  },
+                ],
+              };
+            } else {
+              filterCubeData = {
+                measures: [messures],
+                filters: [
+                  {
+                    member: 'INSAsset.homeLocationProvince',
+                    operator: 'not equals',
+                    values: provice_location,
+                  },
+                  {
+                    member: 'INSAsset.homeLocationDistrict',
+                    operator: 'not equals',
+                    values: district_location,
+                  },
+                ],
+              };
             };
           }
 
@@ -852,8 +892,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           });
           // console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
           console.log(
-            `UniqueCustomer cal :${
-              this.funnelData[this.funnelData.length - 1].sum
+            `UniqueCustomer cal :${this.funnelData[this.funnelData.length - 1].sum
             }`
           );
           this.UniqueCustomer = this.funnelData[this.funnelData.length - 1].sum;
