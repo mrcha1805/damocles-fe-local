@@ -33,6 +33,8 @@ export interface SubFeature {
   operator: string;
   type: string;
   ui: string;
+  cube_dimension: string;
+  cube_name: string;
   search: string;
   feature_order: number;
   graph_order: number;

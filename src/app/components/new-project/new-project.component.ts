@@ -234,18 +234,6 @@ export class NewProjectComponent implements OnInit, OnChanges {
       name: 'Travel Accident Insurance',
       value: 14,
     },
-    {
-      name: 'xxx Protection',
-      value: 10,
-    },
-    {
-      name: 'xxx Insurance',
-      value: 11,
-    },
-    {
-      name: 'xxx Accident Insurance',
-      value: 12,
-    },
   ];
   ngOnChanges(changes: SimpleChanges): void {
     this.updateSearchDataFilter(this.filterMetadata.data);

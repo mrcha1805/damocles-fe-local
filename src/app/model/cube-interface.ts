@@ -58,7 +58,7 @@ export interface IDataFilter {
 
 export interface IfunnelList {
   feature: string;
-  data: [item: string, value: number];
+  data: any[];
   sum: number;
 }
 

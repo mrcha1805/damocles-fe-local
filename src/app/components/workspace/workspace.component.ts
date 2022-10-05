@@ -35,8 +35,9 @@ import {
   IResult,
   IDataFilter,
   FilterData,
+  IfunnelList,
 } from 'app/model/cube-interface';
-import { ICubeReqest } from 'app/model/cube-request-interface';
+import { ICubeReqest, QueryRequest } from 'app/model/cube-request-interface';
 interface IDataMapping {
   dataCode: string;
   dataCube: string;
@@ -123,7 +124,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   ];
 
   cubeResponse: IDataFilter[] = [];
-  funnelData: any[] = [];
+  funnelData: IfunnelList[] = [];
+  UniqueCustomer: number = 0;
 
   //data for save
   filterItem: SubFeature[] = [];
@@ -144,6 +146,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.funnelData = [];
+    this.UniqueCustomer = 0;
     // this.loadFunnelData();
     // this.loadData();
     //this.getProjectTemplateApi();
@@ -240,6 +243,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   updateDataSelectFilter(data: Featuregroup[]) {
     console.log('data return on workspace : ' + JSON.stringify(data));
     this.filterCubeObj = [];
+    let filterCubeData: QueryRequest;
+
     data.forEach((d) => {
       let df: SubFeature[] = d.subFeature.filter((e) => {
         return e.selectTag === true;
@@ -271,8 +276,38 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           featureSelect.push(ft);
 
           //data for cube filter
+          let messures: string = s.cube_name + '.count';
+          let featureName: string = s.cube_dimension;
+          let operatorCube: string = 'Is';
+          let memberFormat: string = s.cube_name + '.' + s.cube_dimension;
+
+          if (s.ui == 'dropdown') {
+            if (s.operator == 'Is') {
+              operatorCube = 'equals';
+            } else {
+              operatorCube = 'not equals';
+            }
+          }
+
+          filterCubeData = {
+            measures: [messures],
+            filters: [
+              {
+                member: memberFormat,
+                operator: operatorCube,
+                values: s.tagSelect,
+              },
+            ],
+          };
+          this.filterCubeObj.push({
+            feature: featureName,
+            query: filterCubeData,
+          });
         });
 
+        console.log(
+          'filter data for cube: ' + JSON.stringify(this.filterCubeObj)
+        );
         this.objSelect = {
           profile_id: localStorage.getItem('userId')!,
           project_name: this.projectNameDisplay,
@@ -369,11 +404,11 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     });
   }
   async calculate() {
+    this.spinnerService.show();
     this.loadData();
     this.funnelData = [];
     this.loadFunnelData();
-
-    console.log(`sort data: ${JSON.stringify(this.funnelData)}`);
+    this.spinnerService.hide();
   }
 
   save() {
@@ -657,43 +692,12 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         {
           member: 'INSHealth.affluencyScore',
           operator: 'gte',
-          values: ['0.03'],
-        },
-      ],
-    },
-    {
-      measures: ['INSHealth.count'],
-      dimensions: ['INSHealth.affluencyScore'],
-      filters: [
-        {
-          member: 'INSHealth.gender',
-          operator: 'equals',
-          values: ['Female', 'Male'],
-        },
-        {
-          member: 'INSHealth.ageGroup',
-          operator: 'equals',
-          values: ['23-25', '26-30', '31-35'],
-        },
-        {
-          member: 'INSHealth.lifeStage',
-          operator: 'equals',
-          values: ['Student', 'Growing  Family', 'Supporting Family'],
-        },
-        {
-          member: 'INSHealth.job',
-          operator: 'notEquals',
-          values: ['Rider'],
-        },
-        {
-          member: 'INSHealth.affluencyScore',
-          operator: 'gte',
-          values: ['0.03'],
+          values: ['0.05'],
         },
         {
           member: 'INSHealth.affluencyScore',
           operator: 'lte',
-          values: ['0.08'],
+          values: ['0.1'],
         },
       ],
     },
@@ -710,7 +714,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   loadData() {
     var featureName: any = [];
-    this.filterCube.forEach((data: any, index: any) => {
+    this.filterCubeObj.forEach((data: any, index: any) => {
       // cubeResponse = { feature: data.feature };
       featureName.push(data.feature);
       this.cubeService
@@ -805,10 +809,16 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           this.funnelData?.sort((a, b) => {
             return b.sum - a.sum;
           });
-          console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+          // console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+          console.log(
+            `UniqueCustomer cal :${
+              this.funnelData[this.funnelData.length - 1].sum
+            }`
+          );
+          this.UniqueCustomer = this.funnelData[this.funnelData.length - 1].sum;
         });
-    });
-    // console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+      });
+    console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData.length)}`);
   }
 
   sumDataFunnel(data: any) {

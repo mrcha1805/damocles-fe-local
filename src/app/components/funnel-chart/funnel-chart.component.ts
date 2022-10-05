@@ -14,7 +14,7 @@ export interface Ifunnel {
   styleUrls: ['./funnel-chart.component.scss'],
 })
 export class FunnelChartComponent implements OnInit {
-  @Input() funnelList: any[] | undefined;
+  @Input() funnelList: IfunnelList[] | undefined;
   style: object = {};
 
   triggers = NgxPopperjsTriggers;
@@ -80,16 +80,16 @@ export class FunnelChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.funnelList?.sort((a, b) => {
-      return a.sum - b.sum;
-  });
+    //   this.funnelList?.sort((a, b) => {
+    //     return a.sum - b.sum;
+    // });
   }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.funnelList!, event.previousIndex, event.currentIndex);
   }
 
-  setStyleChart(fn: Ifunnel) {
+  setStyleChart(fn: IfunnelList) {
     const heightChart = 360 / this.funnelList!.length;
     const position: number = this.funnelList!.findIndex(
       (x) => x.feature === fn.feature
@@ -103,7 +103,7 @@ export class FunnelChartComponent implements OnInit {
       // firstChart = parseFloat(
       //   this.funnelList![position].sum.replace(/,/g, '')
       // );
-      firstChart =this.funnelList![position].sum;
+      firstChart = this.funnelList![position].sum;
       calFirstChart = (firstChart / firstChart) * 500;
 
       console.log('calFirstChart', calFirstChart , 'name:', fn.feature);
@@ -130,4 +130,20 @@ export class FunnelChartComponent implements OnInit {
     }
     return this.style;
   }
+
+  percentage(count: number, total: number) {
+    let per = ((count * 100) / total).toFixed(2);
+    return `count : ${this.addCommaIntoNumber(count)} (${per}%)`;
+  }
+
+  addCommaIntoNumber(number: number) {
+    return number.toLocaleString();
+  }
+
+  // checkItem(item:number) {
+  //   if (Number.isInteger(item)) {
+  //     return item.toFixed(2);
+  //   }
+  //   return item;
+  // }
 }
