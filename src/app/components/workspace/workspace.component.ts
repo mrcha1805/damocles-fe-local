@@ -35,6 +35,7 @@ import {
   IResult,
   IDataFilter,
   FilterData,
+  IfunnelList,
 } from 'app/model/cube-interface';
 import { ICubeReqest } from 'app/model/cube-request-interface';
 interface IDataMapping {
@@ -123,7 +124,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   ];
 
   cubeResponse: IDataFilter[] = [];
-  funnelData: any[] = [];
+  funnelData: IfunnelList[] = [];
+  UniqueCustomer: number = 0;
 
   //data for save
   filterItem: SubFeature[] = [];
@@ -144,6 +146,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.funnelData = [];
+    this.UniqueCustomer = 0;
     // this.loadFunnelData();
     // this.loadData();
     //this.getProjectTemplateApi();
@@ -369,11 +372,11 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     });
   }
   async calculate() {
+    this.spinnerService.show();
     this.loadData();
     this.funnelData = [];
     this.loadFunnelData();
-
-    console.log(`sort data: ${JSON.stringify(this.funnelData)}`);
+    this.spinnerService.hide();
   }
 
   save() {
@@ -774,10 +777,16 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           this.funnelData?.sort((a, b) => {
             return b.sum - a.sum;
           });
-          console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+          // console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+          console.log(
+            `UniqueCustomer cal :${
+              this.funnelData[this.funnelData.length - 1].sum
+            }`
+          );
+          this.UniqueCustomer = this.funnelData[this.funnelData.length - 1].sum;
         });
-    });
-    // console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+      });
+    console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData.length)}`);
   }
 
   sumDataFunnel(data: any) {

@@ -16,18 +16,19 @@
 
             <div class="col-6 row">
                 <div class="col-8 funnel-feature">{{item.feature}}</div>
-                <div class="col-4 funnel-value" fxLayoutAlign="end center">{{item.sum}}</div>
+                <div class="col-4 funnel-value" fxLayoutAlign="end center">{{addCommaIntoNumber(item.sum)}}</div>
             </div>
             <popper-content #popperContent>
                     <span class="popper-header">{{ item.feature }}</span>
-                    <div class="row popper-detail">
-                        <span class="col-4">25 - 34</span><br />
-                        <span class="col-8 text-start">Count : 20,000,000 (50%)</span>
+ 
+                    <div class="row popper-detail" *ngFor="let data of item.data;let i = index;">
+                        <span class="col-4">{{data.item}}</span><br />
+                        <span class="col-8 text-start">{{percentage(data.value, item.sum)}}</span>
                     </div>
-                    <div class="row popper-detail">
+                    <!-- <div class="row popper-detail">
                         <span class="col-4">35 - 44</span><br />
                         <span class="col-8 text-start">Count : 20,000,000 (50%)</span>
-                    </div>
+                    </div> -->
             </popper-content>
         </div>
     </div>
