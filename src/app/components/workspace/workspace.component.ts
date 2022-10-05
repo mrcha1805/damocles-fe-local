@@ -37,7 +37,7 @@ import {
   FilterData,
   IfunnelList,
 } from 'app/model/cube-interface';
-import { ICubeReqest } from 'app/model/cube-request-interface';
+import { ICubeReqest, QueryRequest } from 'app/model/cube-request-interface';
 interface IDataMapping {
   dataCode: string;
   dataCube: string;
@@ -243,6 +243,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   updateDataSelectFilter(data: Featuregroup[]) {
     console.log('data return on workspace : ' + JSON.stringify(data));
     this.filterCubeObj = [];
+    let filterCubeData: QueryRequest;
+
     data.forEach((d) => {
       let df: SubFeature[] = d.subFeature.filter((e) => {
         return e.selectTag === true;
@@ -274,8 +276,38 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           featureSelect.push(ft);
 
           //data for cube filter
+          let messures: string = s.cube_name + '.count';
+          let featureName: string = s.cube_dimension;
+          let operatorCube: string = 'Is';
+          let memberFormat: string = s.cube_name + '.' + s.cube_dimension;
+
+          if (s.ui == 'dropdown') {
+            if (s.operator == 'Is') {
+              operatorCube = 'equals';
+            } else {
+              operatorCube = 'not equals';
+            }
+          }
+
+          filterCubeData = {
+            measures: [messures],
+            filters: [
+              {
+                member: memberFormat,
+                operator: operatorCube,
+                values: s.tagSelect,
+              },
+            ],
+          };
+          this.filterCubeObj.push({
+            feature: featureName,
+            query: filterCubeData,
+          });
         });
 
+        console.log(
+          'filter data for cube: ' + JSON.stringify(this.filterCubeObj)
+        );
         this.objSelect = {
           profile_id: localStorage.getItem('userId')!,
           project_name: this.projectNameDisplay,
@@ -682,7 +714,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   loadData() {
     var featureName: any = [];
-    this.filterCube.forEach((data: any, index: any) => {
+    this.filterCubeObj.forEach((data: any, index: any) => {
       // cubeResponse = { feature: data.feature };
       featureName.push(data.feature);
       this.cubeService

@@ -1,9 +1,9 @@
 export interface ICubeReqest {
   feature: string;
-  query: Query;
+  query: QueryRequest;
 }
 
-interface Query {
+export interface QueryRequest {
   measures: string[];
   filters: Filter[];
 }
