@@ -137,6 +137,9 @@ export class FilterItemComponent implements OnInit {
     // console.log(this.subMenu);
     this.tagFilterSelectOutput.emit(this.subMenu);
   }
+  updateFilterItemLocation(s: SubFeature) {
+    this.tagFilterSelectOutput.emit(this.subMenu);
+  }
   deleteTag(name: string, v: SubFeature) {
     const rs: any = v.itemList
       ?.filter((r) => {

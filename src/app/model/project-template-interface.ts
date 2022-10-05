@@ -43,6 +43,7 @@ export interface SubFeature {
   selected: boolean | false;
   filterUser?: any[];
   selectTag: boolean;
+  selectUnknow: boolean | false;
 }
 
 export interface Tag {

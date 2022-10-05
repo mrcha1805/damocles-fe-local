@@ -242,14 +242,27 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       if (df.length > 0) {
         let featureSelect: Feature[] = [];
         df.forEach((s) => {
-          let ft: Feature = {
-            product_feature_id: s.product_feature_id,
-            operator: s.operator,
-            item_value: s.tagSelect,
-            range_value: s.range_value!,
-            graph_order: s.graph_order,
-            feature_order: s.feature_order,
-          };
+          let ft: Feature;
+          if (s.type === 'range with unknown' && s.selectUnknow === true) {
+            ft = {
+              product_feature_id: s.product_feature_id,
+              operator: s.operator,
+              item_value: s.tagSelect,
+              range_value: [-1, s.range_value[1]],
+              graph_order: s.graph_order,
+              feature_order: s.feature_order,
+            };
+          } else {
+            ft = {
+              product_feature_id: s.product_feature_id,
+              operator: s.operator,
+              item_value: s.tagSelect,
+              range_value: s.range_value!,
+              graph_order: s.graph_order,
+              feature_order: s.feature_order,
+            };
+          }
+
           featureSelect.push(ft);
         });
 

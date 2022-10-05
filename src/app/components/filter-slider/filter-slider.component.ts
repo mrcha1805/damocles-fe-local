@@ -39,6 +39,9 @@ export class FilterSliderComponent implements OnInit {
     //code
     this.sliderOption.floor = this.subSlider?.range_value[0];
     this.sliderOption.ceil = this.subSlider?.range_value[1];
+    if (this.subSlider) {
+      this.subSlider.selectUnknow = false;
+    }
   }
 
   // show data slider
@@ -52,6 +55,12 @@ export class FilterSliderComponent implements OnInit {
     }
 
     this.subSliderOutput.emit(this.subSlider);
+  }
+
+  checkBoxUnknow() {
+    if (this.subSlider) {
+      this.subSlider.selectUnknow = !this.subSlider.selectUnknow;
+    }
   }
 
   // show/hide Add Criterion

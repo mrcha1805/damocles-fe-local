@@ -22,8 +22,9 @@
   </div>
   <div fxLayout="row" fxLayoutGap="10" fxFill>
     <div fxFlex="20" class="custom-from">
-      <select class="form-select input-select-option font-IsNot" aria-label="Default select example">
-        <option value="1" selected>Is</option>
+      <select [(ngModel)]="subLocation?.operator!" (click)="changeSelect($event)"
+        class="form-select input-select-option font-IsNot" aria-label="Default select example">
+        <option value="1">Is</option>
         <option value="2">Not</option>
       </select>
     </div>

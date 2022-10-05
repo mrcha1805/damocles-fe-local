@@ -26,7 +26,7 @@ export class FilterLocationComponent implements OnInit {
   @Input() subLocation: SubFeature | undefined;
   @Input() District: District | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
-
+  @Output() subLocationOutput: EventEmitter<SubFeature> = new EventEmitter();
   constructor(private apiService: ApiService) {}
 
   locationApiData: ILocationData[] = [];
@@ -75,6 +75,12 @@ export class FilterLocationComponent implements OnInit {
     }
     this.currentSelectProvince = province;
     console.log('select province: ' + province.province_name);
+  }
+
+  changeSelect(e: any) {
+    if (this.subLocation) {
+      this.subLocation.operator = e.target.value;
+    }
   }
 
   // removeProvinceData(province: ILocationData) {
@@ -237,6 +243,25 @@ export class FilterLocationComponent implements OnInit {
           });
           console.log(this.proviceDataSelect);
         }
+      }
+    }
+
+    //send output
+    if (this.proviceDataSelect.length > 0) {
+      // console.log('proviceData')
+      if (this.subLocation) {
+        this.subLocation.selectTag = true;
+        console.log(this.proviceDataSelect);
+        this.subLocation.tagSelect = [];
+        for (let ii of this.proviceDataSelect) {
+          this.subLocation?.tagSelect.push(ii.province_tag);
+        }
+        console.log('subLocation: ' + JSON.stringify(this.subLocation));
+        this.subLocationOutput.emit(this.subLocation);
+      }
+    } else {
+      if (this.subLocation) {
+        this.subLocation.selectTag = false;
       }
     }
   }
