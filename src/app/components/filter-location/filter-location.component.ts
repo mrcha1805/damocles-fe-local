@@ -254,7 +254,21 @@ export class FilterLocationComponent implements OnInit {
         console.log(this.proviceDataSelect);
         this.subLocation.tagSelect = [];
         for (let ii of this.proviceDataSelect) {
-          this.subLocation?.tagSelect.push(ii.province_tag);
+          console.log('all: ' + JSON.stringify(ii));
+          const rs = ii.district.filter((e) => {
+            return e.district_name === 'All';
+          });
+          if (rs.length > 0) {
+            const fl = ii.district.filter((e) => {
+              return e.district_name !== 'All';
+            });
+            fl.forEach((f) => {
+              let tagCreate = ii.province_name + ', ' + f.district_name;
+              this.subLocation?.tagSelect.push(tagCreate);
+            });
+          } else {
+            this.subLocation?.tagSelect.push(ii.province_tag);
+          }
         }
         console.log('subLocation: ' + JSON.stringify(this.subLocation));
         this.subLocationOutput.emit(this.subLocation);
@@ -262,6 +276,8 @@ export class FilterLocationComponent implements OnInit {
     } else {
       if (this.subLocation) {
         this.subLocation.selectTag = false;
+        this.subLocation.tagSelect = [];
+        this.subLocationOutput.emit(this.subLocation);
       }
     }
   }
@@ -269,16 +285,6 @@ export class FilterLocationComponent implements OnInit {
     console.log('remove tag: ' + JSON.stringify(rm));
     if (rm) {
       let dt: IDistrict = rm.district[0];
-      // this.locationApiData.forEach((a) => {
-      //   if (a.province_name === rm.province_name) {
-      //     a.district.forEach((d) => {
-      //       if (d === dt) {
-      //         d.selected = false;
-      //       }
-      //     });
-      //   }
-      // });
-      // console.log(this.locationApiData);
       this.proviceDataSelect.forEach((e) => {
         if (e.province_name === rm.province_name) {
           e.district.forEach((d) => {
