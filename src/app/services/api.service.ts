@@ -122,10 +122,7 @@ export class ApiService {
   }
   deleteProjectAPI(id: string): Observable<IGlobal> {
     return this.http
-      .delete<IGlobal>(
-        this.endpoint + this.project + '?project_id=' + id,
-        this.httpOption
-      )
+      .delete<IGlobal>(this.endpoint + this.project + '/' + id, this.httpOption)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.log('error api:', error);
@@ -191,7 +188,7 @@ export class ApiService {
   getProjectIDAPI(name: string): Observable<IGetprojectID> {
     return this.http
       .get<IGetprojectID>(
-        this.endpoint + '/project?project_name=' + name,
+        this.endpoint + '/project?name=' + name,
         this.httpOption
       )
       .pipe(

@@ -36,6 +36,7 @@ import {
   IDataFilter,
   FilterData,
 } from 'app/model/cube-interface';
+import { ICubeReqest } from 'app/model/cube-request-interface';
 interface IDataMapping {
   dataCode: string;
   dataCube: string;
@@ -280,6 +281,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         };
       }
     });
+    this.createFilterCube();
   }
 
   setOptionChartFunnel() {
@@ -368,8 +370,8 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     this.loadData();
     this.funnelData = [];
     this.loadFunnelData();
-    
-  console.log(`sort data: ${JSON.stringify(this.funnelData)}`);
+
+    console.log(`sort data: ${JSON.stringify(this.funnelData)}`);
   }
 
   save() {
@@ -694,6 +696,12 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     },
   ];
 
+  filterCubeObj: ICubeReqest[] = [];
+  createFilterCube() {
+    this.filterCubeObj = [];
+    console.log('obj for create cube: ' + JSON.stringify(this.objSelect));
+  }
+
   loadData() {
     var featureName: any = [];
     this.filterCube.forEach((data: any, index: any) => {
@@ -790,7 +798,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           });
           this.funnelData?.sort((a, b) => {
             return b.sum - a.sum;
-        });
+          });
           console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
         });
     });
