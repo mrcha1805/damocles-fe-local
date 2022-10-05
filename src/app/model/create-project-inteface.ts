@@ -13,7 +13,7 @@ export interface Feature {
   product_feature_id: number;
   operator: string;
   item_value?: Tag[];
-  range_value: any[];
+  range_value: number[];
   graph_order: number;
   feature_order: number;
 }

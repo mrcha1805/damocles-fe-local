@@ -95,7 +95,8 @@
       </div>
     </div>
     <div *ngIf="item.ui == 'slider' || item.ui== 'slider with unknown'">
-      <app-filter-slider [subSlider]="item" (deleteItem)="deleteSelector($event)"></app-filter-slider>
+      <app-filter-slider [subSlider]="item" (deleteItem)="deleteSelector($event)"
+        (subSliderOutput)="updateFilterItemSlider($event)"></app-filter-slider>
     </div>
     <div *ngIf="item.ui == 'location dropdown'">
       <app-filter-location [subLocation]="item" (deleteItem)="deleteSelector($event)"></app-filter-location>

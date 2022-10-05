@@ -20,6 +20,7 @@ export interface Tag {
 export class FilterSliderComponent implements OnInit {
   @Input() subSlider: SubFeature | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
+  @Output() subSliderOutput: EventEmitter<SubFeature> = new EventEmitter();
   constructor() {}
   style: object = {};
   lowValue: number = 0.0;
@@ -44,6 +45,13 @@ export class FilterSliderComponent implements OnInit {
   sliderChange() {
     console.log('lowValue', this.lowValue);
     console.log('highValue', this.highValue);
+    let ss: number[] = [this.lowValue, this.highValue];
+    if (this.subSlider) {
+      this.subSlider.range_value! = ss;
+      this.subSlider.selectTag = true;
+    }
+
+    this.subSliderOutput.emit(this.subSlider);
   }
 
   // show/hide Add Criterion
