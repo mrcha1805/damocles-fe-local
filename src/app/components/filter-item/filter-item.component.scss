@@ -1,13 +1,14 @@
 $heavent-bold: DB Heavent Bd;
 $heavent-reg: DB Heavent Reg;
 $heavent-normal: DB Heavent Nor;
+
 @mixin font-format($font, $weight, $size, $height, $hexcolor) {
-  font-family: $font !important;
+  font-family: $font  !important;
   font-style: normal;
   // font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor !important;
+  color: $hexcolor  !important;
 }
 
 .container {
@@ -57,6 +58,7 @@ $heavent-normal: DB Heavent Nor;
   border-left: 0.7px solid #E6E6E6;
   cursor: pointer;
 }
+
 // .col-age:hover {
 //   background: #b32626;
 // }
@@ -287,9 +289,9 @@ section {
   height: 30px !important;
 }
 
-.btn .btn-custom {
+.btn.btn-custom {
   width: fit-content;
-  padding: 2px 0px;
+  padding: 2px 0.5rem;
   border: 0;
   float: right;
 }
