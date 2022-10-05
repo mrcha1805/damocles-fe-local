@@ -3,12 +3,12 @@ $heavent-reg: DB Heavent Reg;
 $heavent-normal: DB Heavent Nor;
 
 @mixin font-format($font, $weight, $size, $height, $hexcolor) {
-  font-family: $font  !important;
+  font-family: $font !important;
   font-style: normal;
   // font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor  !important;
+  color: $hexcolor !important;
 }
 
 .font-11px {
@@ -37,11 +37,11 @@ $heavent-normal: DB Heavent Nor;
 }
 
 .font-36px {
-  @include font-format($heavent-bold, 700, 36px, 43.57px, #491DC5);
+  @include font-format($heavent-bold, 700, 36px, 43.57px, #491dc5);
 }
 
 .font-blue {
-  color: #491DC5 !important;
+  color: #491dc5 !important;
 }
 
 .my-custom-tooltip {
@@ -70,9 +70,11 @@ input:focus {
 
 :host::ng-deep .navbar-logo {
   background-image: none !important;
-  background-image: repeating-linear-gradient(rgb(240, 240, 240),
-      rgba(240, 240, 240, 0.8) 200%,
-      rgba(240, 240, 240, 0.1) 10%) !important;
+  background-image: repeating-linear-gradient(
+    rgb(240, 240, 240),
+    rgba(240, 240, 240, 0.8) 200%,
+    rgba(240, 240, 240, 0.1) 10%
+  ) !important;
 }
 
 .min {
@@ -82,7 +84,7 @@ input:focus {
 }
 
 .funnel-clear {
-  @include font-format($heavent-bold, 700, 16px, 19.18px, #491DC5);
+  @include font-format($heavent-bold, 700, 16px, 19.18px, #491dc5);
   text-decoration-line: underline;
   margin: 14px;
   justify-content: flex-end;
@@ -90,7 +92,7 @@ input:focus {
 }
 
 .app-filter {
-  overflow: auto; 
+  overflow: auto;
   // height: 100vh;
 }
 
@@ -110,7 +112,7 @@ input:focus {
   }
 
   &-right-bottom {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 10px 100px 1px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
   }
@@ -118,7 +120,7 @@ input:focus {
   &-unique {
     width: 342px;
     height: 90px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 7px 4px 18px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
   }
@@ -129,48 +131,48 @@ input:focus {
 }
 
 .projectname {
-  width: 280px;
+  width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .workspace-img {
-  border: 2px solid #491DC5; 
+  border: 2px solid #491dc5;
   border-radius: 40px;
 }
 
 .btn-calculate {
   width: 150px;
   height: 40px;
-  color: #491DC5 !important;
-  background: #CCCCCC;
+  color: #491dc5 !important;
+  background: #cccccc;
   border-radius: 4px;
 }
 .btn-calculate:hover {
-  background: #CCCCCC;
+  background: #cccccc;
 }
 
 .btn-light {
   width: 150px;
   height: 40px;
-  color: #491DC5 !important;
-  background: #FFFFFF;
-  border: 2px solid #491DC5;
+  color: #491dc5 !important;
+  background: #ffffff;
+  border: 2px solid #491dc5;
   border-radius: 4px;
 }
 .btn-light:hover {
-  background: #EDE8F9;
-  border: 2px solid #491DC5;
+  background: #ede8f9;
+  border: 2px solid #491dc5;
 }
 
 .btn-blue {
   width: 150px;
   height: 40px;
-  background: #491DC5;
+  background: #491dc5;
   border-radius: 4px;
 }
 .btn-blue:hover {
-  background: #3B189E;
+  background: #3b189e;
 }
 
 .product-text {
