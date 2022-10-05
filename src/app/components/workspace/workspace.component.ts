@@ -254,7 +254,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         });
 
         this.objSelect = {
-          profile_id: '1',
+          profile_id: localStorage.getItem('userId')!,
           project_name: this.projectNameDisplay,
           project_description: '',
           inductry_id: Number(this.projectData?.industry_id),

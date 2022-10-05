@@ -275,8 +275,9 @@ export class NewProjectComponent implements OnInit, OnChanges {
     this.userProjectCount = 0;
     this.userRecentProjectCount = 10;
 
-    //this.getProjectApi(localStorage.getItem('userId')!);
-    this.getProjectApi('1');
+    localStorage.setItem('userId', '1');
+    this.getProjectApi(localStorage.getItem('userId')!);
+    //this.getProjectApi('1');
   }
   getProjectApi(id: string) {
     this.apiService.getProjectAPI(id).subscribe(async (data: any) => {
