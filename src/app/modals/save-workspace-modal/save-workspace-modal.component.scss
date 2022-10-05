@@ -1,12 +1,13 @@
 $heavent-bold: DB Heavent Bd;
 $heavent-reg: DB Heavent Reg;
+
 @mixin font-format($font, $weight, $size, $height, $hexcolor) {
-  font-family: $font !important;
+  font-family: $font  !important;
   font-style: normal;
   //font-weight: $weight;
   font-size: $size;
   line-height: $height;
-  color: $hexcolor !important;
+  color: $hexcolor  !important;
 }
 
 .body {
@@ -19,12 +20,13 @@ $heavent-reg: DB Heavent Reg;
 }
 
 .input-container {
-  margin: 20px 80px;
+  margin: 20px 80px 0px 80px;
 }
 
 .header1 {
   @include font-format($heavent-bold, 700, 20px, 24px, #020202);
 }
+
 .header2 {
   @include font-format($heavent-reg, 400, 14px, 16.78px, #020202);
 }
@@ -38,15 +40,55 @@ $heavent-reg: DB Heavent Reg;
   height: 52px;
   padding: 10px;
 }
+
 .create-input:active {
   border: 1px solid #808080;
 }
 
+::ng-deep .input-container .mat-form-field-appearance-outline .mat-form-field-flex {
+  @include font-format($heavent-reg, 400, 14px, 18px, #020202);
+  background: #ffffff;
+  border-radius: 8px;
+  width: 419px;
+  height: 52px;
+}
+
+/* Border */
+::ng-deep .input-container .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #808080;
+}
+
+::ng-deep .mat-form-field-infix .ng-tns-c127-7 {
+  @include font-format($heavent-reg, 400, 16px, 24px, #020202);
+  padding-top: 1px
+}
+
+::ng-deep .mat-form-field-infix .ng-tns-c127-8 {
+  @include font-format($heavent-reg, 400, 16px, 24px, #353535);
+  padding-top: 0px
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-prefix {
+  @include font-format($heavent-reg, 400, 16px, 24px, #020202);
+  top: -2px !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy {
+	.mat-form-field-prefix,
+	.mat-form-field-suffix {
+		align-self: flex-end;
+	}
+}
+
+::ng-deep .input-container .mat-form-field-wrapper {
+  padding-bottom: 1px
+}
+
 .desc-input {
+  @include font-format($heavent-reg, 400, 14px, 18px, #020202);
   background: #ffffff;
   border: 1px solid #808080;
   border-radius: 8px;
-  @include font-format($heavent-reg, 400, 14px, 18px, #020202);
   width: 419px;
   height: 52px;
   padding: 10px;
@@ -60,6 +102,7 @@ $heavent-reg: DB Heavent Reg;
 .description-text {
   @include font-format($heavent-reg, 400, 20px, 24px, #676767);
   word-break: break-all;
+
   .hightlight-text {
     @include font-format($heavent-bold, 400, 20px, 24px, #676767);
   }
@@ -75,6 +118,7 @@ $heavent-reg: DB Heavent Reg;
   padding-right: 43px;
   padding-top: 10px;
   padding-bottom: 10px;
+
   &:hover {
     background: #ede8f9;
     border: 2px solid #491dc5;
@@ -88,10 +132,12 @@ $heavent-reg: DB Heavent Reg;
   padding-left: 45px;
   padding-right: 45px;
   padding-top: 5px;
+
   &:hover {
     background: #3B189E;
   }
 }
+
 .btn-disabled {
   @include font-format($heavent-bold, 700, 24px, 100%, #ffffff);
   background: #9A9A9A;
