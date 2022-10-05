@@ -20,8 +20,16 @@ export class SaveWorkspaceModalComponent implements OnInit {
   data: IRequestProject | undefined;
   projectDataApi: IGetprojectID | undefined;
   projectData: GetprojectIDData | undefined;
+  InitialProjectName: string | undefined;
+  InitialProjectNameFormat: string | undefined;
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.InitialProjectName) {
+      console.log('InitialProjectName', this.InitialProjectName);
+      this.InitialProjectNameFormat = this.InitialProjectName.substring(0,19)
+      console.log('InitialProjectNameFormat', this.InitialProjectNameFormat);
+    }
+  }
 
   cancel() {
     console.log('cancel save');

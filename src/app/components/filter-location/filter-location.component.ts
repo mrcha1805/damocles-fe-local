@@ -60,7 +60,7 @@ export class FilterLocationComponent implements OnInit {
           });
         });
         this.locationApiData = api;
-        // console.log(this.locationApiData);
+        // console.log(this.subLocation);
       }
     });
   }

@@ -378,23 +378,24 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
 
   save() {
     console.log('request save project: ' + JSON.stringify(this.objSelect));
-    // const modalRef = this.ngModalService.open(SaveWorkspaceModalComponent, {
-    //   size: 'md',
-    //   centered: true,
-    //   backdrop: 'static',
-    // });
-    // modalRef.componentInstance.data = this.objSelect;
-    // modalRef.result.then((result: any) => {
-    //   if (result.search('save-success') != -1) {
-    //     console.log('save success');
-    //   } else if (result.search('cancel save') != -1) {
-    //     console.log('cancel save');
-    //   } else if (result.search('can not get project id') != -1) {
-    //     console.log('can not get project id');
-    //   } else if (result.search('cancel replace') != -1) {
-    //     console.log('cancel replace');
-    //   }
-    // });
+    const modalRef = this.ngModalService.open(SaveWorkspaceModalComponent, {
+      size: 'md',
+      centered: true,
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.data = this.objSelect;
+    modalRef.componentInstance.InitialProjectName = this.projectNameDisplay;
+    modalRef.result.then((result: any) => {
+      if (result.search('save-success') != -1) {
+        console.log('save success');
+      } else if (result.search('cancel save') != -1) {
+        console.log('cancel save');
+      } else if (result.search('can not get project id') != -1) {
+        console.log('can not get project id');
+      } else if (result.search('cancel replace') != -1) {
+        console.log('cancel replace');
+      }
+    });
   }
 
   filterCube: any = [

@@ -39,46 +39,63 @@
                         </div>
                     </div>
 
-                    <div fxLayout="column" class="grid-item-layout min-height box-right-bottom w-100 my-4">
-                        <div class="funnel-clear" fxLayoutAlign="end end">
-                            <span (click)="clearAll()">Clear All</span>
+                    <!-- if have data -->
+                    <div *ngIf="funnelData.length > 0">
+                        <div fxLayout="column" class="grid-item-layout min-height box-right-bottom w-100 my-4">
+                            <div class="funnel-clear" fxLayoutAlign="end end">
+                                <span (click)="clearAll()">Clear All</span>
+                            </div>
+                            <app-funnel-chart [funnelList]="funnelData"></app-funnel-chart>
                         </div>
-                        <app-funnel-chart [funnelList]="funnelData"></app-funnel-chart>
-                        <!-- <div fxLayout="column" fxLayoutAlign="center center" class="grid-item-layout box-chart">
-                            <img src="./assets/icons/Choose-KPI-for-Data-Visualization.svg" width="200" />
-                            <span class="font-14px">Choose KPI for Data Visualization</span>
-                        </div> -->
+                        <div fxLayoutGap="20" fxLayoutAlign="end stretch" class="my-2">
+                            <div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item-layout box-unique">
+                                <div fxLayout="column" fxLayoutAlign="center start" class="grid-item-layout px-4">
+                                    <span class="font-14px font-blue pt-2">Unique customer</span>
+                                    <span class="font-36px">400,000</span>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="center end" fxFlex class="grid-item-layout px-4">
+                                    <img src="./assets/icons/workspace-unique.svg" width="40" class="workspace-img" />
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayoutAlign="end stretch" class="my-2">
+                            <span class="font-14pxTotal">Total customer 45,220,892</span>
+                        </div>
                     </div>
 
-                    <div fxLayoutGap="20" fxLayoutAlign="end stretch" class="my-2">
-                        <div fxLayout="row" fxLayoutAlign="start stretch" class="grid-item-layout box-unique">
-                            <div fxLayout="column" fxLayoutAlign="center start" class="grid-item-layout px-4">
-                                <span class="font-14px font-blue pt-2">Unique customer</span>
-                                <span class="font-36px">400,000</span>
-                            </div>
-                            <div fxLayout="column" fxLayoutAlign="center end" fxFlex class="grid-item-layout px-4">
-                                <img src="./assets/icons/workspace-unique.svg" width="40" class="workspace-img" />
+                    <!-- if empty data -->
+                    <div *ngIf="funnelData.length == 0" disabled>
+                        <div fxLayout="column" class="grid-item-layout min-height w-100 my-4">
+                            <div fxLayout="column" fxLayoutAlign="center center" class="grid-item-layout box-chart">
+                                <img src="./assets/icons/Choose-KPI-for-Data-Visualization.svg" width="200" />
+                                <span class="font-14px">Choose KPI for Data Visualization</span>
                             </div>
                         </div>
-                    </div>
-                    <div fxLayoutAlign="end stretch" class="my-2">
-                        <span class="font-14pxTotal">Total customer 45,220,892</span>
                     </div>
 
                     <div fxLayout="row" class="grid-item-layout mt-4 mb-4" fxLayoutAlign="end center"
                         fxLayoutAlign.lt-md="center center">
                         <div fxFlex="50" fxLayout="row" fxLayoutGap="20" fxLayoutAlign="start end"
                             class="grid-item-layout">
-                            <button class="btn btn-calculate font-24px-b" (click)="calculate()">
+                            <button *ngIf="funnelData.length > 0" class="btn btn-calculate" (click)="calculate()">
+                                Calculate
+                            </button>
+                            <button *ngIf="funnelData.length == 0" class="btn btn-calculate-disabled" (click)="calculate()">
                                 Calculate
                             </button>
                         </div>
                         <div fxFlex="50" fxLayout="row" fxLayoutGap="20" fxLayoutAlign="end end"
                             class="grid-item-layout">
-                            <button class="btn btn-light font-24px-b">
+                            <button *ngIf="funnelData.length > 0" class="btn btn-light">
                                 Export
                             </button>
-                            <button class="btn btn-blue font-24px-b" (click)="save()">
+                            <button *ngIf="funnelData.length == 0" disabled class="btn btn-light-disabled">
+                                Export
+                            </button>
+                            <button *ngIf="funnelData.length > 0" class="btn btn-blue" (click)="save()">
+                                Save
+                            </button>
+                            <button *ngIf="funnelData.length == 0" disabled class="btn btn-blue-disabled" (click)="save()">
                                 Save
                             </button>
                         </div>

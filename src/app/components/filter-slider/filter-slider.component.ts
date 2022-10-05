@@ -21,7 +21,8 @@ export class FilterSliderComponent implements OnInit {
   @Input() subSlider: SubFeature | undefined;
   @Output() deleteItem: EventEmitter<SubFeature> = new EventEmitter();
   @Output() subSliderOutput: EventEmitter<SubFeature> = new EventEmitter();
-  constructor() {}
+  constructor() {this.IsChecked = false;}
+  IsChecked: boolean;
   style: object = {};
   lowValue: number = 0.0;
   highValue: number = 1.0;
@@ -57,10 +58,13 @@ export class FilterSliderComponent implements OnInit {
     this.subSliderOutput.emit(this.subSlider);
   }
 
-  checkBoxUnknow() {
+  checkBoxUnknow($event: any) {
+    console.log($event.checked);
+    $event.source.focus();
     if (this.subSlider) {
       this.subSlider.selectUnknow = !this.subSlider.selectUnknow;
     }
+    this.subSliderOutput.emit(this.subSlider);
   }
 
   // show/hide Add Criterion

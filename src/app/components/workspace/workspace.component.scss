@@ -142,20 +142,34 @@ input:focus {
 }
 
 .btn-calculate {
-  width: 150px;
-  height: 40px;
-  color: #491dc5 !important;
+  @include font-format($heavent-bold, 700, 24px, 24px, #491dc5);
+  width: 152px;
+  height: 44px;
   background: #cccccc;
   border-radius: 4px;
 }
 .btn-calculate:hover {
   background: #cccccc;
 }
+.btn-calculate-disabled {
+  @include font-format($heavent-bold, 700, 24px, 24px, #ffffff);
+  width: 152px;
+  height: 44px;
+  background: #9A9A9A;
+  border-radius: 4px;
+}
+.btn-calculate-disabled:hover {
+  width: 152px;
+  height: 44px;
+  color: #ffffff !important;
+  background: #b5b5b5;
+  border-radius: 4px;
+}
 
 .btn-light {
-  width: 150px;
-  height: 40px;
-  color: #491dc5 !important;
+  @include font-format($heavent-bold, 700, 24px, 24px, #491dc5);
+  width: 152px;
+  height: 44px;
   background: #ffffff;
   border: 2px solid #491dc5;
   border-radius: 4px;
@@ -164,15 +178,31 @@ input:focus {
   background: #ede8f9;
   border: 2px solid #491dc5;
 }
+.btn-light-disabled {
+  @include font-format($heavent-bold, 700, 24px, 24px, #9A9A9A);
+  width: 152px;
+  height: 44px;
+  background: #ffffff;
+  border: 2px solid #9A9A9A;
+  border-radius: 4px;
+}
 
 .btn-blue {
-  width: 150px;
-  height: 40px;
+  @include font-format($heavent-bold, 700, 24px, 24px, #ffffff);
+  width: 152px;
+  height: 44px;
   background: #491dc5;
   border-radius: 4px;
 }
 .btn-blue:hover {
   background: #3b189e;
+}
+.btn-blue-disabled {
+  @include font-format($heavent-bold, 700, 24px, 24px, #ffffff);
+  width: 152px;
+  height: 44px;
+  background: #9A9A9A;
+  border-radius: 4px;
 }
 
 .product-text {
