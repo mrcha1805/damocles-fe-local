@@ -167,7 +167,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         this.industryNameDisplay = this.projectData?.industry_name;
         this.productNameDiaply = this.projectData?.product_name;
         //console.log(`project Data: ${JSON.stringify(this.projectData)}`);
-        this.setSelectProjectFeature();
+        //this.setSelectProjectFeature();
         this.spinnerService.hide();
       }
     });
@@ -181,79 +181,88 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         this.projectDataApi = data;
         if (this.projectDataApi?.resultCode === '20000') {
           this.kpiGroup = this.projectDataApi?.resultData.feature_group;
-          console.log(`=====kpiGroup: ${JSON.stringify(this.kpiGroup)}`);
           this.projectId = this.projectDataApi.resultData.project_id;
           this.projectData = this.projectDataApi?.resultData;
+          console.log('project data: ' + JSON.stringify(this.projectData));
           this.projectNameDisplay = this.projectData?.project_name;
           this.industryNameDisplay = this.projectData?.industry_name;
           this.productNameDiaply = this.projectData?.product_name;
           //console.log(`project Data: ${JSON.stringify(this.projectData)}`);
-          this.setSelectProjectFeature();
+          // this.setSelectProjectFeature();
           this.spinnerService.hide();
         }
       });
   }
   objSelect: IRequestProject | undefined;
   setSelectProjectFeature() {
-    let featureSelect: Feature[] = [];
-
-    featureSelect = [
-      {
-        product_feature_id: 10001,
-        operator: 'Is',
-        item_value: ['Female', 'Male', 'Unknow'],
-        range_value: [],
-        graph_order: 1,
-        feature_order: 1,
-      },
-      {
-        product_feature_id: 10002,
-        operator: 'Is',
-        item_value: ['20-24', '25-29', '30-34'],
-        range_value: [],
-        graph_order: 2,
-        feature_order: 2,
-      },
-      {
-        product_feature_id: 10005,
-        operator: 'Is',
-        item_value: ['BANGKOK,SAI MAI', 'BANGKOK,WANG THONGLANG'],
-        range_value: [],
-        graph_order: 3,
-        feature_order: 3,
-      },
-      {
-        product_feature_id: 10008,
-        operator: 'Is',
-        item_value: [],
-        range_value: [0.0, 1.0],
-        graph_order: 4,
-        feature_order: 4,
-      },
-    ];
-
-    // this.objSelect = {
-    //   profile_id: '6',
-    //   project_name: '',
-    //   project_description: '',
-    //   inductry_id: this.projectData?.industry_id,
-    //   product_id: this.projectData?.product_id.toString(),
-    //   feature: featureSelect,
-    // };
-
-    this.objSelect = {
-      profile_id: '6',
-      project_name: '',
-      project_description: '',
-      inductry_id: 1,
-      product_id: 1,
-      feature: featureSelect,
-    };
+    // let featureSelect: Feature[] = [];
+    // featureSelect = [
+    //   {
+    //     product_feature_id: 10001,
+    //     operator: 'Is',
+    //     item_value: ['Female', 'Male', 'Unknow'],
+    //     range_value: [],
+    //     graph_order: 1,
+    //     feature_order: 1,
+    //   },
+    //   {
+    //     product_feature_id: 10002,
+    //     operator: 'Is',
+    //     item_value: ['20-24', '25-29', '30-34'],
+    //     range_value: [],
+    //     graph_order: 2,
+    //     feature_order: 2,
+    //   },
+    //   {
+    //     product_feature_id: 10005,
+    //     operator: 'Is',
+    //     item_value: ['BANGKOK,SAI MAI', 'BANGKOK,WANG THONGLANG'],
+    //     range_value: [],
+    //     graph_order: 3,
+    //     feature_order: 3,
+    //   },
+    //   {
+    //     product_feature_id: 10008,
+    //     operator: 'Is',
+    //     item_value: [],
+    //     range_value: [0.0, 1.0],
+    //     graph_order: 4,
+    //     feature_order: 4,
+    //   },
+    // ];
   }
 
   updateDataSelectFilter(data: Featuregroup[]) {
-    console.log('update data select filter');
-    console.log('data return : ' + JSON.stringify(data));
+    console.log('data return on workspace : ' + JSON.stringify(data));
+
+    data.forEach((d) => {
+      let df: SubFeature[] = d.subFeature.filter((e) => {
+        return e.selectTag === true;
+      });
+      if (df.length > 0) {
+        let featureSelect: Feature[] = [];
+        df.forEach((s) => {
+          let ft: Feature = {
+            product_feature_id: s.product_feature_id,
+            operator: s.operator,
+            item_value: s.tagSelect,
+            range_value: s.range_value,
+            graph_order: s.graph_order,
+            feature_order: s.feature_order,
+          };
+          featureSelect.push(ft);
+        });
+
+        this.objSelect = {
+          profile_id: '1',
+          project_name: this.projectNameDisplay,
+          project_description: '',
+          inductry_id: Number(this.projectData?.industry_id),
+          product_id: Number(this.projectData?.product_id),
+          feature: featureSelect,
+        };
+      }
+    });
   }
 
   setOptionChartFunnel() {
@@ -343,23 +352,24 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   save() {
-    const modalRef = this.ngModalService.open(SaveWorkspaceModalComponent, {
-      size: 'md',
-      centered: true,
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.data = this.objSelect;
-    modalRef.result.then((result: any) => {
-      if (result.search('save-success') != -1) {
-        console.log('save success');
-      } else if (result.search('cancel save') != -1) {
-        console.log('cancel save');
-      } else if (result.search('can not get project id') != -1) {
-        console.log('can not get project id');
-      } else if (result.search('cancel replace') != -1) {
-        console.log('cancel replace');
-      }
-    });
+    console.log('request save project: ' + JSON.stringify(this.objSelect));
+    // const modalRef = this.ngModalService.open(SaveWorkspaceModalComponent, {
+    //   size: 'md',
+    //   centered: true,
+    //   backdrop: 'static',
+    // });
+    // modalRef.componentInstance.data = this.objSelect;
+    // modalRef.result.then((result: any) => {
+    //   if (result.search('save-success') != -1) {
+    //     console.log('save success');
+    //   } else if (result.search('cancel save') != -1) {
+    //     console.log('cancel save');
+    //   } else if (result.search('can not get project id') != -1) {
+    //     console.log('can not get project id');
+    //   } else if (result.search('cancel replace') != -1) {
+    //     console.log('cancel replace');
+    //   }
+    // });
   }
 
   filterCube: any = [
@@ -531,12 +541,13 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
           //console.log(`===load data query===: ${JSON.stringify(resultSet)}`);
           // const resultData = resultSet.loadResponse.results[0].data;
           const resultData: IResult = resultSet.loadResponse.results[0];
-          console.log(
-            `=====resultData response : ${JSON.stringify(resultData)}`
-          );
-          console.log(
-            `============count :${Object.values(resultData.data[0])}`
-          );
+
+          // console.log(
+          //   `=====resultData response : ${JSON.stringify(resultData)}`
+          // );
+          // console.log(
+          //   `============count :${Object.values(resultData.data[0])}`
+          // );
 
           // featureName.forEach((fname: any, index: any) => {
           //   if (resultData.query.filters[0].member.includes(fname)) {

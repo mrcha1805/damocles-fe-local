@@ -55,9 +55,7 @@ export class FilterItemComponent implements OnInit {
 
   // show data select
   changeSelect(e: any, it: SubFeature) {
-    console.log('changeSelect', e.target.value);
     it.operator = e.target.value;
-    console.log('subMenu update : ' + JSON.stringify(this.subMenu));
   }
 
   private _filter(value: any): any {

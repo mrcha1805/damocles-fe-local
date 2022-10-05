@@ -1,3 +1,5 @@
+import { Tag } from './project-template-interface';
+
 export interface IRequestProject {
   profile_id: string;
   project_name: string | undefined;
@@ -10,7 +12,7 @@ export interface IRequestProject {
 export interface Feature {
   product_feature_id: number;
   operator: string;
-  item_value: string[];
+  item_value?: Tag[];
   range_value: any[];
   graph_order: number;
   feature_order: number;
