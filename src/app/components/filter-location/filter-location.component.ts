@@ -266,7 +266,35 @@ export class FilterLocationComponent implements OnInit {
     }
   }
   removeTagProvinceSelect(rm: ILocationData) {
-    console.log('remove tag: ' + rm);
+    console.log('remove tag: ' + JSON.stringify(rm));
+    if (rm) {
+      let dt: IDistrict = rm.district[0];
+      // this.locationApiData.forEach((a) => {
+      //   if (a.province_name === rm.province_name) {
+      //     a.district.forEach((d) => {
+      //       if (d === dt) {
+      //         d.selected = false;
+      //       }
+      //     });
+      //   }
+      // });
+      // console.log(this.locationApiData);
+      this.proviceDataSelect.forEach((e) => {
+        if (e.province_name === rm.province_name) {
+          e.district.forEach((d) => {
+            if (d === dt) {
+              d.selected = false;
+            }
+          });
+        }
+      });
+      console.log(this.locationApiData);
+      this.proviceDataSelect = this.proviceDataSelect.filter((e) => {
+        return e != rm;
+      });
+      console.log(JSON.stringify(this.proviceDataSelect));
+      this.selectDistrict(rm, dt);
+    }
   }
 
   // show/hide District
