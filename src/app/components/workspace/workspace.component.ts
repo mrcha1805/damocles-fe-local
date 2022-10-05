@@ -236,10 +236,10 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     //   },
     // ];
   }
-
+  filterCubeObj: ICubeReqest[] = [];
   updateDataSelectFilter(data: Featuregroup[]) {
     console.log('data return on workspace : ' + JSON.stringify(data));
-
+    this.filterCubeObj = [];
     data.forEach((d) => {
       let df: SubFeature[] = d.subFeature.filter((e) => {
         return e.selectTag === true;
@@ -248,6 +248,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
         let featureSelect: Feature[] = [];
         df.forEach((s) => {
           let ft: Feature;
+          // data for save project
           if (s.type === 'range with unknown' && s.selectUnknow === true) {
             ft = {
               product_feature_id: s.product_feature_id,
@@ -267,8 +268,9 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
               feature_order: s.feature_order,
             };
           }
-
           featureSelect.push(ft);
+
+          //data for cube filter
         });
 
         this.objSelect = {
@@ -697,10 +699,13 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     },
   ];
 
-  filterCubeObj: ICubeReqest[] = [];
   createFilterCube() {
-    this.filterCubeObj = [];
-    console.log('obj for create cube: ' + JSON.stringify(this.objSelect));
+    // this.filterCubeObj = [];
+    // console.log('obj for create cube: ' + JSON.stringify(this.objSelect));
+    // if(this.objSelect) {
+    //   for(let item of this.objSelect.feature) {
+    //   }
+    // }
   }
 
   loadData() {
