@@ -122,6 +122,7 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   ];
 
   cubeResponse: IDataFilter[] = [];
+  funnelData: any[] = [];
 
   //data for save
   filterItem: SubFeature[] = [];
@@ -141,6 +142,9 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    this.funnelData = [];
+    // this.loadFunnelData();
+    // this.loadData();
     //this.getProjectTemplateApi();
     let productId = this.activatedRoute.snapshot.params.productId;
     if (productId) {
@@ -360,8 +364,12 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
       }
     });
   }
-  calculate() {
+  async calculate() {
     this.loadData();
+    this.funnelData = [];
+    this.loadFunnelData();
+    
+  console.log(`sort data: ${JSON.stringify(this.funnelData)}`);
   }
 
   save() {
@@ -542,6 +550,150 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     // }
   ];
 
+  funnelQuery: any = [
+    {
+      measures: ['INSHealth.count'],
+      dimensions: ['INSHealth.gender'],
+      filters: [
+        {
+          member: 'INSHealth.gender',
+          operator: 'equals',
+          values: ['Female', 'Male'],
+        },
+      ],
+    },
+    {
+      measures: ['INSHealth.count'],
+      dimensions: ['INSHealth.ageGroup'],
+      filters: [
+        {
+          member: 'INSHealth.gender',
+          operator: 'equals',
+          values: ['Female', 'Male'],
+        },
+        {
+          member: 'INSHealth.ageGroup',
+          operator: 'equals',
+          values: ['23-25', '26-30', '31-35'],
+        },
+      ],
+    },
+    {
+      measures: ['INSHealth.count'],
+      dimensions: ['INSHealth.lifeStage'],
+      filters: [
+        {
+          member: 'INSHealth.gender',
+          operator: 'equals',
+          values: ['Female', 'Male'],
+        },
+        {
+          member: 'INSHealth.ageGroup',
+          operator: 'equals',
+          values: ['23-25', '26-30', '31-35'],
+        },
+        {
+          member: 'INSHealth.lifeStage',
+          operator: 'equals',
+          values: ['Student', 'Growing  Family', 'Supporting Family'],
+        },
+      ],
+    },
+    {
+      measures: ['INSHealth.count'],
+      dimensions: ['INSHealth.job'],
+      filters: [
+        {
+          member: 'INSHealth.gender',
+          operator: 'equals',
+          values: ['Female', 'Male'],
+        },
+        {
+          member: 'INSHealth.ageGroup',
+          operator: 'equals',
+          values: ['23-25', '26-30', '31-35'],
+        },
+        {
+          member: 'INSHealth.lifeStage',
+          operator: 'equals',
+          values: ['Student', 'Growing  Family', 'Supporting Family'],
+        },
+        {
+          member: 'INSHealth.job',
+          operator: 'notEquals',
+          values: ['Rider'],
+        },
+      ],
+    },
+    {
+      measures: ['INSHealth.count'],
+      dimensions: ['INSHealth.affluencyScore'],
+      filters: [
+        {
+          member: 'INSHealth.gender',
+          operator: 'equals',
+          values: ['Female', 'Male'],
+        },
+        {
+          member: 'INSHealth.ageGroup',
+          operator: 'equals',
+          values: ['23-25', '26-30', '31-35'],
+        },
+        {
+          member: 'INSHealth.lifeStage',
+          operator: 'equals',
+          values: ['Student', 'Growing  Family', 'Supporting Family'],
+        },
+        {
+          member: 'INSHealth.job',
+          operator: 'notEquals',
+          values: ['Rider'],
+        },
+        {
+          member: 'INSHealth.affluencyScore',
+          operator: 'gte',
+          values: ['0.03'],
+        },
+      ],
+    },
+    {
+      measures: ['INSHealth.count'],
+      dimensions: ['INSHealth.affluencyScore'],
+      filters: [
+        {
+          member: 'INSHealth.gender',
+          operator: 'equals',
+          values: ['Female', 'Male'],
+        },
+        {
+          member: 'INSHealth.ageGroup',
+          operator: 'equals',
+          values: ['23-25', '26-30', '31-35'],
+        },
+        {
+          member: 'INSHealth.lifeStage',
+          operator: 'equals',
+          values: ['Student', 'Growing  Family', 'Supporting Family'],
+        },
+        {
+          member: 'INSHealth.job',
+          operator: 'notEquals',
+          values: ['Rider'],
+        },
+        {
+          member: 'INSHealth.affluencyScore',
+          operator: 'gte',
+          values: ['0.03'],
+        },
+        {
+          member: 'INSHealth.affluencyScore',
+          operator: 'lte',
+          values: ['0.08'],
+        },
+      ],
+    },
+  ];
+
   loadData() {
     var featureName: any = [];
     this.filterCube.forEach((data: any, index: any) => {
@@ -600,5 +752,56 @@ export class WorkspaceComponent implements AfterViewInit, OnInit {
     });
 
     console.log('cube response : ' + JSON.stringify(this.cubeResponse));
+  }
+
+  loadFunnelData() {
+    this.funnelQuery.forEach((data: any, index: any) => {
+      this.cubeService
+        .cubeApi()
+        .load(data)
+        .then((resultSet: any) => {
+          console.log(`Data Response: ${JSON.stringify(resultSet)}`);
+          const resultResponse: IResult = resultSet.loadResponse.results[0];
+          console.log(
+            `resultResponse response : ${JSON.stringify(resultResponse)}`
+          );
+
+          const nameCube = resultResponse.query.dimensions[0].split('.')[1];
+          let featureMap = this.dataMapping.filter((e) => {
+            return e.dataCube.toLowerCase() === nameCube.toLowerCase();
+          });
+
+          var dataMapping: any[] = [];
+          const dataResponse = resultResponse.data;
+          dataResponse.forEach((e) => {
+            let keyArr = Object.values(e);
+            let newData = {
+              item: keyArr[0],
+              value: keyArr[1],
+            };
+            dataMapping.push(newData);
+          });
+          console.log(`dataMapping : ${JSON.stringify(dataMapping)}`);
+
+          this.funnelData.push({
+            feature: featureMap[0].dataCode,
+            data: dataMapping,
+            sum: this.sumDataFunnel(dataMapping),
+          });
+          this.funnelData?.sort((a, b) => {
+            return b.sum - a.sum;
+        });
+          console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+        });
+    });
+    // console.log(`FunnelDatalist : ${JSON.stringify(this.funnelData)}`);
+  }
+
+  sumDataFunnel(data: any) {
+    var sum: number = 0;
+    data.forEach((e: any) => {
+      sum += e.value;
+    });
+    return sum;
   }
 }

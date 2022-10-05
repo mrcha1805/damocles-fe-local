@@ -44,7 +44,7 @@
                         <div class="funnel-clear" fxLayoutAlign="end end">
                             <span (click)="clearAll()">Clear All</span>
                         </div>
-                        <app-funnel-chart></app-funnel-chart>
+                        <app-funnel-chart [funnelList]="funnelData"></app-funnel-chart>
                         <!-- <div fxLayout="column" fxLayoutAlign="center center" class="grid-item-layout box-chart">
                             <img src="./assets/icons/Choose-KPI-for-Data-Visualization.svg" width="200" />
                             <span class="font-14px">Choose KPI for Data Visualization</span>

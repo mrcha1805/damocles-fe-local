@@ -56,6 +56,12 @@ export interface IDataFilter {
   sum: number;
 }
 
+export interface IfunnelList {
+  feature: string;
+  data: [item: string, value: number];
+  sum: number;
+}
+
 interface INSAssetcount2 {
   title: string;
   shortTitle: string;
